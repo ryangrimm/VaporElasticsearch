@@ -1,11 +1,10 @@
-import HTTP
 
 public final class ElasticsearchDatabase: Database {
     /// This client's configuration.
     public let config: ElasticsearchClientConfig
     
     /// Creates a new `ElasticsearchDatabase`.
-    public init(config: ElasticsearchClientConfig) throws {
+    public init(config: ElasticsearchClientConfig) throws { 
         self.config = config
     }
     
@@ -14,7 +13,7 @@ public final class ElasticsearchDatabase: Database {
     }
     
     /// See `Database`.
-    public func newConnection(on worker: Worker) -> EventLoopFuture<ElasticsearchClient> {
+    public func newConnection(on worker: Worker) -> Future<ElasticsearchClient> {
         return ElasticsearchClient.connect(hostname: config.hostname, port: config.port, username: config.username, password: config.password, on: worker) { error in
             print("[Elasticsearch] \(error)")
         }
