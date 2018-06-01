@@ -6,23 +6,23 @@ import PackageDescription
 let package = Package(
     name: "Elasticsearch",
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(
-            name: "Elasticsearch",
-            targets: ["Elasticsearch"]),
+        .library(name: "Elasticsearch", targets: ["Elasticsearch"])
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+		// Core extensions, type-aliases, and functions that facilitate common tasks.
+		.package(url: "https://github.com/vapor/core.git", from: "3.0.0"),
+
+		// Core services for creating database integrations.
+		.package(url: "https://github.com/vapor/database-kit.git", from: "1.0.0"),
+
+		// Event-driven network application framework for high performance protocol servers & clients, non-blocking.
+		.package(url: "https://github.com/apple/swift-nio.git", from: "1.0.0"),
+
+		// Grab the HTTP goodies from Vapor
+		.package(url: "https://github.com/vapor/http.git", from: "3.0.0"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(
-            name: "Elasticsearch",
-            dependencies: []),
-        .testTarget(
-            name: "ElasticsearchTests",
-            dependencies: ["Elasticsearch"]),
+        .target( name: "Elasticsearch", dependencies: ["Async", "Bits", "DatabaseKit", "Debugging", "NIO", "COperatingSystem", "HTTP"]),
+        .testTarget( name: "ElasticsearchTests", dependencies: ["Elasticsearch"])
     ]
 )
