@@ -17,6 +17,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
     private let esConnection: HTTPClient
     
     private let worker: Worker
+    private let encoder = JSONEncoder()
     
     /// Creates a new Elasticsearch client.
     init(client: HTTPClient, worker: Worker) {
@@ -33,6 +34,73 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
             self.isClosed = true
             }.catch() { error in
                 self.isClosed = true
+        }
+    }
+
+    internal static func generateURL(path: String, routing: String? = nil, version: Int? = nil, storedFields: [String]? = nil, realtime: Bool? = nil, forceCreate: Bool? = nil) -> URLComponents {
+        
+        var url = URLComponents()
+        url.path = path
+        var query = [URLQueryItem]()
+        if routing != nil {
+            query.append(URLQueryItem(name: "routing", value: routing))
+        }
+        if version != nil {
+            query.append(URLQueryItem(name: "version", value: "\(version!)"))
+        }
+        if storedFields != nil {
+            query.append(URLQueryItem(name: "stored_fields", value: storedFields?.joined(separator: ",")))
+        }
+        if realtime != nil {
+            query.append(URLQueryItem(name: "realtime", value: realtime! ? "true" : "false"))
+        }
+        url.queryItems = query
+        
+        return url
+    }
+    
+    func send(_ method: HTTPMethod, to path: String) throws -> Future<Data> {
+        var httpReq = HTTPRequest(method: method, url: path)
+        httpReq.headers.add(name: "Content-Type", value: "application/json")
+        return try send(httpReq)
+    }
+    
+    func send<T:Encodable>(_ method: HTTPMethod, to path: String, with body:T) throws -> Future<Data> {
+        let jsonData = try? encoder.encode(body)
+        if jsonData == nil {
+            throw ElasticsearchError(identifier: "request_body_encoding", reason: "Cannot convert body to JSON", source: .capture())
+        }
+        
+        var httpReq = HTTPRequest(method: method, url: path, body: HTTPBody(data: jsonData!))
+        httpReq.headers.add(name: "Content-Type", value: "application/json")
+        return try send(httpReq)
+    }
+    
+    private func send(_ request :HTTPRequest) throws ->Future<Data> {
+        // XXX should be debug logged
+        print(request.description)
+        
+        return self.esConnection.send(request).map(to: Data.self) { response in
+            if response.body.data == nil {
+                throw ElasticsearchError(identifier: "empty_response", reason: "Missing response body from Elasticsearch", source: .capture())
+            }
+            
+            // XXX This feels like some pretty cheap/lame checking
+            if response.status.code >= 400 {
+                let json = try JSONSerialization.jsonObject(with: response.body.data!, options: []) as? [String: Any]
+                if json == nil {
+                    throw ElasticsearchError(identifier: "invalid_response", reason: "Cannot parse response body from Elasticsearch", source: .capture())
+                }
+                
+                let error = json!["error"] as! Dictionary<String, Any>
+                throw ElasticsearchError(identifier: "elasticsearch_error", reason: error.description, source: .capture())
+            }
+            
+            // XXX should be debug logged
+            let bodyString = String(data: response.body.data!, encoding: String.Encoding.utf8) as String?
+            print(bodyString!)
+            
+            return response.body.data!
         }
     }
 }

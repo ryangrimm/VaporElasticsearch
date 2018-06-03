@@ -16,8 +16,8 @@ extension ElasticsearchClient {
         HTTPClient.connect(hostname: hostname, port: port, on: worker) {error in
                 clientPromise.fail(error: error)
             }.do() { client in
-            let esClient = ElasticsearchClient.init(client: client, worker: worker)
-            clientPromise.succeed(result: esClient)
+                let esClient = ElasticsearchClient.init(client: client, worker: worker)
+                clientPromise.succeed(result: esClient)
             }.catch { error in
                 clientPromise.fail(error: error)
             }

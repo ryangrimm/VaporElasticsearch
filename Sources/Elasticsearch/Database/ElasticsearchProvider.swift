@@ -1,10 +1,3 @@
-//
-//  ElasticsearchProvider.swift
-//
-//
-//  Created by Ryan Grimm on 5/31/18.
-//
-
 import DatabaseKit
 import Service
 

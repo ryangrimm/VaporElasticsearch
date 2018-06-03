@@ -1,4 +1,3 @@
-
 public final class ElasticsearchDatabase: Database {
     /// This client's configuration.
     public let config: ElasticsearchClientConfig

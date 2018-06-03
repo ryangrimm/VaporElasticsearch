@@ -1,10 +1,3 @@
-//
-//  ElasticsearchError.swift
-//  Elasticsearch
-//
-//  Created by Ryan Grimm on 5/31/18.
-//
-
 import Debugging
 import COperatingSystem
 
