@@ -65,13 +65,10 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         return try send(httpReq)
     }
     
-    func send<T:Encodable>(_ method: HTTPMethod, to path: String, with body:T) throws -> Future<Data> {
-        let jsonData = try? encoder.encode(body)
-        if jsonData == nil {
-            throw ElasticsearchError(identifier: "request_body_encoding", reason: "Cannot convert body to JSON", source: .capture())
-        }
+    func send(_ method: HTTPMethod, to path: String, with body: Dictionary<String, Any>) throws -> Future<Data> {
+        let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
         
-        var httpReq = HTTPRequest(method: method, url: path, body: HTTPBody(data: jsonData!))
+        var httpReq = HTTPRequest(method: method, url: path, body: HTTPBody(data: jsonData))
         httpReq.headers.add(name: "Content-Type", value: "application/json")
         return try send(httpReq)
     }
