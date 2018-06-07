@@ -18,6 +18,12 @@ extension ElasticsearchClient {
 }
 
 struct TestModel: ElasticsearchModel {
+    static var elasticsearchIndex: String {
+        get {
+            return "test"
+        }
+    }
+    
     init(name: String) {
         self.name = name
     }
@@ -43,14 +49,23 @@ final class ElasticsearchTests: XCTestCase {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         
-        let indexDoc = TestModel(name: "bar")
-        let indexRes = try es.index(doc: indexDoc, index: "test", id: "foo")
-        print(indexRes)
+        ElasticsearchModelRegistry.registerModel(model: TestModel.self, toIndex: "test")
         
-        let getRes: ElasticsearchDocResponse = try es.get(index: "test", id: "foo").wait()
-        let model = TestModel(fromElasticsearchResponse: getRes)
-        print(getRes.source)
-        print(model)
+        var indexDoc: TestModel = TestModel(name: "bar")
+        let response = try indexDoc.save(client: es).wait()
+        indexDoc.id = response.id
+        print(indexDoc)
+        
+        var fetchedDoc: TestModel = try TestModel.get(indexDoc.id!, client: es).wait()
+        print(fetchedDoc)
+        
+        fetchedDoc.name = "baz"
+        try fetchedDoc.save(fetchedDoc.id!, client: es).wait()
+        
+        fetchedDoc = try TestModel.get(fetchedDoc.id!, client: es).wait()
+        print(fetchedDoc)
+        
+        try fetchedDoc.delete(fetchedDoc.id!, client: es).wait()
     }
     
     static var allTests = [

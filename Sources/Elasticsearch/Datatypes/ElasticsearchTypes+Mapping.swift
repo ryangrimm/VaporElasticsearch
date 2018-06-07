@@ -10,10 +10,7 @@
 
 import Foundation
 
-public struct ESTypeText: ElasticsearchStringType, ElasticsearchType {
-    // See ElasticsearchType
-    public var key: String
-    
+public struct ESTypeText:  ElasticsearchStringType, ElasticsearchType {
     // See ElasticsearchStringType
     var boost: Float = 1.0
     var eagerGlobalOrdinals: Bool = false
@@ -28,12 +25,24 @@ public struct ESTypeText: ElasticsearchStringType, ElasticsearchType {
     var searchAnalyzer: String?
     var searchQuoteAnalyzer: String?
     var fielddata: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case boost
+        case eagerGlobalOrdinals = "eager_global_ordinals"
+        case fields
+        case index
+        case indexOptions = "index_options"
+        case norms
+        case store
+        case similarity
+        case analyzer
+        case searchAnalyzer = "search_analyzer"
+        case searchQuoteAnalyzer = "search_quote_analyzer"
+        case fielddata
+    }
 }
 
 public struct ESTypeKeyword: ElasticsearchStringType, ElasticsearchType {
-    // See ElasticsearchType
-    public var key: String
-    
     // See ElasticsearchStringType
     var boost: Float = 1.0
     var eagerGlobalOrdinals: Bool = false
@@ -48,14 +57,26 @@ public struct ESTypeKeyword: ElasticsearchStringType, ElasticsearchType {
     var ignoreAbove: Int = 2147483647
     var nullValue: String?
     // var normalizer
+    
+    enum CodingKeys: String, CodingKey {
+        case boost
+        case eagerGlobalOrdinals = "eager_global_ordinals"
+        case fields
+        case index
+        case indexOptions = "index_options"
+        case norms
+        case store
+        case similarity
+        case docValues = "doc_values"
+        case ignoreAbove = "ignore_above"
+        case nullValue = "null_value"
+//        case normalizer
+    }
 }
 
 public struct ESTypeLong: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Int64
     
-    // See ElasticsearchType
-    public var key: String
-    
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -64,14 +85,21 @@ public struct ESTypeLong: ElasticsearchNumberType, ElasticsearchType {
     var index: Bool = true
     var nullValue: nullType? = nil
     var store: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case coerce
+        case boost
+        case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
+        case index
+        case nullValue = "null_value"
+        case store
+    }
 }
 
 public struct ESTypeInteger: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Int
     
-    // See ElasticsearchType
-    public var key: String
-    
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -81,17 +109,20 @@ public struct ESTypeInteger: ElasticsearchNumberType, ElasticsearchType {
     var nullValue: nullType? = nil
     var store: Bool = false
     
-    init(key: String) {
-        self.key = key
+    enum CodingKeys: String, CodingKey {
+        case coerce
+        case boost
+        case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
+        case index
+        case nullValue = "null_value"
+        case store
     }
 }
 
 public struct ESTypeShort: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Int16
-    
-    // See ElasticsearchType
-    public var key: String
-    
+
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -100,14 +131,21 @@ public struct ESTypeShort: ElasticsearchNumberType, ElasticsearchType {
     var index: Bool = true
     var nullValue: nullType? = nil
     var store: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case coerce
+        case boost
+        case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
+        case index
+        case nullValue = "null_value"
+        case store
+    }
 }
 
 public struct ESTypeByte: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Int8
     
-    // See ElasticsearchType
-    public var key: String
-    
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -116,14 +154,21 @@ public struct ESTypeByte: ElasticsearchNumberType, ElasticsearchType {
     var index: Bool = true
     var nullValue: nullType? = nil
     var store: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case coerce
+        case boost
+        case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
+        case index
+        case nullValue = "null_value"
+        case store
+    }
 }
 
 public struct ESTypeDouble: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Double
     
-    // See ElasticsearchType
-    public var key: String
-    
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -132,14 +177,21 @@ public struct ESTypeDouble: ElasticsearchNumberType, ElasticsearchType {
     var index: Bool = true
     var nullValue: nullType? = nil
     var store: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case coerce
+        case boost
+        case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
+        case index
+        case nullValue = "null_value"
+        case store
+    }
 }
 
 public struct ESTypeFloat: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Float
-    
-    // See ElasticsearchType
-    public var key: String
-    
+
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -148,14 +200,21 @@ public struct ESTypeFloat: ElasticsearchNumberType, ElasticsearchType {
     var index: Bool = true
     var nullValue: nullType? = nil
     var store: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case coerce
+        case boost
+        case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
+        case index
+        case nullValue = "null_value"
+        case store
+    }
 }
 
 public struct ESTypeHalfFloat: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Float
-    
-    // See ElasticsearchType
-    public var key: String
-    
+
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -164,13 +223,20 @@ public struct ESTypeHalfFloat: ElasticsearchNumberType, ElasticsearchType {
     var index: Bool = true
     var nullValue: nullType? = nil
     var store: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case coerce
+        case boost
+        case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
+        case index
+        case nullValue = "null_value"
+        case store
+    }
 }
 
 public struct ESTypeScaledFloat: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Float
-    
-    // See ElasticsearchType
-    public var key: String
     
     // See ElasticsearchNumberType
     var coerce: Bool = true
@@ -182,6 +248,17 @@ public struct ESTypeScaledFloat: ElasticsearchNumberType, ElasticsearchType {
     var store: Bool = false
     
     var scalingFactor: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case coerce
+        case boost
+        case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
+        case index
+        case nullValue = "null_value"
+        case store
+        case scalingFactor = "scaling_factor"
+    }
 }
 
 public struct ESTypeDate {
