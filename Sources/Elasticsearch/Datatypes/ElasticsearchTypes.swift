@@ -43,7 +43,7 @@ protocol ElasticsearchStringType: Codable {
     var indexOptions: ESTypeIndexOptions { get set }
     var norms: Bool { get set }
     var store: Bool { get set }
-    var similarity: ESTypeTermVector { get set }
+    var similarity: ESTypeSimilarity { get set }
 }
 
 protocol ElasticsearchNumberType: Codable {

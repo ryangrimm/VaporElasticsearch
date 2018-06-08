@@ -19,28 +19,30 @@ extension ElasticsearchClient {
 
 struct TestModel: ElasticsearchModel {
     static var elasticsearchIndex: String {
-        get {
-            return "test"
-        }
+        return "test"
     }
     
-    init(name: String) {
+    init(name: String, number: Int) {
         self.name = name
+        self.number = number
     }
     
     init(fromElasticsearchResponse response: ElasticsearchDocResponse) {
         id = response.id
         name = response.source["name"] as! String
+        number = response.source["number"] as! Int
     }
 
     func toElasticsearchJSON() -> [String: Codable] {
         return [
-            "name": name
+            "name": name,
+            "number": number
         ]
     }
 
     var id: String?
     var name: String
+    var number: Int
 }
 
 final class ElasticsearchTests: XCTestCase {
@@ -49,9 +51,16 @@ final class ElasticsearchTests: XCTestCase {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         
+        ElasticsearchMapping.setup()
+        
+        try ElasticsearchMapping(indexName: "test")
+            .property(key: "name", type: ESTypeText())
+            .property(key: "number", type: ESTypeInteger())
+            .create(client: es).wait()
+        
         ElasticsearchModelRegistry.registerModel(model: TestModel.self, toIndex: "test")
         
-        var indexDoc: TestModel = TestModel(name: "bar")
+        var indexDoc: TestModel = TestModel(name: "bar", number: 26)
         let response = try indexDoc.save(client: es).wait()
         indexDoc.id = response.id
         print(indexDoc)
@@ -66,6 +75,9 @@ final class ElasticsearchTests: XCTestCase {
         print(fetchedDoc)
         
         try fetchedDoc.delete(fetchedDoc.id!, client: es).wait()
+        
+        try ElasticsearchMapping.delete(indexName: "test", client: es).wait()
+
     }
     
     static var allTests = [

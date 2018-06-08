@@ -21,13 +21,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		C23D9F1520C9C67C0082C3D9 /* ElasticsearchMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1320C9C45E0082C3D9 /* ElasticsearchMapping.swift */; };
 		C248178F20C113E000E4570F /* ElasticsearchClientConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248178D20C113E000E4570F /* ElasticsearchClientConfig.swift */; };
 		C248179020C113E000E4570F /* ElasticsearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248178E20C113E000E4570F /* ElasticsearchProvider.swift */; };
 		C248179620C1151C00E4570F /* ElasticsearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179420C1151C00E4570F /* ElasticsearchError.swift */; };
 		C248179720C1151C00E4570F /* Exports.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179520C1151C00E4570F /* Exports.swift */; };
 		C248179920C11A6900E4570F /* ElasticsearchClient+CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179820C11A6900E4570F /* ElasticsearchClient+CRUD.swift */; };
 		C2D5F61C20C413E8006AAF04 /* ElasticsearchTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61B20C413E8006AAF04 /* ElasticsearchTypes.swift */; };
-		C2D5F61E20C41A3A006AAF04 /* ElasticsearchTypes+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61D20C41A3A006AAF04 /* ElasticsearchTypes+Mapping.swift */; };
+		C2D5F61E20C41A3A006AAF04 /* ElasticsearchMapping+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61D20C41A3A006AAF04 /* ElasticsearchMapping+Types.swift */; };
 		C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */; };
 		OBJ_1008 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* Config.swift */; };
 		OBJ_1009 /* BasicContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* BasicContainer.swift */; };
@@ -1523,13 +1524,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C23D9F1320C9C45E0082C3D9 /* ElasticsearchMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchMapping.swift; sourceTree = "<group>"; };
 		C248178D20C113E000E4570F /* ElasticsearchClientConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchClientConfig.swift; sourceTree = "<group>"; };
 		C248178E20C113E000E4570F /* ElasticsearchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchProvider.swift; sourceTree = "<group>"; };
 		C248179420C1151C00E4570F /* ElasticsearchError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchError.swift; sourceTree = "<group>"; };
 		C248179520C1151C00E4570F /* Exports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exports.swift; sourceTree = "<group>"; };
 		C248179820C11A6900E4570F /* ElasticsearchClient+CRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchClient+CRUD.swift"; sourceTree = "<group>"; };
 		C2D5F61B20C413E8006AAF04 /* ElasticsearchTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchTypes.swift; sourceTree = "<group>"; };
-		C2D5F61D20C41A3A006AAF04 /* ElasticsearchTypes+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchTypes+Mapping.swift"; sourceTree = "<group>"; };
+		C2D5F61D20C41A3A006AAF04 /* ElasticsearchMapping+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchMapping+Types.swift"; sourceTree = "<group>"; };
 		C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchModel.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2139,8 +2141,9 @@
 			isa = PBXGroup;
 			children = (
 				C2D5F61B20C413E8006AAF04 /* ElasticsearchTypes.swift */,
-				C2D5F61D20C41A3A006AAF04 /* ElasticsearchTypes+Mapping.swift */,
 				C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */,
+				C23D9F1320C9C45E0082C3D9 /* ElasticsearchMapping.swift */,
+				C2D5F61D20C41A3A006AAF04 /* ElasticsearchMapping+Types.swift */,
 			);
 			path = Datatypes;
 			sourceTree = "<group>";
@@ -4003,9 +4006,10 @@
 				C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */,
 				C2D5F61C20C413E8006AAF04 /* ElasticsearchTypes.swift in Sources */,
 				OBJ_621 /* ElasticsearchClient.swift in Sources */,
-				C2D5F61E20C41A3A006AAF04 /* ElasticsearchTypes+Mapping.swift in Sources */,
+				C2D5F61E20C41A3A006AAF04 /* ElasticsearchMapping+Types.swift in Sources */,
 				C248179620C1151C00E4570F /* ElasticsearchError.swift in Sources */,
 				C248179920C11A6900E4570F /* ElasticsearchClient+CRUD.swift in Sources */,
+				C23D9F1520C9C67C0082C3D9 /* ElasticsearchMapping.swift in Sources */,
 				C248178F20C113E000E4570F /* ElasticsearchClientConfig.swift in Sources */,
 				OBJ_622 /* ElasticsearchDatabase.swift in Sources */,
 				C248179020C113E000E4570F /* ElasticsearchProvider.swift in Sources */,

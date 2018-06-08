@@ -11,6 +11,8 @@
 import Foundation
 
 public struct ESTypeText:  ElasticsearchStringType, ElasticsearchType {
+    let type = "text"
+    
     // See ElasticsearchStringType
     var boost: Float = 1.0
     var eagerGlobalOrdinals: Bool = false
@@ -19,14 +21,16 @@ public struct ESTypeText:  ElasticsearchStringType, ElasticsearchType {
     var indexOptions: ESTypeIndexOptions = .positions
     var norms: Bool = true
     var store: Bool = false
-    var similarity: ESTypeTermVector = .no
+    var similarity: ESTypeSimilarity = .bm25
     
     var analyzer: String?
     var searchAnalyzer: String?
     var searchQuoteAnalyzer: String?
     var fielddata: Bool = false
+    var termVector: ESTypeTermVector = .no
     
     enum CodingKeys: String, CodingKey {
+        case type
         case boost
         case eagerGlobalOrdinals = "eager_global_ordinals"
         case fields
@@ -39,10 +43,17 @@ public struct ESTypeText:  ElasticsearchStringType, ElasticsearchType {
         case searchAnalyzer = "search_analyzer"
         case searchQuoteAnalyzer = "search_quote_analyzer"
         case fielddata
+        case termVector = "term_vector"
+    }
+    
+    init() {
+        
     }
 }
 
 public struct ESTypeKeyword: ElasticsearchStringType, ElasticsearchType {
+    let type = "keyword"
+
     // See ElasticsearchStringType
     var boost: Float = 1.0
     var eagerGlobalOrdinals: Bool = false
@@ -51,14 +62,15 @@ public struct ESTypeKeyword: ElasticsearchStringType, ElasticsearchType {
     var indexOptions: ESTypeIndexOptions = .positions
     var norms: Bool = true
     var store: Bool = false
-    var similarity: ESTypeTermVector = .no
-    
+    var similarity: ESTypeSimilarity = .bm25
+
     var docValues: Bool = true
     var ignoreAbove: Int = 2147483647
     var nullValue: String?
     // var normalizer
     
     enum CodingKeys: String, CodingKey {
+        case type
         case boost
         case eagerGlobalOrdinals = "eager_global_ordinals"
         case fields
@@ -77,6 +89,8 @@ public struct ESTypeKeyword: ElasticsearchStringType, ElasticsearchType {
 public struct ESTypeLong: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Int64
     
+    let type = "long"
+    
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -87,6 +101,7 @@ public struct ESTypeLong: ElasticsearchNumberType, ElasticsearchType {
     var store: Bool = false
     
     enum CodingKeys: String, CodingKey {
+        case type
         case coerce
         case boost
         case docValues = "doc_values"
@@ -100,6 +115,8 @@ public struct ESTypeLong: ElasticsearchNumberType, ElasticsearchType {
 public struct ESTypeInteger: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Int
     
+    let type = "integer"
+
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -110,6 +127,7 @@ public struct ESTypeInteger: ElasticsearchNumberType, ElasticsearchType {
     var store: Bool = false
     
     enum CodingKeys: String, CodingKey {
+        case type
         case coerce
         case boost
         case docValues = "doc_values"
@@ -118,10 +136,16 @@ public struct ESTypeInteger: ElasticsearchNumberType, ElasticsearchType {
         case nullValue = "null_value"
         case store
     }
+    
+    init() {
+    
+    }
 }
 
 public struct ESTypeShort: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Int16
+
+    let type = "short"
 
     // See ElasticsearchNumberType
     var coerce: Bool = true
@@ -133,6 +157,7 @@ public struct ESTypeShort: ElasticsearchNumberType, ElasticsearchType {
     var store: Bool = false
     
     enum CodingKeys: String, CodingKey {
+        case type
         case coerce
         case boost
         case docValues = "doc_values"
@@ -146,6 +171,8 @@ public struct ESTypeShort: ElasticsearchNumberType, ElasticsearchType {
 public struct ESTypeByte: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Int8
     
+    let type = "byte"
+    
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -156,6 +183,7 @@ public struct ESTypeByte: ElasticsearchNumberType, ElasticsearchType {
     var store: Bool = false
     
     enum CodingKeys: String, CodingKey {
+        case type
         case coerce
         case boost
         case docValues = "doc_values"
@@ -169,6 +197,8 @@ public struct ESTypeByte: ElasticsearchNumberType, ElasticsearchType {
 public struct ESTypeDouble: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Double
     
+    let type = "double"
+
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -179,6 +209,7 @@ public struct ESTypeDouble: ElasticsearchNumberType, ElasticsearchType {
     var store: Bool = false
     
     enum CodingKeys: String, CodingKey {
+        case type
         case coerce
         case boost
         case docValues = "doc_values"
@@ -192,6 +223,8 @@ public struct ESTypeDouble: ElasticsearchNumberType, ElasticsearchType {
 public struct ESTypeFloat: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Float
 
+    let type = "float"
+
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -202,6 +235,7 @@ public struct ESTypeFloat: ElasticsearchNumberType, ElasticsearchType {
     var store: Bool = false
     
     enum CodingKeys: String, CodingKey {
+        case type
         case coerce
         case boost
         case docValues = "doc_values"
@@ -215,6 +249,8 @@ public struct ESTypeFloat: ElasticsearchNumberType, ElasticsearchType {
 public struct ESTypeHalfFloat: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Float
 
+    let type = "half_float"
+
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -225,6 +261,7 @@ public struct ESTypeHalfFloat: ElasticsearchNumberType, ElasticsearchType {
     var store: Bool = false
     
     enum CodingKeys: String, CodingKey {
+        case type
         case coerce
         case boost
         case docValues = "doc_values"
@@ -238,6 +275,8 @@ public struct ESTypeHalfFloat: ElasticsearchNumberType, ElasticsearchType {
 public struct ESTypeScaledFloat: ElasticsearchNumberType, ElasticsearchType {
     typealias nullType = Float
     
+    let type = "scaled_float"
+
     // See ElasticsearchNumberType
     var coerce: Bool = true
     var boost: Float = 1.0
@@ -250,6 +289,7 @@ public struct ESTypeScaledFloat: ElasticsearchNumberType, ElasticsearchType {
     var scalingFactor: Int
     
     enum CodingKeys: String, CodingKey {
+        case type
         case coerce
         case boost
         case docValues = "doc_values"

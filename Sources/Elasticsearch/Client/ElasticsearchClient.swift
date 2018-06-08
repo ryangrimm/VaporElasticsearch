@@ -16,7 +16,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
     /// The HTTP connection
     private let esConnection: HTTPClient
     
-    private let worker: Worker
+    public let worker: Worker
     private let encoder = JSONEncoder()
     
     /// Creates a new Elasticsearch client.
