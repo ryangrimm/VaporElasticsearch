@@ -17,27 +17,10 @@ extension ElasticsearchClient {
     }
 }
 
-struct TestModel: ElasticsearchModel {
-    static var elasticsearchIndex: String {
-        return "test"
-    }
-    
+struct TestModel: ElasticsearchModel {    
     init(name: String, number: Int) {
         self.name = name
         self.number = number
-    }
-    
-    init(fromElasticsearchResponse response: ElasticsearchDocResponse) {
-        id = response.id
-        name = response.source["name"] as! String
-        number = response.source["number"] as! Int
-    }
-
-    func toElasticsearchJSON() -> [String: Codable] {
-        return [
-            "name": name,
-            "number": number
-        ]
     }
 
     var id: String?
@@ -64,23 +47,22 @@ final class ElasticsearchTests: XCTestCase {
         ElasticsearchModelRegistry.registerModel(model: TestModel.self, toIndex: "test")
         
         var indexDoc: TestModel = TestModel(name: "bar", number: 26)
-        let response = try indexDoc.save(client: es).wait()
+        var response = try es.index(doc: indexDoc, index: "test").wait()
         indexDoc.id = response.id
-        print(indexDoc)
+
         
-        var fetchedDoc: TestModel = try TestModel.get(indexDoc.id!, client: es).wait()
+        var fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: indexDoc.id!).wait()
         print(fetchedDoc)
         
-        fetchedDoc.name = "baz"
-        try fetchedDoc.save(fetchedDoc.id!, client: es).wait()
+        fetchedDoc.source.name = "baz"
+        response = try es.index(doc: fetchedDoc.source, index: "test").wait()
         
-        fetchedDoc = try TestModel.get(fetchedDoc.id!, client: es).wait()
+        fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: fetchedDoc.id).wait()
         print(fetchedDoc)
         
-        try fetchedDoc.delete(fetchedDoc.id!, client: es).wait()
+        try es.delete(index: "test", id: fetchedDoc.id)
         
         try ElasticsearchMapping.delete(indexName: "test", client: es).wait()
-
     }
     
     static var allTests = [
