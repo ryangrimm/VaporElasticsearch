@@ -1,7 +1,7 @@
 import HTTP
 
 extension ElasticsearchClient {
-    func get<T: ElasticsearchModel>(
+    public func get<T: ElasticsearchModel>(
         decodeTo resultType: T.Type,
         index: String,
         id: String,
@@ -17,7 +17,7 @@ extension ElasticsearchClient {
         }
     }
     
-    func index<T :ElasticsearchModel>(
+    public func index<T :ElasticsearchModel>(
         doc :T,
         index: String,
         id: String? = nil,
@@ -34,7 +34,7 @@ extension ElasticsearchClient {
         }
     }
 
-    func update<T :ElasticsearchModel>(
+    public func update<T :ElasticsearchModel>(
         doc :T,
         index: String,
         id: String,
@@ -49,7 +49,7 @@ extension ElasticsearchClient {
         }
     }
 
-    func delete(
+    public func delete(
         index: String,
         id: String,
         type: String = "_doc",

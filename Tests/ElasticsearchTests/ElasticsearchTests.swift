@@ -60,6 +60,17 @@ final class ElasticsearchTests: XCTestCase {
         fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: fetchedDoc.id).wait()
         print(fetchedDoc)
         
+        let query = QueryContainer(
+            Query(
+                MatchAll()
+            )
+        )
+        
+        sleep(2)
+        
+        let searchResults = try es.search(decodeTo: TestModel.self, index: "test", query: query).wait()
+        print(searchResults)
+        
         try es.delete(index: "test", id: fetchedDoc.id)
         
         try ElasticsearchMapping.delete(indexName: "test", client: es).wait()
