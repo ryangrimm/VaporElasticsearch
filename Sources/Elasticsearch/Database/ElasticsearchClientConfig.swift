@@ -12,7 +12,7 @@ public struct ElasticsearchClientConfig: Codable {
     /// The Elasticsearch server's optional password.
     public var password: String?
 
-    /// Create a new `RedisClientConfig`
+    /// Create a new `ElasticsearchClientConfig`
     public init(url: URL) {
         self.hostname = url.host ?? "localhost"
         self.port = url.port ?? 9200

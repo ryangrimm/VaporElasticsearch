@@ -47,11 +47,9 @@ struct TestModel: ElasticsearchModel {
 
 final class ElasticsearchTests: XCTestCase {
     let defaultTimeout = 2.0
-    func testCRUD() throws {        
+    func testCRUD() throws {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
-        
-        ElasticsearchMapping.setup()
         
         try ElasticsearchMapping(indexName: "test")
             .property(key: "name", type: ESTypeText())
