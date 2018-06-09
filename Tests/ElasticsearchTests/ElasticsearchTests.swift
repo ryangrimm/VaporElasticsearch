@@ -50,13 +50,16 @@ final class ElasticsearchTests: XCTestCase {
     func testCRUD() throws {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
-        
+
         try ElasticsearchMapping(indexName: "test")
             .property(key: "name", type: ESTypeText())
             .property(key: "number", type: ESTypeInteger())
             .alias(name: "testalias")
-            .settings(index: ElasticsearchIndexSettings(shards: 3, replicas: 2))
+            .settings(index: ElasticsearchIndexSettingsIndex(shards: 3, replicas: 2))
             .create(client: es).wait()
+        
+        let mapping = try ElasticsearchMapping.fetch(indexName: "test", client: es).wait()
+        print(mapping)
         
         ElasticsearchModelRegistry.registerModel(model: TestModel.self, toIndex: "test")
         

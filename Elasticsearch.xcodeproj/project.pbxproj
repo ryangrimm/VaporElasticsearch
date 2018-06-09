@@ -45,6 +45,7 @@
 		C23D9F4420CB92510082C3D9 /* ElasticsearchType+GeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3620CB92500082C3D9 /* ElasticsearchType+GeoPoint.swift */; };
 		C23D9F4520CB92510082C3D9 /* ElasticsearchType+IntegerRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3720CB92510082C3D9 /* ElasticsearchType+IntegerRange.swift */; };
 		C23D9F4620CB92510082C3D9 /* ElasticsearchType+DoubleRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3820CB92510082C3D9 /* ElasticsearchType+DoubleRange.swift */; };
+		C23D9F4820CC31C70082C3D9 /* DynamicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F4720CC31C70082C3D9 /* DynamicKey.swift */; };
 		C248178F20C113E000E4570F /* ElasticsearchClientConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248178D20C113E000E4570F /* ElasticsearchClientConfig.swift */; };
 		C248179020C113E000E4570F /* ElasticsearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248178E20C113E000E4570F /* ElasticsearchProvider.swift */; };
 		C248179620C1151C00E4570F /* ElasticsearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179420C1151C00E4570F /* ElasticsearchError.swift */; };
@@ -1571,6 +1572,7 @@
 		C23D9F3620CB92500082C3D9 /* ElasticsearchType+GeoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+GeoPoint.swift"; sourceTree = "<group>"; };
 		C23D9F3720CB92510082C3D9 /* ElasticsearchType+IntegerRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+IntegerRange.swift"; sourceTree = "<group>"; };
 		C23D9F3820CB92510082C3D9 /* ElasticsearchType+DoubleRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+DoubleRange.swift"; sourceTree = "<group>"; };
+		C23D9F4720CC31C70082C3D9 /* DynamicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicKey.swift; sourceTree = "<group>"; };
 		C248178D20C113E000E4570F /* ElasticsearchClientConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchClientConfig.swift; sourceTree = "<group>"; };
 		C248178E20C113E000E4570F /* ElasticsearchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchProvider.swift; sourceTree = "<group>"; };
 		C248179420C1151C00E4570F /* ElasticsearchError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchError.swift; sourceTree = "<group>"; };
@@ -2220,6 +2222,7 @@
 			isa = PBXGroup;
 			children = (
 				C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */,
+				C23D9F4720CC31C70082C3D9 /* DynamicKey.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4099,6 +4102,7 @@
 				C23D9F4520CB92510082C3D9 /* ElasticsearchType+IntegerRange.swift in Sources */,
 				C23D9F3D20CB92510082C3D9 /* ElasticsearchType+Object.swift in Sources */,
 				C23D9F3B20CB92510082C3D9 /* ElasticsearchType+Date.swift in Sources */,
+				C23D9F4820CC31C70082C3D9 /* DynamicKey.swift in Sources */,
 				C248179920C11A6900E4570F /* ElasticsearchClient+CRUD.swift in Sources */,
 				C23D9F2A20CB90480082C3D9 /* ElasticsearchSwift+ScaledFloat.swift in Sources */,
 				C23D9F4620CB92510082C3D9 /* ElasticsearchType+DoubleRange.swift in Sources */,

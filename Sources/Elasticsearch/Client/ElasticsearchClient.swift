@@ -32,7 +32,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         self.isClosed = true
         esConnection.close().do() {
             self.isClosed = true
-            }.catch() { error in
+        }.catch() { error in
                 self.isClosed = true
         }
     }
