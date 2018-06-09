@@ -54,6 +54,8 @@ final class ElasticsearchTests: XCTestCase {
         try ElasticsearchMapping(indexName: "test")
             .property(key: "name", type: ESTypeText())
             .property(key: "number", type: ESTypeInteger())
+            .alias(name: "testalias")
+            .settings(index: ElasticsearchIndexSettings(shards: 3, replicas: 2))
             .create(client: es).wait()
         
         ElasticsearchModelRegistry.registerModel(model: TestModel.self, toIndex: "test")

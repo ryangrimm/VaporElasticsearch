@@ -1,5 +1,20 @@
 import HTTP
 
+public struct ElasticsearchIndexSettings: Codable {
+    let numberOfShards: Int
+    let numberOfReplicas: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case numberOfShards = "number_of_shards"
+        case numberOfReplicas = "number_of_replicas"
+    }
+    
+    init(shards: Int, replicas: Int) {
+        numberOfShards = shards
+        numberOfReplicas = replicas
+    }
+}
+
 public class ElasticsearchMapping: Codable {
     
     struct Mappings: Codable {
@@ -10,15 +25,34 @@ public class ElasticsearchMapping: Codable {
         var properties: [String: ElasticsearchType]
     }
     
+    struct Alias: Codable {
+        var routing: String?
+    }
+    
     var indexName: String? = nil
     var mappings = Mappings(_doc: Properties(properties: [String : ElasticsearchType]()))
+    var aliases = [String: Alias]()
+    var settings: ElasticsearchIndexSettings? = nil
 
     enum CodingKeys: String, CodingKey {
         case mappings
+        case aliases
+        case settings
     }
     
     init(indexName: String) {
         self.indexName = indexName
+    }
+    
+    func settings(index: ElasticsearchIndexSettings) -> Self {
+        self.settings = index
+        return self
+    }
+    
+    func alias(name: String, routing: String? = nil) -> Self {
+        let alias = Alias(routing: routing)
+        aliases[name] = alias
+        return self
     }
     
     func property(key: String, type: ElasticsearchType) -> Self {
