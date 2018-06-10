@@ -10,26 +10,23 @@ public struct ElasticsearchError: Debuggable {
     public var stackTrace: [String]
     public var possibleCauses: [String]
     public var suggestedFixes: [String]
-    
+    public var statusCode: UInt?
+
     /// Create a new Elasticsearch error.
     public init(
         identifier: String,
         reason: String,
         possibleCauses: [String] = [],
         suggestedFixes: [String] = [],
-        source: SourceLocation
-        ) {
+        source: SourceLocation,
+        statusCode: UInt? = nil
+    ) {
         self.identifier = identifier
         self.reason = reason
         self.sourceLocation = source
         self.stackTrace = ElasticsearchError.makeStackTrace()
         self.possibleCauses = possibleCauses
         self.suggestedFixes = suggestedFixes
+        self.statusCode = statusCode
     }
-}
-
-func VERBOSE(_ string: @autoclosure () -> (String)) {
-    #if VERBOSE
-    print("[VERBOSE] [Elasticsearch] \(string())")
-    #endif
 }

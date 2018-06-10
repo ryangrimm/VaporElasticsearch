@@ -38,8 +38,14 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         }
     }
 
-    internal static func generateURL(path: String, routing: String? = nil, version: Int? = nil, storedFields: [String]? = nil, realtime: Bool? = nil, forceCreate: Bool? = nil) -> URLComponents {
-        
+    internal static func generateURL(
+        path: String,
+        routing: String? = nil,
+        version: Int? = nil,
+        storedFields: [String]? = nil,
+        realtime: Bool? = nil,
+        forceCreate: Bool? = nil
+    ) -> URLComponents {
         var url = URLComponents()
         url.path = path
         var query = [URLQueryItem]()
@@ -60,24 +66,37 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         return url
     }
     
-    func send(_ method: HTTPMethod, to path: String) throws -> Future<Data> {
+    func send(
+        _ method: HTTPMethod,
+        to path: String
+    ) throws -> Future<Data> {
         var httpReq = HTTPRequest(method: method, url: path)
         httpReq.headers.add(name: "Content-Type", value: "application/json")
         return try send(httpReq)
     }
     
-    func send(_ method: HTTPMethod, to path: String, with body: Dictionary<String, Any>) throws -> Future<Data> {
+    func send(
+        _ method: HTTPMethod,
+        to path: String,
+        with body: Dictionary<String, Any>
+    ) throws -> Future<Data> {
         let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
         return try send(method, to: path, with: jsonData)
     }
     
-    func send(_ method: HTTPMethod, to path: String, with body: Data) throws -> Future<Data> {
+    func send(
+        _ method: HTTPMethod,
+        to path: String,
+        with body: Data
+    ) throws -> Future<Data> {
         var httpReq = HTTPRequest(method: method, url: path, body: HTTPBody(data: body))
         httpReq.headers.add(name: "Content-Type", value: "application/json")
         return try send(httpReq)
     }
     
-    private func send(_ request :HTTPRequest) throws ->Future<Data> {
+    private func send(
+        _ request: HTTPRequest
+    ) throws -> Future<Data> {
         // XXX should be debug logged
         print(request.description)
         
@@ -85,16 +104,14 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
             if response.body.data == nil {
                 throw ElasticsearchError(identifier: "empty_response", reason: "Missing response body from Elasticsearch", source: .capture())
             }
-            
-            // XXX This feels like some pretty cheap/lame checking
+
             if response.status.code >= 400 {
-                let json = try JSONSerialization.jsonObject(with: response.body.data!, options: []) as? [String: Any]
-                if json == nil {
+                guard let json = try JSONSerialization.jsonObject(with: response.body.data!, options: []) as? [String: Any] else {
                     throw ElasticsearchError(identifier: "invalid_response", reason: "Cannot parse response body from Elasticsearch", source: .capture())
                 }
                 
-                let error = json!["error"] as! Dictionary<String, Any>
-                throw ElasticsearchError(identifier: "elasticsearch_error", reason: error.description, source: .capture())
+                let error = json["error"] as! Dictionary<String, Any>
+                throw ElasticsearchError(identifier: "elasticsearch_error", reason: error.description, source: .capture(), statusCode: response.status.code)
             }
             
             // XXX should be debug logged
