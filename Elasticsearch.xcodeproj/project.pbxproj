@@ -44,6 +44,8 @@
 		C21D6B7120CD183700ED81B6 /* ElasticsearchType+TokenCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7020CD183700ED81B6 /* ElasticsearchType+TokenCount.swift */; };
 		C21D6B7320CD186000ED81B6 /* ElasticsearchType+Percolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7220CD186000ED81B6 /* ElasticsearchType+Percolator.swift */; };
 		C21D6B7520CD187F00ED81B6 /* ElasticsearchType+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7420CD187F00ED81B6 /* ElasticsearchType+Join.swift */; };
+		C21D6B7820CD7D1100ED81B6 /* ElasticsearchSearchEncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7620CD7C5800ED81B6 /* ElasticsearchSearchEncodingTests.swift */; };
+		C21D6B7B20CD7E8500ED81B6 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7920CD7E6400ED81B6 /* TestHelpers.swift */; };
 		C23D9F1520C9C67C0082C3D9 /* ElasticsearchIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */; };
 		C23D9F1A20CB8BFE0082C3D9 /* ElasticsearchType+Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1820CB8B6B0082C3D9 /* ElasticsearchType+Keyword.swift */; };
 		C23D9F1C20CB8D160082C3D9 /* ElasticsearchType+Long.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1B20CB8D160082C3D9 /* ElasticsearchType+Long.swift */; };
@@ -1593,6 +1595,8 @@
 		C21D6B7020CD183700ED81B6 /* ElasticsearchType+TokenCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+TokenCount.swift"; sourceTree = "<group>"; };
 		C21D6B7220CD186000ED81B6 /* ElasticsearchType+Percolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+Percolator.swift"; sourceTree = "<group>"; };
 		C21D6B7420CD187F00ED81B6 /* ElasticsearchType+Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+Join.swift"; sourceTree = "<group>"; };
+		C21D6B7620CD7C5800ED81B6 /* ElasticsearchSearchEncodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchSearchEncodingTests.swift; sourceTree = "<group>"; };
+		C21D6B7920CD7E6400ED81B6 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchIndex.swift; sourceTree = "<group>"; };
 		C23D9F1820CB8B6B0082C3D9 /* ElasticsearchType+Keyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+Keyword.swift"; sourceTree = "<group>"; };
 		C23D9F1B20CB8D160082C3D9 /* ElasticsearchType+Long.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+Long.swift"; sourceTree = "<group>"; };
@@ -2283,6 +2287,7 @@
 		C248179320C1151C00E4570F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C23D9F4720CC31C70082C3D9 /* DynamicKey.swift */,
 				C248179420C1151C00E4570F /* ElasticsearchError.swift */,
 				C248179520C1151C00E4570F /* Exports.swift */,
 			);
@@ -2293,7 +2298,6 @@
 			isa = PBXGroup;
 			children = (
 				C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */,
-				C23D9F4720CC31C70082C3D9 /* DynamicKey.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2542,7 +2546,9 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_19 /* ElasticsearchTests.swift */,
+				C21D6B7620CD7C5800ED81B6 /* ElasticsearchSearchEncodingTests.swift */,
 				OBJ_20 /* XCTestManifests.swift */,
+				C21D6B7920CD7E6400ED81B6 /* TestHelpers.swift */,
 			);
 			name = ElasticsearchTests;
 			path = Tests/ElasticsearchTests;
@@ -4229,7 +4235,9 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_691 /* ElasticsearchTests.swift in Sources */,
+				C21D6B7820CD7D1100ED81B6 /* ElasticsearchSearchEncodingTests.swift in Sources */,
 				OBJ_692 /* XCTestManifests.swift in Sources */,
+				C21D6B7B20CD7E8500ED81B6 /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

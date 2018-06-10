@@ -1,7 +1,6 @@
 import Foundation
 
 public struct MatchPhrase: QueryElement {
-    public typealias QueryType = MatchPhrase
     public var codingKey = "match_phrase"
 
     let key: String

@@ -1,7 +1,6 @@
 import Foundation
 
 public struct Regexp: QueryElement {
-    public typealias QueryType = Regexp
     public var codingKey = "regexp"
 
     let key: String

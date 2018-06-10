@@ -1,7 +1,6 @@
 import Foundation
 
 public struct MultiMatch: QueryElement {
-    public typealias QueryType = MultiMatch
     public var codingKey = "multi_match"
 
     let value: String

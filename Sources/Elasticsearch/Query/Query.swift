@@ -1,13 +1,7 @@
 import Foundation
 
 public protocol QueryElement: Codable {
-    associatedtype QueryType
-
     var codingKey: String { get set }
-}
-
-public protocol CompoundQuery: Codable {
-    associatedtype SubQueryType
 }
 
 public struct Query<T: QueryElement>: Codable {

@@ -1,8 +1,6 @@
 import Foundation
 
-public struct BoolQuery<U: QueryElement>: QueryElement, CompoundQuery {
-    public typealias QueryType = BoolQuery
-    public typealias SubQueryType = QueryElement
+public struct BoolQuery<U: QueryElement>: QueryElement {
     public var codingKey = "bool"
 
     public var must: [Query<U>]?

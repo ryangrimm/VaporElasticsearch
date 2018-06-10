@@ -1,7 +1,6 @@
 import Foundation
 
 public struct Range: QueryElement {
-    public typealias QueryType = Range
     public var codingKey = "range"
 
     let key: String

@@ -1,7 +1,6 @@
 import Foundation
 
 public struct Fuzzy: QueryElement {
-    public typealias QueryType = Fuzzy
     public var codingKey = "fuzzy"
 
     let key: String

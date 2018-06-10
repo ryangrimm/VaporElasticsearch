@@ -1,7 +1,6 @@
 import Foundation
 
 public struct Wildcard: QueryElement {
-    public typealias QueryType = Wildcard
     public var codingKey = "wildcard"
 
     let key: String

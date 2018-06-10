@@ -1,7 +1,6 @@
 import Foundation
 
 public struct IDs: QueryElement {
-    public typealias QueryType = IDs
     public var codingKey = "ids"
 
     let values: [String]
