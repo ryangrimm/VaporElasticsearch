@@ -10,14 +10,13 @@
 public class ESTypeShort: ESType {
     let type = "short"
     
-    // See ElasticsearchNumberType
-    var coerce: Bool = true
-    var boost: Float = 1.0
-    var docValues: Bool = true
-    var ignoreMalformed: Bool = false
-    var index: Bool = true
+    var coerce: Bool? = true
+    var boost: Float? = 1.0
+    var docValues: Bool? = true
+    var ignoreMalformed: Bool? = false
+    var index: Bool? = true
     var nullValue: Int16? = nil
-    var store: Bool = false
+    var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -34,26 +33,26 @@ public class ESTypeShort: ESType {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         super.init()
         
-        coerce = try container.decode(Bool.self, forKey: .coerce)
-        boost = try container.decode(Float.self, forKey: .boost)
-        docValues = try container.decode(Bool.self, forKey: .docValues)
-        ignoreMalformed = try container.decode(Bool.self, forKey: .ignoreMalformed)
-        index = try container.decode(Bool.self, forKey: .index)
+        coerce = try container.decodeIfPresent(Bool.self, forKey: .coerce)
+        boost = try container.decodeIfPresent(Float.self, forKey: .boost)
+        docValues = try container.decodeIfPresent(Bool.self, forKey: .docValues)
+        ignoreMalformed = try container.decodeIfPresent(Bool.self, forKey: .ignoreMalformed)
+        index = try container.decodeIfPresent(Bool.self, forKey: .index)
         nullValue = try container.decodeIfPresent(Int16.self, forKey: .nullValue)
-        store = try container.decode(Bool.self, forKey: .store)
+        store = try container.decodeIfPresent(Bool.self, forKey: .store)
     }
     
     public override func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
         try container.encode(type, forKey: .type)
-        try container.encode(coerce, forKey: .coerce)
-        try container.encode(boost, forKey: .boost)
-        try container.encode(docValues, forKey: .docValues)
-        try container.encode(ignoreMalformed, forKey: .ignoreMalformed)
-        try container.encode(index, forKey: .index)
+        try container.encodeIfPresent(coerce, forKey: .coerce)
+        try container.encodeIfPresent(boost, forKey: .boost)
+        try container.encodeIfPresent(docValues, forKey: .docValues)
+        try container.encodeIfPresent(ignoreMalformed, forKey: .ignoreMalformed)
+        try container.encodeIfPresent(index, forKey: .index)
         try container.encodeIfPresent(nullValue, forKey: .nullValue)
-        try container.encode(store, forKey: .store)
+        try container.encodeIfPresent(store, forKey: .store)
     }
     
     override init() {

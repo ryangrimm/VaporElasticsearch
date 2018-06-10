@@ -12,17 +12,17 @@ import Foundation
 public class ESTypeKeyword: ESType {
     let type = "keyword"
     
-    var boost: Float = 1.0
-    var eagerGlobalOrdinals: Bool = false
+    var boost: Float? = 1.0
+    var eagerGlobalOrdinals: Bool? = false
     var fields: [ESTextField]?
-    var index: Bool = true
-    var indexOptions: ESTypeIndexOptions = .positions
-    var norms: Bool = true
-    var store: Bool = false
-    var similarity: ESTypeSimilarity = .bm25
+    var index: Bool? = true
+    var indexOptions: ESTypeIndexOptions? = .positions
+    var norms: Bool? = true
+    var store: Bool? = false
+    var similarity: ESTypeSimilarity? = .bm25
     
-    var docValues: Bool = true
-    var ignoreAbove: Int = 2147483647
+    var docValues: Bool? = true
+    var ignoreAbove: Int? = 2147483647
     var nullValue: String?
     // var normalizer
     
@@ -45,32 +45,32 @@ public class ESTypeKeyword: ESType {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         super.init()
         
-        boost = try container.decode(Float.self, forKey: .boost)
-        eagerGlobalOrdinals = try container.decode(Bool.self, forKey: .eagerGlobalOrdinals)
+        boost = try container.decodeIfPresent(Float.self, forKey: .boost)
+        eagerGlobalOrdinals = try container.decodeIfPresent(Bool.self, forKey: .eagerGlobalOrdinals)
         fields = try container.decodeIfPresent([ESTextField].self, forKey: .fields)
-        index = try container.decode(Bool.self, forKey: .index)
-        indexOptions = try container.decode(ESTypeIndexOptions.self, forKey: .indexOptions)
-        norms = try container.decode(Bool.self, forKey: .norms)
-        store = try container.decode(Bool.self, forKey: .store)
-        similarity = try container.decode(ESTypeSimilarity.self, forKey: .similarity)
-        docValues = try container.decode(Bool.self, forKey: .docValues)
-        ignoreAbove = try container.decode(Int.self, forKey: .ignoreAbove)
+        index = try container.decodeIfPresent(Bool.self, forKey: .index)
+        indexOptions = try container.decodeIfPresent(ESTypeIndexOptions.self, forKey: .indexOptions)
+        norms = try container.decodeIfPresent(Bool.self, forKey: .norms)
+        store = try container.decodeIfPresent(Bool.self, forKey: .store)
+        similarity = try container.decodeIfPresent(ESTypeSimilarity.self, forKey: .similarity)
+        docValues = try container.decodeIfPresent(Bool.self, forKey: .docValues)
+        ignoreAbove = try container.decodeIfPresent(Int.self, forKey: .ignoreAbove)
         nullValue = try container.decodeIfPresent(String.self, forKey: .nullValue)
     }
     
     public override func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
-        try container.encode(boost, forKey: .boost)
-        try container.encode(eagerGlobalOrdinals, forKey: .eagerGlobalOrdinals)
+        try container.encodeIfPresent(boost, forKey: .boost)
+        try container.encodeIfPresent(eagerGlobalOrdinals, forKey: .eagerGlobalOrdinals)
         try container.encodeIfPresent(fields, forKey: .fields)
-        try container.encode(index, forKey: .index)
-        try container.encode(indexOptions, forKey: .indexOptions)
-        try container.encode(norms, forKey: .norms)
-        try container.encode(store, forKey: .store)
-        try container.encode(similarity, forKey: .similarity)
-        try container.encode(docValues, forKey: .docValues)
-        try container.encode(ignoreAbove, forKey: .ignoreAbove)
+        try container.encodeIfPresent(index, forKey: .index)
+        try container.encodeIfPresent(indexOptions, forKey: .indexOptions)
+        try container.encodeIfPresent(norms, forKey: .norms)
+        try container.encodeIfPresent(store, forKey: .store)
+        try container.encodeIfPresent(similarity, forKey: .similarity)
+        try container.encodeIfPresent(docValues, forKey: .docValues)
+        try container.encodeIfPresent(ignoreAbove, forKey: .ignoreAbove)
         try container.encodeIfPresent(nullValue, forKey: .nullValue)
     }
     
