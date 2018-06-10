@@ -29,16 +29,16 @@ final class ElasticsearchTests: XCTestCase {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         
-        try? ElasticsearchMapping.delete(indexName: "test", client: es).wait()
+        try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
         
-        try ElasticsearchMapping(indexName: "test")
+        try ElasticsearchIndex(indexName: "test")
             .property(key: "name", type: ESTypeText())
             .property(key: "number", type: ESTypeInteger())
             .alias(name: "testalias")
             .settings(index: ElasticsearchIndexSettingsIndex(shards: 3, replicas: 2))
             .create(client: es).wait()
         
-        let index = try ElasticsearchMapping.fetch(indexName: "test", client: es).wait()
+        let index = try ElasticsearchIndex.fetch(indexName: "test", client: es).wait()
         XCTAssertEqual(index.aliases.count, 1, "Incorrect number of aliases")
         XCTAssertNotNil(index.aliases["testalias"], "testalias does not exist")
         XCTAssertEqual(index.settings?.index?.numberOfShards, 3, "Incorrect number of shards")
@@ -50,16 +50,16 @@ final class ElasticsearchTests: XCTestCase {
         XCTAssertNotNil(nameProp, "Could not find name property")
         XCTAssertNotNil(numberProp, "Could not find number property")
         
-        try ElasticsearchMapping.delete(indexName: "test", client: es).wait()
+        try ElasticsearchIndex.delete(indexName: "test", client: es).wait()
     }
     
     func testCRUD() throws {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         
-        try? ElasticsearchMapping.delete(indexName: "test", client: es).wait()
+        try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
 
-        try ElasticsearchMapping(indexName: "test")
+        try ElasticsearchIndex(indexName: "test")
             .property(key: "name", type: ESTypeText())
             .property(key: "number", type: ESTypeInteger())
             .alias(name: "testalias")
@@ -97,7 +97,7 @@ final class ElasticsearchTests: XCTestCase {
         
         let _ = try es.delete(index: "test", id: fetchedDoc.id)
     
-        try ElasticsearchMapping.delete(indexName: "test", client: es).wait()
+        try ElasticsearchIndex.delete(indexName: "test", client: es).wait()
     }
     
     static var allTests = [

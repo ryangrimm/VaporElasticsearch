@@ -7,8 +7,8 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public class ESTypeByte: ElasticsearchType {
-    let type = "byte"
+public class ESTypeDouble: ESType {
+    let type = "double"
     
     // See ElasticsearchNumberType
     var coerce: Bool = true
@@ -16,7 +16,7 @@ public class ESTypeByte: ElasticsearchType {
     var docValues: Bool = true
     var ignoreMalformed: Bool = false
     var index: Bool = true
-    var nullValue: Int8? = nil
+    var nullValue: Double? = nil
     var store: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -39,7 +39,7 @@ public class ESTypeByte: ElasticsearchType {
         docValues = try container.decode(Bool.self, forKey: .docValues)
         ignoreMalformed = try container.decode(Bool.self, forKey: .ignoreMalformed)
         index = try container.decode(Bool.self, forKey: .index)
-        nullValue = try container.decodeIfPresent(Int8.self, forKey: .nullValue)
+        nullValue = try container.decodeIfPresent(Double.self, forKey: .nullValue)
         store = try container.decode(Bool.self, forKey: .store)
     }
     

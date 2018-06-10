@@ -7,8 +7,8 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public class ESTypeFloat: ElasticsearchType {
-    let type = "float"
+public class ESTypeShort: ESType {
+    let type = "short"
     
     // See ElasticsearchNumberType
     var coerce: Bool = true
@@ -16,7 +16,7 @@ public class ESTypeFloat: ElasticsearchType {
     var docValues: Bool = true
     var ignoreMalformed: Bool = false
     var index: Bool = true
-    var nullValue: Float? = nil
+    var nullValue: Int16? = nil
     var store: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -39,7 +39,7 @@ public class ESTypeFloat: ElasticsearchType {
         docValues = try container.decode(Bool.self, forKey: .docValues)
         ignoreMalformed = try container.decode(Bool.self, forKey: .ignoreMalformed)
         index = try container.decode(Bool.self, forKey: .index)
-        nullValue = try container.decodeIfPresent(Float.self, forKey: .nullValue)
+        nullValue = try container.decodeIfPresent(Int16.self, forKey: .nullValue)
         store = try container.decode(Bool.self, forKey: .store)
     }
     

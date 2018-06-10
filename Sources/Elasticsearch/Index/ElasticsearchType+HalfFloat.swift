@@ -7,7 +7,7 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public class ESTypeHalfFloat: ElasticsearchType {
+public class ESTypeHalfFloat: ESType {
     let type = "half_float"
     
     // See ElasticsearchNumberType

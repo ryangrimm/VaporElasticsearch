@@ -30,7 +30,7 @@ public struct ESTextField: Codable {
     var analyzer: String?
 }
 
-public class ElasticsearchType: Codable {
+public class ESType: Codable {
     init() {
     }
 }

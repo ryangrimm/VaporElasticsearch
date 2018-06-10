@@ -7,11 +7,10 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-
 import Foundation
 
-public class ESTypeText: ElasticsearchType {
-    let type = "text"
+public class ESTypeKeyword: ESType {
+    let type = "keyword"
     
     var boost: Float = 1.0
     var eagerGlobalOrdinals: Bool = false
@@ -22,11 +21,10 @@ public class ESTypeText: ElasticsearchType {
     var store: Bool = false
     var similarity: ESTypeSimilarity = .bm25
     
-    var analyzer: String?
-    var searchAnalyzer: String?
-    var searchQuoteAnalyzer: String?
-    var fielddata: Bool = false
-    var termVector: ESTypeTermVector = .no
+    var docValues: Bool = true
+    var ignoreAbove: Int = 2147483647
+    var nullValue: String?
+    // var normalizer
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -38,11 +36,9 @@ public class ESTypeText: ElasticsearchType {
         case norms
         case store
         case similarity
-        case analyzer
-        case searchAnalyzer = "search_analyzer"
-        case searchQuoteAnalyzer = "search_quote_analyzer"
-        case fielddata
-        case termVector = "term_vector"
+        case docValues = "doc_values"
+        case ignoreAbove = "ignore_above"
+        case nullValue = "null_value"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -57,11 +53,9 @@ public class ESTypeText: ElasticsearchType {
         norms = try container.decode(Bool.self, forKey: .norms)
         store = try container.decode(Bool.self, forKey: .store)
         similarity = try container.decode(ESTypeSimilarity.self, forKey: .similarity)
-        analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer)
-        searchAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchAnalyzer)
-        searchQuoteAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchQuoteAnalyzer)
-        fielddata = try container.decode(Bool.self, forKey: .fielddata)
-        termVector = try container.decode(ESTypeTermVector.self, forKey: .termVector)
+        docValues = try container.decode(Bool.self, forKey: .docValues)
+        ignoreAbove = try container.decode(Int.self, forKey: .ignoreAbove)
+        nullValue = try container.decodeIfPresent(String.self, forKey: .nullValue)
     }
     
     public override func encode(to encoder: Encoder) throws {
@@ -75,11 +69,9 @@ public class ESTypeText: ElasticsearchType {
         try container.encode(norms, forKey: .norms)
         try container.encode(store, forKey: .store)
         try container.encode(similarity, forKey: .similarity)
-        try container.encodeIfPresent(analyzer, forKey: .analyzer)
-        try container.encodeIfPresent(searchAnalyzer, forKey: .searchAnalyzer)
-        try container.encodeIfPresent(searchQuoteAnalyzer, forKey: .searchQuoteAnalyzer)
-        try container.encode(fielddata, forKey: .fielddata)
-        try container.encode(termVector, forKey: .termVector)
+        try container.encode(docValues, forKey: .docValues)
+        try container.encode(ignoreAbove, forKey: .ignoreAbove)
+        try container.encodeIfPresent(nullValue, forKey: .nullValue)
     }
     
     override init() {

@@ -40,7 +40,7 @@
 		C21D6B6920CC842A00ED81B6 /* Exists.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B5820CC842900ED81B6 /* Exists.swift */; };
 		C21D6B6A20CC842A00ED81B6 /* Wildcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B5920CC842A00ED81B6 /* Wildcard.swift */; };
 		C21D6B6D20CC861800ED81B6 /* ElasticsearchClient+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B6C20CC861800ED81B6 /* ElasticsearchClient+Search.swift */; };
-		C23D9F1520C9C67C0082C3D9 /* ElasticsearchMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1320C9C45E0082C3D9 /* ElasticsearchMapping.swift */; };
+		C23D9F1520C9C67C0082C3D9 /* ElasticsearchIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */; };
 		C23D9F1A20CB8BFE0082C3D9 /* ElasticsearchType+Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1820CB8B6B0082C3D9 /* ElasticsearchType+Keyword.swift */; };
 		C23D9F1C20CB8D160082C3D9 /* ElasticsearchType+Long.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1B20CB8D160082C3D9 /* ElasticsearchType+Long.swift */; };
 		C23D9F1E20CB8EB50082C3D9 /* ElasticsearchType+Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1D20CB8EB50082C3D9 /* ElasticsearchType+Integer.swift */; };
@@ -70,7 +70,7 @@
 		C248179620C1151C00E4570F /* ElasticsearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179420C1151C00E4570F /* ElasticsearchError.swift */; };
 		C248179720C1151C00E4570F /* Exports.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179520C1151C00E4570F /* Exports.swift */; };
 		C248179920C11A6900E4570F /* ElasticsearchClient+CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179820C11A6900E4570F /* ElasticsearchClient+CRUD.swift */; };
-		C2D5F61C20C413E8006AAF04 /* ElasticsearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61B20C413E8006AAF04 /* ElasticsearchType.swift */; };
+		C2D5F61C20C413E8006AAF04 /* ESType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61B20C413E8006AAF04 /* ESType.swift */; };
 		C2D5F61E20C41A3A006AAF04 /* ElasticsearchType+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61D20C41A3A006AAF04 /* ElasticsearchType+Text.swift */; };
 		C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */; };
 		OBJ_1008 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* Config.swift */; };
@@ -1586,7 +1586,7 @@
 		C21D6B5820CC842900ED81B6 /* Exists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exists.swift; sourceTree = "<group>"; };
 		C21D6B5920CC842A00ED81B6 /* Wildcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wildcard.swift; sourceTree = "<group>"; };
 		C21D6B6C20CC861800ED81B6 /* ElasticsearchClient+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchClient+Search.swift"; sourceTree = "<group>"; };
-		C23D9F1320C9C45E0082C3D9 /* ElasticsearchMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchMapping.swift; sourceTree = "<group>"; };
+		C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchIndex.swift; sourceTree = "<group>"; };
 		C23D9F1820CB8B6B0082C3D9 /* ElasticsearchType+Keyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+Keyword.swift"; sourceTree = "<group>"; };
 		C23D9F1B20CB8D160082C3D9 /* ElasticsearchType+Long.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+Long.swift"; sourceTree = "<group>"; };
 		C23D9F1D20CB8EB50082C3D9 /* ElasticsearchType+Integer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+Integer.swift"; sourceTree = "<group>"; };
@@ -1616,7 +1616,7 @@
 		C248179420C1151C00E4570F /* ElasticsearchError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchError.swift; sourceTree = "<group>"; };
 		C248179520C1151C00E4570F /* Exports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exports.swift; sourceTree = "<group>"; };
 		C248179820C11A6900E4570F /* ElasticsearchClient+CRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchClient+CRUD.swift"; sourceTree = "<group>"; };
-		C2D5F61B20C413E8006AAF04 /* ElasticsearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchType.swift; sourceTree = "<group>"; };
+		C2D5F61B20C413E8006AAF04 /* ESType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESType.swift; sourceTree = "<group>"; };
 		C2D5F61D20C41A3A006AAF04 /* ElasticsearchType+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchType+Text.swift"; sourceTree = "<group>"; };
 		C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchModel.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2238,11 +2238,11 @@
 			path = Query;
 			sourceTree = "<group>";
 		};
-		C23D9F1720CB5E530082C3D9 /* Mapping */ = {
+		C23D9F1720CB5E530082C3D9 /* Index */ = {
 			isa = PBXGroup;
 			children = (
-				C23D9F1320C9C45E0082C3D9 /* ElasticsearchMapping.swift */,
-				C2D5F61B20C413E8006AAF04 /* ElasticsearchType.swift */,
+				C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */,
+				C2D5F61B20C413E8006AAF04 /* ESType.swift */,
 				C2D5F61D20C41A3A006AAF04 /* ElasticsearchType+Text.swift */,
 				C23D9F1820CB8B6B0082C3D9 /* ElasticsearchType+Keyword.swift */,
 				C23D9F1B20CB8D160082C3D9 /* ElasticsearchType+Long.swift */,
@@ -2268,7 +2268,7 @@
 				C23D9F2E20CB924D0082C3D9 /* ElasticsearchType+GeoShape.swift */,
 				C23D9F3220CB924E0082C3D9 /* ElasticsearchType+IPAddress.swift */,
 			);
-			path = Mapping;
+			path = Index;
 			sourceTree = "<group>";
 		};
 		C248179320C1151C00E4570F /* Utilities */ = {
@@ -2285,7 +2285,6 @@
 			children = (
 				C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */,
 				C23D9F4720CC31C70082C3D9 /* DynamicKey.swift */,
-				C21D6B4620CC675700ED81B6 /* Response.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3139,7 +3138,7 @@
 			isa = PBXGroup;
 			children = (
 				C21D6B4820CC83ED00ED81B6 /* Query */,
-				C23D9F1720CB5E530082C3D9 /* Mapping */,
+				C23D9F1720CB5E530082C3D9 /* Index */,
 				C2D5F61A20C413A8006AAF04 /* Model */,
 				OBJ_9 /* Client */,
 				OBJ_12 /* Database */,
@@ -3178,6 +3177,7 @@
 				OBJ_10 /* ElasticsearchClient+connect.swift */,
 				C248179820C11A6900E4570F /* ElasticsearchClient+CRUD.swift */,
 				C21D6B6C20CC861800ED81B6 /* ElasticsearchClient+Search.swift */,
+				C21D6B4620CC675700ED81B6 /* Response.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -4158,7 +4158,7 @@
 				C23D9F3A20CB92510082C3D9 /* ElasticsearchType+Nested.swift in Sources */,
 				OBJ_620 /* ElasticsearchClient+connect.swift in Sources */,
 				C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */,
-				C2D5F61C20C413E8006AAF04 /* ElasticsearchType.swift in Sources */,
+				C2D5F61C20C413E8006AAF04 /* ESType.swift in Sources */,
 				OBJ_621 /* ElasticsearchClient.swift in Sources */,
 				C23D9F1C20CB8D160082C3D9 /* ElasticsearchType+Long.swift in Sources */,
 				C21D6B6120CC842A00ED81B6 /* MatchPhrase.swift in Sources */,
@@ -4189,7 +4189,7 @@
 				C23D9F4620CB92510082C3D9 /* ElasticsearchType+DoubleRange.swift in Sources */,
 				C23D9F2620CB8FE00082C3D9 /* ElasticsearchType+Float.swift in Sources */,
 				C23D9F4220CB92510082C3D9 /* ElasticsearchType+Binary.swift in Sources */,
-				C23D9F1520C9C67C0082C3D9 /* ElasticsearchMapping.swift in Sources */,
+				C23D9F1520C9C67C0082C3D9 /* ElasticsearchIndex.swift in Sources */,
 				C21D6B6720CC842A00ED81B6 /* Term.swift in Sources */,
 				C248178F20C113E000E4570F /* ElasticsearchClientConfig.swift in Sources */,
 				C21D6B6520CC842A00ED81B6 /* QueryContainer.swift in Sources */,

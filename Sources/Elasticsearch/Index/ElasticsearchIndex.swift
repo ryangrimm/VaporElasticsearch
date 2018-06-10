@@ -46,11 +46,11 @@ public struct ElasticsearchIndexSettingsIndex: Codable {
     }
 }
 
-public class ElasticsearchMapping: Codable {
+public class ElasticsearchIndex: Codable {
     
     struct FetchWrapper: Codable {
         var indexName: String
-        var indexMappingValue: ElasticsearchMapping
+        var indexMappingValue: ElasticsearchIndex
         
         public func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: DynamicKey.self)
@@ -62,7 +62,7 @@ public class ElasticsearchMapping: Codable {
 
             let key = container.allKeys.first!
             indexName = key.stringValue
-            indexMappingValue = try container.decode(ElasticsearchMapping.self, forKey: key)
+            indexMappingValue = try container.decode(ElasticsearchIndex.self, forKey: key)
         }
     }
     
@@ -75,7 +75,7 @@ public class ElasticsearchMapping: Codable {
     }
     
     struct Properties: Codable {
-        var properties: [String: ElasticsearchType]
+        var properties: [String: ESType]
     }
     
     struct Alias: Codable {
@@ -83,7 +83,7 @@ public class ElasticsearchMapping: Codable {
     }
     
     var indexName: String? = nil
-    var mappings = DefaultType(doc: Properties(properties: [String : ElasticsearchType]()))
+    var mappings = DefaultType(doc: Properties(properties: [String : ESType]()))
     var aliases = [String: Alias]()
     var settings: ElasticsearchIndexSettings? = nil
 
@@ -93,8 +93,8 @@ public class ElasticsearchMapping: Codable {
         case settings
     }
     
-    static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchMapping> {
-        return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchMapping.self) { response in
+    static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex> {
+        return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex.self) { response in
             let wrapper = try JSONDecoder().decode(FetchWrapper.self, from: response)
             wrapper.indexMappingValue.indexName = wrapper.indexName
             return wrapper.indexMappingValue
@@ -120,7 +120,7 @@ public class ElasticsearchMapping: Codable {
         return self
     }
     
-    func property(key: String, type: ElasticsearchType) -> Self {
+    func property(key: String, type: ESType) -> Self {
         mappings.doc.properties[key] = type
         return self
     }

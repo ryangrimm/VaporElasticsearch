@@ -7,8 +7,8 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public class ESTypeInteger: ElasticsearchType {
-    let type = "integer"
+public class ESTypeScaledFloat: ESType {
+    let type = "float"
     
     // See ElasticsearchNumberType
     var coerce: Bool = true
@@ -16,8 +16,10 @@ public class ESTypeInteger: ElasticsearchType {
     var docValues: Bool = true
     var ignoreMalformed: Bool = false
     var index: Bool = true
-    var nullValue: Int32? = nil
+    var nullValue: Float? = nil
     var store: Bool = false
+    
+    var scalingFactor: Int = 0
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -28,6 +30,7 @@ public class ESTypeInteger: ElasticsearchType {
         case index
         case nullValue = "null_value"
         case store
+        case scalingFactor = "scaling_factor"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -39,8 +42,9 @@ public class ESTypeInteger: ElasticsearchType {
         docValues = try container.decode(Bool.self, forKey: .docValues)
         ignoreMalformed = try container.decode(Bool.self, forKey: .ignoreMalformed)
         index = try container.decode(Bool.self, forKey: .index)
-        nullValue = try container.decodeIfPresent(Int32.self, forKey: .nullValue)
+        nullValue = try container.decodeIfPresent(Float.self, forKey: .nullValue)
         store = try container.decode(Bool.self, forKey: .store)
+        scalingFactor = try container.decode(Int.self, forKey: .scalingFactor)
     }
     
     public override func encode(to encoder: Encoder) throws {
@@ -54,6 +58,7 @@ public class ESTypeInteger: ElasticsearchType {
         try container.encode(index, forKey: .index)
         try container.encodeIfPresent(nullValue, forKey: .nullValue)
         try container.encode(store, forKey: .store)
+        try container.encode(scalingFactor, forKey: .scalingFactor)
     }
     
     override init() {

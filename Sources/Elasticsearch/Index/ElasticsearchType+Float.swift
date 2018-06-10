@@ -7,7 +7,7 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public class ESTypeScaledFloat: ElasticsearchType {
+public class ESTypeFloat: ESType {
     let type = "float"
     
     // See ElasticsearchNumberType
@@ -19,8 +19,6 @@ public class ESTypeScaledFloat: ElasticsearchType {
     var nullValue: Float? = nil
     var store: Bool = false
     
-    var scalingFactor: Int = 0
-    
     enum CodingKeys: String, CodingKey {
         case type
         case coerce
@@ -30,7 +28,6 @@ public class ESTypeScaledFloat: ElasticsearchType {
         case index
         case nullValue = "null_value"
         case store
-        case scalingFactor = "scaling_factor"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -44,7 +41,6 @@ public class ESTypeScaledFloat: ElasticsearchType {
         index = try container.decode(Bool.self, forKey: .index)
         nullValue = try container.decodeIfPresent(Float.self, forKey: .nullValue)
         store = try container.decode(Bool.self, forKey: .store)
-        scalingFactor = try container.decode(Int.self, forKey: .scalingFactor)
     }
     
     public override func encode(to encoder: Encoder) throws {
@@ -58,7 +54,6 @@ public class ESTypeScaledFloat: ElasticsearchType {
         try container.encode(index, forKey: .index)
         try container.encodeIfPresent(nullValue, forKey: .nullValue)
         try container.encode(store, forKey: .store)
-        try container.encode(scalingFactor, forKey: .scalingFactor)
     }
     
     override init() {
