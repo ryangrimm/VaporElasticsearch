@@ -7,7 +7,9 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public class ESTypeGeoShape: ESType {
+public struct ESTypeGeoShape: ESType {
+    static var typeKey = ESTypeMap.geoShape
+
     public enum GeoShapePrefixTree: String, Codable {
         case geohash = "geohash"
         case quadtree = "quadtree"
@@ -66,37 +68,6 @@ public class ESTypeGeoShape: ESType {
         case orientation
         case pointsOnly = "points_only"
         case ignoreMalformed = "ignore_malformed"
-    }
-    
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        super.init()
-        
-        tree = try container.decodeIfPresent(GeoShapePrefixTree.self, forKey: .tree)
-        precision = try container.decodeIfPresent(GeoShapePrecision.self, forKey: .precision)
-        treeLevels = try container.decodeIfPresent(String.self, forKey: .treeLevels)
-        strategy = try container.decodeIfPresent(GeoShapeStrategy.self, forKey: .strategy)
-        distanceErrorPct = try container.decodeIfPresent(Float.self, forKey: .distanceErrorPct)
-        orientation = try container.decodeIfPresent(GeoShapeOrientation.self, forKey: .orientation)
-        pointsOnly = try container.decodeIfPresent(Bool.self, forKey: .pointsOnly)
-        ignoreMalformed = try container.decodeIfPresent(Bool.self, forKey: .ignoreMalformed)
-    }
-    
-    public override func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(type, forKey: .type)
-        try container.encodeIfPresent(precision, forKey: .precision)
-        try container.encodeIfPresent(treeLevels, forKey: .treeLevels)
-        try container.encodeIfPresent(strategy, forKey: .strategy)
-        try container.encodeIfPresent(distanceErrorPct, forKey: .distanceErrorPct)
-        try container.encodeIfPresent(orientation, forKey: .orientation)
-        try container.encodeIfPresent(pointsOnly, forKey: .pointsOnly)
-        try container.encodeIfPresent(ignoreMalformed, forKey: .ignoreMalformed)
-    }
-    
-    override init() {
-        super.init()
     }
 }
 
