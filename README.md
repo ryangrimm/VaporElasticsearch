@@ -12,11 +12,6 @@
 ## TODO
 
 * Add support for aggregations
-* Implement remaining ES types
-	* ESTypeCompletionSuggester
-	* ESTypeTokenCount
-	* ESTypePercolator
-	* ESTypeJoin
 * Implement remaining query DSL constructors
 	These are the remaining query DSL constructors that are left to be
 	implemented. They are not all of equal value. But pick off those that seem

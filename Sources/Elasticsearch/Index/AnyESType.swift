@@ -27,6 +27,10 @@ enum ESTypeMap : String, Codable {
     case geoPoint
     case geoShape
     case ipAddress
+    case completionSuggester
+    case tokenCount
+    case percolator
+    case join
     
     var metatype: ESType.Type {
         switch self {
@@ -76,6 +80,14 @@ enum ESTypeMap : String, Codable {
             return ESTypeGeoShape.self
         case .ipAddress:
             return ESTypeIPAddress.self
+        case .completionSuggester:
+            return ESTypeCompletionSuggester.self
+        case .tokenCount:
+            return ESTypeTokenCount.self
+        case .percolator:
+            return ESTypePercolator.self
+        case .join:
+            return ESTypeJoin.self
         }
     }
 }

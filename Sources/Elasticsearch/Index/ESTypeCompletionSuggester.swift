@@ -7,5 +7,23 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
+public struct ESTypeCompletionSuggester: ESType {
+    static var typeKey = ESTypeMap.completionSuggester
+    
+    let type = "compleation"
+    
+    var analyzer: String?
+    var searchAnalyzer: String?
+    var preserveSeparators: Bool?
+    var preservePositionIncrements: Bool?
+    var maxInputLength: Int?
 
-import Foundation
+    enum CodingKeys: String, CodingKey {
+        case type
+        case analyzer
+        case searchAnalyzer = "search_analyzer"
+        case preserveSeparators = "preserve_separators"
+        case preservePositionIncrements = "preserve_position_increments"
+        case maxInputLength = "max_input_length"
+    }
+}

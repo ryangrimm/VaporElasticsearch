@@ -7,5 +7,12 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-
-import Foundation
+public struct ESTypePercolator: ESType {
+    static var typeKey = ESTypeMap.percolator
+    
+    let type = "percolator"
+    
+    enum CodingKeys: String, CodingKey {
+        case type
+    }
+}
