@@ -1,6 +1,8 @@
 import Foundation
 
 public struct Terms: QueryElement {
+    public static var typeKey = QueryElementMap.terms
+
     public var codingKey = "terms"
 
     let key: String

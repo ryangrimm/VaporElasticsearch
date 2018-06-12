@@ -1,6 +1,8 @@
 import Foundation
 
 public struct MultiMatch: QueryElement {
+    public static var typeKey = QueryElementMap.multiMatch
+
     public var codingKey = "multi_match"
 
     let value: String

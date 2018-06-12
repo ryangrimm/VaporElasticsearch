@@ -1,6 +1,8 @@
 import Foundation
 
 public struct Fuzzy: QueryElement {
+    public static var typeKey = QueryElementMap.fuzzy
+
     public var codingKey = "fuzzy"
 
     let key: String

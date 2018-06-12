@@ -1,11 +1,12 @@
 import Foundation
 
 public protocol QueryElement: Codable {
+    static var typeKey: QueryElementMap { get }
+
     var codingKey: String { get set }
 }
 
 public struct Query<T: QueryElement>: Codable {
-    typealias QueryElement = T
     let query: T
 
     public init(_ query: T) {

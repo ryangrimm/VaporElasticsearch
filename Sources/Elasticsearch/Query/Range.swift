@@ -1,6 +1,8 @@
 import Foundation
 
 public struct Range: QueryElement {
+    public static var typeKey = QueryElementMap.range
+
     public var codingKey = "range"
 
     let key: String

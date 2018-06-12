@@ -1,6 +1,8 @@
 import Foundation
 
 public struct Wildcard: QueryElement {
+    public static var typeKey = QueryElementMap.wildcard
+
     public var codingKey = "wildcard"
 
     let key: String

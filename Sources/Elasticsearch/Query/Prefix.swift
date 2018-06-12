@@ -1,6 +1,8 @@
 import Foundation
 
 public struct Prefix: QueryElement {
+    public static var typeKey = QueryElementMap.prefix
+
     public var codingKey = "prefix"
 
     let key: String

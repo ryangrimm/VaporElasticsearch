@@ -1,6 +1,8 @@
 import Foundation
 
 public struct MatchPhrase: QueryElement {
+    public static var typeKey = QueryElementMap.matchPhrase
+
     public var codingKey = "match_phrase"
 
     let key: String
