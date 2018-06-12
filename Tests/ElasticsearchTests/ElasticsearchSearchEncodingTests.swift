@@ -138,7 +138,7 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let match = Match(key: "title", value: "pasta")
         // Multi-type queries don’t unfortunately work at the moment
         // let range = Query(Range(key: "preparation_time_minutes", lesserThanOrEqualTo: 15))
-        let bool = BoolQuery(must: [AnyQueryElement(match)])
+        let bool = BoolQuery(must: [match])
         let query = Query(bool)
         let encoded = try encoder.encodeToString(query)
         

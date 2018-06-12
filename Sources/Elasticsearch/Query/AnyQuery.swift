@@ -52,7 +52,7 @@ public enum QueryElementMap : String, Codable {
     }
 }
 
-public struct AnyQueryElement : Codable {
+internal struct AnyQueryElement : Codable {
     public var base: QueryElement
     
     init(_ base: QueryElement) {

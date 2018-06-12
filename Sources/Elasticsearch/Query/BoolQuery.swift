@@ -5,18 +5,18 @@ public struct BoolQuery: QueryElement {
 
     public var codingKey = "bool"
 
-    public var must: [AnyQueryElement]?
-    public var should: [AnyQueryElement]?
-    public var mustNot: [AnyQueryElement]?
-    public var filter: [AnyQueryElement]?
+    public var must: [QueryElement]?
+    public var should: [QueryElement]?
+    public var mustNot: [QueryElement]?
+    public var filter: [QueryElement]?
     let minimumShouldMatch: Int?
     let boost: Decimal?
 
     public init(
-        must: [AnyQueryElement]? = nil,
-        should: [AnyQueryElement]? = nil,
-        mustNot: [AnyQueryElement]? = nil,
-        filter: [AnyQueryElement]? = nil,
+        must: [QueryElement]? = nil,
+        should: [QueryElement]? = nil,
+        mustNot: [QueryElement]? = nil,
+        filter: [QueryElement]? = nil,
         minimumShouldMatch: Int? = nil,
         boost: Decimal? = nil
     ) {
@@ -43,32 +43,42 @@ public struct BoolQuery: QueryElement {
             var arrayContainer = container.nestedUnkeyedContainer(forKey: .must)
             for query in must! {
                 var queryContainer = arrayContainer.nestedContainer(keyedBy: DynamicKey.self)
-                try queryContainer.encode(query, forKey: DynamicKey(stringValue: query.base.codingKey)!)
+                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
             }
         }
         if should != nil {
             var arrayContainer = container.nestedUnkeyedContainer(forKey: .should)
             for query in should! {
                 var queryContainer = arrayContainer.nestedContainer(keyedBy: DynamicKey.self)
-                try queryContainer.encode(query, forKey: DynamicKey(stringValue: query.base.codingKey)!)
+                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
             }
         }
         if mustNot != nil {
             var arrayContainer = container.nestedUnkeyedContainer(forKey: .mustNot)
             for query in mustNot! {
                 var queryContainer = arrayContainer.nestedContainer(keyedBy: DynamicKey.self)
-                try queryContainer.encode(query, forKey: DynamicKey(stringValue: query.base.codingKey)!)
+                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
             }
         }
         if filter != nil {
             var arrayContainer = container.nestedUnkeyedContainer(forKey: .filter)
             for query in filter! {
                 var queryContainer = arrayContainer.nestedContainer(keyedBy: DynamicKey.self)
-                try queryContainer.encode(query, forKey: DynamicKey(stringValue: query.base.codingKey)!)
+                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
             }
         }
         
         try container.encodeIfPresent(minimumShouldMatch, forKey: .minimumShouldMatch)
         try container.encodeIfPresent(boost, forKey: .boost)
+    }
+    
+    // XXX - implement
+    public init(from decoder: Decoder) throws {
+        self.must = nil
+        self.should = nil
+        self.mustNot = nil
+        self.filter = nil
+        self.minimumShouldMatch = nil
+        self.boost = nil
     }
 }
