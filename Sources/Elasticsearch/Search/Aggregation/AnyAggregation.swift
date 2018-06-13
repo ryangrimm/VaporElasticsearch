@@ -11,6 +11,10 @@ public enum AggregationMap : String, Encodable {
     case max
     case min
     case terms
+    case stats
+    case sum
+    case topHits
+    case valueCount
     
     var metatype: Aggregation.Type {
         switch self {
@@ -30,6 +34,14 @@ public enum AggregationMap : String, Encodable {
             return MinAggregation.self
         case .terms:
             return TermsAggregation.self
+        case .stats:
+            return StatsAggregation.self
+        case .sum:
+            return SumAggregation.self
+        case .topHits:
+            return TopHitsAggregation.self
+        case .valueCount:
+            return ValueCountAggregation.self
         }
     }
 }
