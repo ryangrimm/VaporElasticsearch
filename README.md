@@ -11,7 +11,8 @@
 
 ## TODO
 
-* Add support for aggregations
+* Implement the decoding of aggregation responses
+* Implement the remaining aggregation types
 * Implement remaining query DSL constructors
 	These are the remaining query DSL constructors that are left to be
 	implemented. They are not all of equal value. But pick off those that seem
@@ -46,7 +47,7 @@
 	* Percolate query: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html
 	* Script query: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-query.html
 
-* Convert all query DSL consructors to being Codable instead of just Encodable
+* Convert the Range and Bool query DSL consructors to being Codable instead of just Encodable
 * Documentation 
 * More unit tests
 	* Need tests for encoding/decoding round trips of the ES types

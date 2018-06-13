@@ -28,7 +28,7 @@ public struct Fuzzy: QueryElement {
         self.transpositions = transpositions
     }
 
-    struct Inner: Encodable {
+    struct Inner: Codable {
         let value: String
         let fuzziness: Int?
         let prefixLength: Int?
@@ -55,5 +55,19 @@ public struct Fuzzy: QueryElement {
         )
 
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DynamicKey.self)
+        let key = container.allKeys.first
+        self.key = key!.stringValue
+        
+        let innerDecoder = try container.superDecoder(forKey: key!)
+        let inner = try Fuzzy.Inner(from: innerDecoder)
+        self.value = inner.value
+        self.fuzziness = inner.fuzziness
+        self.prefixLength = inner.prefixLength
+        self.maxExpansions = inner.maxExpansions
+        self.transpositions = inner.transpositions
     }
 }

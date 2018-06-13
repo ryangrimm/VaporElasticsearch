@@ -3,9 +3,11 @@ import XCTest
 
 final class ElasticsearchSearchEncodingTests: XCTestCase {
     var encoder: JSONEncoder!
-    
+    var decoder: JSONDecoder!
+
     override func setUp() {
         encoder = JSONEncoder()
+        decoder = JSONDecoder()
     }
     
     func testAvgAggregation_encodesCorrectly() throws {
@@ -100,6 +102,11 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
+
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testMatchNone_encodesInQueryCorrectly() throws {
@@ -109,8 +116,13 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let matchNone = MatchNone()
         let query = Query(matchNone)
         let encoded = try encoder.encodeToString(query)
-        
+
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testMatch_encodesInQueryCorrectly() throws {
@@ -122,6 +134,11 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testMatchPhrase_encodesInQueryCorrectly() throws {
@@ -131,8 +148,13 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let matchPhrase = MatchPhrase(key: "title", value: "puttanesca spaghetti")
         let query = Query(matchPhrase)
         let encoded = try encoder.encodeToString(query)
-        
+ 
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testMultiMatch_encodesInQueryCorrectly() throws {
@@ -142,8 +164,13 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let multiMatch = MultiMatch(value: "pasta", fields: ["title", "description"], type: .crossFields, tieBreaker: 0.3)
         let query = Query(multiMatch)
         let encoded = try encoder.encodeToString(query)
-        
+
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testTerm_encodesInQueryCorrectly() throws {
@@ -154,8 +181,13 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         //let query = Query(term: term)
         let query = Query(term)
         let encoded = try encoder.encodeToString(query)
-        
+  
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testTerms_encodesInQueryCorrectly() throws {
@@ -165,8 +197,13 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let terms = Terms(key: "tags.keyword", values: ["Soup", "Cake"])
         let query = Query(terms)
         let encoded = try encoder.encodeToString(query)
-        
+
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testRange_encodesInQueryCorrectly() throws {
@@ -176,8 +213,14 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let range = Range(key: "in_stock", greaterThanOrEqualTo: 1, lesserThanOrEqualTo: 5)
         let query = Query(range)
         let encoded = try encoder.encodeToString(query)
-        
+
         XCTAssertEqual(json, encoded)
+        /*
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
+        */
     }
     
     func testRange_encodesInQueryCorrectly_date() throws {
@@ -189,6 +232,12 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
+        /*
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
+ */
     }
     
     func testExists_encodesInQueryCorrectly() throws {
@@ -200,6 +249,11 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testBool_encodesInQueryCorrectly() throws {
@@ -214,6 +268,12 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
+        /*
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
+ */
     }
     
     func testPrefix_encodesInQueryCorrectly() throws {
@@ -225,6 +285,11 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testWildcard_encodesInQueryCorrectly() throws {
@@ -235,7 +300,13 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let query = Query(wildcard)
         let encoded = try encoder.encodeToString(query)
         
+        
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testRegexp_encodesInQueryCorrectly() throws {
@@ -247,6 +318,11 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testFuzzy_encodesInQueryCorrectly() throws {
@@ -258,6 +334,11 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testIDs_encodesInQueryCorrectly() throws {
@@ -269,6 +350,11 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
     }
     
     func testLinuxTestSuiteIncludesAllTests() {

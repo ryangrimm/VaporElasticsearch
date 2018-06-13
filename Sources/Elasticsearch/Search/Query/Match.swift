@@ -22,7 +22,7 @@ public struct Match: QueryElement {
         self.fuzziness = fuzziness
     }
 
-    struct Inner: Encodable {
+    struct Inner: Codable {
         let value: String
         let `operator`: MatchOperator?
         let fuzziness: Int?
@@ -39,6 +39,18 @@ public struct Match: QueryElement {
         let inner = Match.Inner(value: value, operator: `operator`, fuzziness: fuzziness)
 
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DynamicKey.self)
+        let key = container.allKeys.first
+        self.key = key!.stringValue
+        
+        let innerDecoder = try container.superDecoder(forKey: key!)
+        let inner = try Match.Inner(from: innerDecoder)
+        self.value = inner.value
+        self.`operator` = inner.`operator`
+        self.fuzziness = inner.fuzziness
     }
 }
 

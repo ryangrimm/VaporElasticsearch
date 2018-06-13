@@ -7,4 +7,7 @@ public struct MatchAll: QueryElement {
 
     public init() {}
     public func encode(to encoder: Encoder) throws {}
+    
+    public init(from decoder: Decoder) throws {
+    }
 }

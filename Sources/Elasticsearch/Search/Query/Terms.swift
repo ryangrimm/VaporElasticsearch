@@ -18,4 +18,11 @@ public struct Terms: QueryElement {
 
         try container.encode(values, forKey: DynamicKey(stringValue: key)!)
     }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DynamicKey.self)
+        let key = container.allKeys.first
+        self.key = key!.stringValue
+        self.values = try container.decode([String].self, forKey: key!)
+    }
 }
