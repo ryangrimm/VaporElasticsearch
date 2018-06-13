@@ -17,10 +17,10 @@ extension ElasticsearchClient {
         }
     }
     
-    public func search<T: QueryElement, U: Decodable>(
+    public func search<U: Decodable>(
         decodeTo resultType: U.Type,
         index: String,
-        query: QueryContainer<T>,
+        query: SearchContainer,
         type: String = "_doc",
         routing: String? = nil
     ) throws -> Future<SearchResponse<U>> {

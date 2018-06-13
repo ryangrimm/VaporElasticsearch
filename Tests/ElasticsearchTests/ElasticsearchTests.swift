@@ -85,7 +85,7 @@ final class ElasticsearchTests: XCTestCase {
 
         sleep(2)
 
-        let query = QueryContainer(
+        let query = SearchContainer(
             Query(
                 MatchAll()
             )

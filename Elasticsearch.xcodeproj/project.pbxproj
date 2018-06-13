@@ -65,7 +65,7 @@
 		C21D6B9220CF13E500ED81B6 /* ESTypePercolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7220CD186000ED81B6 /* ESTypePercolator.swift */; };
 		C21D6B9320CF13E500ED81B6 /* ESTypeJoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7420CD187F00ED81B6 /* ESTypeJoin.swift */; };
 		C21D6B9520CF18F200ED81B6 /* AnyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B9420CF18F200ED81B6 /* AnyQuery.swift */; };
-		C21D6B9720CF904900ED81B6 /* QueryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B9620CF904900ED81B6 /* QueryContainer.swift */; };
+		C21D6B9720CF904900ED81B6 /* SearchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B9620CF904900ED81B6 /* SearchContainer.swift */; };
 		C23D9F1520C9C67C0082C3D9 /* ElasticsearchIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */; };
 		C23D9F1A20CB8BFE0082C3D9 /* ESTypeKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1820CB8B6B0082C3D9 /* ESTypeKeyword.swift */; };
 		C23D9F1C20CB8D160082C3D9 /* ESTypeLong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1B20CB8D160082C3D9 /* ESTypeLong.swift */; };
@@ -77,6 +77,15 @@
 		C248179620C1151C00E4570F /* ElasticsearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179420C1151C00E4570F /* ElasticsearchError.swift */; };
 		C248179720C1151C00E4570F /* Exports.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179520C1151C00E4570F /* Exports.swift */; };
 		C248179920C11A6900E4570F /* ElasticsearchClient+CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248179820C11A6900E4570F /* ElasticsearchClient+CRUD.swift */; };
+		C2AC1D5020D08E4D00493FF5 /* AvgAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D4F20D08E4D00493FF5 /* AvgAggregation.swift */; };
+		C2AC1D5220D08F0100493FF5 /* AnyAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D5120D08F0100493FF5 /* AnyAggregation.swift */; };
+		C2AC1D5420D08F2600493FF5 /* Aggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D4B20D08D1800493FF5 /* Aggregation.swift */; };
+		C2AC1D5A20D0A7D600493FF5 /* CardinalityAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D5920D0A7D600493FF5 /* CardinalityAggregation.swift */; };
+		C2AC1D5C20D0A9AA00493FF5 /* ExtendedStatsAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D5B20D0A9AA00493FF5 /* ExtendedStatsAggregation.swift */; };
+		C2AC1D5E20D0AA7000493FF5 /* GeoBoundsAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D5D20D0AA6F00493FF5 /* GeoBoundsAggregation.swift */; };
+		C2AC1D6020D0AB4000493FF5 /* GeoCentroidAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D5F20D0AB4000493FF5 /* GeoCentroidAggregation.swift */; };
+		C2AC1D6220D0AC6700493FF5 /* MaxAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D6120D0AC6700493FF5 /* MaxAggregation.swift */; };
+		C2AC1D6420D0ACC700493FF5 /* MinAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D6320D0ACC600493FF5 /* MinAggregation.swift */; };
 		C2D5F61C20C413E8006AAF04 /* ESType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61B20C413E8006AAF04 /* ESType.swift */; };
 		C2D5F61E20C41A3A006AAF04 /* ESTypeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61D20C41A3A006AAF04 /* ESTypeText.swift */; };
 		C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */; };
@@ -1600,7 +1609,7 @@
 		C21D6B7920CD7E6400ED81B6 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		C21D6B7C20CED04C00ED81B6 /* AnyESType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyESType.swift; sourceTree = "<group>"; };
 		C21D6B9420CF18F200ED81B6 /* AnyQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyQuery.swift; sourceTree = "<group>"; };
-		C21D6B9620CF904900ED81B6 /* QueryContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryContainer.swift; sourceTree = "<group>"; };
+		C21D6B9620CF904900ED81B6 /* SearchContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContainer.swift; sourceTree = "<group>"; };
 		C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchIndex.swift; sourceTree = "<group>"; };
 		C23D9F1820CB8B6B0082C3D9 /* ESTypeKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeKeyword.swift; sourceTree = "<group>"; };
 		C23D9F1B20CB8D160082C3D9 /* ESTypeLong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeLong.swift; sourceTree = "<group>"; };
@@ -1630,6 +1639,15 @@
 		C248179420C1151C00E4570F /* ElasticsearchError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchError.swift; sourceTree = "<group>"; };
 		C248179520C1151C00E4570F /* Exports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exports.swift; sourceTree = "<group>"; };
 		C248179820C11A6900E4570F /* ElasticsearchClient+CRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchClient+CRUD.swift"; sourceTree = "<group>"; };
+		C2AC1D4B20D08D1800493FF5 /* Aggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aggregation.swift; sourceTree = "<group>"; };
+		C2AC1D4F20D08E4D00493FF5 /* AvgAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgAggregation.swift; sourceTree = "<group>"; };
+		C2AC1D5120D08F0100493FF5 /* AnyAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAggregation.swift; sourceTree = "<group>"; };
+		C2AC1D5920D0A7D600493FF5 /* CardinalityAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardinalityAggregation.swift; sourceTree = "<group>"; };
+		C2AC1D5B20D0A9AA00493FF5 /* ExtendedStatsAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedStatsAggregation.swift; sourceTree = "<group>"; };
+		C2AC1D5D20D0AA6F00493FF5 /* GeoBoundsAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoBoundsAggregation.swift; sourceTree = "<group>"; };
+		C2AC1D5F20D0AB4000493FF5 /* GeoCentroidAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCentroidAggregation.swift; sourceTree = "<group>"; };
+		C2AC1D6120D0AC6700493FF5 /* MaxAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxAggregation.swift; sourceTree = "<group>"; };
+		C2AC1D6320D0ACC600493FF5 /* MinAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinAggregation.swift; sourceTree = "<group>"; };
 		C2D5F61B20C413E8006AAF04 /* ESType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESType.swift; sourceTree = "<group>"; };
 		C2D5F61D20C41A3A006AAF04 /* ESTypeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeText.swift; sourceTree = "<group>"; };
 		C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchModel.swift; sourceTree = "<group>"; };
@@ -2228,29 +2246,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C21D6B4820CC83ED00ED81B6 /* Query */ = {
+		C21D6B4820CC83ED00ED81B6 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				C21D6B9620CF904900ED81B6 /* QueryContainer.swift */,
-				C21D6B4F20CC842800ED81B6 /* Query.swift */,
-				C21D6B9420CF18F200ED81B6 /* AnyQuery.swift */,
-				C21D6B4E20CC842800ED81B6 /* BoolQuery.swift */,
-				C21D6B5820CC842900ED81B6 /* Exists.swift */,
-				C21D6B4920CC842800ED81B6 /* Fuzzy.swift */,
-				C21D6B4A20CC842800ED81B6 /* IDs.swift */,
-				C21D6B4B20CC842800ED81B6 /* Match.swift */,
-				C21D6B5320CC842900ED81B6 /* MatchAll.swift */,
-				C21D6B5220CC842900ED81B6 /* MatchNone.swift */,
-				C21D6B5020CC842900ED81B6 /* MatchPhrase.swift */,
-				C21D6B4D20CC842800ED81B6 /* MultiMatch.swift */,
-				C21D6B5120CC842900ED81B6 /* Prefix.swift */,
-				C21D6B5520CC842900ED81B6 /* Range.swift */,
-				C21D6B4C20CC842800ED81B6 /* Regexp.swift */,
-				C21D6B5620CC842900ED81B6 /* Term.swift */,
-				C21D6B5720CC842900ED81B6 /* Terms.swift */,
-				C21D6B5920CC842A00ED81B6 /* Wildcard.swift */,
+				C21D6B9620CF904900ED81B6 /* SearchContainer.swift */,
+				C2AC1D5320D08F0F00493FF5 /* Aggregation */,
+				C2AC1D5820D08F4500493FF5 /* Query */,
 			);
-			path = Query;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		C23D9F1720CB5E530082C3D9 /* Index */ = {
@@ -2298,6 +2301,46 @@
 				C248179520C1151C00E4570F /* Exports.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C2AC1D5320D08F0F00493FF5 /* Aggregation */ = {
+			isa = PBXGroup;
+			children = (
+				C2AC1D4B20D08D1800493FF5 /* Aggregation.swift */,
+				C2AC1D5120D08F0100493FF5 /* AnyAggregation.swift */,
+				C2AC1D4F20D08E4D00493FF5 /* AvgAggregation.swift */,
+				C2AC1D5920D0A7D600493FF5 /* CardinalityAggregation.swift */,
+				C2AC1D5B20D0A9AA00493FF5 /* ExtendedStatsAggregation.swift */,
+				C2AC1D5D20D0AA6F00493FF5 /* GeoBoundsAggregation.swift */,
+				C2AC1D5F20D0AB4000493FF5 /* GeoCentroidAggregation.swift */,
+				C2AC1D6120D0AC6700493FF5 /* MaxAggregation.swift */,
+				C2AC1D6320D0ACC600493FF5 /* MinAggregation.swift */,
+			);
+			path = Aggregation;
+			sourceTree = "<group>";
+		};
+		C2AC1D5820D08F4500493FF5 /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				C21D6B4F20CC842800ED81B6 /* Query.swift */,
+				C21D6B9420CF18F200ED81B6 /* AnyQuery.swift */,
+				C21D6B4E20CC842800ED81B6 /* BoolQuery.swift */,
+				C21D6B5820CC842900ED81B6 /* Exists.swift */,
+				C21D6B4920CC842800ED81B6 /* Fuzzy.swift */,
+				C21D6B4A20CC842800ED81B6 /* IDs.swift */,
+				C21D6B4B20CC842800ED81B6 /* Match.swift */,
+				C21D6B5320CC842900ED81B6 /* MatchAll.swift */,
+				C21D6B5220CC842900ED81B6 /* MatchNone.swift */,
+				C21D6B5020CC842900ED81B6 /* MatchPhrase.swift */,
+				C21D6B4D20CC842800ED81B6 /* MultiMatch.swift */,
+				C21D6B5120CC842900ED81B6 /* Prefix.swift */,
+				C21D6B5520CC842900ED81B6 /* Range.swift */,
+				C21D6B4C20CC842800ED81B6 /* Regexp.swift */,
+				C21D6B5620CC842900ED81B6 /* Term.swift */,
+				C21D6B5720CC842900ED81B6 /* Terms.swift */,
+				C21D6B5920CC842A00ED81B6 /* Wildcard.swift */,
+			);
+			path = Query;
 			sourceTree = "<group>";
 		};
 		C2D5F61A20C413A8006AAF04 /* Model */ = {
@@ -3158,7 +3201,7 @@
 		OBJ_8 /* Elasticsearch */ = {
 			isa = PBXGroup;
 			children = (
-				C21D6B4820CC83ED00ED81B6 /* Query */,
+				C21D6B4820CC83ED00ED81B6 /* Search */,
 				C23D9F1720CB5E530082C3D9 /* Index */,
 				C2D5F61A20C413A8006AAF04 /* Model */,
 				OBJ_9 /* Client */,
@@ -4181,17 +4224,20 @@
 				C2D5F61C20C413E8006AAF04 /* ESType.swift in Sources */,
 				C21D6B7F20CF13E500ED81B6 /* ESTypeDouble.swift in Sources */,
 				C21D6B8120CF13E500ED81B6 /* ESTypeHalfFloat.swift in Sources */,
+				C2AC1D5020D08E4D00493FF5 /* AvgAggregation.swift in Sources */,
 				OBJ_621 /* ElasticsearchClient.swift in Sources */,
 				C23D9F1C20CB8D160082C3D9 /* ESTypeLong.swift in Sources */,
 				C21D6B6120CC842A00ED81B6 /* MatchPhrase.swift in Sources */,
 				C21D6B8520CF13E500ED81B6 /* ESTypeBinary.swift in Sources */,
+				C2AC1D5A20D0A7D600493FF5 /* CardinalityAggregation.swift in Sources */,
 				C21D6B8020CF13E500ED81B6 /* ESTypeFloat.swift in Sources */,
 				C21D6B6420CC842A00ED81B6 /* MatchAll.swift in Sources */,
 				C21D6B8B20CF13E500ED81B6 /* ESTypeObject.swift in Sources */,
 				C21D6B5D20CC842A00ED81B6 /* Regexp.swift in Sources */,
 				C21D6B6020CC842A00ED81B6 /* Query.swift in Sources */,
 				C21D6B9520CF18F200ED81B6 /* AnyQuery.swift in Sources */,
-				C21D6B9720CF904900ED81B6 /* QueryContainer.swift in Sources */,
+				C2AC1D5220D08F0100493FF5 /* AnyAggregation.swift in Sources */,
+				C21D6B9720CF904900ED81B6 /* SearchContainer.swift in Sources */,
 				C2D5F61E20C41A3A006AAF04 /* ESTypeText.swift in Sources */,
 				C248179620C1151C00E4570F /* ElasticsearchError.swift in Sources */,
 				C21D6B6A20CC842A00ED81B6 /* Wildcard.swift in Sources */,
@@ -4202,12 +4248,16 @@
 				C21D6B6320CC842A00ED81B6 /* MatchNone.swift in Sources */,
 				C23D9F1E20CB8EB50082C3D9 /* ESTypeInteger.swift in Sources */,
 				C21D6B4720CC675700ED81B6 /* Response.swift in Sources */,
+				C2AC1D6020D0AB4000493FF5 /* GeoCentroidAggregation.swift in Sources */,
 				C21D6B6620CC842A00ED81B6 /* Range.swift in Sources */,
 				C21D6B8C20CF13E500ED81B6 /* ESTypeNested.swift in Sources */,
 				C21D6B8A20CF13E500ED81B6 /* ESTypeDateRange.swift in Sources */,
 				C21D6B9120CF13E500ED81B6 /* ESTypeTokenCount.swift in Sources */,
 				C21D6B9320CF13E500ED81B6 /* ESTypeJoin.swift in Sources */,
+				C2AC1D5E20D0AA7000493FF5 /* GeoBoundsAggregation.swift in Sources */,
 				C21D6B8F20CF13E500ED81B6 /* ESTypeIPAddress.swift in Sources */,
+				C2AC1D5C20D0A9AA00493FF5 /* ExtendedStatsAggregation.swift in Sources */,
+				C2AC1D5420D08F2600493FF5 /* Aggregation.swift in Sources */,
 				C21D6B7D20CED04C00ED81B6 /* AnyESType.swift in Sources */,
 				C23D9F4820CC31C70082C3D9 /* DynamicKey.swift in Sources */,
 				C248179920C11A6900E4570F /* ElasticsearchClient+CRUD.swift in Sources */,
@@ -4221,8 +4271,10 @@
 				C21D6B6720CC842A00ED81B6 /* Term.swift in Sources */,
 				C21D6B8620CF13E500ED81B6 /* ESTypeIntegerRange.swift in Sources */,
 				C248178F20C113E000E4570F /* ElasticsearchClientConfig.swift in Sources */,
+				C2AC1D6220D0AC6700493FF5 /* MaxAggregation.swift in Sources */,
 				OBJ_622 /* ElasticsearchDatabase.swift in Sources */,
 				C21D6B8920CF13E500ED81B6 /* ESTypeDoubleRange.swift in Sources */,
+				C2AC1D6420D0ACC700493FF5 /* MinAggregation.swift in Sources */,
 				C21D6B8320CF13E500ED81B6 /* ESTypeDate.swift in Sources */,
 				C248179020C113E000E4570F /* ElasticsearchProvider.swift in Sources */,
 				C21D6B8420CF13E500ED81B6 /* ESTypeBoolean.swift in Sources */,
