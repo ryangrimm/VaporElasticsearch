@@ -43,15 +43,6 @@ internal struct AnyAggregation : Encodable {
         case base
     }
     
-    /*
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        let type = try container.decode(AggregationMap.self, forKey: .type)
-        self.base = try type.metatype.init(from: decoder)
-    }
-    */
-    
     public func encode(to encoder: Encoder) throws {
         try base.encode(to: encoder)
     }

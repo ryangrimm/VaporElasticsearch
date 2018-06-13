@@ -7,13 +7,13 @@ public struct Match: QueryElement {
 
     let key: String
     let value: String
-    let `operator`: String?
+    let `operator`: MatchOperator?
     let fuzziness: Int?
 
     public init(
         key: String,
         value: String,
-        operator: String? = nil,
+        operator: MatchOperator? = nil,
         fuzziness: Int? = nil
     ) {
         self.key = key
@@ -24,7 +24,7 @@ public struct Match: QueryElement {
 
     struct Inner: Encodable {
         let value: String
-        let `operator`: String?
+        let `operator`: MatchOperator?
         let fuzziness: Int?
 
         enum CodingKeys: String, CodingKey {
@@ -40,4 +40,9 @@ public struct Match: QueryElement {
 
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
     }
+}
+
+public enum MatchOperator: String, Codable {
+    case and
+    case or
 }

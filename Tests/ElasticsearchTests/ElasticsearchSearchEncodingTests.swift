@@ -83,7 +83,7 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let json = """
         {"query":{"match":{"title":{"query":"Recipes with pasta or spaghetti","operator":"and"}}},"aggs":{"foo":{"avg":{"field":"bar","missing":5}}}}
         """
-        let match = Match(key: "title", value: "Recipes with pasta or spaghetti", operator: "and")
+        let match = Match(key: "title", value: "Recipes with pasta or spaghetti", operator: .and)
         let query = Query(match)
         let queryContainer = SearchContainer(query, aggs: [AvgAggregation(name: "foo", field: "bar", missing: 5)])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -117,7 +117,7 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         let json = """
         {"match":{"title":{"query":"Recipes with pasta or spaghetti","operator":"and"}}}
         """
-        let match = Match(key: "title", value: "Recipes with pasta or spaghetti", operator: "and")
+        let match = Match(key: "title", value: "Recipes with pasta or spaghetti", operator: .and)
         let query = Query(match)
         let encoded = try encoder.encodeToString(query)
         
