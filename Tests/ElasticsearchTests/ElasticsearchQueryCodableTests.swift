@@ -1,7 +1,7 @@
 import XCTest
 @testable import Elasticsearch
 
-final class ElasticsearchSearchEncodingTests: XCTestCase {
+final class ElasticsearchQueryCodableTests: XCTestCase {
     var encoder: JSONEncoder!
     var decoder: JSONDecoder!
 
