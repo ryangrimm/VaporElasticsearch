@@ -10,6 +10,7 @@ public enum AggregationMap : String, Encodable {
     case geoCentroid
     case max
     case min
+    case terms
     
     var metatype: Aggregation.Type {
         switch self {
@@ -27,6 +28,8 @@ public enum AggregationMap : String, Encodable {
             return MaxAggregation.self
         case .min:
             return MinAggregation.self
+        case .terms:
+            return TermsAggregation.self
         }
     }
 }

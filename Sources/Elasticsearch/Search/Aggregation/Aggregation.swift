@@ -8,6 +8,10 @@ public protocol Aggregation: Encodable {
     var name: String { get set }
 }
 
+public enum OrderDirection: String, Encodable {
+    case asc
+    case desc
+}
 
 public struct AggregationScript: Encodable {
     let lang: String?

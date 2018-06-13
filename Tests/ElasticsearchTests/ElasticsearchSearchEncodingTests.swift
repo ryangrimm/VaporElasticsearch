@@ -80,6 +80,16 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         XCTAssertEqual(json, encoded)
     }
     
+    func testTermsAggregation_encodesCorrectly() throws {
+        let json = """
+        {"aggs":{"foo":{"terms":{"field":"bar"}}}}
+        """
+        let queryContainer = SearchContainer(aggs: [TermsAggregation(name: "foo", field: "bar")])
+        let encoded = try encoder.encodeToString(queryContainer)
+        
+        XCTAssertEqual(json, encoded)
+    }
+    
     
     func testQueryContainer_encodesCorrectly() throws {
         let json = """
@@ -374,7 +384,7 @@ final class ElasticsearchSearchEncodingTests: XCTestCase {
         ("testGeoCentroidAggregation_encodesCorrectly", testGeoCentroidAggregation_encodesCorrectly),
         ("testMaxAggregation_encodesCorrectly", testMaxAggregation_encodesCorrectly),
         ("testMinAggregation_encodesCorrectly", testMinAggregation_encodesCorrectly),
-        
+        ("testTermsAggregation_encodesCorrectly", testTermsAggregation_encodesCorrectly),
         ("testQueryContainer_encodesCorrectly",     testQueryContainer_encodesCorrectly),
         
         ("testMatchAll_encodesInQueryCorrectly",    testMatchAll_encodesInQueryCorrectly),
