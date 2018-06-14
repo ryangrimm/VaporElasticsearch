@@ -27,16 +27,7 @@ public struct Query: Codable {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first
         let type = QueryElementMap(rawValue: key!.stringValue)!
-//        let type = try container.decode(QueryElementMap.self, forKey: key!)
-//        self.query = container.decode(type.metatype, forKey: key)
-//        let valueContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: key!)
-//        self.query = try valueContainer.decode(type.metatype.self, forKey: .query)
-        let foo = try container.superDecoder(forKey: key!)
-//        let bar = try foo.container(keyedBy: DynamicKey.self)
-        self.query = try type.metatype.init(from: foo)
-
-//        self.query = try valueContainer.superDecoder(forKey: .query)
-
-//        self.query = try type.metatype.init(from: decoder)
+        let innerDecoder = try container.superDecoder(forKey: key!)
+        self.query = try type.metatype.init(from: innerDecoder)
     }
 }

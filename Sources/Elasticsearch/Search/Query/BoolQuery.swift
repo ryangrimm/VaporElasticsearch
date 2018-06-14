@@ -9,8 +9,8 @@ public struct BoolQuery: QueryElement {
     public var should: [QueryElement]?
     public var mustNot: [QueryElement]?
     public var filter: [QueryElement]?
-    let minimumShouldMatch: Int?
-    let boost: Decimal?
+    var minimumShouldMatch: Int?
+    var boost: Decimal?
 
     public init(
         must: [QueryElement]? = nil,
@@ -72,13 +72,54 @@ public struct BoolQuery: QueryElement {
         try container.encodeIfPresent(boost, forKey: .boost)
     }
     
-    // XXX - implement
     public init(from decoder: Decoder) throws {
-        self.must = nil
-        self.should = nil
-        self.mustNot = nil
-        self.filter = nil
-        self.minimumShouldMatch = nil
-        self.boost = nil
+        
+        let container = try decoder.container(keyedBy: DynamicKey.self)
+        for key in container.allKeys {
+            switch (key.stringValue) {
+            case "must":
+                var queries = [QueryElement]()
+                var rawQueries = try container.nestedUnkeyedContainer(forKey: key)
+                while (!rawQueries.isAtEnd) {
+                    let queryDecoder = try rawQueries.superDecoder()
+                    let query = try AnyQueryElement(from: queryDecoder)
+                    queries.append(query.base)
+                }
+                self.must = queries
+            case "should":
+                var queries = [QueryElement]()
+                var rawQueries = try container.nestedUnkeyedContainer(forKey: key)
+                while (!rawQueries.isAtEnd) {
+                    let queryDecoder = try rawQueries.superDecoder()
+                    let query = try AnyQueryElement(from: queryDecoder)
+                    queries.append(query.base)
+                }
+                self.should = queries
+            case "must_not":
+                var queries = [QueryElement]()
+                var rawQueries = try container.nestedUnkeyedContainer(forKey: key)
+                while (!rawQueries.isAtEnd) {
+                    let queryDecoder = try rawQueries.superDecoder()
+                    let query = try AnyQueryElement(from: queryDecoder)
+                    queries.append(query.base)
+                }
+                self.mustNot = queries
+            case "filter":
+                var queries = [QueryElement]()
+                var rawQueries = try container.nestedUnkeyedContainer(forKey: key)
+                while (!rawQueries.isAtEnd) {
+                    let queryDecoder = try rawQueries.superDecoder()
+                    let query = try AnyQueryElement(from: queryDecoder)
+                    queries.append(query.base)
+                }
+                self.filter = queries
+            case "minimum_should_match":
+                self.minimumShouldMatch = try container.decode(Int.self, forKey: key)
+            case "boost":
+                self.boost = try container.decode(Decimal.self, forKey: key)
+            default:
+                continue
+            }
+        }
     }
 }

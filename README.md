@@ -1,4 +1,4 @@
-# Elasticsearch
+# A Vapor/Swift Elasticsearch Client
 
 ## Issues/Questions
 
@@ -47,7 +47,6 @@
 	* [Percolate query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html)
 	* [Script query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-query.html)
 
-* Convert the Range and Bool query DSL consructors to being Codable instead of just Encodable
 * Documentation 
 * More unit tests
 	* Need tests for encoding/decoding round trips of the ES types

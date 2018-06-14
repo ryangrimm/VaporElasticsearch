@@ -188,7 +188,6 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         {"term":{"description":{"value":"drinking","boost":2}}}
         """
         let term = Term(key: "description", value: "drinking", boost: 2.0)
-        //let query = Query(term: term)
         let query = Query(term)
         let encoded = try encoder.encodeToString(query)
   
@@ -225,12 +224,11 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
 
         XCTAssertEqual(json, encoded)
-        /*
+    
         let toDecode = try encoder.encode(query)
         let decoded = try decoder.decode(Query.self, from: toDecode)
         let encodedAgain = try encoder.encodeToString(decoded)
         XCTAssertEqual(json, encodedAgain)
-        */
     }
     
     func testRange_encodesInQueryCorrectly_date() throws {
@@ -242,12 +240,11 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
-        /*
+        
         let toDecode = try encoder.encode(query)
         let decoded = try decoder.decode(Query.self, from: toDecode)
         let encodedAgain = try encoder.encodeToString(decoded)
         XCTAssertEqual(json, encodedAgain)
- */
     }
     
     func testExists_encodesInQueryCorrectly() throws {
@@ -271,19 +268,17 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         {"bool":{"must":[{"match":{"title":{"query":"pasta"}}}]}}
         """
         let match = Match(key: "title", value: "pasta")
-        // Multi-type queries don’t unfortunately work at the moment
         // let range = Query(Range(key: "preparation_time_minutes", lesserThanOrEqualTo: 15))
         let bool = BoolQuery(must: [match])
         let query = Query(bool)
         let encoded = try encoder.encodeToString(query)
         
         XCTAssertEqual(json, encoded)
-        /*
+    
         let toDecode = try encoder.encode(query)
         let decoded = try decoder.decode(Query.self, from: toDecode)
         let encodedAgain = try encoder.encodeToString(decoded)
         XCTAssertEqual(json, encodedAgain)
- */
     }
     
     func testPrefix_encodesInQueryCorrectly() throws {

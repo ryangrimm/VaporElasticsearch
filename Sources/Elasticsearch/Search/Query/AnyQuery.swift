@@ -59,16 +59,12 @@ internal struct AnyQueryElement : Codable {
         self.base = base
     }
     
-    private enum CodingKeys : CodingKey {
-        case type
-        case base
-    }
-    
     public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        let type = try container.decode(QueryElementMap.self, forKey: .type)
-        self.base = try type.metatype.init(from: decoder)
+        let container = try decoder.container(keyedBy: DynamicKey.self)
+        let key = container.allKeys.first
+        let type = QueryElementMap(rawValue: key!.stringValue)!
+        let innerDecoder = try container.superDecoder(forKey: key!)
+        self.base = try type.metatype.init(from: innerDecoder)
     }
     
     public func encode(to encoder: Encoder) throws {

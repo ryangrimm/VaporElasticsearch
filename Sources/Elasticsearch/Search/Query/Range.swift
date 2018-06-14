@@ -52,7 +52,7 @@ public struct Range: QueryElement {
         self.timeZone = timeZone
     }
 
-    struct Inner: Encodable {
+    struct Inner: Codable {
         let greaterThanOrEqual: RangePair?
         let greaterThan: RangePair?
         let lesserThanOrEqual: RangePair?
@@ -61,6 +61,16 @@ public struct Range: QueryElement {
         let format: String?
         let timeZone: String?
 
+        enum CodingKeys: String, CodingKey {
+            case greaterThanOrEqual = "gte"
+            case greaterThan = "gt"
+            case lesserThanOrEqual = "lte"
+            case lesserThan = "lt"
+            case boost
+            case format
+            case timeZone = "time_zone"
+        }
+        
         func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
 
@@ -83,16 +93,6 @@ public struct Range: QueryElement {
             try container.encodeIfPresent(boost, forKey: .boost)
             try container.encodeIfPresent(format, forKey: .format)
             try container.encodeIfPresent(timeZone, forKey: .timeZone)
-        }
-
-        enum CodingKeys: String, CodingKey {
-            case greaterThanOrEqual = "gte"
-            case greaterThan = "gt"
-            case lesserThanOrEqual = "lte"
-            case lesserThan = "lt"
-            case boost
-            case format
-            case timeZone = "time_zone"
         }
     }
 
@@ -117,6 +117,17 @@ public struct Range: QueryElement {
                 try container.encode(textual)
             }
         }
+        
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            do {
+                self.numeric = try container.decode(Double.self)
+                self.textual = nil
+            } catch {
+                self.textual = try container.decode(String.self)
+                self.numeric = nil
+            }
+        }
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -132,5 +143,21 @@ public struct Range: QueryElement {
         )
 
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DynamicKey.self)
+        let key = container.allKeys.first
+        self.key = key!.stringValue
+        
+        let innerDecoder = try container.superDecoder(forKey: key!)
+        let inner = try Range.Inner(from: innerDecoder)
+        self.greaterThanOrEqual = inner.greaterThanOrEqual
+        self.greaterThan = inner.greaterThan
+        self.lesserThanOrEqual = inner.lesserThanOrEqual
+        self.lesserThan = inner.lesserThan
+        self.boost = inner.boost
+        self.format = inner.format
+        self.timeZone = inner.timeZone
     }
 }
