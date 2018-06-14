@@ -10,17 +10,18 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
         decoder = JSONDecoder()
     }
     
-    func testAvgAggregation_response() throws {
+    func testSingleValueResponse_response() throws {
         let json = """
         {"foo_avg":{"value": 7}}
         """
         let aggs = [AvgAggregation(name: "foo_avg", field: "bar", missing: 5)]
         decoder.setUserInfo(fromAggregations: aggs)
         let response = try decoder.decode([String: AnyAggregationResponse].self, from: json.data(using: .utf8)!)
+        let aggResult = response["foo_avg"]?.base as! AggregationSingleValueResponse
         
-//        XCTAssertEqual(json, encoded)
+        XCTAssertEqual(aggResult.name, "foo_avg")
+        XCTAssertEqual(aggResult.value, 7)
     }
-    
 
     
     func testAvgAggregation_encodesCorrectly() throws {
@@ -113,6 +114,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     }
     
     static var allTests = [
+        ("testSingleValueResponse_response", testSingleValueResponse_response),
         ("testAvgAggregation_encodesCorrectly",     testAvgAggregation_encodesCorrectly),
         ("testCardinalityAggregation_encodesCorrectly", testCardinalityAggregation_encodesCorrectly),
         ("testExtendedStatsAggregation_encodesCorrectly", testExtendedStatsAggregation_encodesCorrectly),
