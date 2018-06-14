@@ -92,8 +92,8 @@ final class ElasticsearchTests: XCTestCase {
         )
 
         let searchResults = try es.search(decodeTo: TestModel.self, index: "test", query: query).wait()
-        XCTAssertEqual(searchResults.hits.total, 1, "Should have found one result")
-        XCTAssertEqual(searchResults.hits.hits.first?.source.name, fetchedDoc.source.name, "Did not fetch correct document")
+        XCTAssertEqual(searchResults.hits!.total, 1, "Should have found one result")
+        XCTAssertEqual(searchResults.hits!.hits.first?.source.name, fetchedDoc.source.name, "Did not fetch correct document")
         
         let _ = try es.delete(index: "test", id: fetchedDoc.id)
     

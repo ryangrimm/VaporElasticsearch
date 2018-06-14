@@ -2,7 +2,7 @@
 import Foundation
 
 public struct MaxAggregation: Aggregation {
-    public static var typeKey = AggregationMap.max
+    public static var typeKey = AggregationResponseMap.max
     
     public var codingKey = "max"
     public var name: String

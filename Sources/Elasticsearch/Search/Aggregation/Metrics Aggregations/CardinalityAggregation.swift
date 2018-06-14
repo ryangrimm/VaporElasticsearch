@@ -2,7 +2,7 @@
 import Foundation
 
 public struct CardinalityAggregation: Aggregation {
-    public static var typeKey = AggregationMap.cardinality
+    public static var typeKey = AggregationResponseMap.cardinality
     
     public var codingKey = "cardinality"
     public var name: String

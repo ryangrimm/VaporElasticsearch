@@ -2,7 +2,7 @@
 import Foundation
 
 public struct StatsAggregation: Aggregation {
-    public static var typeKey = AggregationMap.stats
+    public static var typeKey = AggregationResponseMap.stats
     
     public var codingKey = "stats"
     public var name: String

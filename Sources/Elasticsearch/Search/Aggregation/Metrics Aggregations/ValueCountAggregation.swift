@@ -2,7 +2,7 @@
 import Foundation
 
 public struct ValueCountAggregation: Aggregation {
-    public static var typeKey = AggregationMap.valueCount
+    public static var typeKey = AggregationResponseMap.valueCount
     
     public var codingKey = "value_count"
     public var name: String

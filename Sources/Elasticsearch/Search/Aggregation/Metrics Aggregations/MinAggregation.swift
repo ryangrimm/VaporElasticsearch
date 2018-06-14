@@ -2,7 +2,7 @@
 import Foundation
 
 public struct MinAggregation: Aggregation {
-    public static var typeKey = AggregationMap.min
+    public static var typeKey = AggregationResponseMap.min
     
     public var codingKey = "min"
     public var name: String

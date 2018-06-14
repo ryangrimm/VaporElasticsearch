@@ -2,7 +2,7 @@
 import Foundation
 
 public struct TermsAggregation: Aggregation {
-    public static var typeKey = AggregationMap.terms
+    public static var typeKey = AggregationResponseMap.terms
     
     public var codingKey = "terms"
     public var name: String

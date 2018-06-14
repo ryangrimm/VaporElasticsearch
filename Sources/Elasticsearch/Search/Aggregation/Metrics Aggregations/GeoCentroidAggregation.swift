@@ -2,7 +2,7 @@
 import Foundation
 
 public struct GeoCentroidAggregation: Aggregation {
-    public static var typeKey = AggregationMap.geoCentroid
+    public static var typeKey = AggregationResponseMap.geoCentroid
     
     public var codingKey = "geo_centroid"
     public var name: String

@@ -2,7 +2,7 @@
 import Foundation
 
 public struct GeoBoundsAggregation: Aggregation {
-    public static var typeKey = AggregationMap.geoBounds
+    public static var typeKey = AggregationResponseMap.geoBounds
     
     public var codingKey = "geo_bounds"
     public var name: String

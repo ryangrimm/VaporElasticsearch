@@ -1,7 +1,7 @@
 
 import Foundation
 
-public enum AggregationMap : String, Encodable {
+public enum AggregationResponseMap : String, Encodable {
     
     case avg
     case cardinality
@@ -16,32 +16,32 @@ public enum AggregationMap : String, Encodable {
     case topHits
     case valueCount
     
-    var metatype: Aggregation.Type {
+    var metatype: AggregationResponse.Type? {
         switch self {
         case .avg:
-            return AvgAggregation.self
+            return AggregationSingleValueResponse.self
         case .cardinality:
-            return CardinalityAggregation.self
+            return AggregationSingleValueResponse.self
         case .extendedStats:
-            return ExtendedStatsAggregation.self
+            return nil
         case .geoBounds:
-            return GeoBoundsAggregation.self
+            return nil
         case .geoCentroid:
-            return GeoCentroidAggregation.self
+            return nil
         case .max:
-            return MaxAggregation.self
+            return AggregationSingleValueResponse.self
         case .min:
-            return MinAggregation.self
-        case .terms:
-            return TermsAggregation.self
+            return AggregationSingleValueResponse.self
         case .stats:
-            return StatsAggregation.self
+            return nil
         case .sum:
-            return SumAggregation.self
+            return AggregationSingleValueResponse.self
         case .topHits:
-            return TopHitsAggregation.self
+            return nil
         case .valueCount:
-            return ValueCountAggregation.self
+            return AggregationSingleValueResponse.self
+        default:
+            return nil
         }
     }
 }

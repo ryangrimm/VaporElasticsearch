@@ -2,7 +2,7 @@
 import Foundation
 
 public struct TopHitsAggregation: Aggregation {
-    public static var typeKey = AggregationMap.topHits
+    public static var typeKey = AggregationResponseMap.topHits
     
     public var codingKey = "top_hits"
     public var name: String

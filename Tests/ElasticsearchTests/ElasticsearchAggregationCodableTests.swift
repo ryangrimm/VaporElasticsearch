@@ -10,6 +10,19 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
         decoder = JSONDecoder()
     }
     
+    func testAvgAggregation_response() throws {
+        let json = """
+        {"foo_avg":{"value": 7}}
+        """
+        let aggs = [AvgAggregation(name: "foo_avg", field: "bar", missing: 5)]
+        decoder.setUserInfo(fromAggregations: aggs)
+        let response = try decoder.decode([String: AnyAggregationResponse].self, from: json.data(using: .utf8)!)
+        
+//        XCTAssertEqual(json, encoded)
+    }
+    
+
+    
     func testAvgAggregation_encodesCorrectly() throws {
         let json = """
         {"aggs":{"foo":{"avg":{"field":"bar","missing":5}}}}

@@ -2,7 +2,7 @@
 import Foundation
 
 public struct SumAggregation: Aggregation {
-    public static var typeKey = AggregationMap.sum
+    public static var typeKey = AggregationResponseMap.sum
     
     public var codingKey = "sum"
     public var name: String
