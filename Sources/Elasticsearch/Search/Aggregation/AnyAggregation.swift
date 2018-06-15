@@ -10,11 +10,11 @@ public enum AggregationResponseMap : String, Encodable {
     case geoCentroid
     case max
     case min
-    case terms
     case stats
     case sum
     case topHits
     case valueCount
+    case terms
     
     var metatype: AggregationResponse.Type? {
         switch self {
@@ -23,25 +23,25 @@ public enum AggregationResponseMap : String, Encodable {
         case .cardinality:
             return AggregationSingleValueResponse.self
         case .extendedStats:
-            return nil
+            return AggregationExtendedStatsResponse.self
         case .geoBounds:
-            return nil
+            return AggregationGeoBoundsResponse.self
         case .geoCentroid:
-            return nil
+            return AggregationGeoCentroidResponse.self
         case .max:
             return AggregationSingleValueResponse.self
         case .min:
             return AggregationSingleValueResponse.self
         case .stats:
-            return nil
+            return AggregationStatsResponse.self
         case .sum:
             return AggregationSingleValueResponse.self
         case .topHits:
             return nil
         case .valueCount:
             return AggregationSingleValueResponse.self
-        default:
-            return nil
+        case .terms:
+            return AggregationTermsResponse.self
         }
     }
 }

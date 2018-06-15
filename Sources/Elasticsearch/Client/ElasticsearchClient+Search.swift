@@ -31,17 +31,3 @@ extension ElasticsearchClient {
         }
     }
 }
-
-extension JSONDecoder {
-    static let elasticUserInfoKey = CodingUserInfoKey(rawValue: "com.elastic.swift")!
-
-    func setUserInfo(fromAggregations aggregations: [Aggregation]) {
-        var aggNameMap = [String: AggregationResponse.Type]()
-        
-        for agg in aggregations {
-            let responseType = AggregationResponseMap(rawValue: agg.codingKey)
-            aggNameMap[agg.name] = responseType?.metatype
-        }
-        self.userInfo = [JSONDecoder.elasticUserInfoKey: aggNameMap]
-    }
-}

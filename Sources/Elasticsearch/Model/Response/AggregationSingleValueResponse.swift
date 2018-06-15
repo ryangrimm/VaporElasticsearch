@@ -10,7 +10,8 @@ public struct AggregationSingleValueResponse: AggregationResponse {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.value = try container.decode(Float.self, forKey: .value)
         self.name = (decoder.codingPath.last?.stringValue)!
+        
+        self.value = try container.decode(Float.self, forKey: .value)
     }
 }

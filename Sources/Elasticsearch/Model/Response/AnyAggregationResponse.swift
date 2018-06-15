@@ -12,16 +12,8 @@ internal struct AnyAggregationResponse : Decodable {
         case base
     }
     
-    public init(from decoder: Decoder) throws {
-        let aggNameMap = decoder.userInfo[JSONDecoder.elasticUserInfoKey] as! [String: AggregationResponse.Type]
-        
+    public init(from decoder: Decoder) throws {        
         let aggName = (decoder.codingPath.last?.stringValue)!
-        if aggNameMap[aggName] != nil {
-            let responseType = aggNameMap[aggName]!
-            self.base = try responseType.init(from: decoder)
-        }
-        else {
-            self.base = nil
-        }
+        self.base = try decoder.getAggregationResponseType(forAggregationName: aggName)
     }
 }
