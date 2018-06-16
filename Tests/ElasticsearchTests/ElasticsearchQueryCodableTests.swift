@@ -10,6 +10,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         decoder = JSONDecoder()
     }
     
+    
     func testAvgAggregation_encodesCorrectly() throws {
         let json = """
         {"aggs":{"foo":{"avg":{"field":"bar","missing":5}}}}
@@ -362,6 +363,23 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         XCTAssertEqual(json, encodedAgain)
     }
     
+    func testSpanFirst_encodesInQueryCorrectly() throws {
+        let json =  """
+        {"span_first":{"match":{"span_term":{"user":{"term":"kimchy"}}},"end":3}}
+        """
+        
+        let span  = SpanFirst(match: SpanTerm(key: "user", term: "kimchy"), end: 3)
+        let query = Query(span)
+        let encoded = try encoder.encodeToString(query)
+        
+        XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
+    }
+    
     func testLinuxTestSuiteIncludesAllTests() {
         #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
         let thisClass = type(of: self)
@@ -400,6 +418,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         ("testRegexp_encodesInQueryCorrectly",      testRegexp_encodesInQueryCorrectly),
         ("testFuzzy_encodesInQueryCorrectly",       testFuzzy_encodesInQueryCorrectly),
         ("testIDs_encodesInQueryCorrectly",         testIDs_encodesInQueryCorrectly),
+        ("testSpanFirst_encodesInQueryCorrectly",   testSpanFirst_encodesInQueryCorrectly),
         
         ("testLinuxTestSuiteIncludesAllTests",      testLinuxTestSuiteIncludesAllTests)
     ]

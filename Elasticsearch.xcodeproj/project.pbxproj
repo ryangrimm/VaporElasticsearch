@@ -103,6 +103,10 @@
 		C2CF0CA320D489AF00191480 /* CommonTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CA220D489AF00191480 /* CommonTerms.swift */; };
 		C2CF0CA520D48D0000191480 /* ScriptQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CA420D48D0000191480 /* ScriptQuery.swift */; };
 		C2CF0CA720D48D6600191480 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CA620D48D6600191480 /* Script.swift */; };
+		C2CF0CA920D4980100191480 /* SpanTerm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CA820D4980100191480 /* SpanTerm.swift */; };
+		C2CF0CAE20D4DE7E00191480 /* AnySpanQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CAD20D4DE7E00191480 /* AnySpanQuery.swift */; };
+		C2CF0CB120D4DEBB00191480 /* Span.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CB020D4DEBB00191480 /* Span.swift */; };
+		C2CF0CB320D4E28100191480 /* SpanFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CB220D4E28100191480 /* SpanFirst.swift */; };
 		C2D5F61C20C413E8006AAF04 /* ESType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61B20C413E8006AAF04 /* ESType.swift */; };
 		C2D5F61E20C41A3A006AAF04 /* ESTypeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61D20C41A3A006AAF04 /* ESTypeText.swift */; };
 		C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */; };
@@ -1686,6 +1690,10 @@
 		C2CF0CA220D489AF00191480 /* CommonTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTerms.swift; sourceTree = "<group>"; };
 		C2CF0CA420D48D0000191480 /* ScriptQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptQuery.swift; sourceTree = "<group>"; };
 		C2CF0CA620D48D6600191480 /* Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
+		C2CF0CA820D4980100191480 /* SpanTerm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanTerm.swift; sourceTree = "<group>"; };
+		C2CF0CAD20D4DE7E00191480 /* AnySpanQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnySpanQuery.swift; sourceTree = "<group>"; };
+		C2CF0CB020D4DEBB00191480 /* Span.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Span.swift; sourceTree = "<group>"; };
+		C2CF0CB220D4E28100191480 /* SpanFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanFirst.swift; sourceTree = "<group>"; };
 		C2D5F61B20C413E8006AAF04 /* ESType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESType.swift; sourceTree = "<group>"; };
 		C2D5F61D20C41A3A006AAF04 /* ESTypeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeText.swift; sourceTree = "<group>"; };
 		C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchModel.swift; sourceTree = "<group>"; };
@@ -2425,8 +2433,20 @@
 				C2CF0CA020D47CC900191480 /* MatchPhrasePrefix.swift */,
 				C2CF0CA220D489AF00191480 /* CommonTerms.swift */,
 				C2CF0CA420D48D0000191480 /* ScriptQuery.swift */,
+				C2CF0CAC20D4DE5300191480 /* Span Queries */,
 			);
 			path = Query;
+			sourceTree = "<group>";
+		};
+		C2CF0CAC20D4DE5300191480 /* Span Queries */ = {
+			isa = PBXGroup;
+			children = (
+				C2CF0CB020D4DEBB00191480 /* Span.swift */,
+				C2CF0CAD20D4DE7E00191480 /* AnySpanQuery.swift */,
+				C2CF0CA820D4980100191480 /* SpanTerm.swift */,
+				C2CF0CB220D4E28100191480 /* SpanFirst.swift */,
+			);
+			path = "Span Queries";
 			sourceTree = "<group>";
 		};
 		C2D5F61A20C413A8006AAF04 /* Model */ = {
@@ -4302,6 +4322,7 @@
 				C23D9F2020CB8F180082C3D9 /* ESTypeShort.swift in Sources */,
 				C21D6B6220CC842A00ED81B6 /* Prefix.swift in Sources */,
 				C21D6B6920CC842A00ED81B6 /* Exists.swift in Sources */,
+				C2CF0CA920D4980100191480 /* SpanTerm.swift in Sources */,
 				C21D6B5F20CC842A00ED81B6 /* BoolQuery.swift in Sources */,
 				C248179720C1151C00E4570F /* Exports.swift in Sources */,
 				C21D6B8D20CF13E500ED81B6 /* ESTypeGeoPoint.swift in Sources */,
@@ -4336,6 +4357,7 @@
 				C21D6B6A20CC842A00ED81B6 /* Wildcard.swift in Sources */,
 				C21D6B7E20CF13E500ED81B6 /* ESTypeByte.swift in Sources */,
 				C21D6B8720CF13E500ED81B6 /* ESTypeFloatRange.swift in Sources */,
+				C2CF0CAE20D4DE7E00191480 /* AnySpanQuery.swift in Sources */,
 				C2254DD920D1B2BC00AF7D52 /* ValueCountAggregation.swift in Sources */,
 				C23D9F1A20CB8BFE0082C3D9 /* ESTypeKeyword.swift in Sources */,
 				C2254DDE20D1B41300AF7D52 /* DocResponse.swift in Sources */,
@@ -4378,7 +4400,9 @@
 				C248178F20C113E000E4570F /* ElasticsearchClientConfig.swift in Sources */,
 				C2AC1D6220D0AC6700493FF5 /* MaxAggregation.swift in Sources */,
 				OBJ_622 /* ElasticsearchDatabase.swift in Sources */,
+				C2CF0CB120D4DEBB00191480 /* Span.swift in Sources */,
 				C2FD539820D38DC500427E8F /* AggregationExtendedStatsResponse.swift in Sources */,
+				C2CF0CB320D4E28100191480 /* SpanFirst.swift in Sources */,
 				C2254E1120D2630100AF7D52 /* AggregationSingleValueResponse.swift in Sources */,
 				C21D6B8920CF13E500ED81B6 /* ESTypeDoubleRange.swift in Sources */,
 				C2AC1D6420D0ACC700493FF5 /* MinAggregation.swift in Sources */,

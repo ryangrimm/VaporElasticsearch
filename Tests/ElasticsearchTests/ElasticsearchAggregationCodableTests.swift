@@ -8,7 +8,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     override func setUp() {
         encoder = JSONEncoder()
         decoder = JSONDecoder()
-    }
+    }   
     
     func testSingleValueResponse_response() throws {
         let json = """
