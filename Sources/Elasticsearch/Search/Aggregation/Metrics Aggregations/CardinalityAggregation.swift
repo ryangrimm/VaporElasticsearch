@@ -9,7 +9,7 @@ public struct CardinalityAggregation: Aggregation {
 
     let field: String?
     let precisionThreshold: Int?
-    let script: AggregationScript?
+    let script: Script?
     let missing: String?
     
     enum CodingKeys: String, CodingKey {
@@ -23,7 +23,7 @@ public struct CardinalityAggregation: Aggregation {
         name: String,
         field: String? = nil,
         precisionThreshold: Int? = nil,
-        script: AggregationScript? = nil,
+        script: Script? = nil,
         missing: String? = nil
         ) {
         self.name = name

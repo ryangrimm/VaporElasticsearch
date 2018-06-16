@@ -8,7 +8,7 @@ public struct SumAggregation: Aggregation {
     public var name: String
     
     let field: String?
-    let script: AggregationScript?
+    let script: Script?
     let missing: Int?
     
     enum CodingKeys: String, CodingKey {
@@ -20,7 +20,7 @@ public struct SumAggregation: Aggregation {
     public init(
         name: String,
         field: String? = nil,
-        script: AggregationScript? = nil,
+        script: Script? = nil,
         missing: Int? = nil
         ) {
         self.name = name

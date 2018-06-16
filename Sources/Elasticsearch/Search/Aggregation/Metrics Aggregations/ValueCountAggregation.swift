@@ -8,7 +8,7 @@ public struct ValueCountAggregation: Aggregation {
     public var name: String
     
     let field: String?
-    let script: AggregationScript?
+    let script: Script?
     
     enum CodingKeys: String, CodingKey {
         case field
@@ -18,7 +18,7 @@ public struct ValueCountAggregation: Aggregation {
     public init(
         name: String,
         field: String? = nil,
-        script: AggregationScript? = nil,
+        script: Script? = nil,
         missing: Int? = nil
         ) {
         self.name = name

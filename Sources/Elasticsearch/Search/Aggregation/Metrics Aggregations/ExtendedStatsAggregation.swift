@@ -9,7 +9,7 @@ public struct ExtendedStatsAggregation: Aggregation {
 
     let field: String?
     let sigma: Int?
-    let script: AggregationScript?
+    let script: Script?
     let missing: Int?
     
     enum CodingKeys: String, CodingKey {
@@ -23,7 +23,7 @@ public struct ExtendedStatsAggregation: Aggregation {
         name: String,
         field: String? = nil,
         sigma: Int? = nil,
-        script: AggregationScript? = nil,
+        script: Script? = nil,
         missing: Int? = nil
         ) {
         self.name = name

@@ -15,6 +15,9 @@ public enum QueryElementMap : String, Codable {
     case term
     case terms
     case wildcard
+    case matchPhasePrefix = "match_phrase_prefix"
+    case commonTerms
+    case script
     
     var metatype: QueryElement.Type {
         switch self {
@@ -48,6 +51,12 @@ public enum QueryElementMap : String, Codable {
             return Terms.self
         case .wildcard:
             return Wildcard.self
+        case .matchPhasePrefix:
+            return MatchPhrasePrefix.self
+        case .commonTerms:
+            return CommonTerms.self
+        case .script:
+            return ScriptQuery.self
         }
     }
 }

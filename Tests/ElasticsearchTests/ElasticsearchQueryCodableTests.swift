@@ -153,9 +153,9 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testMatchPhrase_encodesInQueryCorrectly() throws {
         let json = """
-        {"match_phrase":{"title":"puttanesca spaghetti"}}
+        {"match_phrase":{"title":{"query":"puttanesca spaghetti"}}}
         """
-        let matchPhrase = MatchPhrase(key: "title", value: "puttanesca spaghetti")
+        let matchPhrase = MatchPhrase(key: "title", query: "puttanesca spaghetti")
         let query = Query(matchPhrase)
         let encoded = try encoder.encodeToString(query)
  

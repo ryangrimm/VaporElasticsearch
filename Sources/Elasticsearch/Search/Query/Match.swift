@@ -7,13 +7,13 @@ public struct Match: QueryElement {
 
     let key: String
     let value: String
-    let `operator`: MatchOperator?
+    let `operator`: Operator?
     let fuzziness: Int?
 
     public init(
         key: String,
         value: String,
-        operator: MatchOperator? = nil,
+        operator: Operator? = nil,
         fuzziness: Int? = nil
     ) {
         self.key = key
@@ -24,7 +24,7 @@ public struct Match: QueryElement {
 
     struct Inner: Codable {
         let value: String
-        let `operator`: MatchOperator?
+        let `operator`: Operator?
         let fuzziness: Int?
 
         enum CodingKeys: String, CodingKey {
@@ -54,7 +54,7 @@ public struct Match: QueryElement {
     }
 }
 
-public enum MatchOperator: String, Codable {
+public enum Operator: String, Codable {
     case and
     case or
 }

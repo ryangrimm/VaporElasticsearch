@@ -12,7 +12,7 @@ public struct TermsAggregation: Aggregation {
     let showTermDocCountError: Bool?
     let order: [String: OrderDirection]?
     let minDocCount: Int?
-    let script: AggregationScript?
+    let script: Script?
     let include: String?
     let exclude: String?
     let includeExact: [String]?
@@ -42,7 +42,7 @@ public struct TermsAggregation: Aggregation {
         showTermDocCountError: Bool? = nil,
         order: [String: OrderDirection]? = nil,
         minDocCount: Int? = nil,
-        script: AggregationScript? = nil,
+        script: Script? = nil,
         include: String? = nil,
         exclude: String? = nil,
         includeExact: [String]? = nil,
