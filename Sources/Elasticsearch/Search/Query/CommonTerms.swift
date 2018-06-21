@@ -19,7 +19,7 @@ public struct CommonTerms: QueryElement {
         self.minimumShouldMatch = minimumShouldMatch
     }
     
-    public struct Inner: Codable {
+    private struct Inner: Codable {
         let query: String
         let cutoffFrequency: Float
         let lowFreqOperator: Operator?

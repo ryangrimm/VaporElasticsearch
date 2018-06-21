@@ -1,5 +1,6 @@
 import Foundation
 
+/// :nodoc:
 public protocol QueryElement: Codable {
     static var typeKey: QueryElementMap { get }
 

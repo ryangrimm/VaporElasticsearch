@@ -19,6 +19,14 @@ public struct CardinalityAggregation: Aggregation {
         case missing
     }
     
+    /// Create a [cardinality](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-cardinality-aggregation.html) aggregation
+    ///
+    /// - Parameters:
+    ///   - name: The aggregation name
+    ///   - field: The field to perform the aggregation over
+    ///   - precisionThreshold: Allows to trade memory for accuracy, and defines a unique count below which counts are expected to be close to accurate
+    ///   - script: A script used to calculate the values
+    ///   - missing: Defines how documents that are missing a value should be treated
     public init(
         name: String,
         field: String? = nil,

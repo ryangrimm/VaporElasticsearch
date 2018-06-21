@@ -13,6 +13,11 @@ public struct GeoCentroidAggregation: Aggregation {
         case field
     }
     
+    /// Creates a [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-geocentroid-aggregation.html) aggregation
+    ///
+    /// - Parameters:
+    ///   - name: The aggregation name
+    ///   - field: The field to perform the aggregation over
     public init(
         name: String,
         field: String

@@ -57,7 +57,7 @@ enum ESTypeMap : String, Codable {
         case .date:
             return ESTypeDate.self
         case .boolean:
-            return ESTypeBolean.self
+            return ESTypeBoolean.self
         case .binary:
             return ESTypeBinary.self
         case .integerRange:

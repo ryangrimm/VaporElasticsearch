@@ -17,6 +17,13 @@ public struct AvgAggregation: Aggregation {
         case missing
     }
     
+    /// Create an [avg](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-avg-aggregation.html) aggregation
+    ///
+    /// - Parameters:
+    ///   - name: The aggregation name
+    ///   - field: The field to perform the aggregation over
+    ///   - script: A script used to calculate the values
+    ///   - missing: Defines how documents that are missing a value should be treated
     public init(
         name: String,
         field: String? = nil,

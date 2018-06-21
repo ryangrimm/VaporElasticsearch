@@ -17,18 +17,18 @@ public struct ESTypeText: ESType {
     
     var boost: Float? = 1.0
     var eagerGlobalOrdinals: Bool? = false
-    var fields: [ESTextField]?
+    var fields: [TextField]?
     var index: Bool? = true
-    var indexOptions: ESTypeIndexOptions? = .positions
+    var indexOptions: TextIndexOptions? = .positions
     var norms: Bool? = true
     var store: Bool? = false
-    var similarity: ESTypeSimilarity? = .bm25
+    var similarity: SimilarityType? = .bm25
     
     var analyzer: String?
     var searchAnalyzer: String?
     var searchQuoteAnalyzer: String?
     var fielddata: Bool? = false
-    var termVector: ESTypeTermVector? = .no
+    var termVector: TermVector? = .no
     
     enum CodingKeys: String, CodingKey {
         case type

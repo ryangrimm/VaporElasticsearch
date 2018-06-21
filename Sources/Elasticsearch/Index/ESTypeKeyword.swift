@@ -16,12 +16,12 @@ public struct ESTypeKeyword: ESType {
     
     var boost: Float? = 1.0
     var eagerGlobalOrdinals: Bool? = false
-    var fields: [ESTextField]?
+    var fields: [TextField]?
     var index: Bool? = true
-    var indexOptions: ESTypeIndexOptions? = .positions
+    var indexOptions: TextIndexOptions? = .positions
     var norms: Bool? = true
     var store: Bool? = false
-    var similarity: ESTypeSimilarity? = .bm25
+    var similarity: SimilarityType? = .bm25
     
     var docValues: Bool? = true
     var ignoreAbove: Int? = 2147483647

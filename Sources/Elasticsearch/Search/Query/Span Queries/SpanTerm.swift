@@ -15,7 +15,7 @@ public struct SpanTerm: SpanQuery, QueryElement {
         self.boost = boost
     }
     
-    struct Inner: Codable {
+    private struct Inner: Codable {
         let term: String
         let boost: Decimal?
         

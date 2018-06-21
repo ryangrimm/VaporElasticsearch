@@ -15,7 +15,7 @@ public struct Term: QueryElement {
         self.boost = boost
     }
 
-    struct Inner: Codable {
+    private struct Inner: Codable {
         let value: String
         let boost: Decimal?
     }

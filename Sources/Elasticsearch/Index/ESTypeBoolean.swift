@@ -7,7 +7,7 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeBolean: ESType {
+public struct ESTypeBoolean: ESType {
     static var typeKey = ESTypeMap.boolean
     
     let type = "boolean"

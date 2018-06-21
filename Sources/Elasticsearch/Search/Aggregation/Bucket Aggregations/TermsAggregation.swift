@@ -35,6 +35,23 @@ public struct TermsAggregation: Aggregation {
         case missing
     }
     
+    /// Creates a [terms](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) aggregation
+    ///
+    /// - Parameters:
+    ///   - name: The aggregation name
+    ///   - field: The field to perform the aggregation over
+    ///   - size: Defines how many term buckets should be returned out of the overall terms list
+    ///   - showTermDocCountError: Include/exclude the term doc count error in the results
+    ///   - order: The order of the buckets can be customized by setting the order parameter. By default, the buckets are ordered by their doc_count descending.
+    ///   - minDocCount: Only return terms that match more than a configured number of hits
+    ///   - script: Generate the terms using a script
+    ///   - include: A regular expression string to determin which field values to include
+    ///   - exclude:  A regular expression string to determin which field values to exclude
+    ///   - includeExact: Ensure that the given strings exactly match the field
+    ///   - excludeExact: Ensure that the specified field does not match the given strings
+    ///   - collectMode: Control how terms are collected
+    ///   - executionHint: Provide a hint on how terms should be collected
+    ///   - missing: Defines how documents that are missing a value should be treated
     public init(
         name: String,
         field: String? = nil,
@@ -91,14 +108,14 @@ public struct TermsAggregation: Aggregation {
         try valuesContainer.encodeIfPresent(executionHint, forKey: .executionHint)
         try valuesContainer.encodeIfPresent(missing, forKey: .missing)
     }
-}
-
-public enum CollectMode: String, Encodable {
-    case breadthFirst = "breadth_first"
-    case depthFirst = "depth_first"
-}
-
-public enum ExecutionHint: String, Encodable {
-    case map
-    case globalOrdinals = "global_ordinals"
+    
+    public enum CollectMode: String, Encodable {
+        case breadthFirst = "breadth_first"
+        case depthFirst = "depth_first"
+    }
+    
+    public enum ExecutionHint: String, Encodable {
+        case map
+        case globalOrdinals = "global_ordinals"
+    }
 }

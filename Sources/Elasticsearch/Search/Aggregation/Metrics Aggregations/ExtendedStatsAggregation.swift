@@ -19,6 +19,14 @@ public struct ExtendedStatsAggregation: Aggregation {
         case missing
     }
     
+    /// Create an [extended_stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-extendedstats-aggregation.html) aggregation
+    ///
+    /// - Parameters:
+    ///   - name: The aggregation name
+    ///   - field: The field to perform the aggregation over
+    ///   - sigma: Controls how many standard deviations +/- from the mean should be returned
+    ///   - script: A script used to calculate the values
+    ///   - missing: Defines how documents that are missing a value should be treated
     public init(
         name: String,
         field: String? = nil,

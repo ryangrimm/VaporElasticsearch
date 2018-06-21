@@ -15,6 +15,12 @@ public struct TopHitsAggregation: Aggregation {
         case size
     }
     
+    /// Creates a [top_hits](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html) aggregation
+    ///
+    /// - Parameters:
+    ///   - name: The aggregation name
+    ///   - from: The offset from the first result you want to fetch
+    ///   - size: The maximum number of top matching hits to return per bucket
     public init(
         name: String,
         from: Int? = nil,

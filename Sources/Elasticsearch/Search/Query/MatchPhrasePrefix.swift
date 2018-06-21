@@ -17,7 +17,7 @@ public struct MatchPhrasePrefix: QueryElement {
         self.maxExpansions = maxExpansions
     }
     
-    public struct Inner: Codable {
+    private struct Inner: Codable {
         let query: String
         let analyzer: String?
         let maxExpansions: Int?

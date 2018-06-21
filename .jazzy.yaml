@@ -1,0 +1,99 @@
+---
+author: Ryan Grimm
+
+custom_categories:
+- name: Client
+  children:
+  - ElasticsearchClient
+  - ElasticsearchIndex
+  - ElasticsearchDatabase
+  - ElasticsearchProvider
+
+- name: Query Constructors
+  children:
+  - BoolQuery
+  - CommonTerms
+  - Exists
+  - Fuzzy
+  - IDs
+  - Match
+  - MatchAll
+  - MatchNone
+  - MatchPhrase
+  - MatchPhrasePrefix
+  - MultiMatch
+  - Prefix
+  - Query
+  - Range
+  - Regexp
+  - ScriptQuery
+  - Term
+  - Terms
+  - Wildcard
+  - SpanQuery
+  - SpanTerm
+  - SpanFirst
+- name: Aggregation Constructors
+  children:
+  - MinAggregation
+  - SumAggregation
+  - StatsAggregation
+  - MaxAggregation
+  - AvgAggregation
+  - GeoCentroidAggregation
+  - GeoBoundsAggregation
+  - TopHitsAggregation
+  - CardinalityAggregation
+  - ValueCountAggregation
+  - ExtendedStatsAggregation
+  - TermsAggregation
+- name: Response Structures
+  children:
+  - AggregationExtendedStatsResponse
+  - AggregationGeoBoundsResponse
+  - AggregationGeoCentroidResponse
+  - AggregationResponse
+  - AggregationSingleValueResponse
+  - AggregationStatsResponse
+  - AggregationTermsResponse
+  - DocResponse
+  - IndexResponse
+  - SearchResponse
+- name: Index Mapping
+  children:
+  - ESTypeBinary
+  - ESTypeBoolean
+  - ESTypeByte
+  - ESTypeCompletionSuggester
+  - ESTypeDate
+  - ESTypeDateRange
+  - ESTypeDouble
+  - ESTypeDoubleRange
+  - ESTypeFloat
+  - ESTypeFloatRange
+  - ESTypeGeoPoint
+  - ESTypeGeoShape
+  - ESTypeHalfFloat
+  - ESTypeIPAddress
+  - ESTypeInteger
+  - ESTypeIntegerRange
+  - ESTypeJoin
+  - ESTypeKeyword
+  - ESTypeLong
+  - ESTypeLongRange
+  - ESTypeNested
+  - ESTypeObject
+  - ESTypePercolator
+  - ESTypeScaledFloat
+  - ESTypeShort
+  - ESTypeText
+  - ESTypeTokenCount
+- name: Supporting Structures
+  children:
+  - Operator
+  - OrderDirection
+  - TextField
+  - TextFieldType
+  - TermVector
+  - SimilarityType
+  - TextIndexOptions

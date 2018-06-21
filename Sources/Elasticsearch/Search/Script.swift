@@ -12,6 +12,25 @@ public struct Script: Codable {
         case params
     }
     
+    /// Configure a script for execution
+    ///
+    /// - Parameters:
+    ///   - lang: Language that the script is written in
+    ///   - source: Source of the script
+    ///   - id: The identifier for a stored script
+    ///   - params: Parameters to pass to the script
+    public init(
+        lang: String? = nil,
+        source: String? = nil,
+        id: String? = nil,
+        params: [String: Any]? = nil
+        ) {
+        self.lang = lang
+        self.source = source
+        self.id = id
+        self.params = params
+    }
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         

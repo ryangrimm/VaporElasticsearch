@@ -1,23 +1,11 @@
 import HTTP
 
-public struct ElasticsearchIndexSettings: Codable {
-    var index: ElasticsearchIndexSettingsIndex?
-}
-
-public struct ElasticsearchIndexVersion: Codable {
-    let created: String
-}
-
 public struct ElasticsearchIndexSettingsIndex: Codable {
-    struct IndexVersion {
-        
-    }
-    
     let numberOfShards: Int
     let numberOfReplicas: Int
     var creationDate: String? = nil
     var uuid: String? = nil
-    var version: ElasticsearchIndexVersion? = nil
+    var version: Version? = nil
     var providedName: String? = nil
     
     enum CodingKeys: String, CodingKey {
@@ -41,8 +29,12 @@ public struct ElasticsearchIndexSettingsIndex: Codable {
         numberOfReplicas = Int(try container.decode(String.self, forKey: .numberOfReplicas))!
         creationDate = try container.decodeIfPresent(String.self, forKey: .creationDate)
         uuid = try container.decodeIfPresent(String.self, forKey: .uuid)
-        version = try container.decodeIfPresent(ElasticsearchIndexVersion.self, forKey: .version)
+        version = try container.decodeIfPresent(Version.self, forKey: .version)
         providedName = try container.decodeIfPresent(String.self, forKey: .providedName)
+    }
+    
+    public struct Version: Codable {
+        let created: String
     }
 }
 
@@ -85,7 +77,7 @@ public class ElasticsearchIndex: Codable {
     var indexName: String? = nil
     var mappings = DefaultType(doc: Properties(properties: [String : AnyESType]()))
     var aliases = [String: Alias]()
-    var settings: ElasticsearchIndexSettings? = nil
+    var settings: Settings? = nil
 
     enum CodingKeys: String, CodingKey {
         case mappings
@@ -107,7 +99,7 @@ public class ElasticsearchIndex: Codable {
     
     func settings(index: ElasticsearchIndexSettingsIndex) -> Self {
         if (self.settings == nil) {
-            self.settings = ElasticsearchIndexSettings()
+            self.settings = Settings()
         }
         
         self.settings!.index = index
@@ -139,5 +131,9 @@ public class ElasticsearchIndex: Codable {
     static func delete(indexName: String, client: ElasticsearchClient) throws -> Future<Void> {
         return try client.send(HTTPMethod.DELETE, to: "/\(indexName)").map(to: Void.self) { response in
         }
+    }
+    
+    public struct Settings: Codable {
+        var index: ElasticsearchIndexSettingsIndex?
     }
 }

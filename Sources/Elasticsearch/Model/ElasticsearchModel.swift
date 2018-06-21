@@ -1,8 +1,10 @@
 import Foundation
 
+/// :nodoc:
 public protocol ElasticsearchModel: Codable {
 }
 
+/// :nodoc:
 public class ElasticsearchModelRegistry {
     static let sharedInstance = ElasticsearchModelRegistry()
     

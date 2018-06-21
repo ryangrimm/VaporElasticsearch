@@ -19,6 +19,7 @@ public final class ElasticsearchDatabase: Database {
     }
 }
 
+/// :nodoc:
 extension DatabaseIdentifier {
     /// Default identifier for `ElasticsearchClient`.
     public static var elasticsearch: DatabaseIdentifier<ElasticsearchDatabase> {

@@ -1,3 +1,4 @@
+/// :nodoc:
 public enum QueryElementMap : String, Codable {
     
     case boolQuery = "bool"

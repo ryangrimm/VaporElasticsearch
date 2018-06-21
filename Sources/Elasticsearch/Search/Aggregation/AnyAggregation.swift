@@ -1,6 +1,7 @@
 
 import Foundation
 
+/// :nodoc:
 public enum AggregationResponseMap : String, Encodable {
     
     case avg

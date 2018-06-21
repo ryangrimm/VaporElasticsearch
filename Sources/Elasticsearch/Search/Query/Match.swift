@@ -22,7 +22,7 @@ public struct Match: QueryElement {
         self.fuzziness = fuzziness
     }
 
-    struct Inner: Codable {
+    private struct Inner: Codable {
         let value: String
         let `operator`: Operator?
         let fuzziness: Int?

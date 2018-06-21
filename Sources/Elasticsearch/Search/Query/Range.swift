@@ -52,7 +52,7 @@ public struct Range: QueryElement {
         self.timeZone = timeZone
     }
 
-    struct Inner: Codable {
+    private struct Inner: Codable {
         let greaterThanOrEqual: RangePair?
         let greaterThan: RangePair?
         let lesserThanOrEqual: RangePair?

@@ -15,7 +15,7 @@ public struct Prefix: QueryElement {
         self.boost = boost
     }
 
-    public struct Inner: Codable {
+    private struct Inner: Codable {
         let value: String
         let boost: Decimal?
     }

@@ -1,32 +1,32 @@
 
-public enum ESTypeIndexOptions: String, Codable {
+public enum TextIndexOptions: String, Codable {
     case docs = "docs"
     case freqs = "freqs"
     case positions = "positions"
     case offsets = "offsets"
 }
 
-public enum ESTypeSimilarity: String, Codable {
+public enum SimilarityType: String, Codable {
     case bm25 = "BM25"
     case classic = "classic"
     case boolean = "boolean"
 }
 
-public enum ESTypeTermVector: String, Codable {
+public enum TermVector: String, Codable {
     case no = "no"
     case yes = "yes"
     case withPositions = "with_positions"
     case withPositionsOffsets = "with_position_offsets"
 }
 
-public enum ESTextFieldType: String, Codable {
+public enum TextFieldType: String, Codable {
     case text = "text"
     case keyword = "keyword"
 }
 
-public struct ESTextField: Codable {
+public struct TextField: Codable {
     var name: String
-    var type: ESTextFieldType
+    var type: TextFieldType
     var analyzer: String?
 }
 

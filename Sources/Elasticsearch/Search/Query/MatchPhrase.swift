@@ -15,7 +15,7 @@ public struct MatchPhrase: QueryElement {
         self.analyzer = analyzer
     }
     
-    public struct Inner: Codable {
+    private struct Inner: Codable {
         let query: String
         let analyzer: String?
     }

@@ -11,6 +11,7 @@
 
 ## TODO
 
+* Support configuration of tokenizers and analyzers
 * Implement the decoding of aggregation responses
 * Implement the remaining aggregation types
 * Implement remaining query DSL constructors

@@ -15,14 +15,14 @@ public struct Regexp: QueryElement {
         self.boost = boost
     }
 
-    public struct Inner: Codable {
+    private struct Inner: Codable {
         let value: String
         let boost: Decimal?
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
-        let inner = Prefix.Inner(value: value, boost: boost)
+        let inner = Regexp.Inner(value: value, boost: boost)
 
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
     }

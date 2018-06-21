@@ -15,6 +15,12 @@ public struct GeoBoundsAggregation: Aggregation {
         case wrapLongitude = "wrap_longitude"
     }
     
+    /// Creates a [geo_bounds](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-geobounds-aggregation.html) aggregation
+    ///
+    /// - Parameters:
+    ///   - name: The aggregation name
+    ///   - field: The field to perform the aggregation over
+    ///   - wrapLongitude: Specifies whether the bounding box should be allowed to overlap the international date line
     public init(
         name: String,
         field: String? = nil,
