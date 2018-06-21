@@ -7,18 +7,20 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeShort: ESType {
-    static var typeKey = ESTypeMap.short
+public struct MapScaledFloat: Mappable {
+    static var typeKey = MapType.scaledFloat
 
-    let type = "short"
+    let type = "float"
     
     var coerce: Bool? = true
     var boost: Float? = 1.0
     var docValues: Bool? = true
     var ignoreMalformed: Bool? = false
     var index: Bool? = true
-    var nullValue: Int16? = nil
+    var nullValue: Float? = nil
     var store: Bool? = false
+    
+    var scalingFactor: Int? = 0
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -29,5 +31,6 @@ public struct ESTypeShort: ESType {
         case index
         case nullValue = "null_value"
         case store
+        case scalingFactor = "scaling_factor"
     }
 }

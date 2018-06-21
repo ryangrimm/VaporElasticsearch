@@ -10,10 +10,10 @@
 
 import Foundation
 
-public struct ESTypeObject: ESType {
-    static var typeKey = ESTypeMap.object
+public struct MapObject: Mappable {
+    static var typeKey = MapType.object
 
-    var properties: [String: AnyESType]?
+    var properties: [String: AnyMap]?
     var dynamic: Bool? = false
     var enabled: Bool? = true
     

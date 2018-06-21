@@ -7,8 +7,8 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeCompletionSuggester: ESType {
-    static var typeKey = ESTypeMap.completionSuggester
+public struct MapCompletionSuggester: Mappable {
+    static var typeKey = MapType.completionSuggester
     
     let type = "compleation"
     

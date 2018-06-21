@@ -7,8 +7,8 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeGeoShape: ESType {
-    static var typeKey = ESTypeMap.geoShape
+public struct MapGeoShape: Mappable {
+    static var typeKey = MapType.geoShape
 
     public enum GeoShapePrefixTree: String, Codable {
         case geohash = "geohash"

@@ -7,14 +7,23 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeJoin: ESType {
-    static var typeKey = ESTypeMap.join
+public struct MapBoolean: Mappable {
+    static var typeKey = MapType.boolean
     
-    let type = "percolator"
-    var relations: [String: String]
+    let type = "boolean"
+    
+    var boost: Float? = 1.0
+    var docValues: Bool? = true
+    var index: Bool? = true
+    var nullValue: Bool? = nil
+    var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
-        case relations
+        case boost
+        case docValues = "doc_values"
+        case index
+        case nullValue = "null_value"
+        case store
     }
 }

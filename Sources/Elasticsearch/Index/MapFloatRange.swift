@@ -7,10 +7,10 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeDoubleRange: ESType {
-    static var typeKey = ESTypeMap.doubleRange
+public struct MapFloatRange: Mappable {
+    static var typeKey = MapType.floatRange
 
-    let type = "double_range"
+    let type = "float_range"
     
     var coerce: Bool? = true
     var boost: Float? = 1.0

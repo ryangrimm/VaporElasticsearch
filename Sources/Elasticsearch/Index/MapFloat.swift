@@ -7,17 +7,17 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeLong: ESType {
-    static var typeKey = ESTypeMap.long
+public struct MapFloat: Mappable {
+    static var typeKey = MapType.float
 
-    let type = "long"
+    let type = "float"
     
     var coerce: Bool? = true
     var boost: Float? = 1.0
     var docValues: Bool? = true
     var ignoreMalformed: Bool? = false
     var index: Bool? = true
-    var nullValue: Int64? = nil
+    var nullValue: Float? = nil
     var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {

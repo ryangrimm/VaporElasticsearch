@@ -1,9 +1,4 @@
-enum ESTypeMap : String, Codable {
-    
-    // be careful not to rename these – the encoding/decoding relies on the string
-    // values of the cases. If you want the decoding to be reliant on case
-    // position rather than name, then you can change to enum TagType : Int.
-    // (the advantage of the String rawValue is that the JSON is more readable)
+enum MapType: String, Codable {
     case text
     case keyword
     case long
@@ -32,70 +27,70 @@ enum ESTypeMap : String, Codable {
     case percolator
     case join
     
-    var metatype: ESType.Type {
+    var metatype: Mappable.Type {
         switch self {
         case .text:
-            return ESTypeText.self
+            return MapText.self
         case .keyword:
-            return ESTypeKeyword.self
+            return MapKeyword.self
         case .long:
-            return ESTypeLong.self
+            return MapLong.self
         case .integer:
-            return ESTypeInteger.self
+            return MapInteger.self
         case .short:
-            return ESTypeShort.self
+            return MapShort.self
         case .byte:
-            return ESTypeByte.self
+            return MapByte.self
         case .double:
-            return ESTypeDouble.self
+            return MapDouble.self
         case .float:
-            return ESTypeFloat.self
+            return MapFloat.self
         case .halfFloat:
-            return ESTypeHalfFloat.self
+            return MapHalfFloat.self
         case .scaledFloat:
-            return ESTypeScaledFloat.self
+            return MapScaledFloat.self
         case .date:
-            return ESTypeDate.self
+            return MapDate.self
         case .boolean:
-            return ESTypeBoolean.self
+            return MapBoolean.self
         case .binary:
-            return ESTypeBinary.self
+            return MapBinary.self
         case .integerRange:
-            return ESTypeIntegerRange.self
+            return MapIntegerRange.self
         case .floatRange:
-            return ESTypeFloatRange.self
+            return MapFloatRange.self
         case .longRange:
-            return ESTypeLongRange.self
+            return MapLongRange.self
         case .doubleRange:
-            return ESTypeDoubleRange.self
+            return MapDoubleRange.self
         case .dateRange:
-            return ESTypeDateRange.self
+            return MapDateRange.self
         case .object:
-            return ESTypeObject.self
+            return MapObject.self
         case .nested:
-            return ESTypeNested.self
+            return MapNested.self
         case .geoPoint:
-            return ESTypeGeoPoint.self
+            return MapGeoPoint.self
         case .geoShape:
-            return ESTypeGeoShape.self
+            return MapGeoShape.self
         case .ipAddress:
-            return ESTypeIPAddress.self
+            return IPAddress.self
         case .completionSuggester:
-            return ESTypeCompletionSuggester.self
+            return MapCompletionSuggester.self
         case .tokenCount:
-            return ESTypeTokenCount.self
+            return MapTokenCount.self
         case .percolator:
-            return ESTypePercolator.self
+            return MapPercolator.self
         case .join:
-            return ESTypeJoin.self
+            return MapJoin.self
         }
     }
 }
 
-struct AnyESType : Codable {
-    var base: ESType
+struct AnyMap : Codable {
+    var base: Mappable
     
-    init(_ base: ESType) {
+    init(_ base: Mappable) {
         self.base = base
     }
     
@@ -107,7 +102,7 @@ struct AnyESType : Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let type = try container.decode(ESTypeMap.self, forKey: .type)
+        let type = try container.decode(MapType.self, forKey: .type)
         self.base = try type.metatype.init(from: decoder)
     }
     

@@ -61,33 +61,33 @@ custom_categories:
   - SearchResponse
 - name: Index Mapping
   children:
-  - ESTypeBinary
-  - ESTypeBoolean
-  - ESTypeByte
-  - ESTypeCompletionSuggester
-  - ESTypeDate
-  - ESTypeDateRange
-  - ESTypeDouble
-  - ESTypeDoubleRange
-  - ESTypeFloat
-  - ESTypeFloatRange
-  - ESTypeGeoPoint
-  - ESTypeGeoShape
-  - ESTypeHalfFloat
-  - ESTypeIPAddress
-  - ESTypeInteger
-  - ESTypeIntegerRange
-  - ESTypeJoin
-  - ESTypeKeyword
-  - ESTypeLong
-  - ESTypeLongRange
-  - ESTypeNested
-  - ESTypeObject
-  - ESTypePercolator
-  - ESTypeScaledFloat
-  - ESTypeShort
-  - ESTypeText
-  - ESTypeTokenCount
+  - MapBinary
+  - MapBoolean
+  - MapByte
+  - MapCompletionSuggester
+  - MapDate
+  - MapDateRange
+  - MapDouble
+  - MapDoubleRange
+  - MapFloat
+  - MapFloatRange
+  - MapGeoPoint
+  - MapGeoShape
+  - MapHalfFloat
+  - MapIPAddress
+  - MapInteger
+  - MapIntegerRange
+  - MapJoin
+  - MapKeyword
+  - MapLong
+  - MapLongRange
+  - MapNested
+  - MapObject
+  - MapPercolator
+  - MapScaledFloat
+  - MapShort
+  - MapText
+  - MapTokenCount
 - name: Supporting Structures
   children:
   - Operator

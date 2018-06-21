@@ -7,27 +7,25 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeDate: ESType {
-    static var typeKey = ESTypeMap.date
+public struct MapLong: Mappable {
+    static var typeKey = MapType.long
 
-    let type = "date"
+    let type = "long"
     
+    var coerce: Bool? = true
     var boost: Float? = 1.0
     var docValues: Bool? = true
-    var format: String?
-    var locale: String?
     var ignoreMalformed: Bool? = false
     var index: Bool? = true
-    var nullValue: Bool? = nil
+    var nullValue: Int64? = nil
     var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
+        case coerce
         case boost
         case docValues = "doc_values"
-        case format
-        case locale
-        case ignoreMalformed = "ignoreMalformed"
+        case ignoreMalformed = "ignore_malformed"
         case index
         case nullValue = "null_value"
         case store

@@ -10,14 +10,15 @@
 
 import Foundation
 
-public struct ESTypeNested: ESType {
-    static var typeKey = ESTypeMap.nested
+public struct MapGeoPoint: Mappable {
+    static var typeKey = MapType.geoPoint
 
-    var properties: [String: AnyESType]?
-    var dynamic: Bool? = false
+    let type = "geo_point"
+
+    var ignoreMalformed: Bool? = false
     
     enum CodingKeys: String, CodingKey {
-        case properties
-        case dynamic
+        case type
+        case ignoreMalformed = "ignore_malformed"
     }
 }

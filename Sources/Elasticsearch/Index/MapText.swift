@@ -7,12 +7,13 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
+
 import Foundation
 
-public struct ESTypeKeyword: ESType {
-    static var typeKey = ESTypeMap.keyword
+public struct MapText: Mappable {
+    static var typeKey = MapType.text
 
-    let type = "keyword"
+    let type = "text"
     
     var boost: Float? = 1.0
     var eagerGlobalOrdinals: Bool? = false
@@ -23,10 +24,11 @@ public struct ESTypeKeyword: ESType {
     var store: Bool? = false
     var similarity: SimilarityType? = .bm25
     
-    var docValues: Bool? = true
-    var ignoreAbove: Int? = 2147483647
-    var nullValue: String?
-    // var normalizer
+    var analyzer: String?
+    var searchAnalyzer: String?
+    var searchQuoteAnalyzer: String?
+    var fielddata: Bool? = false
+    var termVector: TermVector? = .no
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -38,8 +40,10 @@ public struct ESTypeKeyword: ESType {
         case norms
         case store
         case similarity
-        case docValues = "doc_values"
-        case ignoreAbove = "ignore_above"
-        case nullValue = "null_value"
+        case analyzer
+        case searchAnalyzer = "search_analyzer"
+        case searchQuoteAnalyzer = "search_quote_analyzer"
+        case fielddata
+        case termVector = "term_vector"
     }
 }

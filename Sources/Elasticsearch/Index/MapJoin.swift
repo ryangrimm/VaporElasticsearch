@@ -7,21 +7,14 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeFloatRange: ESType {
-    static var typeKey = ESTypeMap.floatRange
-
-    let type = "float_range"
+public struct MapJoin: Mappable {
+    static var typeKey = MapType.join
     
-    var coerce: Bool? = true
-    var boost: Float? = 1.0
-    var index: Bool? = true
-    var store: Bool? = false
+    let type = "percolator"
+    var relations: [String: String]
     
     enum CodingKeys: String, CodingKey {
         case type
-        case coerce
-        case boost
-        case index
-        case store
+        case relations
     }
 }

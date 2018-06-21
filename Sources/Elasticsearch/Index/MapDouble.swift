@@ -7,17 +7,17 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeByte: ESType {
-    static var typeKey = ESTypeMap.byte
+public struct MapDouble: Mappable {
+    static var typeKey = MapType.double
 
-    let type = "byte"
+    let type = "double"
     
     var coerce: Bool? = true
     var boost: Float? = 1.0
     var docValues: Bool? = true
     var ignoreMalformed: Bool? = false
     var index: Bool? = true
-    var nullValue: Int8? = nil
+    var nullValue: Double? = nil
     var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {

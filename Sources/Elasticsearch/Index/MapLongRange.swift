@@ -7,27 +7,21 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeDouble: ESType {
-    static var typeKey = ESTypeMap.double
-
-    let type = "double"
+public struct MapLongRange: Mappable {
+    static var typeKey = MapType.longRange
+    
+    let type = "long_range"
     
     var coerce: Bool? = true
     var boost: Float? = 1.0
-    var docValues: Bool? = true
-    var ignoreMalformed: Bool? = false
     var index: Bool? = true
-    var nullValue: Double? = nil
     var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
         case coerce
         case boost
-        case docValues = "doc_values"
-        case ignoreMalformed = "ignore_malformed"
         case index
-        case nullValue = "null_value"
         case store
     }
 }

@@ -7,12 +7,23 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypePercolator: ESType {
-    static var typeKey = ESTypeMap.percolator
+public struct MapDateRange: Mappable {
+    static var typeKey = MapType.dateRange
     
-    let type = "percolator"
+    let type = "date_range"
+    
+    var format: String
+    var coerce: Bool? = true
+    var boost: Float? = 1.0
+    var index: Bool? = true
+    var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
+        case format
+        case coerce
+        case boost
+        case index
+        case store
     }
 }

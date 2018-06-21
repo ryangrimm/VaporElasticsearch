@@ -30,7 +30,7 @@ public struct TextField: Codable {
     var analyzer: String?
 }
 
-protocol ESType: Codable {
-    static var typeKey: ESTypeMap { get }
+protocol Mappable: Codable {
+    static var typeKey: MapType { get }
 
 }

@@ -67,7 +67,7 @@ public class ElasticsearchIndex: Codable {
     }
     
     struct Properties: Codable {
-        var properties: [String: AnyESType]
+        var properties: [String: AnyMap]
     }
     
     struct Alias: Codable {
@@ -75,7 +75,7 @@ public class ElasticsearchIndex: Codable {
     }
     
     var indexName: String? = nil
-    var mappings = DefaultType(doc: Properties(properties: [String : AnyESType]()))
+    var mappings = DefaultType(doc: Properties(properties: [String : AnyMap]()))
     var aliases = [String: Alias]()
     var settings: Settings? = nil
 
@@ -112,8 +112,8 @@ public class ElasticsearchIndex: Codable {
         return self
     }
     
-    func property(key: String, type: ESType) -> Self {
-        mappings.doc.properties[key] = AnyESType(type)
+    func property(key: String, type: Mappable) -> Self {
+        mappings.doc.properties[key] = AnyMap(type)
         return self
     }
     

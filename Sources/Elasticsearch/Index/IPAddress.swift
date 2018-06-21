@@ -7,25 +7,21 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeFloat: ESType {
-    static var typeKey = ESTypeMap.float
+public struct IPAddress: Mappable {
+    static var typeKey = MapType.ipAddress
 
-    let type = "float"
+    let type = "ip"
     
-    var coerce: Bool? = true
     var boost: Float? = 1.0
     var docValues: Bool? = true
-    var ignoreMalformed: Bool? = false
     var index: Bool? = true
-    var nullValue: Float? = nil
+    var nullValue: Bool? = nil
     var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
-        case coerce
         case boost
         case docValues = "doc_values"
-        case ignoreMalformed = "ignore_malformed"
         case index
         case nullValue = "null_value"
         case store

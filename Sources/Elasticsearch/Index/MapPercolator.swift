@@ -7,23 +7,12 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeIPAddress: ESType {
-    static var typeKey = ESTypeMap.ipAddress
-
-    let type = "ip"
+public struct MapPercolator: Mappable {
+    static var typeKey = MapType.percolator
     
-    var boost: Float? = 1.0
-    var docValues: Bool? = true
-    var index: Bool? = true
-    var nullValue: Bool? = nil
-    var store: Bool? = false
+    let type = "percolator"
     
     enum CodingKeys: String, CodingKey {
         case type
-        case boost
-        case docValues = "doc_values"
-        case index
-        case nullValue = "null_value"
-        case store
     }
 }

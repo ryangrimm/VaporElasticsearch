@@ -32,8 +32,8 @@ final class ElasticsearchTests: XCTestCase {
         try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
         
         try ElasticsearchIndex(indexName: "test")
-            .property(key: "name", type: ESTypeText())
-            .property(key: "number", type: ESTypeInteger())
+            .property(key: "name", type: MapText())
+            .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
             .settings(index: ElasticsearchIndexSettingsIndex(shards: 3, replicas: 2))
             .create(client: es).wait()
@@ -60,8 +60,8 @@ final class ElasticsearchTests: XCTestCase {
         try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
 
         try ElasticsearchIndex(indexName: "test")
-            .property(key: "name", type: ESTypeText())
-            .property(key: "number", type: ESTypeInteger())
+            .property(key: "name", type: MapText())
+            .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
             .settings(index: ElasticsearchIndexSettingsIndex(shards: 3, replicas: 2))
             .create(client: es).wait()

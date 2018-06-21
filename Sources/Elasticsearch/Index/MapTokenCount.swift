@@ -7,21 +7,26 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeLongRange: ESType {
-    static var typeKey = ESTypeMap.longRange
+public struct MapTokenCount: Mappable {
+    static var typeKey = MapType.tokenCount
     
-    let type = "long_range"
+    let type = "token_count"
     
-    var coerce: Bool? = true
+    var analyzer: String?
+    var enablePositionIncrements: Bool?
     var boost: Float? = 1.0
+    var docValues: Bool? = true
     var index: Bool? = true
+    var nullValue: Bool? = nil
     var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
-        case coerce
+        case analyzer
+        case enablePositionIncrements = "enable_position_increments"
         case boost
-        case index
+        case docValues = "doc_values"
+        case nullValue = "null_value"
         case store
     }
 }

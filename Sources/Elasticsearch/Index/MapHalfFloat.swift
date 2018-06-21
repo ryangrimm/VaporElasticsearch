@@ -7,25 +7,26 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeTokenCount: ESType {
-    static var typeKey = ESTypeMap.tokenCount
+public struct MapHalfFloat: Mappable {
+    static var typeKey = MapType.halfFloat
+
+    let type = "half_float"
     
-    let type = "token_count"
-    
-    var analyzer: String?
-    var enablePositionIncrements: Bool?
+    var coerce: Bool? = true
     var boost: Float? = 1.0
     var docValues: Bool? = true
+    var ignoreMalformed: Bool? = false
     var index: Bool? = true
-    var nullValue: Bool? = nil
+    var nullValue: Float? = nil
     var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
-        case analyzer
-        case enablePositionIncrements = "enable_position_increments"
+        case coerce
         case boost
         case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
+        case index
         case nullValue = "null_value"
         case store
     }

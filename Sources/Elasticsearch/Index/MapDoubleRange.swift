@@ -7,27 +7,21 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct ESTypeHalfFloat: ESType {
-    static var typeKey = ESTypeMap.halfFloat
+public struct MapDoubleRange: Mappable {
+    static var typeKey = MapType.doubleRange
 
-    let type = "half_float"
+    let type = "double_range"
     
     var coerce: Bool? = true
     var boost: Float? = 1.0
-    var docValues: Bool? = true
-    var ignoreMalformed: Bool? = false
     var index: Bool? = true
-    var nullValue: Float? = nil
     var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
         case coerce
         case boost
-        case docValues = "doc_values"
-        case ignoreMalformed = "ignore_malformed"
         case index
-        case nullValue = "null_value"
         case store
     }
 }

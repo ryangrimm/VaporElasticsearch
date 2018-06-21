@@ -41,29 +41,29 @@
 		C21D6B6D20CC861800ED81B6 /* ElasticsearchClient+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B6C20CC861800ED81B6 /* ElasticsearchClient+Search.swift */; };
 		C21D6B7820CD7D1100ED81B6 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7620CD7C5800ED81B6 /* ElasticsearchQueryCodableTests.swift */; };
 		C21D6B7B20CD7E8500ED81B6 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7920CD7E6400ED81B6 /* TestHelpers.swift */; };
-		C21D6B7D20CED04C00ED81B6 /* AnyESType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7C20CED04C00ED81B6 /* AnyESType.swift */; };
-		C21D6B7E20CF13E500ED81B6 /* ESTypeByte.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2120CB8F2A0082C3D9 /* ESTypeByte.swift */; };
-		C21D6B7F20CF13E500ED81B6 /* ESTypeDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2320CB8FD10082C3D9 /* ESTypeDouble.swift */; };
-		C21D6B8020CF13E500ED81B6 /* ESTypeFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2520CB8FE00082C3D9 /* ESTypeFloat.swift */; };
-		C21D6B8120CF13E500ED81B6 /* ESTypeHalfFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2720CB903B0082C3D9 /* ESTypeHalfFloat.swift */; };
-		C21D6B8220CF13E500ED81B6 /* ESTypeScaledFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2920CB90480082C3D9 /* ESTypeScaledFloat.swift */; };
-		C21D6B8320CF13E500ED81B6 /* ESTypeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2D20CB924D0082C3D9 /* ESTypeDate.swift */; };
-		C21D6B8420CF13E500ED81B6 /* ESTypeBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2B20CB924C0082C3D9 /* ESTypeBoolean.swift */; };
-		C21D6B8520CF13E500ED81B6 /* ESTypeBinary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3420CB924F0082C3D9 /* ESTypeBinary.swift */; };
-		C21D6B8620CF13E500ED81B6 /* ESTypeIntegerRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3720CB92510082C3D9 /* ESTypeIntegerRange.swift */; };
-		C21D6B8720CF13E500ED81B6 /* ESTypeFloatRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3120CB924E0082C3D9 /* ESTypeFloatRange.swift */; };
-		C21D6B8820CF13E500ED81B6 /* ESTypeLongRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3520CB92500082C3D9 /* ESTypeLongRange.swift */; };
-		C21D6B8920CF13E500ED81B6 /* ESTypeDoubleRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3820CB92510082C3D9 /* ESTypeDoubleRange.swift */; };
-		C21D6B8A20CF13E500ED81B6 /* ESTypeDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3020CB924E0082C3D9 /* ESTypeDateRange.swift */; };
-		C21D6B8B20CF13E500ED81B6 /* ESTypeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2F20CB924D0082C3D9 /* ESTypeObject.swift */; };
-		C21D6B8C20CF13E500ED81B6 /* ESTypeNested.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2C20CB924C0082C3D9 /* ESTypeNested.swift */; };
-		C21D6B8D20CF13E500ED81B6 /* ESTypeGeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3620CB92500082C3D9 /* ESTypeGeoPoint.swift */; };
-		C21D6B8E20CF13E500ED81B6 /* ESTypeGeoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2E20CB924D0082C3D9 /* ESTypeGeoShape.swift */; };
-		C21D6B8F20CF13E500ED81B6 /* ESTypeIPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3220CB924E0082C3D9 /* ESTypeIPAddress.swift */; };
-		C21D6B9020CF13E500ED81B6 /* ESTypeCompletionSuggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B6E20CD181C00ED81B6 /* ESTypeCompletionSuggester.swift */; };
-		C21D6B9120CF13E500ED81B6 /* ESTypeTokenCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7020CD183700ED81B6 /* ESTypeTokenCount.swift */; };
-		C21D6B9220CF13E500ED81B6 /* ESTypePercolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7220CD186000ED81B6 /* ESTypePercolator.swift */; };
-		C21D6B9320CF13E500ED81B6 /* ESTypeJoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7420CD187F00ED81B6 /* ESTypeJoin.swift */; };
+		C21D6B7D20CED04C00ED81B6 /* AnyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7C20CED04C00ED81B6 /* AnyMap.swift */; };
+		C21D6B7E20CF13E500ED81B6 /* MapByte.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2120CB8F2A0082C3D9 /* MapByte.swift */; };
+		C21D6B7F20CF13E500ED81B6 /* MapDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2320CB8FD10082C3D9 /* MapDouble.swift */; };
+		C21D6B8020CF13E500ED81B6 /* MapFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2520CB8FE00082C3D9 /* MapFloat.swift */; };
+		C21D6B8120CF13E500ED81B6 /* MapHalfFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2720CB903B0082C3D9 /* MapHalfFloat.swift */; };
+		C21D6B8220CF13E500ED81B6 /* MapScaledFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2920CB90480082C3D9 /* MapScaledFloat.swift */; };
+		C21D6B8320CF13E500ED81B6 /* MapDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2D20CB924D0082C3D9 /* MapDate.swift */; };
+		C21D6B8420CF13E500ED81B6 /* MapBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2B20CB924C0082C3D9 /* MapBoolean.swift */; };
+		C21D6B8520CF13E500ED81B6 /* MapBinary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3420CB924F0082C3D9 /* MapBinary.swift */; };
+		C21D6B8620CF13E500ED81B6 /* MapIntegerRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3720CB92510082C3D9 /* MapIntegerRange.swift */; };
+		C21D6B8720CF13E500ED81B6 /* MapFloatRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3120CB924E0082C3D9 /* MapFloatRange.swift */; };
+		C21D6B8820CF13E500ED81B6 /* MapLongRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3520CB92500082C3D9 /* MapLongRange.swift */; };
+		C21D6B8920CF13E500ED81B6 /* MapDoubleRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3820CB92510082C3D9 /* MapDoubleRange.swift */; };
+		C21D6B8A20CF13E500ED81B6 /* MapDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3020CB924E0082C3D9 /* MapDateRange.swift */; };
+		C21D6B8B20CF13E500ED81B6 /* MapObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2F20CB924D0082C3D9 /* MapObject.swift */; };
+		C21D6B8C20CF13E500ED81B6 /* MapNested.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2C20CB924C0082C3D9 /* MapNested.swift */; };
+		C21D6B8D20CF13E500ED81B6 /* MapGeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3620CB92500082C3D9 /* MapGeoPoint.swift */; };
+		C21D6B8E20CF13E500ED81B6 /* MapGeoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2E20CB924D0082C3D9 /* MapGeoShape.swift */; };
+		C21D6B8F20CF13E500ED81B6 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3220CB924E0082C3D9 /* IPAddress.swift */; };
+		C21D6B9020CF13E500ED81B6 /* MapCompletionSuggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B6E20CD181C00ED81B6 /* MapCompletionSuggester.swift */; };
+		C21D6B9120CF13E500ED81B6 /* MapTokenCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7020CD183700ED81B6 /* MapTokenCount.swift */; };
+		C21D6B9220CF13E500ED81B6 /* MapPercolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7220CD186000ED81B6 /* MapPercolator.swift */; };
+		C21D6B9320CF13E500ED81B6 /* MapJoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7420CD187F00ED81B6 /* MapJoin.swift */; };
 		C21D6B9520CF18F200ED81B6 /* AnyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B9420CF18F200ED81B6 /* AnyQuery.swift */; };
 		C21D6B9720CF904900ED81B6 /* SearchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B9620CF904900ED81B6 /* SearchContainer.swift */; };
 		C2254DCE20D162BB00AF7D52 /* TermsAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2254DCD20D162BB00AF7D52 /* TermsAggregation.swift */; };
@@ -78,10 +78,10 @@
 		C2254E0F20D2530D00AF7D52 /* AggregationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2254E0E20D2530D00AF7D52 /* AggregationResponse.swift */; };
 		C2254E1120D2630100AF7D52 /* AggregationSingleValueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2254E1020D2630100AF7D52 /* AggregationSingleValueResponse.swift */; };
 		C23D9F1520C9C67C0082C3D9 /* ElasticsearchIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */; };
-		C23D9F1A20CB8BFE0082C3D9 /* ESTypeKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1820CB8B6B0082C3D9 /* ESTypeKeyword.swift */; };
-		C23D9F1C20CB8D160082C3D9 /* ESTypeLong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1B20CB8D160082C3D9 /* ESTypeLong.swift */; };
-		C23D9F1E20CB8EB50082C3D9 /* ESTypeInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1D20CB8EB50082C3D9 /* ESTypeInteger.swift */; };
-		C23D9F2020CB8F180082C3D9 /* ESTypeShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1F20CB8F180082C3D9 /* ESTypeShort.swift */; };
+		C23D9F1A20CB8BFE0082C3D9 /* MapKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1820CB8B6B0082C3D9 /* MapKeyword.swift */; };
+		C23D9F1C20CB8D160082C3D9 /* MapLong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1B20CB8D160082C3D9 /* MapLong.swift */; };
+		C23D9F1E20CB8EB50082C3D9 /* MapInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1D20CB8EB50082C3D9 /* MapInteger.swift */; };
+		C23D9F2020CB8F180082C3D9 /* MapShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F1F20CB8F180082C3D9 /* MapShort.swift */; };
 		C23D9F4820CC31C70082C3D9 /* DynamicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F4720CC31C70082C3D9 /* DynamicKey.swift */; };
 		C248178F20C113E000E4570F /* ElasticsearchClientConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248178D20C113E000E4570F /* ElasticsearchClientConfig.swift */; };
 		C248179020C113E000E4570F /* ElasticsearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248178E20C113E000E4570F /* ElasticsearchProvider.swift */; };
@@ -107,8 +107,8 @@
 		C2CF0CAE20D4DE7E00191480 /* AnySpanQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CAD20D4DE7E00191480 /* AnySpanQuery.swift */; };
 		C2CF0CB120D4DEBB00191480 /* Span.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CB020D4DEBB00191480 /* Span.swift */; };
 		C2CF0CB320D4E28100191480 /* SpanFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CB220D4E28100191480 /* SpanFirst.swift */; };
-		C2D5F61C20C413E8006AAF04 /* ESType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61B20C413E8006AAF04 /* ESType.swift */; };
-		C2D5F61E20C41A3A006AAF04 /* ESTypeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61D20C41A3A006AAF04 /* ESTypeText.swift */; };
+		C2D5F61C20C413E8006AAF04 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61B20C413E8006AAF04 /* Mappable.swift */; };
+		C2D5F61E20C41A3A006AAF04 /* MapText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61D20C41A3A006AAF04 /* MapText.swift */; };
 		C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */; };
 		C2FD539820D38DC500427E8F /* AggregationExtendedStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD539720D38DC500427E8F /* AggregationExtendedStatsResponse.swift */; };
 		C2FD539A20D3906300427E8F /* AggregationGeoBoundsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD539920D3906300427E8F /* AggregationGeoBoundsResponse.swift */; };
@@ -1626,13 +1626,13 @@
 		C21D6B5820CC842900ED81B6 /* Exists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exists.swift; sourceTree = "<group>"; };
 		C21D6B5920CC842A00ED81B6 /* Wildcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wildcard.swift; sourceTree = "<group>"; };
 		C21D6B6C20CC861800ED81B6 /* ElasticsearchClient+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchClient+Search.swift"; sourceTree = "<group>"; };
-		C21D6B6E20CD181C00ED81B6 /* ESTypeCompletionSuggester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeCompletionSuggester.swift; sourceTree = "<group>"; };
-		C21D6B7020CD183700ED81B6 /* ESTypeTokenCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeTokenCount.swift; sourceTree = "<group>"; };
-		C21D6B7220CD186000ED81B6 /* ESTypePercolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypePercolator.swift; sourceTree = "<group>"; };
-		C21D6B7420CD187F00ED81B6 /* ESTypeJoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeJoin.swift; sourceTree = "<group>"; };
+		C21D6B6E20CD181C00ED81B6 /* MapCompletionSuggester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCompletionSuggester.swift; sourceTree = "<group>"; };
+		C21D6B7020CD183700ED81B6 /* MapTokenCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTokenCount.swift; sourceTree = "<group>"; };
+		C21D6B7220CD186000ED81B6 /* MapPercolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPercolator.swift; sourceTree = "<group>"; };
+		C21D6B7420CD187F00ED81B6 /* MapJoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapJoin.swift; sourceTree = "<group>"; };
 		C21D6B7620CD7C5800ED81B6 /* ElasticsearchQueryCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchQueryCodableTests.swift; sourceTree = "<group>"; };
 		C21D6B7920CD7E6400ED81B6 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
-		C21D6B7C20CED04C00ED81B6 /* AnyESType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyESType.swift; sourceTree = "<group>"; };
+		C21D6B7C20CED04C00ED81B6 /* AnyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyMap.swift; sourceTree = "<group>"; };
 		C21D6B9420CF18F200ED81B6 /* AnyQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyQuery.swift; sourceTree = "<group>"; };
 		C21D6B9620CF904900ED81B6 /* SearchContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContainer.swift; sourceTree = "<group>"; };
 		C2254DCD20D162BB00AF7D52 /* TermsAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAggregation.swift; sourceTree = "<group>"; };
@@ -1647,28 +1647,28 @@
 		C2254E0E20D2530D00AF7D52 /* AggregationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregationResponse.swift; sourceTree = "<group>"; };
 		C2254E1020D2630100AF7D52 /* AggregationSingleValueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregationSingleValueResponse.swift; sourceTree = "<group>"; };
 		C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchIndex.swift; sourceTree = "<group>"; };
-		C23D9F1820CB8B6B0082C3D9 /* ESTypeKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeKeyword.swift; sourceTree = "<group>"; };
-		C23D9F1B20CB8D160082C3D9 /* ESTypeLong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeLong.swift; sourceTree = "<group>"; };
-		C23D9F1D20CB8EB50082C3D9 /* ESTypeInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeInteger.swift; sourceTree = "<group>"; };
-		C23D9F1F20CB8F180082C3D9 /* ESTypeShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeShort.swift; sourceTree = "<group>"; };
-		C23D9F2120CB8F2A0082C3D9 /* ESTypeByte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeByte.swift; sourceTree = "<group>"; };
-		C23D9F2320CB8FD10082C3D9 /* ESTypeDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeDouble.swift; sourceTree = "<group>"; };
-		C23D9F2520CB8FE00082C3D9 /* ESTypeFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeFloat.swift; sourceTree = "<group>"; };
-		C23D9F2720CB903B0082C3D9 /* ESTypeHalfFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeHalfFloat.swift; sourceTree = "<group>"; };
-		C23D9F2920CB90480082C3D9 /* ESTypeScaledFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeScaledFloat.swift; sourceTree = "<group>"; };
-		C23D9F2B20CB924C0082C3D9 /* ESTypeBoolean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeBoolean.swift; sourceTree = "<group>"; };
-		C23D9F2C20CB924C0082C3D9 /* ESTypeNested.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeNested.swift; sourceTree = "<group>"; };
-		C23D9F2D20CB924D0082C3D9 /* ESTypeDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeDate.swift; sourceTree = "<group>"; };
-		C23D9F2E20CB924D0082C3D9 /* ESTypeGeoShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeGeoShape.swift; sourceTree = "<group>"; };
-		C23D9F2F20CB924D0082C3D9 /* ESTypeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeObject.swift; sourceTree = "<group>"; };
-		C23D9F3020CB924E0082C3D9 /* ESTypeDateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeDateRange.swift; sourceTree = "<group>"; };
-		C23D9F3120CB924E0082C3D9 /* ESTypeFloatRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeFloatRange.swift; sourceTree = "<group>"; };
-		C23D9F3220CB924E0082C3D9 /* ESTypeIPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeIPAddress.swift; sourceTree = "<group>"; };
-		C23D9F3420CB924F0082C3D9 /* ESTypeBinary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeBinary.swift; sourceTree = "<group>"; };
-		C23D9F3520CB92500082C3D9 /* ESTypeLongRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeLongRange.swift; sourceTree = "<group>"; };
-		C23D9F3620CB92500082C3D9 /* ESTypeGeoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeGeoPoint.swift; sourceTree = "<group>"; };
-		C23D9F3720CB92510082C3D9 /* ESTypeIntegerRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeIntegerRange.swift; sourceTree = "<group>"; };
-		C23D9F3820CB92510082C3D9 /* ESTypeDoubleRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTypeDoubleRange.swift; sourceTree = "<group>"; };
+		C23D9F1820CB8B6B0082C3D9 /* MapKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKeyword.swift; sourceTree = "<group>"; };
+		C23D9F1B20CB8D160082C3D9 /* MapLong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLong.swift; sourceTree = "<group>"; };
+		C23D9F1D20CB8EB50082C3D9 /* MapInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteger.swift; sourceTree = "<group>"; };
+		C23D9F1F20CB8F180082C3D9 /* MapShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapShort.swift; sourceTree = "<group>"; };
+		C23D9F2120CB8F2A0082C3D9 /* MapByte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapByte.swift; sourceTree = "<group>"; };
+		C23D9F2320CB8FD10082C3D9 /* MapDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDouble.swift; sourceTree = "<group>"; };
+		C23D9F2520CB8FE00082C3D9 /* MapFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFloat.swift; sourceTree = "<group>"; };
+		C23D9F2720CB903B0082C3D9 /* MapHalfFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHalfFloat.swift; sourceTree = "<group>"; };
+		C23D9F2920CB90480082C3D9 /* MapScaledFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScaledFloat.swift; sourceTree = "<group>"; };
+		C23D9F2B20CB924C0082C3D9 /* MapBoolean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapBoolean.swift; sourceTree = "<group>"; };
+		C23D9F2C20CB924C0082C3D9 /* MapNested.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNested.swift; sourceTree = "<group>"; };
+		C23D9F2D20CB924D0082C3D9 /* MapDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDate.swift; sourceTree = "<group>"; };
+		C23D9F2E20CB924D0082C3D9 /* MapGeoShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGeoShape.swift; sourceTree = "<group>"; };
+		C23D9F2F20CB924D0082C3D9 /* MapObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapObject.swift; sourceTree = "<group>"; };
+		C23D9F3020CB924E0082C3D9 /* MapDateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDateRange.swift; sourceTree = "<group>"; };
+		C23D9F3120CB924E0082C3D9 /* MapFloatRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFloatRange.swift; sourceTree = "<group>"; };
+		C23D9F3220CB924E0082C3D9 /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
+		C23D9F3420CB924F0082C3D9 /* MapBinary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapBinary.swift; sourceTree = "<group>"; };
+		C23D9F3520CB92500082C3D9 /* MapLongRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLongRange.swift; sourceTree = "<group>"; };
+		C23D9F3620CB92500082C3D9 /* MapGeoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGeoPoint.swift; sourceTree = "<group>"; };
+		C23D9F3720CB92510082C3D9 /* MapIntegerRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapIntegerRange.swift; sourceTree = "<group>"; };
+		C23D9F3820CB92510082C3D9 /* MapDoubleRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDoubleRange.swift; sourceTree = "<group>"; };
 		C23D9F4720CC31C70082C3D9 /* DynamicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicKey.swift; sourceTree = "<group>"; };
 		C248178D20C113E000E4570F /* ElasticsearchClientConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchClientConfig.swift; sourceTree = "<group>"; };
 		C248178E20C113E000E4570F /* ElasticsearchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticsearchProvider.swift; sourceTree = "<group>"; };
@@ -1694,8 +1694,8 @@
 		C2CF0CAD20D4DE7E00191480 /* AnySpanQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnySpanQuery.swift; sourceTree = "<group>"; };
 		C2CF0CB020D4DEBB00191480 /* Span.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Span.swift; sourceTree = "<group>"; };
 		C2CF0CB220D4E28100191480 /* SpanFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanFirst.swift; sourceTree = "<group>"; };
-		C2D5F61B20C413E8006AAF04 /* ESType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESType.swift; sourceTree = "<group>"; };
-		C2D5F61D20C41A3A006AAF04 /* ESTypeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTypeText.swift; sourceTree = "<group>"; };
+		C2D5F61B20C413E8006AAF04 /* Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
+		C2D5F61D20C41A3A006AAF04 /* MapText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapText.swift; sourceTree = "<group>"; };
 		C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchModel.swift; sourceTree = "<group>"; };
 		C2FD539720D38DC500427E8F /* AggregationExtendedStatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregationExtendedStatsResponse.swift; sourceTree = "<group>"; };
 		C2FD539920D3906300427E8F /* AggregationGeoBoundsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregationGeoBoundsResponse.swift; sourceTree = "<group>"; };
@@ -2356,35 +2356,35 @@
 			isa = PBXGroup;
 			children = (
 				C23D9F1320C9C45E0082C3D9 /* ElasticsearchIndex.swift */,
-				C2D5F61B20C413E8006AAF04 /* ESType.swift */,
-				C21D6B7C20CED04C00ED81B6 /* AnyESType.swift */,
-				C2D5F61D20C41A3A006AAF04 /* ESTypeText.swift */,
-				C23D9F1820CB8B6B0082C3D9 /* ESTypeKeyword.swift */,
-				C23D9F1B20CB8D160082C3D9 /* ESTypeLong.swift */,
-				C23D9F1D20CB8EB50082C3D9 /* ESTypeInteger.swift */,
-				C23D9F1F20CB8F180082C3D9 /* ESTypeShort.swift */,
-				C23D9F2120CB8F2A0082C3D9 /* ESTypeByte.swift */,
-				C23D9F2320CB8FD10082C3D9 /* ESTypeDouble.swift */,
-				C23D9F2520CB8FE00082C3D9 /* ESTypeFloat.swift */,
-				C23D9F2720CB903B0082C3D9 /* ESTypeHalfFloat.swift */,
-				C23D9F2920CB90480082C3D9 /* ESTypeScaledFloat.swift */,
-				C23D9F2D20CB924D0082C3D9 /* ESTypeDate.swift */,
-				C23D9F2B20CB924C0082C3D9 /* ESTypeBoolean.swift */,
-				C23D9F3420CB924F0082C3D9 /* ESTypeBinary.swift */,
-				C23D9F3720CB92510082C3D9 /* ESTypeIntegerRange.swift */,
-				C23D9F3120CB924E0082C3D9 /* ESTypeFloatRange.swift */,
-				C23D9F3520CB92500082C3D9 /* ESTypeLongRange.swift */,
-				C23D9F3820CB92510082C3D9 /* ESTypeDoubleRange.swift */,
-				C23D9F3020CB924E0082C3D9 /* ESTypeDateRange.swift */,
-				C23D9F2F20CB924D0082C3D9 /* ESTypeObject.swift */,
-				C23D9F2C20CB924C0082C3D9 /* ESTypeNested.swift */,
-				C23D9F3620CB92500082C3D9 /* ESTypeGeoPoint.swift */,
-				C23D9F2E20CB924D0082C3D9 /* ESTypeGeoShape.swift */,
-				C23D9F3220CB924E0082C3D9 /* ESTypeIPAddress.swift */,
-				C21D6B6E20CD181C00ED81B6 /* ESTypeCompletionSuggester.swift */,
-				C21D6B7020CD183700ED81B6 /* ESTypeTokenCount.swift */,
-				C21D6B7220CD186000ED81B6 /* ESTypePercolator.swift */,
-				C21D6B7420CD187F00ED81B6 /* ESTypeJoin.swift */,
+				C2D5F61B20C413E8006AAF04 /* Mappable.swift */,
+				C21D6B7C20CED04C00ED81B6 /* AnyMap.swift */,
+				C2D5F61D20C41A3A006AAF04 /* MapText.swift */,
+				C23D9F1820CB8B6B0082C3D9 /* MapKeyword.swift */,
+				C23D9F1B20CB8D160082C3D9 /* MapLong.swift */,
+				C23D9F1D20CB8EB50082C3D9 /* MapInteger.swift */,
+				C23D9F1F20CB8F180082C3D9 /* MapShort.swift */,
+				C23D9F2120CB8F2A0082C3D9 /* MapByte.swift */,
+				C23D9F2320CB8FD10082C3D9 /* MapDouble.swift */,
+				C23D9F2520CB8FE00082C3D9 /* MapFloat.swift */,
+				C23D9F2720CB903B0082C3D9 /* MapHalfFloat.swift */,
+				C23D9F2920CB90480082C3D9 /* MapScaledFloat.swift */,
+				C23D9F2D20CB924D0082C3D9 /* MapDate.swift */,
+				C23D9F2B20CB924C0082C3D9 /* MapBoolean.swift */,
+				C23D9F3420CB924F0082C3D9 /* MapBinary.swift */,
+				C23D9F3720CB92510082C3D9 /* MapIntegerRange.swift */,
+				C23D9F3120CB924E0082C3D9 /* MapFloatRange.swift */,
+				C23D9F3520CB92500082C3D9 /* MapLongRange.swift */,
+				C23D9F3820CB92510082C3D9 /* MapDoubleRange.swift */,
+				C23D9F3020CB924E0082C3D9 /* MapDateRange.swift */,
+				C23D9F2F20CB924D0082C3D9 /* MapObject.swift */,
+				C23D9F2C20CB924C0082C3D9 /* MapNested.swift */,
+				C23D9F3620CB92500082C3D9 /* MapGeoPoint.swift */,
+				C23D9F2E20CB924D0082C3D9 /* MapGeoShape.swift */,
+				C23D9F3220CB924E0082C3D9 /* IPAddress.swift */,
+				C21D6B6E20CD181C00ED81B6 /* MapCompletionSuggester.swift */,
+				C21D6B7020CD183700ED81B6 /* MapTokenCount.swift */,
+				C21D6B7220CD186000ED81B6 /* MapPercolator.swift */,
+				C21D6B7420CD187F00ED81B6 /* MapJoin.swift */,
 			);
 			path = Index;
 			sourceTree = "<group>";
@@ -4317,86 +4317,86 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				C21D6B8E20CF13E500ED81B6 /* ESTypeGeoShape.swift in Sources */,
+				C21D6B8E20CF13E500ED81B6 /* MapGeoShape.swift in Sources */,
 				C2254DE020D1B43000AF7D52 /* IndexResponse.swift in Sources */,
-				C23D9F2020CB8F180082C3D9 /* ESTypeShort.swift in Sources */,
+				C23D9F2020CB8F180082C3D9 /* MapShort.swift in Sources */,
 				C21D6B6220CC842A00ED81B6 /* Prefix.swift in Sources */,
 				C21D6B6920CC842A00ED81B6 /* Exists.swift in Sources */,
 				C2CF0CA920D4980100191480 /* SpanTerm.swift in Sources */,
 				C21D6B5F20CC842A00ED81B6 /* BoolQuery.swift in Sources */,
 				C248179720C1151C00E4570F /* Exports.swift in Sources */,
-				C21D6B8D20CF13E500ED81B6 /* ESTypeGeoPoint.swift in Sources */,
+				C21D6B8D20CF13E500ED81B6 /* MapGeoPoint.swift in Sources */,
 				C21D6B5C20CC842A00ED81B6 /* Match.swift in Sources */,
 				C21D6B5A20CC842A00ED81B6 /* Fuzzy.swift in Sources */,
 				OBJ_620 /* ElasticsearchClient+connect.swift in Sources */,
 				C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */,
-				C2D5F61C20C413E8006AAF04 /* ESType.swift in Sources */,
-				C21D6B7F20CF13E500ED81B6 /* ESTypeDouble.swift in Sources */,
-				C21D6B8120CF13E500ED81B6 /* ESTypeHalfFloat.swift in Sources */,
+				C2D5F61C20C413E8006AAF04 /* Mappable.swift in Sources */,
+				C21D6B7F20CF13E500ED81B6 /* MapDouble.swift in Sources */,
+				C21D6B8120CF13E500ED81B6 /* MapHalfFloat.swift in Sources */,
 				C2AC1D5020D08E4D00493FF5 /* AvgAggregation.swift in Sources */,
 				OBJ_621 /* ElasticsearchClient.swift in Sources */,
-				C23D9F1C20CB8D160082C3D9 /* ESTypeLong.swift in Sources */,
+				C23D9F1C20CB8D160082C3D9 /* MapLong.swift in Sources */,
 				C21D6B6120CC842A00ED81B6 /* MatchPhrase.swift in Sources */,
 				C2254E0D20D2528200AF7D52 /* AnyAggregationResponse.swift in Sources */,
 				C2254DCE20D162BB00AF7D52 /* TermsAggregation.swift in Sources */,
 				C2FD539C20D3916F00427E8F /* AggregationGeoCentroidResponse.swift in Sources */,
-				C21D6B8520CF13E500ED81B6 /* ESTypeBinary.swift in Sources */,
+				C21D6B8520CF13E500ED81B6 /* MapBinary.swift in Sources */,
 				C2AC1D5A20D0A7D600493FF5 /* CardinalityAggregation.swift in Sources */,
-				C21D6B8020CF13E500ED81B6 /* ESTypeFloat.swift in Sources */,
+				C21D6B8020CF13E500ED81B6 /* MapFloat.swift in Sources */,
 				C2CF0CA720D48D6600191480 /* Script.swift in Sources */,
 				C21D6B6420CC842A00ED81B6 /* MatchAll.swift in Sources */,
-				C21D6B8B20CF13E500ED81B6 /* ESTypeObject.swift in Sources */,
+				C21D6B8B20CF13E500ED81B6 /* MapObject.swift in Sources */,
 				C21D6B5D20CC842A00ED81B6 /* Regexp.swift in Sources */,
 				C21D6B6020CC842A00ED81B6 /* Query.swift in Sources */,
 				C21D6B9520CF18F200ED81B6 /* AnyQuery.swift in Sources */,
 				C2AC1D5220D08F0100493FF5 /* AnyAggregation.swift in Sources */,
 				C21D6B9720CF904900ED81B6 /* SearchContainer.swift in Sources */,
-				C2D5F61E20C41A3A006AAF04 /* ESTypeText.swift in Sources */,
+				C2D5F61E20C41A3A006AAF04 /* MapText.swift in Sources */,
 				C248179620C1151C00E4570F /* ElasticsearchError.swift in Sources */,
 				C2CF0CA320D489AF00191480 /* CommonTerms.swift in Sources */,
 				C21D6B6A20CC842A00ED81B6 /* Wildcard.swift in Sources */,
-				C21D6B7E20CF13E500ED81B6 /* ESTypeByte.swift in Sources */,
-				C21D6B8720CF13E500ED81B6 /* ESTypeFloatRange.swift in Sources */,
+				C21D6B7E20CF13E500ED81B6 /* MapByte.swift in Sources */,
+				C21D6B8720CF13E500ED81B6 /* MapFloatRange.swift in Sources */,
 				C2CF0CAE20D4DE7E00191480 /* AnySpanQuery.swift in Sources */,
 				C2254DD920D1B2BC00AF7D52 /* ValueCountAggregation.swift in Sources */,
-				C23D9F1A20CB8BFE0082C3D9 /* ESTypeKeyword.swift in Sources */,
+				C23D9F1A20CB8BFE0082C3D9 /* MapKeyword.swift in Sources */,
 				C2254DDE20D1B41300AF7D52 /* DocResponse.swift in Sources */,
 				C2FD539A20D3906300427E8F /* AggregationGeoBoundsResponse.swift in Sources */,
 				C21D6B6820CC842A00ED81B6 /* Terms.swift in Sources */,
 				C21D6B6320CC842A00ED81B6 /* MatchNone.swift in Sources */,
-				C23D9F1E20CB8EB50082C3D9 /* ESTypeInteger.swift in Sources */,
+				C23D9F1E20CB8EB50082C3D9 /* MapInteger.swift in Sources */,
 				C21D6B4720CC675700ED81B6 /* SearchResponse.swift in Sources */,
 				C2AC1D6020D0AB4000493FF5 /* GeoCentroidAggregation.swift in Sources */,
 				C21D6B6620CC842A00ED81B6 /* Range.swift in Sources */,
 				C2254DD320D1B03500AF7D52 /* StatsAggregation.swift in Sources */,
-				C21D6B8C20CF13E500ED81B6 /* ESTypeNested.swift in Sources */,
-				C21D6B8A20CF13E500ED81B6 /* ESTypeDateRange.swift in Sources */,
-				C21D6B9120CF13E500ED81B6 /* ESTypeTokenCount.swift in Sources */,
+				C21D6B8C20CF13E500ED81B6 /* MapNested.swift in Sources */,
+				C21D6B8A20CF13E500ED81B6 /* MapDateRange.swift in Sources */,
+				C21D6B9120CF13E500ED81B6 /* MapTokenCount.swift in Sources */,
 				C2254DD720D1B16E00AF7D52 /* TopHitsAggregation.swift in Sources */,
-				C21D6B9320CF13E500ED81B6 /* ESTypeJoin.swift in Sources */,
+				C21D6B9320CF13E500ED81B6 /* MapJoin.swift in Sources */,
 				C2CF0CA120D47CC900191480 /* MatchPhrasePrefix.swift in Sources */,
 				C2254E0F20D2530D00AF7D52 /* AggregationResponse.swift in Sources */,
 				C2AC1D5E20D0AA7000493FF5 /* GeoBoundsAggregation.swift in Sources */,
 				C2AC58D720D3950000AE989F /* AggregationTermsResponse.swift in Sources */,
-				C21D6B8F20CF13E500ED81B6 /* ESTypeIPAddress.swift in Sources */,
+				C21D6B8F20CF13E500ED81B6 /* IPAddress.swift in Sources */,
 				C2FD539E20D3922400427E8F /* AggregationStatsResponse.swift in Sources */,
 				C2AC1D5C20D0A9AA00493FF5 /* ExtendedStatsAggregation.swift in Sources */,
 				C2AC1D5420D08F2600493FF5 /* Aggregation.swift in Sources */,
-				C21D6B7D20CED04C00ED81B6 /* AnyESType.swift in Sources */,
+				C21D6B7D20CED04C00ED81B6 /* AnyMap.swift in Sources */,
 				C2CF0CA520D48D0000191480 /* ScriptQuery.swift in Sources */,
 				C23D9F4820CC31C70082C3D9 /* DynamicKey.swift in Sources */,
 				C2254DD520D1B0B100AF7D52 /* SumAggregation.swift in Sources */,
 				C248179920C11A6900E4570F /* ElasticsearchClient+CRUD.swift in Sources */,
 				C21D6B5E20CC842A00ED81B6 /* MultiMatch.swift in Sources */,
-				C21D6B9020CF13E500ED81B6 /* ESTypeCompletionSuggester.swift in Sources */,
-				C21D6B8820CF13E500ED81B6 /* ESTypeLongRange.swift in Sources */,
-				C21D6B9220CF13E500ED81B6 /* ESTypePercolator.swift in Sources */,
+				C21D6B9020CF13E500ED81B6 /* MapCompletionSuggester.swift in Sources */,
+				C21D6B8820CF13E500ED81B6 /* MapLongRange.swift in Sources */,
+				C21D6B9220CF13E500ED81B6 /* MapPercolator.swift in Sources */,
 				C2CF0C9F20D46DDF00191480 /* Decoder+AggregationUserInfo.swift in Sources */,
 				C21D6B5B20CC842A00ED81B6 /* IDs.swift in Sources */,
-				C21D6B8220CF13E500ED81B6 /* ESTypeScaledFloat.swift in Sources */,
+				C21D6B8220CF13E500ED81B6 /* MapScaledFloat.swift in Sources */,
 				C23D9F1520C9C67C0082C3D9 /* ElasticsearchIndex.swift in Sources */,
 				C21D6B6720CC842A00ED81B6 /* Term.swift in Sources */,
-				C21D6B8620CF13E500ED81B6 /* ESTypeIntegerRange.swift in Sources */,
+				C21D6B8620CF13E500ED81B6 /* MapIntegerRange.swift in Sources */,
 				C248178F20C113E000E4570F /* ElasticsearchClientConfig.swift in Sources */,
 				C2AC1D6220D0AC6700493FF5 /* MaxAggregation.swift in Sources */,
 				OBJ_622 /* ElasticsearchDatabase.swift in Sources */,
@@ -4404,11 +4404,11 @@
 				C2FD539820D38DC500427E8F /* AggregationExtendedStatsResponse.swift in Sources */,
 				C2CF0CB320D4E28100191480 /* SpanFirst.swift in Sources */,
 				C2254E1120D2630100AF7D52 /* AggregationSingleValueResponse.swift in Sources */,
-				C21D6B8920CF13E500ED81B6 /* ESTypeDoubleRange.swift in Sources */,
+				C21D6B8920CF13E500ED81B6 /* MapDoubleRange.swift in Sources */,
 				C2AC1D6420D0ACC700493FF5 /* MinAggregation.swift in Sources */,
-				C21D6B8320CF13E500ED81B6 /* ESTypeDate.swift in Sources */,
+				C21D6B8320CF13E500ED81B6 /* MapDate.swift in Sources */,
 				C248179020C113E000E4570F /* ElasticsearchProvider.swift in Sources */,
-				C21D6B8420CF13E500ED81B6 /* ESTypeBoolean.swift in Sources */,
+				C21D6B8420CF13E500ED81B6 /* MapBoolean.swift in Sources */,
 				C21D6B6D20CC861800ED81B6 /* ElasticsearchClient+Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
