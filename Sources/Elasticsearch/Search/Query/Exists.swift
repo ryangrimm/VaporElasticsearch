@@ -1,8 +1,10 @@
 import Foundation
 
 public struct Exists: QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.exists
 
+    /// :nodoc:
     public var codingKey = "exists"
 
     let field: String

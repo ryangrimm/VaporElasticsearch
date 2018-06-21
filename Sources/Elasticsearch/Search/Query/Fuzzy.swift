@@ -1,8 +1,10 @@
 import Foundation
 
 public struct Fuzzy: QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.fuzzy
 
+    /// :nodoc:
     public var codingKey = "fuzzy"
 
     let key: String
@@ -44,6 +46,7 @@ public struct Fuzzy: QueryElement {
         }
     }
 
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         let inner = Fuzzy.Inner(
@@ -57,6 +60,7 @@ public struct Fuzzy: QueryElement {
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first

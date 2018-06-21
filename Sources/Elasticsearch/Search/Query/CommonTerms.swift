@@ -1,8 +1,10 @@
 import Foundation
 
 public struct CommonTerms: QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.commonTerms
     
+    /// :nodoc:
     public var codingKey = "common"
     
     let key: String
@@ -26,6 +28,7 @@ public struct CommonTerms: QueryElement {
         let minimumShouldMatch: Int?
     }
     
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         
@@ -33,6 +36,7 @@ public struct CommonTerms: QueryElement {
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first

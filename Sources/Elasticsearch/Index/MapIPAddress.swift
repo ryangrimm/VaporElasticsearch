@@ -7,7 +7,7 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct IPAddress: Mappable {
+public struct MapIPAddress: Mappable {
     static var typeKey = MapType.ipAddress
 
     let type = "ip"

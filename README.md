@@ -1,8 +1,30 @@
 # A Vapor/Swift Elasticsearch Client
 
+The goal of this project is to provide a comprehensive yet easy to use
+Elasticsearch client for Swift. The Vapor server side framework has a large
+community around it so integrating with Vapor was a logical first step.  That
+said, this library should be very easy to port to another framework (Perfect,
+Kitura) or even use by itself for command line utilities and other such
+purposes.
+
+Main priorities are to provide index management (field mapping, settings,
+tokenizers and analyzers), CRUD support and search results with support for
+aggregations. Currently these goals are all being met on some level.
+
+## High Level Features
+
+* Support for creating, updating, requesting and deletion of documents
+* High level construction of the Elasticsearch Query DSL
+* Execution of constructed search queries
+* Execution of many types of aggregations (more are implemented regurally)
+* Population of object models when fetching a document and search results (via Swift Codable support)
+* Automatic seralization of object models to Elasticsearch (via Swift Codable support)
+* Ability to specify the mapping for index creation
+
+
 ## Issues/Questions
 
-* It's very common for someone to have an "id" for each document. Sometimes
+* Every document has an id and frequently that id is exposed via an API. Sometimes
   this id is computed externally from ES, sometimes the internally generated
   ids are used. Currently the Codable setup knows nothing of ids and since they
   are held outside of the document source there is not automatic solution for
@@ -45,6 +67,6 @@
 
 * Documentation 
 * More unit tests
-	* Need tests for encoding/decoding round trips of the ES types
+	* Need tests for encoding/decoding round trips of the Map types
 * Resolve existing XXX's
 * Lots more can be done

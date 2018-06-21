@@ -1,8 +1,10 @@
 import Foundation
 
 public struct Match: QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.match
 
+    /// :nodoc:
     public var codingKey = "match"
 
     let key: String
@@ -34,6 +36,7 @@ public struct Match: QueryElement {
         }
     }
 
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         let inner = Match.Inner(value: value, operator: `operator`, fuzziness: fuzziness)
@@ -41,6 +44,7 @@ public struct Match: QueryElement {
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first

@@ -1,25 +1,59 @@
 
 import Foundation
 
+/**
+ A multi-bucket value source based aggregation where buckets are dynamically built - one per unique value.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html)
+*/
 public struct TermsAggregation: Aggregation {
+    /// :nodoc:
     public static var typeKey = AggregationResponseMap.terms
     
+    /// :nodoc:
     public var codingKey = "terms"
+    
+    /// :nodoc:
     public var name: String
     
-    let field: String?
-    let size: Int?
-    let showTermDocCountError: Bool?
-    let order: [String: OrderDirection]?
-    let minDocCount: Int?
-    let script: Script?
-    let include: String?
-    let exclude: String?
-    let includeExact: [String]?
-    let excludeExact: [String]?
-    let collectMode: CollectMode?
-    let executionHint: ExecutionHint?
-    let missing: Int?
+    /// :nodoc:
+    public let field: String?
+    
+    /// :nodoc:
+    public let size: Int?
+    
+    /// :nodoc:
+    public let showTermDocCountError: Bool?
+    
+    /// :nodoc:
+    public let order: [String: OrderDirection]?
+    
+    /// :nodoc:
+    public let minDocCount: Int?
+    
+    /// :nodoc:
+    public let script: Script?
+    
+    /// :nodoc:
+    public let include: String?
+    
+    /// :nodoc:
+    public let exclude: String?
+    
+    /// :nodoc:
+    public let includeExact: [String]?
+    
+    /// :nodoc:
+    public let excludeExact: [String]?
+    
+    /// :nodoc:
+    public let collectMode: CollectMode?
+    
+    /// :nodoc:
+    public let executionHint: ExecutionHint?
+    
+    /// :nodoc:
+    public let missing: Int?
     
     enum CodingKeys: String, CodingKey {
         case field
@@ -114,6 +148,7 @@ public struct TermsAggregation: Aggregation {
         case depthFirst = "depth_first"
     }
     
+    /// :nodoc:
     public enum ExecutionHint: String, Encodable {
         case map
         case globalOrdinals = "global_ordinals"

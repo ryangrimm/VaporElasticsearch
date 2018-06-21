@@ -59,7 +59,7 @@
 		C21D6B8C20CF13E500ED81B6 /* MapNested.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2C20CB924C0082C3D9 /* MapNested.swift */; };
 		C21D6B8D20CF13E500ED81B6 /* MapGeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3620CB92500082C3D9 /* MapGeoPoint.swift */; };
 		C21D6B8E20CF13E500ED81B6 /* MapGeoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F2E20CB924D0082C3D9 /* MapGeoShape.swift */; };
-		C21D6B8F20CF13E500ED81B6 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3220CB924E0082C3D9 /* IPAddress.swift */; };
+		C21D6B8F20CF13E500ED81B6 /* MapIPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D9F3220CB924E0082C3D9 /* MapIPAddress.swift */; };
 		C21D6B9020CF13E500ED81B6 /* MapCompletionSuggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B6E20CD181C00ED81B6 /* MapCompletionSuggester.swift */; };
 		C21D6B9120CF13E500ED81B6 /* MapTokenCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7020CD183700ED81B6 /* MapTokenCount.swift */; };
 		C21D6B9220CF13E500ED81B6 /* MapPercolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D6B7220CD186000ED81B6 /* MapPercolator.swift */; };
@@ -1663,7 +1663,7 @@
 		C23D9F2F20CB924D0082C3D9 /* MapObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapObject.swift; sourceTree = "<group>"; };
 		C23D9F3020CB924E0082C3D9 /* MapDateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDateRange.swift; sourceTree = "<group>"; };
 		C23D9F3120CB924E0082C3D9 /* MapFloatRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFloatRange.swift; sourceTree = "<group>"; };
-		C23D9F3220CB924E0082C3D9 /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
+		C23D9F3220CB924E0082C3D9 /* MapIPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapIPAddress.swift; sourceTree = "<group>"; };
 		C23D9F3420CB924F0082C3D9 /* MapBinary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapBinary.swift; sourceTree = "<group>"; };
 		C23D9F3520CB92500082C3D9 /* MapLongRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLongRange.swift; sourceTree = "<group>"; };
 		C23D9F3620CB92500082C3D9 /* MapGeoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGeoPoint.swift; sourceTree = "<group>"; };
@@ -2380,7 +2380,7 @@
 				C23D9F2C20CB924C0082C3D9 /* MapNested.swift */,
 				C23D9F3620CB92500082C3D9 /* MapGeoPoint.swift */,
 				C23D9F2E20CB924D0082C3D9 /* MapGeoShape.swift */,
-				C23D9F3220CB924E0082C3D9 /* IPAddress.swift */,
+				C23D9F3220CB924E0082C3D9 /* MapIPAddress.swift */,
 				C21D6B6E20CD181C00ED81B6 /* MapCompletionSuggester.swift */,
 				C21D6B7020CD183700ED81B6 /* MapTokenCount.swift */,
 				C21D6B7220CD186000ED81B6 /* MapPercolator.swift */,
@@ -4378,7 +4378,7 @@
 				C2254E0F20D2530D00AF7D52 /* AggregationResponse.swift in Sources */,
 				C2AC1D5E20D0AA7000493FF5 /* GeoBoundsAggregation.swift in Sources */,
 				C2AC58D720D3950000AE989F /* AggregationTermsResponse.swift in Sources */,
-				C21D6B8F20CF13E500ED81B6 /* IPAddress.swift in Sources */,
+				C21D6B8F20CF13E500ED81B6 /* MapIPAddress.swift in Sources */,
 				C2FD539E20D3922400427E8F /* AggregationStatsResponse.swift in Sources */,
 				C2AC1D5C20D0A9AA00493FF5 /* ExtendedStatsAggregation.swift in Sources */,
 				C2AC1D5420D08F2600493FF5 /* Aggregation.swift in Sources */,

@@ -1,8 +1,10 @@
 import Foundation
 
 public struct BoolQuery: QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.boolQuery
 
+    /// :nodoc:
     public var codingKey = "bool"
 
     public var must: [QueryElement]?
@@ -37,6 +39,7 @@ public struct BoolQuery: QueryElement {
         case boost
     }
     
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         if must != nil {
@@ -72,6 +75,7 @@ public struct BoolQuery: QueryElement {
         try container.encodeIfPresent(boost, forKey: .boost)
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: DynamicKey.self)

@@ -2,7 +2,16 @@ import Async
 import HTTP
 
 extension ElasticsearchClient {
-    /// Connects to a Elasticsearch server over HTTP(S).
+    /// Connects to a Elasticsearch server over HTTP.
+    ///
+    /// - Parameters:
+    ///   - hostname: Hostname for the server
+    ///   - port: Port for the server
+    ///   - username: currently unused
+    ///   - password: currently unused
+    ///   - worker: The worker to execute with
+    ///   - onError: Error callback
+    /// - Returns: An ElasticsearchClient Future
     public static func connect(
         hostname: String = "localhost",
         port: Int = 9200,

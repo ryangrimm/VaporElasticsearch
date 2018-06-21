@@ -1,8 +1,10 @@
 import Foundation
 
 public struct Terms: QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.terms
 
+    /// :nodoc:
     public var codingKey = "terms"
 
     let key: String
@@ -13,12 +15,14 @@ public struct Terms: QueryElement {
         self.values = values
     }
 
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
 
         try container.encode(values, forKey: DynamicKey(stringValue: key)!)
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first

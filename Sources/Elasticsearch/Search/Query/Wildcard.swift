@@ -1,8 +1,10 @@
 import Foundation
 
 public struct Wildcard: QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.wildcard
 
+    /// :nodoc:
     public var codingKey = "wildcard"
 
     let key: String
@@ -20,6 +22,7 @@ public struct Wildcard: QueryElement {
         let boost: Decimal?
     }
 
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         let inner = Wildcard.Inner(value: value, boost: boost)
@@ -27,6 +30,7 @@ public struct Wildcard: QueryElement {
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first

@@ -74,7 +74,7 @@ enum MapType: String, Codable {
         case .geoShape:
             return MapGeoShape.self
         case .ipAddress:
-            return IPAddress.self
+            return MapIPAddress.self
         case .completionSuggester:
             return MapCompletionSuggester.self
         case .tokenCount:

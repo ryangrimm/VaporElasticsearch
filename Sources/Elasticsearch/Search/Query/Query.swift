@@ -18,12 +18,14 @@ public struct Query: Codable {
         self.query = query
     }
 
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
 
         try container.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first

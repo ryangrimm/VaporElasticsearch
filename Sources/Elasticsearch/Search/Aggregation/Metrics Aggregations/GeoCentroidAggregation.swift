@@ -1,13 +1,24 @@
 
 import Foundation
 
+/**
+ A metric aggregation that computes the weighted centroid from all coordinate
+ values for a Geo-point datatype field.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-geocentroid-aggregation.html)
+ */
 public struct GeoCentroidAggregation: Aggregation {
+    /// :nodoc:
     public static var typeKey = AggregationResponseMap.geoCentroid
     
+    /// :nodoc:
     public var codingKey = "geo_centroid"
+    
+    /// :nodoc:
     public var name: String
-
-    let field: String?
+    
+    /// :nodoc:
+    public let field: String?
     
     enum CodingKeys: String, CodingKey {
         case field
@@ -26,6 +37,7 @@ public struct GeoCentroidAggregation: Aggregation {
         self.field = field
     }
     
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: codingKey)!)

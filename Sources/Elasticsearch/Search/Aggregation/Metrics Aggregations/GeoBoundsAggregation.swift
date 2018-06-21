@@ -1,14 +1,26 @@
 
 import Foundation
 
+/**
+ A metric aggregation that computes the bounding box containing all geo_point values for a field.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-geobounds-aggregation.html)
+ */
 public struct GeoBoundsAggregation: Aggregation {
+    /// :nodoc:
     public static var typeKey = AggregationResponseMap.geoBounds
     
+    /// :nodoc:
     public var codingKey = "geo_bounds"
+    
+    /// :nodoc:
     public var name: String
-
-    let field: String?
-    let wrapLongitude: Bool?
+    
+    /// :nodoc:
+    public let field: String?
+    
+    /// :nodoc:
+    public let wrapLongitude: Bool?
     
     enum CodingKeys: String, CodingKey {
         case field
@@ -31,6 +43,7 @@ public struct GeoBoundsAggregation: Aggregation {
         self.wrapLongitude = wrapLongitude
     }
     
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: codingKey)!)

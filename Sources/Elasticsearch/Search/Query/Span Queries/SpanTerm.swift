@@ -1,8 +1,10 @@
 import Foundation
 
 public struct SpanTerm: SpanQuery, QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.spanTerm
     
+    /// :nodoc:
     public var codingKey = "span_term"
     
     let key: String
@@ -25,6 +27,7 @@ public struct SpanTerm: SpanQuery, QueryElement {
         }
     }
     
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         let inner = SpanTerm.Inner(term: term, boost: boost)
@@ -32,6 +35,7 @@ public struct SpanTerm: SpanQuery, QueryElement {
         try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first

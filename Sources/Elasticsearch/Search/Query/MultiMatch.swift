@@ -1,8 +1,10 @@
 import Foundation
 
 public struct MultiMatch: QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.multiMatch
 
+    /// :nodoc:
     public var codingKey = "multi_match"
 
     let value: String

@@ -1,8 +1,10 @@
 import Foundation
 
 public struct IDs: QueryElement {
+    /// :nodoc:
     public static var typeKey = QueryElementMap.ids
 
+    /// :nodoc:
     public var codingKey = "ids"
 
     let values: [String]
