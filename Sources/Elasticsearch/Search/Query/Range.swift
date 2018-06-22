@@ -1,5 +1,13 @@
 import Foundation
 
+/**
+ Matches documents with fields that have terms within a certain range. The type
+ of the Lucene query depends on the field type, for string fields, the
+ TermRangeQuery, while for number/date fields, the query is a
+ NumericRangeQuery.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-range-query.html)
+ */
 public struct Range: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.range

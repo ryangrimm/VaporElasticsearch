@@ -36,6 +36,7 @@ public struct Script: Codable {
         self.params = params
     }
     
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
@@ -72,6 +73,7 @@ public struct Script: Codable {
         }
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         

@@ -1,5 +1,10 @@
 import Foundation
 
+/**
+ A query allowing to define scripts as queries. They are typically used in a filter context.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-script-query.html)
+ */
 public struct ScriptQuery: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.script

@@ -1,5 +1,13 @@
 import Foundation
 
+/**
+ The fuzzy query uses similarity based on Levenshtein edit distance. The fuzzy
+ query generates all possible matching terms that are within the maximum edit
+ distance specified in fuzziness and then checks the term dictionary to find
+ out which of those generated terms actually exist in the index.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html)
+ */
 public struct Fuzzy: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.fuzzy

@@ -1,5 +1,10 @@
 import Foundation
 
+/**
+ The most simple query, which matches all documents, giving them all a score of 1.0
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html)
+ */
 public struct MatchAll: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.matchAll

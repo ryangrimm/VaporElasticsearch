@@ -1,5 +1,10 @@
 import Foundation
 
+/**
+ The `Term` query finds documents that contain the exact term specified in the inverted index.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-term-query.html)
+ */
 public struct Term: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.term

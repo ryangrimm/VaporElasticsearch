@@ -1,5 +1,12 @@
 import Foundation
 
+/**
+ The common terms query is a modern alternative to stopwords which improves the
+ precision and recall of search results (by taking stopwords into account),
+ without sacrificing performance.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-common-terms-query.html)
+ */
 public struct CommonTerms: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.commonTerms

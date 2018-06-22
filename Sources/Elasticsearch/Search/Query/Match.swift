@@ -1,5 +1,20 @@
 import Foundation
 
+/**
+ Match queries accept text/numerics/dates, analyzes them, and constructs a query.
+
+ The match query is of type boolean. It means that the text provided is
+ analyzed and the analysis process constructs a boolean query from the provided
+ text. The operator flag can be set to or or and to control the boolean clauses
+ (defaults to or). The minimum number of optional should clauses to match can
+ be set using the minimumShouldMatch parameter.
+
+ The analyzer can be set to control which analyzer will perform the analysis
+ process on the text. It defaults to the field explicit mapping definition, or
+ the default search analyzer.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html)
+ */
 public struct Match: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.match

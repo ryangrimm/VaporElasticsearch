@@ -1,5 +1,10 @@
 import Foundation
 
+/**
+ Filters documents that have fields that match any of the provided terms (not analyzed).
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-terms-query.html)
+ */
 public struct Terms: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.terms

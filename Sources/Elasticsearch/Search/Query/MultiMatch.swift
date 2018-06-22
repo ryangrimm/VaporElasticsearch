@@ -1,5 +1,10 @@
 import Foundation
 
+/**
+ The `MultiMatch` query builds on the `MatchQuery` to allow multi-field queries.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-multi-match-query.html)
+ */
 public struct MultiMatch: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.multiMatch

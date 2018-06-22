@@ -1,5 +1,10 @@
 import Foundation
 
+/**
+ The `MatchPhrasePrefix` is the same as match_phrase, except that it allows for prefix matches on the last term in the text.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-match-query-phrase-prefix.html)
+ */
 public struct MatchPhrasePrefix: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.matchPhrase

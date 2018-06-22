@@ -1,5 +1,10 @@
 import Foundation
 
+/**
+ The `MatchPhrase` query analyzes the text and creates a phrase query out of the analyzed text.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-match-query-phrase.html)
+ */
 public struct MatchPhrase: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.matchPhrase

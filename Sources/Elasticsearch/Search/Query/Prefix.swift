@@ -1,5 +1,11 @@
 import Foundation
 
+/**
+ Matches documents that have fields containing terms with a specified prefix
+ (not analyzed). The prefix query maps to Lucene PrefixQuery.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-prefix-query.html)
+ */
 public struct Prefix: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.prefix

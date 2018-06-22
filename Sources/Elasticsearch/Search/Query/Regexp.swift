@@ -1,5 +1,20 @@
 import Foundation
 
+/**
+ The regexp query allows you to use regular expression term queries. See
+ Regular expression syntax for details of the supported regular expression
+ language. The "term queries" in that first sentence means that Elasticsearch
+ will apply the regexp to the terms produced by the tokenizer for that field,
+ and not to the original text of the field.
+
+ Note: The performance of a regexp query heavily depends on the regular
+ expression chosen. Matching everything like .* is very slow as well as using
+ lookaround regular expressions. If possible, you should try to use a long
+ prefix before your regular expression starts. Wildcard matchers like .*?+ will
+ mostly lower performance.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-regexp-query.html)
+ */
 public struct Regexp: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.regexp
