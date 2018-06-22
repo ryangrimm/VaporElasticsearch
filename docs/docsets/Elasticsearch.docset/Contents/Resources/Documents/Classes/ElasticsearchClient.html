@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ElasticsearchClient Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ElasticsearchClient" class="dashAnchor"></a>
+    <a title="ElasticsearchClient Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Elasticsearch Docs</a> (24% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Elasticsearch Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ElasticsearchClient Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Client.html">Client</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchClient.html">ElasticsearchClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchIndex.html">ElasticsearchIndex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchIndex.html#/s:13Elasticsearch0A5IndexC8SettingsV">– Settings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchDatabase.html">ElasticsearchDatabase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchProvider.html">ElasticsearchProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Query Constructors.html">Query Constructors</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BoolQuery.html">BoolQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CommonTerms.html">CommonTerms</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Exists.html">Exists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Fuzzy.html">Fuzzy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IDs.html">IDs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Match.html">Match</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MatchAll.html">MatchAll</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MatchNone.html">MatchNone</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MatchPhrase.html">MatchPhrase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MatchPhrasePrefix.html">MatchPhrasePrefix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MultiMatch.html">MultiMatch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MultiMatch/Kind.html">– Kind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Prefix.html">Prefix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Query.html">Query</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Range.html">Range</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Regexp.html">Regexp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ScriptQuery.html">ScriptQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Term.html">Term</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Terms.html">Terms</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Wildcard.html">Wildcard</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Query Constructors.html#/s:13Elasticsearch9SpanQueryP">SpanQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SpanTerm.html">SpanTerm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SpanFirst.html">SpanFirst</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Aggregation Constructors.html">Aggregation Constructors</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/MinAggregation.html">MinAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SumAggregation.html">SumAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StatsAggregation.html">StatsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MaxAggregation.html">MaxAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AvgAggregation.html">AvgAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/GeoCentroidAggregation.html">GeoCentroidAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/GeoBoundsAggregation.html">GeoBoundsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TopHitsAggregation.html">TopHitsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CardinalityAggregation.html">CardinalityAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ValueCountAggregation.html">ValueCountAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ExtendedStatsAggregation.html">ExtendedStatsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TermsAggregation.html">TermsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TermsAggregation/CollectMode.html">– CollectMode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Response Structures.html">Response Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationExtendedStatsResponse.html">AggregationExtendedStatsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationExtendedStatsResponse/StandardDeviationBounds.html">– StandardDeviationBounds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoBoundsResponse.html">AggregationGeoBoundsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoBoundsResponse/BoundsContainer.html">– BoundsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoBoundsResponse/BoundsPoint.html">– BoundsPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoCentroidResponse.html">AggregationGeoCentroidResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoCentroidResponse/BoundsPoint.html">– BoundsPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AggregationResponse.html">AggregationResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationSingleValueResponse.html">AggregationSingleValueResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationStatsResponse.html">AggregationStatsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationTermsResponse.html">AggregationTermsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Response Structures.html#/s:13Elasticsearch11DocResponseV">DocResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndexResponse.html">IndexResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndexResponse/Shards.html">– Shards</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndexResponse/ResultType.html">– ResultType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SearchResponse.html">SearchResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SearchResponse/Shards.html">– Shards</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SearchResponse/HitsContainer.html">– HitsContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Index Mapping.html">Index Mapping</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch9MapBinaryV">MapBinary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch10MapBooleanV">MapBoolean</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapByteV">MapByte</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch22MapCompletionSuggesterV">MapCompletionSuggester</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapDateV">MapDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch12MapDateRangeV">MapDateRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch9MapDoubleV">MapDouble</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch14MapDoubleRangeV">MapDoubleRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch8MapFloatV">MapFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch13MapFloatRangeV">MapFloatRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch11MapGeoPointV">MapGeoPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape.html">MapGeoShape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape/GeoShapePrefixTree.html">– GeoShapePrefixTree</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape/GeoShapePrecision.html">– GeoShapePrecision</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape/GeoShapeStrategy.html">– GeoShapeStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape/GeoShapeOrientation.html">– GeoShapeOrientation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch12MapHalfFloatV">MapHalfFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch12MapIPAddressV">MapIPAddress</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch10MapIntegerV">MapInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch15MapIntegerRangeV">MapIntegerRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapJoinV">MapJoin</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch10MapKeywordV">MapKeyword</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapLongV">MapLong</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch12MapLongRangeV">MapLongRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch9MapNestedV">MapNested</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch9MapObjectV">MapObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch13MapPercolatorV">MapPercolator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch14MapScaledFloatV">MapScaledFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch8MapShortV">MapShort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapTextV">MapText</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch13MapTokenCountV">MapTokenCount</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Supporting Structures.html">Supporting Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Operator.html">Operator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OrderDirection.html">OrderDirection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Supporting Structures.html#/s:13Elasticsearch9TextFieldV">TextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TextFieldType.html">TextFieldType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TermVector.html">TermVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SimilarityType.html">SimilarityType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TextIndexOptions.html">TextIndexOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationBucket.html">AggregationBucket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ElasticsearchClientConfig.html">ElasticsearchClientConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ElasticsearchError.html">ElasticsearchError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ElasticsearchIndexSettingsIndex.html">ElasticsearchIndexSettingsIndex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ElasticsearchIndexSettingsIndex.html#/s:13Elasticsearch0a13IndexSettingsB0V7VersionV">– Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Script.html">Script</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SearchContainer.html">SearchContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:13Elasticsearch12Aggregationsa">Aggregations</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:13Elasticsearch16SpanQueryElementa">SpanQueryElement</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ElasticsearchClient</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">ElasticsearchClient</span> <span class="p">:</span> <span class="kt">DatabaseConnection</span><span class="p">,</span> <span class="kt">BasicWorker</span></code></pre>
+
+                </div>
+              </div>
+            <p>A Elasticsearch client.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC9eventLoop3NIO05EventD0_pvp"></a>
+                    <a name="//apple_ref/swift/Property/eventLoop" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC9eventLoop3NIO05EventD0_pvp">eventLoop</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>See <code>BasicWorker</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">eventLoop</span><span class="p">:</span> <span class="kt">EventLoop</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC8isClosedSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isClosed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC8isClosedSbvp">isClosed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>See <code>DatabaseConnection</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isClosed</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC6extend7Service6ExtendVvp"></a>
+                    <a name="//apple_ref/swift/Property/extend" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC6extend7Service6ExtendVvp">extend</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>See <code>Extendable</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">extend</span><span class="p">:</span> <span class="kt">Extend</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC6worker3NIO14EventLoopGroup_pvp"></a>
+                    <a name="//apple_ref/swift/Property/worker" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC6worker3NIO14EventLoopGroup_pvp">worker</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">worker</span><span class="p">:</span> <span class="kt">Worker</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC5closeyyF"></a>
+                    <a name="//apple_ref/swift/Method/close()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC5closeyyF">close()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Closes this client.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">close</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC4send3NIO15EventLoopFutureCy10Foundation4DataVG8NIOHTTP110HTTPMethodO_SS2totKF"></a>
+                    <a name="//apple_ref/swift/Method/send(_:to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC4send3NIO15EventLoopFutureCy10Foundation4DataVG8NIOHTTP110HTTPMethodO_SS2totKF">send(_:to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HTTPMethod</span><span class="p">,</span>
+    <span class="n">to</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt">Data</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC4send3NIO15EventLoopFutureCy10Foundation4DataVG8NIOHTTP110HTTPMethodO_SS2tos10DictionaryVySSypG4withtKF"></a>
+                    <a name="//apple_ref/swift/Method/send(_:to:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC4send3NIO15EventLoopFutureCy10Foundation4DataVG8NIOHTTP110HTTPMethodO_SS2tos10DictionaryVySSypG4withtKF">send(_:to:with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HTTPMethod</span><span class="p">,</span>
+    <span class="n">to</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">with</span> <span class="nv">body</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Any</span><span class="o">&gt;</span>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt">Data</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC4send3NIO15EventLoopFutureCy10Foundation4DataVG8NIOHTTP110HTTPMethodO_SS2toAJ4withtKF"></a>
+                    <a name="//apple_ref/swift/Method/send(_:to:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC4send3NIO15EventLoopFutureCy10Foundation4DataVG8NIOHTTP110HTTPMethodO_SS2toAJ4withtKF">send(_:to:with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HTTPMethod</span><span class="p">,</span>
+    <span class="n">to</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">with</span> <span class="nv">body</span><span class="p">:</span> <span class="kt">Data</span>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt">Data</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC4send3NIO15EventLoopFutureCy10Foundation4DataVG4HTTP11HTTPRequestVKF"></a>
+                    <a name="//apple_ref/swift/Method/send(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC4send3NIO15EventLoopFutureCy10Foundation4DataVG4HTTP11HTTPRequestVKF">send(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">HTTPRequest</span>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt">Data</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC3get3NIO15EventLoopFutureCyAA11DocResponseVyxGGxm8decodeTo_SS5indexSS2idSS4typeSSSg7routingSiSg7versionSaySSGSg12storedFieldsSbSg8realtimetKAA0A5ModelRzlF"></a>
+                    <a name="//apple_ref/swift/Method/get(decodeTo:index:id:type:routing:version:storedFields:realtime:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC3get3NIO15EventLoopFutureCyAA11DocResponseVyxGGxm8decodeTo_SS5indexSS2idSS4typeSSSg7routingSiSg7versionSaySSGSg12storedFieldsSbSg8realtimetKAA0A5ModelRzlF">get(decodeTo:index:id:type:routing:version:storedFields:realtime:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets a document from Elasticsearch</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    ElasticsearchError
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="k">get</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">ElasticsearchModel</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">decodeTo</span> <span class="nv">resultType</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span>
+    <span class="nv">index</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"_doc"</span><span class="p">,</span>
+    <span class="nv">routing</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">version</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">storedFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">realtime</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt"><a href="../Response Structures.html#/s:13Elasticsearch11DocResponseV">DocResponse</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The model to decode the document into</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index to get the document from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document id</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>routing</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The routing information</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>version</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The version information</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>storedFields</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Only return the stored fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>realtime</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Fetch realtime results</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A Future DocResponse</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC5index3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SSADSSSg2idSS4typeAL7routingSiSg7versionSbSg11forceCreatetKAA0A5ModelRzlF"></a>
+                    <a name="//apple_ref/swift/Method/index(doc:index:id:type:routing:version:forceCreate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC5index3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SSADSSSg2idSS4typeAL7routingSiSg7versionSbSg11forceCreatetKAA0A5ModelRzlF">index(doc:index:id:type:routing:version:forceCreate:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Index (save) a document</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    ElasticsearchError
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">index</span><span class="o">&lt;</span><span class="kt">T</span> <span class="p">:</span><span class="kt">ElasticsearchModel</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="nv">doc</span> <span class="p">:</span><span class="kt">T</span><span class="p">,</span>
+    <span class="nv">index</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"_doc"</span><span class="p">,</span>
+    <span class="nv">routing</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">version</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">forceCreate</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/IndexResponse.html">IndexResponse</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>doc</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document to index (save)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index to put the document into</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The id for the document. If not provided, an id will be automatically generated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The docuemnt type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>routing</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Routing information for what node the document should be saved on</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>version</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Version information</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forceCreate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Force creation</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A Future IndexResponse</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC6update3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SS5indexSS2idSS4typeSSSg7routingSiSg7versiontKAA0A5ModelRzlF"></a>
+                    <a name="//apple_ref/swift/Method/update(doc:index:id:type:routing:version:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC6update3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SS5indexSS2idSS4typeSSSg7routingSiSg7versiontKAA0A5ModelRzlF">update(doc:index:id:type:routing:version:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the document stored at the given id with the given document</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    ElasticsearchError
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">update</span><span class="o">&lt;</span><span class="kt">T</span> <span class="p">:</span><span class="kt">ElasticsearchModel</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="nv">doc</span> <span class="p">:</span><span class="kt">T</span><span class="p">,</span>
+    <span class="nv">index</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"_doc"</span><span class="p">,</span>
+    <span class="nv">routing</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">version</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/IndexResponse.html">IndexResponse</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>doc</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document to update</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document index</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document id</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>routing</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Routing information</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>version</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Version information</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A Future IndexResponse</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC6delete3NIO15EventLoopFutureCyAA13IndexResponseVGSS5index_SS2idSS4typeSSSg7routingSiSg7versiontKF"></a>
+                    <a name="//apple_ref/swift/Method/delete(index:id:type:routing:version:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC6delete3NIO15EventLoopFutureCyAA13IndexResponseVGSS5index_SS2idSS4typeSSSg7routingSiSg7versiontKF">delete(index:id:type:routing:version:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete the document with the given id</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    ElasticsearchError
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span>
+    <span class="nv">index</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"_doc"</span><span class="p">,</span>
+    <span class="nv">routing</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">version</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/IndexResponse.html">IndexResponse</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document index</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document id</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The document type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>routing</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Routing information</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>version</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Version information</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A Future IndexResponse</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC6search3NIO15EventLoopFutureCyAA14SearchResponseVyxGGxm8decodeTo_SS5indexAA0H9ContainerV5querySS4typeSSSg7routingtKs9DecodableRzlF"></a>
+                    <a name="//apple_ref/swift/Method/search(decodeTo:index:query:type:routing:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC6search3NIO15EventLoopFutureCyAA14SearchResponseVyxGGxm8decodeTo_SS5indexAA0H9ContainerV5querySS4typeSSSg7routingtKs9DecodableRzlF">search(decodeTo:index:query:type:routing:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Execute a search in a given index</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    ElasticsearchError
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">search</span><span class="o">&lt;</span><span class="kt">U</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">decodeTo</span> <span class="nv">resultType</span><span class="p">:</span> <span class="kt">U</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span>
+    <span class="nv">index</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">query</span><span class="p">:</span> <span class="kt"><a href="../Structs/SearchContainer.html">SearchContainer</a></span><span class="p">,</span>
+    <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"_doc"</span><span class="p">,</span>
+    <span class="nv">routing</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SearchResponse.html">SearchResponse</a></span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A struct or class that conforms to the Decodable protocol and can properly decode the documents stored in the index</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index to execute the query against</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>query</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A SearchContainer object that specifies the query to execute</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index type (defaults to _doc)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>routing</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Routing information</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A Future SearchResponse</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC7connect3NIO15EventLoopFutureCyACGSS8hostname_Si4portSSSg8usernameAK8passwordAE0eF5Group_p2onys5Error_pc0mN0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/connect(hostname:port:username:password:on:onError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC7connect3NIO15EventLoopFutureCyACGSS8hostname_Si4portSSSg8usernameAK8passwordAE0eF5Group_p2onys5Error_pc0mN0tFZ">connect(hostname:port:username:password:on:onError:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Connects to a Elasticsearch server over HTTP.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">connect</span><span class="p">(</span>
+    <span class="nv">hostname</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="p">,</span>
+    <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">9200</span><span class="p">,</span>
+    <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">on</span> <span class="nv">worker</span><span class="p">:</span> <span class="kt">Worker</span><span class="p">,</span>
+    <span class="nv">onError</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt">ElasticsearchClient</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hostname</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Hostname for the server</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>port</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Port for the server</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>currently unused</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>password</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>currently unused</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>worker</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The worker to execute with</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onError</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error callback</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An ElasticsearchClient Future</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CommonTerms Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/CommonTerms" class="dashAnchor"></a>
+    <a title="CommonTerms Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Elasticsearch Docs</a> (24% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Elasticsearch Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CommonTerms Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Client.html">Client</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchClient.html">ElasticsearchClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchIndex.html">ElasticsearchIndex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchIndex.html#/s:13Elasticsearch0A5IndexC8SettingsV">– Settings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchDatabase.html">ElasticsearchDatabase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchProvider.html">ElasticsearchProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Query Constructors.html">Query Constructors</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BoolQuery.html">BoolQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CommonTerms.html">CommonTerms</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Exists.html">Exists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Fuzzy.html">Fuzzy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IDs.html">IDs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Match.html">Match</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MatchAll.html">MatchAll</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MatchNone.html">MatchNone</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MatchPhrase.html">MatchPhrase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MatchPhrasePrefix.html">MatchPhrasePrefix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MultiMatch.html">MultiMatch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MultiMatch/Kind.html">– Kind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Prefix.html">Prefix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Query.html">Query</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Range.html">Range</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Regexp.html">Regexp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ScriptQuery.html">ScriptQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Term.html">Term</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Terms.html">Terms</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Wildcard.html">Wildcard</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Query Constructors.html#/s:13Elasticsearch9SpanQueryP">SpanQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SpanTerm.html">SpanTerm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SpanFirst.html">SpanFirst</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Aggregation Constructors.html">Aggregation Constructors</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/MinAggregation.html">MinAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SumAggregation.html">SumAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StatsAggregation.html">StatsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MaxAggregation.html">MaxAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AvgAggregation.html">AvgAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/GeoCentroidAggregation.html">GeoCentroidAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/GeoBoundsAggregation.html">GeoBoundsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TopHitsAggregation.html">TopHitsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CardinalityAggregation.html">CardinalityAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ValueCountAggregation.html">ValueCountAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ExtendedStatsAggregation.html">ExtendedStatsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TermsAggregation.html">TermsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TermsAggregation/CollectMode.html">– CollectMode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Response Structures.html">Response Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationExtendedStatsResponse.html">AggregationExtendedStatsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationExtendedStatsResponse/StandardDeviationBounds.html">– StandardDeviationBounds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoBoundsResponse.html">AggregationGeoBoundsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoBoundsResponse/BoundsContainer.html">– BoundsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoBoundsResponse/BoundsPoint.html">– BoundsPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoCentroidResponse.html">AggregationGeoCentroidResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationGeoCentroidResponse/BoundsPoint.html">– BoundsPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AggregationResponse.html">AggregationResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationSingleValueResponse.html">AggregationSingleValueResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationStatsResponse.html">AggregationStatsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationTermsResponse.html">AggregationTermsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Response Structures.html#/s:13Elasticsearch11DocResponseV">DocResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndexResponse.html">IndexResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndexResponse/Shards.html">– Shards</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndexResponse/ResultType.html">– ResultType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SearchResponse.html">SearchResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SearchResponse/Shards.html">– Shards</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SearchResponse/HitsContainer.html">– HitsContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Index Mapping.html">Index Mapping</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch9MapBinaryV">MapBinary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch10MapBooleanV">MapBoolean</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapByteV">MapByte</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch22MapCompletionSuggesterV">MapCompletionSuggester</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapDateV">MapDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch12MapDateRangeV">MapDateRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch9MapDoubleV">MapDouble</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch14MapDoubleRangeV">MapDoubleRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch8MapFloatV">MapFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch13MapFloatRangeV">MapFloatRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch11MapGeoPointV">MapGeoPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape.html">MapGeoShape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape/GeoShapePrefixTree.html">– GeoShapePrefixTree</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape/GeoShapePrecision.html">– GeoShapePrecision</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape/GeoShapeStrategy.html">– GeoShapeStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapGeoShape/GeoShapeOrientation.html">– GeoShapeOrientation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch12MapHalfFloatV">MapHalfFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch12MapIPAddressV">MapIPAddress</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch10MapIntegerV">MapInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch15MapIntegerRangeV">MapIntegerRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapJoinV">MapJoin</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch10MapKeywordV">MapKeyword</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapLongV">MapLong</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch12MapLongRangeV">MapLongRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch9MapNestedV">MapNested</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch9MapObjectV">MapObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch13MapPercolatorV">MapPercolator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch14MapScaledFloatV">MapScaledFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch8MapShortV">MapShort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch7MapTextV">MapText</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Index Mapping.html#/s:13Elasticsearch13MapTokenCountV">MapTokenCount</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Supporting Structures.html">Supporting Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Operator.html">Operator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OrderDirection.html">OrderDirection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Supporting Structures.html#/s:13Elasticsearch9TextFieldV">TextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TextFieldType.html">TextFieldType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TermVector.html">TermVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SimilarityType.html">SimilarityType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TextIndexOptions.html">TextIndexOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AggregationBucket.html">AggregationBucket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ElasticsearchClientConfig.html">ElasticsearchClientConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ElasticsearchError.html">ElasticsearchError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ElasticsearchIndexSettingsIndex.html">ElasticsearchIndexSettingsIndex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ElasticsearchIndexSettingsIndex.html#/s:13Elasticsearch0a13IndexSettingsB0V7VersionV">– Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Script.html">Script</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SearchContainer.html">SearchContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:13Elasticsearch12Aggregationsa">Aggregations</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:13Elasticsearch16SpanQueryElementa">SpanQueryElement</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CommonTerms</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CommonTerms</span> <span class="p">:</span> <span class="kt">QueryElement</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch11CommonTermsVACSS3key_SS5querySf15cutoffFrequencyAA8OperatorOSg07lowFreqH0SiSg18minimumShouldMatchtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(key:query:cutoffFrequency:lowFreqOperator:minimumShouldMatch:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch11CommonTermsVACSS3key_SS5querySf15cutoffFrequencyAA8OperatorOSg07lowFreqH0SiSg18minimumShouldMatchtcfc">init(key:query:cutoffFrequency:lowFreqOperator:minimumShouldMatch:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">query</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">cutoffFrequency</span><span class="p">:</span> <span class="kt">Float</span><span class="p">,</span> <span class="nv">lowFreqOperator</span><span class="p">:</span> <span class="kt"><a href="../Enums/Operator.html">Operator</a></span><span class="p">?,</span> <span class="nv">minimumShouldMatch</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Aggregation Constructors  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Aggregation Constructors" class="dashAnchor"></a>
+    <a title="Aggregation Constructors  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Elasticsearch Docs</a> (24% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Elasticsearch Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Aggregation Constructors  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Client.html">Client</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ElasticsearchClient.html">ElasticsearchClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ElasticsearchIndex.html">ElasticsearchIndex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ElasticsearchIndex.html#/s:13Elasticsearch0A5IndexC8SettingsV">– Settings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ElasticsearchDatabase.html">ElasticsearchDatabase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ElasticsearchProvider.html">ElasticsearchProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Query Constructors.html">Query Constructors</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/BoolQuery.html">BoolQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CommonTerms.html">CommonTerms</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Exists.html">Exists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Fuzzy.html">Fuzzy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/IDs.html">IDs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Match.html">Match</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MatchAll.html">MatchAll</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MatchNone.html">MatchNone</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MatchPhrase.html">MatchPhrase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MatchPhrasePrefix.html">MatchPhrasePrefix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MultiMatch.html">MultiMatch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MultiMatch/Kind.html">– Kind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Prefix.html">Prefix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Query.html">Query</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Range.html">Range</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Regexp.html">Regexp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ScriptQuery.html">ScriptQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Term.html">Term</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Terms.html">Terms</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Wildcard.html">Wildcard</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Query Constructors.html#/s:13Elasticsearch9SpanQueryP">SpanQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanTerm.html">SpanTerm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanFirst.html">SpanFirst</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Aggregation Constructors.html">Aggregation Constructors</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/MinAggregation.html">MinAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SumAggregation.html">SumAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/StatsAggregation.html">StatsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MaxAggregation.html">MaxAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AvgAggregation.html">AvgAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/GeoCentroidAggregation.html">GeoCentroidAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/GeoBoundsAggregation.html">GeoBoundsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/TopHitsAggregation.html">TopHitsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CardinalityAggregation.html">CardinalityAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ValueCountAggregation.html">ValueCountAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ExtendedStatsAggregation.html">ExtendedStatsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/TermsAggregation.html">TermsAggregation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/TermsAggregation/CollectMode.html">– CollectMode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Response Structures.html">Response Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/AggregationExtendedStatsResponse.html">AggregationExtendedStatsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationExtendedStatsResponse/StandardDeviationBounds.html">– StandardDeviationBounds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationGeoBoundsResponse.html">AggregationGeoBoundsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationGeoBoundsResponse/BoundsContainer.html">– BoundsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationGeoBoundsResponse/BoundsPoint.html">– BoundsPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationGeoCentroidResponse.html">AggregationGeoCentroidResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationGeoCentroidResponse/BoundsPoint.html">– BoundsPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/AggregationResponse.html">AggregationResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationSingleValueResponse.html">AggregationSingleValueResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationStatsResponse.html">AggregationStatsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationTermsResponse.html">AggregationTermsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Response Structures.html#/s:13Elasticsearch11DocResponseV">DocResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/IndexResponse.html">IndexResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/IndexResponse/Shards.html">– Shards</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/IndexResponse/ResultType.html">– ResultType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SearchResponse.html">SearchResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SearchResponse/Shards.html">– Shards</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SearchResponse/HitsContainer.html">– HitsContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Index Mapping.html">Index Mapping</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch9MapBinaryV">MapBinary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch10MapBooleanV">MapBoolean</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch7MapByteV">MapByte</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch22MapCompletionSuggesterV">MapCompletionSuggester</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch7MapDateV">MapDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch12MapDateRangeV">MapDateRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch9MapDoubleV">MapDouble</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch14MapDoubleRangeV">MapDoubleRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch8MapFloatV">MapFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch13MapFloatRangeV">MapFloatRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch11MapGeoPointV">MapGeoPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MapGeoShape.html">MapGeoShape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MapGeoShape/GeoShapePrefixTree.html">– GeoShapePrefixTree</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MapGeoShape/GeoShapePrecision.html">– GeoShapePrecision</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MapGeoShape/GeoShapeStrategy.html">– GeoShapeStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MapGeoShape/GeoShapeOrientation.html">– GeoShapeOrientation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch12MapHalfFloatV">MapHalfFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch12MapIPAddressV">MapIPAddress</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch10MapIntegerV">MapInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch15MapIntegerRangeV">MapIntegerRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch7MapJoinV">MapJoin</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch10MapKeywordV">MapKeyword</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch7MapLongV">MapLong</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch12MapLongRangeV">MapLongRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch9MapNestedV">MapNested</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch9MapObjectV">MapObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch13MapPercolatorV">MapPercolator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch14MapScaledFloatV">MapScaledFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch8MapShortV">MapShort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch7MapTextV">MapText</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Index Mapping.html#/s:13Elasticsearch13MapTokenCountV">MapTokenCount</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Supporting Structures.html">Supporting Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/Operator.html">Operator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/OrderDirection.html">OrderDirection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Supporting Structures.html#/s:13Elasticsearch9TextFieldV">TextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/TextFieldType.html">TextFieldType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/TermVector.html">TermVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SimilarityType.html">SimilarityType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/TextIndexOptions.html">TextIndexOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/AggregationBucket.html">AggregationBucket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ElasticsearchClientConfig.html">ElasticsearchClientConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ElasticsearchError.html">ElasticsearchError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ElasticsearchIndexSettingsIndex.html">ElasticsearchIndexSettingsIndex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ElasticsearchIndexSettingsIndex.html#/s:13Elasticsearch0a13IndexSettingsB0V7VersionV">– Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Script.html">Script</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SearchContainer.html">SearchContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Other Typealiases.html#/s:13Elasticsearch12Aggregationsa">Aggregations</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Typealiases.html#/s:13Elasticsearch16SpanQueryElementa">SpanQueryElement</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Aggregation Constructors</h1>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch14MinAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/MinAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch14MinAggregationV">MinAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A single-value metrics aggregation that keeps track and returns the minimum
+value among numeric values extracted from the aggregated documents. These
+values can be extracted either from specific numeric fields in the documents,
+or be generated by a provided script.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-min-aggregation.html">More information</a></p>
+
+                        <a href="Structs/MinAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MinAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch14SumAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/SumAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch14SumAggregationV">SumAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A single-value metrics aggregation that sums up numeric values that are
+extracted from the aggregated documents. These values can be extracted either
+from specific numeric fields in the documents, or be generated by a provided
+script.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-sum-aggregation.html">More information</a></p>
+
+                        <a href="Structs/SumAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SumAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch16StatsAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/StatsAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch16StatsAggregationV">StatsAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A multi-value metrics aggregation that computes stats over numeric values
+extracted from the aggregated documents. These values can be extracted either
+from specific numeric fields in the documents, or be generated by a provided
+script.</p>
+
+<p>The stats that are returned consist of: min, max, sum, count and avg.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-stats-aggregation.html">More information</a></p>
+
+                        <a href="Structs/StatsAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">StatsAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch14MaxAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/MaxAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch14MaxAggregationV">MaxAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A single-value metrics aggregation that keeps track and returns the maximum
+value among the numeric values extracted from the aggregated documents. These
+values can be extracted either from specific numeric fields in the documents,
+or be generated by a provided script.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-max-aggregation.html">More information</a></p>
+
+                        <a href="Structs/MaxAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MaxAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch14AvgAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/AvgAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch14AvgAggregationV">AvgAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A single-value metrics aggregation that computes the average of numeric values
+that are extracted from the aggregated documents. These values can be extracted
+either from specific numeric fields in the documents, or be generated by a
+provided script.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-avg-aggregation.html">More information</a></p>
+
+                        <a href="Structs/AvgAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">AvgAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch22GeoCentroidAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/GeoCentroidAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch22GeoCentroidAggregationV">GeoCentroidAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A metric aggregation that computes the weighted centroid from all coordinate
+values for a Geo-point datatype field.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-geocentroid-aggregation.html">More information</a></p>
+
+                        <a href="Structs/GeoCentroidAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GeoCentroidAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch20GeoBoundsAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/GeoBoundsAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch20GeoBoundsAggregationV">GeoBoundsAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A metric aggregation that computes the bounding box containing all geo_point values for a field.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-geobounds-aggregation.html">More information</a></p>
+
+                        <a href="Structs/GeoBoundsAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GeoBoundsAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch18TopHitsAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/TopHitsAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch18TopHitsAggregationV">TopHitsAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A top_hits metric aggregator keeps track of the most relevant document being
+aggregated. This aggregator is intended to be used as a sub aggregator, so that
+the top matching documents can be aggregated per bucket.</p>
+
+<p>The top_hits aggregator can effectively be used to group result sets by certain
+fields via a bucket aggregator. One or more bucket aggregators determines by
+which properties a result set get sliced into.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html">More information</a></p>
+
+                        <a href="Structs/TopHitsAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">TopHitsAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch22CardinalityAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/CardinalityAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch22CardinalityAggregationV">CardinalityAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A single-value metrics aggregation that calculates an approximate count of
+distinct values. Values can be extracted either from specific fields in the
+document or generated by a script.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-cardinality-aggregation.html">More information</a></p>
+
+                        <a href="Structs/CardinalityAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CardinalityAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch21ValueCountAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/ValueCountAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch21ValueCountAggregationV">ValueCountAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A single-value metrics aggregation that counts the number of values that are
+extracted from the aggregated documents. These values can be extracted either
+from specific fields in the documents, or be generated by a provided script.
+Typically, this aggregator will be used in conjunction with other single-value
+aggregations. For example, when computing the avg one might be interested in
+the number of values the average is computed over.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-valuecount-aggregation.html">More information</a></p>
+
+                        <a href="Structs/ValueCountAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ValueCountAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch24ExtendedStatsAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/ExtendedStatsAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch24ExtendedStatsAggregationV">ExtendedStatsAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A multi-value metrics aggregation that computes stats over numeric values
+extracted from the aggregated documents. These values can be extracted either
+from specific numeric fields in the documents, or be generated by a provided
+script.</p>
+
+<p>The extended_stats aggregations is an extended version of the stats
+aggregation, where additional metrics are added such as sum_of_squares,
+variance, std_deviation and std_deviation_bounds.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-extendedstats-aggregation.html">More information</a></p>
+
+                        <a href="Structs/ExtendedStatsAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ExtendedStatsAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch16TermsAggregationV"></a>
+                    <a name="//apple_ref/swift/Struct/TermsAggregation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch16TermsAggregationV">TermsAggregation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A multi-bucket value source based aggregation where buckets are dynamically built - one per unique value.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html">More information</a></p>
+
+                        <a href="Structs/TermsAggregation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">TermsAggregation</span> <span class="p">:</span> <span class="kt">Aggregation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
