@@ -1,4 +1,4 @@
-/// Config options for a `ElasticsearchClient.
+/// Config options for an `ElasticsearchClient`.
 public struct ElasticsearchClientConfig: Codable {
     /// The Elasticsearch server's hostname.
     public var hostname: String

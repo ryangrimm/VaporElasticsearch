@@ -1,5 +1,8 @@
 import HTTP
 
+/**
+ CRUD methods.
+ */
 extension ElasticsearchClient {
     /// Gets a document from Elasticsearch
     ///
@@ -59,13 +62,13 @@ extension ElasticsearchClient {
         }
     }
 
-    /// <#Description#>
+    /// Updates the document stored at the given id with the given document
     ///
     /// - Parameters:
     ///   - doc: The document to update
     ///   - index: The document index
     ///   - id: The document id
-    ///   - type: The document type~
+    ///   - type: The document type
     ///   - routing: Routing information
     ///   - version: Version information
     /// - Returns: A Future IndexResponse
@@ -85,6 +88,16 @@ extension ElasticsearchClient {
         }
     }
 
+    /// Delete the document with the given id
+    ///
+    /// - Parameters:
+    ///   - index: The document index
+    ///   - id: The document id
+    ///   - type: The document type
+    ///   - routing: Routing information
+    ///   - version: Version information
+    /// - Returns: A Future IndexResponse
+    /// - Throws: ElasticsearchError
     public func delete(
         index: String,
         id: String,

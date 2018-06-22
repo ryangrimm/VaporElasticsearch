@@ -1,9 +1,9 @@
 import Foundation
 
 extension JSONDecoder {
-    static let elasticUserInfoKey = CodingUserInfoKey(rawValue: "com.elastic.swift")!
+    internal static let elasticUserInfoKey = CodingUserInfoKey(rawValue: "com.elastic.swift")!
     
-    func setUserInfo(fromAggregations aggregations: [Aggregation]) {
+    internal func setUserInfo(fromAggregations aggregations: [Aggregation]) {
         var aggNameMap = [String: AggregationResponse.Type]()
         
         for agg in aggregations {
@@ -15,7 +15,7 @@ extension JSONDecoder {
 }
 
 extension Decoder {
-    func getAggregationResponseType(forAggregationName name: String) throws -> AggregationResponse? {
+    internal func getAggregationResponseType(forAggregationName name: String) throws -> AggregationResponse? {
         let aggNameMap = self.userInfo[JSONDecoder.elasticUserInfoKey] as! [String: AggregationResponse.Type]
         
         if aggNameMap[name] != nil {

@@ -1,4 +1,9 @@
 
+/**
+ Many aggregations and some queries allow for the configuration of a script.
+ Scripts can be provided inline via the source parameter or be stored on the
+ server and referenced via the id parameter.
+ */
 public struct Script: Codable {
     let lang: String?
     let source: String?

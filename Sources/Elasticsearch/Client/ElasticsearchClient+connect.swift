@@ -1,6 +1,9 @@
 import Async
 import HTTP
 
+/**
+ Connection methods
+ */
 extension ElasticsearchClient {
     /// Connects to a Elasticsearch server over HTTP.
     ///

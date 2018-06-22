@@ -66,7 +66,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         return url
     }
     
-    func send(
+    public func send(
         _ method: HTTPMethod,
         to path: String
     ) throws -> Future<Data> {
@@ -75,7 +75,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         return try send(httpReq)
     }
     
-    func send(
+    public func send(
         _ method: HTTPMethod,
         to path: String,
         with body: Dictionary<String, Any>
@@ -84,7 +84,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         return try send(method, to: path, with: jsonData)
     }
     
-    func send(
+    public func send(
         _ method: HTTPMethod,
         to path: String,
         with body: Data
@@ -94,7 +94,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         return try send(httpReq)
     }
     
-    private func send(
+    public func send(
         _ request: HTTPRequest
     ) throws -> Future<Data> {
         // XXX should be debug logged

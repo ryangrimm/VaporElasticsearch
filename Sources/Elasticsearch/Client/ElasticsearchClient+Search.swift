@@ -1,22 +1,19 @@
 import HTTP
 
+/**
+ Search methods.
+ */
 extension ElasticsearchClient {
-    public func search<T: ElasticsearchModel>(
-        decodeTo resultType: T.Type,
-        index: String,
-        id: String,
-        type: String = "_doc",
-        routing: String? = nil,
-        version: Int? = nil,
-        storedFields: [String]? = nil,
-        realtime: Bool? = nil
-        ) throws -> Future<DocResponse<T>> {
-        let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)", routing: routing, version: version, storedFields: storedFields, realtime: realtime)
-        return try send(HTTPMethod.GET, to: url.string!).map(to: DocResponse.self) {jsonData in
-            return try self.decoder.decode(DocResponse<T>.self, from: jsonData)
-        }
-    }
-    
+    /// Execute a search in a given index
+    ///
+    /// - Parameters:
+    ///   - resultType: A struct or class that conforms to the Decodable protocol and can properly decode the documents stored in the index
+    ///   - index: The index to execute the query against
+    ///   - query: A SearchContainer object that specifies the query to execute
+    ///   - type: The index type (defaults to _doc)
+    ///   - routing: Routing information
+    /// - Returns: A Future SearchResponse
+    /// - Throws: ElasticsearchError
     public func search<U: Decodable>(
         decodeTo resultType: U.Type,
         index: String,

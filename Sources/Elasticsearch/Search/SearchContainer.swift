@@ -1,5 +1,8 @@
 import Foundation
 
+/**
+ This is the topmost container for specifying a query.
+ */
 public struct SearchContainer: Encodable {
     let query: Query?
     let aggs: [Aggregation]?
