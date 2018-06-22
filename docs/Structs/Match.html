@@ -14,7 +14,7 @@
     <a title="Match Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Elasticsearch Docs</a> (24% documented)</p>
+        <p><a href="../index.html">Elasticsearch Docs</a> (30% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -397,7 +397,19 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Match queries accept text/numerics/dates, analyzes them, and constructs a query.</p>
+
+<p>The match query is of type boolean. It means that the text provided is
+analyzed and the analysis process constructs a boolean query from the provided
+text. The operator flag can be set to or or and to control the boolean clauses
+(defaults to or). The minimum number of optional should clauses to match can
+be set using the minimumShouldMatch parameter.</p>
+
+<p>The analyzer can be set to control which analyzer will perform the analysis
+process on the text. It defaults to the field explicit mapping definition, or
+the default search analyzer.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html">More information</a></p>
 
           </section>
           <section class="section task-group-section">

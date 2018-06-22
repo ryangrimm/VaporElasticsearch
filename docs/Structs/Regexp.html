@@ -14,7 +14,7 @@
     <a title="Regexp Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Elasticsearch Docs</a> (24% documented)</p>
+        <p><a href="../index.html">Elasticsearch Docs</a> (30% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -397,7 +397,19 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>The regexp query allows you to use regular expression term queries. See
+Regular expression syntax for details of the supported regular expression
+language. The <q>term queries</q> in that first sentence means that Elasticsearch
+will apply the regexp to the terms produced by the tokenizer for that field,
+and not to the original text of the field.</p>
+
+<p>Note: The performance of a regexp query heavily depends on the regular
+expression chosen. Matching everything like .* is very slow as well as using
+lookaround regular expressions. If possible, you should try to use a long
+prefix before your regular expression starts. Wildcard matchers like .*?+ will
+mostly lower performance.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-regexp-query.html">More information</a></p>
 
           </section>
           <section class="section task-group-section">

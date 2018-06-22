@@ -1234,322 +1234,210 @@
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/BoolQuery.swift",
-      "line": 3,
-      "symbol": "BoolQuery",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/BoolQuery.swift",
-      "line": 10,
+      "line": 17,
       "symbol": "BoolQuery.must",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/BoolQuery.swift",
-      "line": 11,
+      "line": 18,
       "symbol": "BoolQuery.should",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/BoolQuery.swift",
-      "line": 12,
+      "line": 19,
       "symbol": "BoolQuery.mustNot",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/BoolQuery.swift",
-      "line": 13,
+      "line": 20,
       "symbol": "BoolQuery.filter",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/BoolQuery.swift",
-      "line": 17,
+      "line": 24,
       "symbol": "BoolQuery.init(must:should:mustNot:filter:minimumShouldMatch:boost:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/CommonTerms.swift",
-      "line": 3,
-      "symbol": "CommonTerms",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/CommonTerms.swift",
-      "line": 16,
+      "line": 23,
       "symbol": "CommonTerms.init(key:query:cutoffFrequency:lowFreqOperator:minimumShouldMatch:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Exists.swift",
-      "line": 3,
-      "symbol": "Exists",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Exists.swift",
-      "line": 12,
+      "line": 17,
       "symbol": "Exists.init(field:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Fuzzy.swift",
-      "line": 3,
-      "symbol": "Fuzzy",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Fuzzy.swift",
-      "line": 17,
+      "line": 25,
       "symbol": "Fuzzy.init(key:value:fuzziness:prefixLength:maxExpansions:transpositions:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/IDs.swift",
-      "line": 3,
-      "symbol": "IDs",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/IDs.swift",
-      "line": 12,
+      "line": 17,
       "symbol": "IDs.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Match.swift",
-      "line": 3,
-      "symbol": "Match",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Match.swift",
-      "line": 15,
+      "line": 30,
       "symbol": "Match.init(key:value:operator:fuzziness:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Match.swift",
-      "line": 61,
+      "line": 76,
       "symbol": "Operator",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Match.swift",
-      "line": 62,
+      "line": 77,
       "symbol": "Operator.and",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Match.swift",
-      "line": 63,
+      "line": 78,
       "symbol": "Operator.or",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchAll.swift",
-      "line": 3,
-      "symbol": "MatchAll",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchAll.swift",
-      "line": 10,
+      "line": 15,
       "symbol": "MatchAll.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchNone.swift",
-      "line": 3,
-      "symbol": "MatchNone",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchNone.swift",
-      "line": 10,
+      "line": 15,
       "symbol": "MatchNone.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchPhrase.swift",
-      "line": 3,
-      "symbol": "MatchPhrase",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchPhrase.swift",
-      "line": 14,
+      "line": 19,
       "symbol": "MatchPhrase.init(key:query:analyzer:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchPhrasePrefix.swift",
-      "line": 3,
-      "symbol": "MatchPhrasePrefix",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchPhrasePrefix.swift",
-      "line": 15,
+      "line": 20,
       "symbol": "MatchPhrasePrefix.init(key:query:analyzer:maxExpansions:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MultiMatch.swift",
-      "line": 3,
-      "symbol": "MultiMatch",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MultiMatch.swift",
-      "line": 15,
+      "line": 20,
       "symbol": "MultiMatch.init(value:fields:type:tieBreaker:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MultiMatch.swift",
-      "line": 27,
+      "line": 32,
       "symbol": "MultiMatch.Kind",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MultiMatch.swift",
-      "line": 28,
+      "line": 33,
       "symbol": "MultiMatch.Kind.bestFields",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MultiMatch.swift",
-      "line": 29,
+      "line": 34,
       "symbol": "MultiMatch.Kind.mostFields",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MultiMatch.swift",
-      "line": 30,
+      "line": 35,
       "symbol": "MultiMatch.Kind.crossFields",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MultiMatch.swift",
-      "line": 31,
+      "line": 36,
       "symbol": "MultiMatch.Kind.phrase",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MultiMatch.swift",
-      "line": 32,
+      "line": 37,
       "symbol": "MultiMatch.Kind.phrasePrefix",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Prefix.swift",
-      "line": 3,
-      "symbol": "Prefix",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Prefix.swift",
-      "line": 14,
+      "line": 20,
       "symbol": "Prefix.init(key:value:boost:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Query.swift",
-      "line": 10,
-      "symbol": "Query",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Query.swift",
-      "line": 17,
+      "line": 18,
       "symbol": "Query.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Range.swift",
-      "line": 3,
-      "symbol": "Range",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Range.swift",
-      "line": 19,
+      "line": 27,
       "symbol": "Range.init(key:greaterThanOrEqualTo:greaterThan:lesserThanOrEqualTo:lesserThan:boost:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Range.swift",
-      "line": 37,
+      "line": 45,
       "symbol": "Range.init(key:greaterThanOrEqualTo:greaterThan:lesserThanOrEqualTo:lesserThan:boost:format:timeZone:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Regexp.swift",
-      "line": 3,
-      "symbol": "Regexp",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Regexp.swift",
-      "line": 14,
+      "line": 29,
       "symbol": "Regexp.init(key:value:boost:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/ScriptQuery.swift",
-      "line": 3,
-      "symbol": "ScriptQuery",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/ScriptQuery.swift",
-      "line": 16,
+      "line": 21,
       "symbol": "ScriptQuery.init(script:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -1598,42 +1486,21 @@
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Term.swift",
-      "line": 3,
-      "symbol": "Term",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Term.swift",
-      "line": 14,
+      "line": 19,
       "symbol": "Term.init(key:value:boost:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Terms.swift",
-      "line": 3,
-      "symbol": "Terms",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Terms.swift",
-      "line": 13,
+      "line": 18,
       "symbol": "Terms.init(key:values:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Wildcard.swift",
-      "line": 3,
-      "symbol": "Wildcard",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Wildcard.swift",
-      "line": 14,
+      "line": 24,
       "symbol": "Wildcard.init(key:value:boost:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

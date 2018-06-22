@@ -14,7 +14,7 @@
     <a title="Query Constructors  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Elasticsearch Docs</a> (24% documented)</p>
+        <p><a href="index.html">Elasticsearch Docs</a> (30% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -409,7 +409,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A query that matches documents matching boolean combinations of other queries.
+The bool query maps to Lucene BooleanQuery. It is built using one or more
+boolean clauses, each clause with a typed occurrence.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html">More Information</a></p>
 
                         <a href="Structs/BoolQuery.html" class="slightly-smaller">See more</a>
                       </div>
@@ -441,7 +445,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The common terms query is a modern alternative to stopwords which improves the
+precision and recall of search results (by taking stopwords into account),
+without sacrificing performance.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-common-terms-query.html">More information</a></p>
 
                         <a href="Structs/CommonTerms.html" class="slightly-smaller">See more</a>
                       </div>
@@ -473,7 +481,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Returns documents that have at least one non-null value in the original field.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-exists-query.html">More information</a></p>
 
                         <a href="Structs/Exists.html" class="slightly-smaller">See more</a>
                       </div>
@@ -505,7 +515,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The fuzzy query uses similarity based on Levenshtein edit distance. The fuzzy
+query generates all possible matching terms that are within the maximum edit
+distance specified in fuzziness and then checks the term dictionary to find
+out which of those generated terms actually exist in the index.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html">More information</a></p>
 
                         <a href="Structs/Fuzzy.html" class="slightly-smaller">See more</a>
                       </div>
@@ -537,7 +552,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Filters documents that only have the provided ids.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-ids-query.html">More information</a></p>
 
                         <a href="Structs/IDs.html" class="slightly-smaller">See more</a>
                       </div>
@@ -569,7 +586,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Match queries accept text/numerics/dates, analyzes them, and constructs a query.</p>
+
+<p>The match query is of type boolean. It means that the text provided is
+analyzed and the analysis process constructs a boolean query from the provided
+text. The operator flag can be set to or or and to control the boolean clauses
+(defaults to or). The minimum number of optional should clauses to match can
+be set using the minimumShouldMatch parameter.</p>
+
+<p>The analyzer can be set to control which analyzer will perform the analysis
+process on the text. It defaults to the field explicit mapping definition, or
+the default search analyzer.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html">More information</a></p>
 
                         <a href="Structs/Match.html" class="slightly-smaller">See more</a>
                       </div>
@@ -601,7 +630,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The most simple query, which matches all documents, giving them all a score of 1.0</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html">More information</a></p>
 
                         <a href="Structs/MatchAll.html" class="slightly-smaller">See more</a>
                       </div>
@@ -633,7 +664,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This is the inverse of the <code><a href="Structs/MatchAll.html">MatchAll</a></code> query, which matches no documents.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-match-all-query.html#query-dsl-match-none-query">More information</a></p>
 
                         <a href="Structs/MatchNone.html" class="slightly-smaller">See more</a>
                       </div>
@@ -665,7 +698,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The <code>MatchPhrase</code> query analyzes the text and creates a phrase query out of the analyzed text.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-match-query-phrase.html">More information</a></p>
 
                         <a href="Structs/MatchPhrase.html" class="slightly-smaller">See more</a>
                       </div>
@@ -697,7 +732,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The <code>MatchPhrasePrefix</code> is the same as match_phrase, except that it allows for prefix matches on the last term in the text.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-match-query-phrase-prefix.html">More information</a></p>
 
                         <a href="Structs/MatchPhrasePrefix.html" class="slightly-smaller">See more</a>
                       </div>
@@ -729,7 +766,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The <code>MultiMatch</code> query builds on the <code>MatchQuery</code> to allow multi-field queries.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-multi-match-query.html">More information</a></p>
 
                         <a href="Structs/MultiMatch.html" class="slightly-smaller">See more</a>
                       </div>
@@ -761,7 +800,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Matches documents that have fields containing terms with a specified prefix
+(not analyzed). The prefix query maps to Lucene PrefixQuery.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-prefix-query.html">More information</a></p>
 
                         <a href="Structs/Prefix.html" class="slightly-smaller">See more</a>
                       </div>
@@ -793,7 +835,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A <code>Query</code> starts the query portion of a search to be executed (as opposed to an <code>Aggregation</code>).</p>
 
                         <a href="Structs/Query.html" class="slightly-smaller">See more</a>
                       </div>
@@ -825,7 +867,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Matches documents with fields that have terms within a certain range. The type
+of the Lucene query depends on the field type, for string fields, the
+TermRangeQuery, while for number/date fields, the query is a
+NumericRangeQuery.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-range-query.html">More information</a></p>
 
                         <a href="Structs/Range.html" class="slightly-smaller">See more</a>
                       </div>
@@ -857,7 +904,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The regexp query allows you to use regular expression term queries. See
+Regular expression syntax for details of the supported regular expression
+language. The <q>term queries</q> in that first sentence means that Elasticsearch
+will apply the regexp to the terms produced by the tokenizer for that field,
+and not to the original text of the field.</p>
+
+<p>Note: The performance of a regexp query heavily depends on the regular
+expression chosen. Matching everything like .* is very slow as well as using
+lookaround regular expressions. If possible, you should try to use a long
+prefix before your regular expression starts. Wildcard matchers like .*?+ will
+mostly lower performance.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-regexp-query.html">More information</a></p>
 
                         <a href="Structs/Regexp.html" class="slightly-smaller">See more</a>
                       </div>
@@ -889,7 +948,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A query allowing to define scripts as queries. They are typically used in a filter context.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-script-query.html">More information</a></p>
 
                         <a href="Structs/ScriptQuery.html" class="slightly-smaller">See more</a>
                       </div>
@@ -921,7 +982,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The <code>Term</code> query finds documents that contain the exact term specified in the inverted index.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-term-query.html">More information</a></p>
 
                         <a href="Structs/Term.html" class="slightly-smaller">See more</a>
                       </div>
@@ -953,7 +1016,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Filters documents that have fields that match any of the provided terms (not analyzed).</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-terms-query.html">More information</a></p>
 
                         <a href="Structs/Terms.html" class="slightly-smaller">See more</a>
                       </div>
@@ -985,7 +1050,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Matches documents that have fields matching a wildcard expression (not
+analyzed). Supported wildcards are *, which matches any character sequence
+(including the empty one), and ?, which matches any single character. Note
+that this query can be slow, as it needs to iterate over many terms. In order
+to prevent extremely slow wildcard queries, a wildcard term should not start
+with one of the wildcards * or ?.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/query-dsl-wildcard-query.html">More information</a></p>
 
                         <a href="Structs/Wildcard.html" class="slightly-smaller">See more</a>
                       </div>
