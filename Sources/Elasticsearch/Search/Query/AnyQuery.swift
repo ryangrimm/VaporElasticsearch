@@ -21,6 +21,11 @@ public enum QueryElementMap : String, Codable {
     case script
     case spanTerm = "span_term"
     case spanFirst = "span_first"
+    case spanNot = "span_not"
+    case spanOr = "span_or"
+    case spanNear = "span_near"
+    case spanContaining = "span_containing"
+    case spanWithin = "span_within"
     
     var metatype: QueryElement.Type {
         switch self {
@@ -64,6 +69,16 @@ public enum QueryElementMap : String, Codable {
             return SpanTerm.self
         case .spanFirst:
             return SpanFirst.self
+        case .spanNot:
+            return SpanNot.self
+        case .spanOr:
+            return SpanOr.self
+        case .spanNear:
+            return SpanNear.self
+        case .spanContaining:
+            return SpanContaining.self
+        case .spanWithin:
+            return SpanWithin.self
         }
     }
 }

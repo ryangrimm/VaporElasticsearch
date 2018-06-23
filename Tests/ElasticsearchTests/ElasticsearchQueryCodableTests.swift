@@ -380,6 +380,57 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         XCTAssertEqual(json, encodedAgain)
     }
     
+    func testSpanNot_encodesInQueryCorrectly() throws {
+        let json =  """
+        {"span_not":{"include":{"span_term":{"user":{"term":"kimchy"}}},"exclude":{"span_term":{"user":{"term":"yhcmik"}}},"pre":3}}
+        """
+        
+        let span  = SpanNot(include: SpanTerm(key: "user", term: "kimchy"), exclude: SpanTerm(key: "user", term: "yhcmik"), pre: 3)
+        let query = Query(span)
+        let encoded = try encoder.encodeToString(query)
+        
+        XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
+    }
+    
+    func testSpanOr_encodesInQueryCorrectly() throws {
+        let json =  """
+        {"span_or":{"clauses":[{"span_term":{"field":{"term":"value1"}}},{"span_term":{"field":{"term":"value2"}}}]}}
+        """
+        
+        let span  = SpanOr([SpanTerm(key: "field", term: "value1"), SpanTerm(key: "field", term: "value2")])
+        let query = Query(span)
+        let encoded = try encoder.encodeToString(query)
+        
+        XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
+    }
+    
+    func testSpanNear_encodesInQueryCorrectly() throws {
+        let json =  """
+        {"span_near":{"clauses":[{"span_term":{"field":{"term":"value1"}}},{"span_term":{"field":{"term":"value2"}}}],"slop":10}}
+        """
+        
+        let span  = SpanNear([SpanTerm(key: "field", term: "value1"), SpanTerm(key: "field", term: "value2")], slop: 10)
+        let query = Query(span)
+        let encoded = try encoder.encodeToString(query)
+        
+        XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
+    }
+    
     func testLinuxTestSuiteIncludesAllTests() {
         #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
         let thisClass = type(of: self)
@@ -419,6 +470,9 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         ("testFuzzy_encodesInQueryCorrectly",       testFuzzy_encodesInQueryCorrectly),
         ("testIDs_encodesInQueryCorrectly",         testIDs_encodesInQueryCorrectly),
         ("testSpanFirst_encodesInQueryCorrectly",   testSpanFirst_encodesInQueryCorrectly),
+        ("testSpanNot_encodesInQueryCorrectly",     testSpanNot_encodesInQueryCorrectly),
+        ("testSpanOr_encodesInQueryCorrectly",      testSpanOr_encodesInQueryCorrectly),
+        ("testSpanNear_encodesInQueryCorrectly",    testSpanNear_encodesInQueryCorrectly),
         
         ("testLinuxTestSuiteIncludesAllTests",      testLinuxTestSuiteIncludesAllTests)
     ]
