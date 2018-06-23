@@ -23,13 +23,13 @@ extension ElasticsearchClient {
         on worker: Worker,
         onError: @escaping (Error) -> Void
     ) -> Future<ElasticsearchClient> {
-        
         let clientPromise = worker.eventLoop.newPromise(ElasticsearchClient.self)
         HTTPClient.connect(hostname: hostname, port: port, on: worker) { error in
             onError(error)
             clientPromise.fail(error: error)
         }.do() { client in
             let esClient = ElasticsearchClient.init(client: client, worker: worker)
+            esClient.isConnected = true
             clientPromise.succeed(result: esClient)
         }.catch { error in
             onError(error)

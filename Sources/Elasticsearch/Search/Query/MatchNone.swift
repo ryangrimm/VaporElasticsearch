@@ -9,9 +9,6 @@ public struct MatchNone: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.matchNone
 
-    /// :nodoc:
-    public var codingKey = "match_none"
-
     public init() {}
     
     /// :nodoc:

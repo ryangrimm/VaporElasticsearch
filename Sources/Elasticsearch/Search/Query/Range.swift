@@ -12,9 +12,6 @@ public struct Range: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.range
 
-    /// :nodoc:
-    public var codingKey = "range"
-
     let key: String
     let greaterThanOrEqual: RangePair?
     let greaterThan: RangePair?

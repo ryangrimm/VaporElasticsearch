@@ -10,7 +10,7 @@
 public struct MapCompletionSuggester: Mappable {
     static var typeKey = MapType.completionSuggester
     
-    let type = "compleation"
+    let type = typeKey.rawValue
     
     var analyzer: String?
     var searchAnalyzer: String?

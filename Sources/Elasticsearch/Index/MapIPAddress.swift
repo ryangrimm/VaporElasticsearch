@@ -10,7 +10,7 @@
 public struct MapIPAddress: Mappable {
     static var typeKey = MapType.ipAddress
 
-    let type = "ip"
+    let type = typeKey.rawValue
     
     var boost: Float? = 1.0
     var docValues: Bool? = true

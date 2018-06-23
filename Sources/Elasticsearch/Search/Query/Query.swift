@@ -3,8 +3,6 @@ import Foundation
 /// :nodoc:
 public protocol QueryElement: Codable {
     static var typeKey: QueryElementMap { get }
-
-    var codingKey: String { get set }
 }
 
 /// A `Query` starts the query portion of a search to be executed (as opposed to an `Aggregation`).
@@ -23,7 +21,7 @@ public struct Query: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
 
-        try container.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
+        try container.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: type(of: query).typeKey.rawValue)!)
     }
     
     /// :nodoc:

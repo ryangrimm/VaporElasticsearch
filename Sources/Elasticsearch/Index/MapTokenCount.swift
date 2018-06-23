@@ -10,7 +10,7 @@
 public struct MapTokenCount: Mappable {
     static var typeKey = MapType.tokenCount
     
-    let type = "token_count"
+    let type = typeKey.rawValue
     
     var analyzer: String?
     var enablePositionIncrements: Bool?

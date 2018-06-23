@@ -1,6 +1,6 @@
 import HTTP
 
-public struct ElasticsearchIndexSettingsIndex: Codable {
+public struct IndexSettings: Codable {
     let numberOfShards: Int
     let numberOfReplicas: Int
     var creationDate: String? = nil
@@ -97,7 +97,7 @@ public class ElasticsearchIndex: Codable {
         self.indexName = indexName
     }
     
-    func settings(index: ElasticsearchIndexSettingsIndex) -> Self {
+    func settings(index: IndexSettings) -> Self {
         if (self.settings == nil) {
             self.settings = Settings()
         }
@@ -134,6 +134,6 @@ public class ElasticsearchIndex: Codable {
     }
     
     public struct Settings: Codable {
-        var index: ElasticsearchIndexSettingsIndex?
+        var index: IndexSettings?
     }
 }

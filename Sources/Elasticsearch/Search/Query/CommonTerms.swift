@@ -11,9 +11,6 @@ public struct CommonTerms: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.commonTerms
     
-    /// :nodoc:
-    public var codingKey = "common"
-    
     let key: String
     let query: String
     let cutoffFrequency: Float

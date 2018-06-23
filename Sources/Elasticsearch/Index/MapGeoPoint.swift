@@ -13,7 +13,7 @@ import Foundation
 public struct MapGeoPoint: Mappable {
     static var typeKey = MapType.geoPoint
 
-    let type = "geo_point"
+    let type = typeKey.rawValue
 
     var ignoreMalformed: Bool? = false
     

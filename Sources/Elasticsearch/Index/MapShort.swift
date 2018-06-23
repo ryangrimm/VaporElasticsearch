@@ -10,7 +10,7 @@
 public struct MapShort: Mappable {
     static var typeKey = MapType.short
 
-    let type = "short"
+    let type = typeKey.rawValue
     
     var coerce: Bool? = true
     var boost: Float? = 1.0

@@ -16,8 +16,8 @@ public enum QueryElementMap : String, Codable {
     case term
     case terms
     case wildcard
-    case matchPhasePrefix = "match_phrase_prefix"
-    case commonTerms
+    case matchPhrasePrefix = "match_phrase_prefix"
+    case commonTerms = "common"
     case script
     case spanTerm = "span_term"
     case spanFirst = "span_first"
@@ -54,7 +54,7 @@ public enum QueryElementMap : String, Codable {
             return Terms.self
         case .wildcard:
             return Wildcard.self
-        case .matchPhasePrefix:
+        case .matchPhrasePrefix:
             return MatchPhrasePrefix.self
         case .commonTerms:
             return CommonTerms.self

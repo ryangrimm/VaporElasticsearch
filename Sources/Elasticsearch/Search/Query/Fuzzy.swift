@@ -12,9 +12,6 @@ public struct Fuzzy: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.fuzzy
 
-    /// :nodoc:
-    public var codingKey = "fuzzy"
-
     let key: String
     let value: String
     let fuzziness: Int?

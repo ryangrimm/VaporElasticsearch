@@ -11,9 +11,6 @@ public struct TermsAggregation: Aggregation {
     public static var typeKey = AggregationResponseMap.terms
     
     /// :nodoc:
-    public var codingKey = "terms"
-    
-    /// :nodoc:
     public var name: String
     
     /// :nodoc:
@@ -120,7 +117,7 @@ public struct TermsAggregation: Aggregation {
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
-        var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: codingKey)!)
+        var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: type(of: self).typeKey.rawValue)!)
         try valuesContainer.encodeIfPresent(field, forKey: .field)
         try valuesContainer.encodeIfPresent(size, forKey: .size)
         try valuesContainer.encodeIfPresent(showTermDocCountError, forKey: .showTermDocCountError)

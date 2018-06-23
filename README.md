@@ -33,6 +33,7 @@ aggregations. Currently these goals are all being met on some level.
 
 ## TODO
 
+* Create a chainable query builder
 * Support configuration of tokenizers and analyzers
 * Implement the decoding of aggregation responses
 * Implement the remaining aggregation types

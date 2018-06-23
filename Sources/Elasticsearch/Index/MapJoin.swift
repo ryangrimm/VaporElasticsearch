@@ -10,7 +10,7 @@
 public struct MapJoin: Mappable {
     static var typeKey = MapType.join
     
-    let type = "join"
+    let type = typeKey.rawValue
     var relations: [String: String]
     
     enum CodingKeys: String, CodingKey {

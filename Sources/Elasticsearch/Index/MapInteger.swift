@@ -10,7 +10,7 @@
 public struct MapInteger: Mappable {
     static var typeKey = MapType.integer
 
-    let type = "integer"
+    let type = typeKey.rawValue
     
     var coerce: Bool? = true
     var boost: Float? = 1.0

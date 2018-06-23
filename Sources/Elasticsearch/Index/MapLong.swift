@@ -10,7 +10,7 @@
 public struct MapLong: Mappable {
     static var typeKey = MapType.long
 
-    let type = "long"
+    let type = typeKey.rawValue
     
     var coerce: Bool? = true
     var boost: Float? = 1.0

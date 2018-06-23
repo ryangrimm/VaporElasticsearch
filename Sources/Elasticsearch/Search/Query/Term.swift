@@ -8,9 +8,6 @@ import Foundation
 public struct Term: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.term
-    
-    /// :nodoc:
-    public var codingKey = "term"
 
     let key: String
     let value: String

@@ -53,7 +53,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testGeoCentroidAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"geo_centroid":{"field":"bar"}}}}
+        {"aggs":{"foo":{"geo_point":{"field":"bar"}}}}
         """
         let queryContainer = SearchContainer(aggs: [GeoCentroidAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)

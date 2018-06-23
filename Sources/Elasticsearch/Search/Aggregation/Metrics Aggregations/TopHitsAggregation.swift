@@ -16,9 +16,6 @@ public struct TopHitsAggregation: Aggregation {
     public static var typeKey = AggregationResponseMap.topHits
     
     /// :nodoc:
-    public var codingKey = "top_hits"
-    
-    /// :nodoc:
     public var name: String
     
     /// :nodoc:
@@ -51,7 +48,7 @@ public struct TopHitsAggregation: Aggregation {
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
-        var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: codingKey)!)
+        var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: type(of: self).typeKey.rawValue)!)
         try valuesContainer.encodeIfPresent(from, forKey: .from)
         try valuesContainer.encodeIfPresent(size, forKey: .size)
     }

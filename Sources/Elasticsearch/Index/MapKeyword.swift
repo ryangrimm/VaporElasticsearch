@@ -12,7 +12,7 @@ import Foundation
 public struct MapKeyword: Mappable {
     static var typeKey = MapType.keyword
 
-    let type = "keyword"
+    let type = typeKey.rawValue
     
     var boost: Float? = 1.0
     var eagerGlobalOrdinals: Bool? = false

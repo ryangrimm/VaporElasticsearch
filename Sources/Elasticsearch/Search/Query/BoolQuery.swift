@@ -11,9 +11,6 @@ public struct BoolQuery: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.boolQuery
 
-    /// :nodoc:
-    public var codingKey = "bool"
-
     public var must: [QueryElement]?
     public var should: [QueryElement]?
     public var mustNot: [QueryElement]?
@@ -53,28 +50,28 @@ public struct BoolQuery: QueryElement {
             var arrayContainer = container.nestedUnkeyedContainer(forKey: .must)
             for query in must! {
                 var queryContainer = arrayContainer.nestedContainer(keyedBy: DynamicKey.self)
-                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
+                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: type(of: query).typeKey.rawValue)!)
             }
         }
         if should != nil {
             var arrayContainer = container.nestedUnkeyedContainer(forKey: .should)
             for query in should! {
                 var queryContainer = arrayContainer.nestedContainer(keyedBy: DynamicKey.self)
-                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
+                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: type(of: query).typeKey.rawValue)!)
             }
         }
         if mustNot != nil {
             var arrayContainer = container.nestedUnkeyedContainer(forKey: .mustNot)
             for query in mustNot! {
                 var queryContainer = arrayContainer.nestedContainer(keyedBy: DynamicKey.self)
-                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
+                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: type(of: query).typeKey.rawValue)!)
             }
         }
         if filter != nil {
             var arrayContainer = container.nestedUnkeyedContainer(forKey: .filter)
             for query in filter! {
                 var queryContainer = arrayContainer.nestedContainer(keyedBy: DynamicKey.self)
-                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: query.codingKey)!)
+                try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: type(of: query).typeKey.rawValue)!)
             }
         }
         

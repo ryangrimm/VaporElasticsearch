@@ -7,23 +7,23 @@ enum MapType: String, Codable {
     case byte
     case double
     case float
-    case halfFloat
-    case scaledFloat
+    case halfFloat = "half_float"
+    case scaledFloat = "scaled_float"
     case date
     case boolean
     case binary
-    case integerRange
-    case floatRange
-    case longRange
-    case doubleRange
-    case dateRange
+    case integerRange = "integer_range"
+    case floatRange = "float_range"
+    case longRange = "long_range"
+    case doubleRange = "double_range"
+    case dateRange = "date_range"
     case object
     case nested
-    case geoPoint
+    case geoPoint = "geo_point"
     case geoShape
-    case ipAddress
-    case completionSuggester
-    case tokenCount
+    case ipAddress = "ip"
+    case completionSuggester = "completion"
+    case tokenCount = "token_count"
     case percolator
     case join
     

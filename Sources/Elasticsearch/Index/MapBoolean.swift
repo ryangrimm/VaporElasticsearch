@@ -10,7 +10,7 @@
 public struct MapBoolean: Mappable {
     static var typeKey = MapType.boolean
     
-    let type = "boolean"
+    let type = typeKey.rawValue
     
     var boost: Float? = 1.0
     var docValues: Bool? = true

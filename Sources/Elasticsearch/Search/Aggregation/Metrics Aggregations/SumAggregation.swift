@@ -13,9 +13,6 @@ public struct SumAggregation: Aggregation {
     public static var typeKey = AggregationResponseMap.sum
     
     /// :nodoc:
-    public var codingKey = "sum"
-    
-    /// :nodoc:
     public var name: String
     
     /// :nodoc:
@@ -55,7 +52,7 @@ public struct SumAggregation: Aggregation {
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
-        var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: codingKey)!)
+        var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: type(of: self).typeKey.rawValue)!)
         try valuesContainer.encodeIfPresent(field, forKey: .field)
         try valuesContainer.encodeIfPresent(script, forKey: .script)
         try valuesContainer.encodeIfPresent(missing, forKey: .missing)

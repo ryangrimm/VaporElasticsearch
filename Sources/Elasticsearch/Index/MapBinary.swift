@@ -10,7 +10,7 @@
 public struct MapBinary: Mappable {
     static var typeKey = MapType.binary
 
-    let type = "binary"
+    let type = typeKey.rawValue
     
     var docValues: Bool? = true
     var store: Bool? = false

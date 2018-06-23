@@ -10,7 +10,7 @@
 public struct MapPercolator: Mappable {
     static var typeKey = MapType.percolator
     
-    let type = "percolator"
+    let type = typeKey.rawValue
     
     enum CodingKeys: String, CodingKey {
         case type

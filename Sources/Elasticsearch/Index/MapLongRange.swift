@@ -10,7 +10,7 @@
 public struct MapLongRange: Mappable {
     static var typeKey = MapType.longRange
     
-    let type = "long_range"
+    let type = typeKey.rawValue
     
     var coerce: Bool? = true
     var boost: Float? = 1.0

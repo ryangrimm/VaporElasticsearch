@@ -10,7 +10,7 @@
 public struct MapDate: Mappable {
     static var typeKey = MapType.date
 
-    let type = "date"
+    let type = typeKey.rawValue
     
     var boost: Float? = 1.0
     var docValues: Bool? = true

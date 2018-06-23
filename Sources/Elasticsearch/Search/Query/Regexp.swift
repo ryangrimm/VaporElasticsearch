@@ -19,9 +19,6 @@ public struct Regexp: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.regexp
 
-    /// :nodoc:
-    public var codingKey = "regexp"
-
     let key: String
     let value: String
     let boost: Decimal?

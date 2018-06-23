@@ -7,7 +7,7 @@ extension JSONDecoder {
         var aggNameMap = [String: AggregationResponse.Type]()
         
         for agg in aggregations {
-            let responseType = AggregationResponseMap(rawValue: agg.codingKey)
+            let responseType = AggregationResponseMap(rawValue: type(of: agg).typeKey.rawValue)
             aggNameMap[agg.name] = responseType?.metatype
         }
         self.userInfo = [JSONDecoder.elasticUserInfoKey: aggNameMap]

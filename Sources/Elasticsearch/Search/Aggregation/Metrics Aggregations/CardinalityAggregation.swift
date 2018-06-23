@@ -13,9 +13,6 @@ public struct CardinalityAggregation: Aggregation {
     public static var typeKey = AggregationResponseMap.cardinality
     
     /// :nodoc:
-    public var codingKey = "cardinality"
-    
-    /// :nodoc:
     public var name: String
     
     /// :nodoc:
@@ -62,7 +59,7 @@ public struct CardinalityAggregation: Aggregation {
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
-        var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: codingKey)!)
+        var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: type(of: self).typeKey.rawValue)!)
         try valuesContainer.encodeIfPresent(field, forKey: .field)
         try valuesContainer.encodeIfPresent(precisionThreshold, forKey: .precisionThreshold)
         try valuesContainer.encodeIfPresent(script, forKey: .script)

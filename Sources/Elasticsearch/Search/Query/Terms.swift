@@ -9,9 +9,6 @@ public struct Terms: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.terms
 
-    /// :nodoc:
-    public var codingKey = "terms"
-
     let key: String
     let values: [String]
 

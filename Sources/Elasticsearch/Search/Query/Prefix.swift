@@ -10,9 +10,6 @@ public struct Prefix: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.prefix
 
-    /// :nodoc:
-    public var codingKey = "prefix"
-
     let key: String
     let value: String
     let boost: Decimal?

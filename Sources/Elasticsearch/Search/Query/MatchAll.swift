@@ -9,9 +9,6 @@ public struct MatchAll: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.matchAll
 
-    /// :nodoc:
-    public var codingKey = "match_all"
-
     public init() {}
     
     /// :nodoc:

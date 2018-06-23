@@ -10,7 +10,7 @@
 public struct MapDateRange: Mappable {
     static var typeKey = MapType.dateRange
     
-    let type = "date_range"
+    let type = typeKey.rawValue
     
     var format: String
     var coerce: Bool? = true

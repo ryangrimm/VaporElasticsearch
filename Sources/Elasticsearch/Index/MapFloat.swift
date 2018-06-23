@@ -10,7 +10,7 @@
 public struct MapFloat: Mappable {
     static var typeKey = MapType.float
 
-    let type = "float"
+    let type = typeKey.rawValue
     
     var coerce: Bool? = true
     var boost: Float? = 1.0

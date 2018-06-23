@@ -19,9 +19,6 @@ public struct Match: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.match
 
-    /// :nodoc:
-    public var codingKey = "match"
-
     let key: String
     let value: String
     let `operator`: Operator?

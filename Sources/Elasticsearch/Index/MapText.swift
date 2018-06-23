@@ -13,7 +13,7 @@ import Foundation
 public struct MapText: Mappable {
     static var typeKey = MapType.text
 
-    let type = "text"
+    let type = typeKey.rawValue
     
     var boost: Float? = 1.0
     var eagerGlobalOrdinals: Bool? = false

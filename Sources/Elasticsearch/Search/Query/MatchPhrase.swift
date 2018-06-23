@@ -9,9 +9,6 @@ public struct MatchPhrase: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.matchPhrase
 
-    /// :nodoc:
-    public var codingKey = "match_phrase"
-
     let key: String
     let query: String
     let analyzer: String?

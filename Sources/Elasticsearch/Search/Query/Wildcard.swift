@@ -14,9 +14,6 @@ public struct Wildcard: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.wildcard
 
-    /// :nodoc:
-    public var codingKey = "wildcard"
-
     let key: String
     let value: String
     let boost: Decimal?

@@ -7,11 +7,8 @@ import Foundation
  */
 public struct MatchPhrasePrefix: QueryElement {
     /// :nodoc:
-    public static var typeKey = QueryElementMap.matchPhrase
-    
-    /// :nodoc:
-    public var codingKey = "match_phrase_prefix"
-    
+    public static var typeKey = QueryElementMap.matchPhrasePrefix
+
     let key: String
     let query: String
     let analyzer: String?

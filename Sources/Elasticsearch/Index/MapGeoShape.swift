@@ -47,7 +47,7 @@ public struct MapGeoShape: Mappable {
     }
     
     
-    let type = "geo_shape"
+    let type = typeKey.rawValue
     
     var tree: GeoShapePrefixTree? = .geohash
     var precision: GeoShapePrecision? = .meters

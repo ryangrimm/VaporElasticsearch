@@ -4,9 +4,6 @@ public struct SpanFirst: QueryElement, SpanQuery {
     /// :nodoc:
     public static var typeKey = QueryElementMap.spanFirst
     
-    /// :nodoc:
-    public var codingKey = "span_first"
-    
     let match: SpanQueryElement
     let end: Int
     
@@ -24,7 +21,7 @@ public struct SpanFirst: QueryElement, SpanQuery {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         var matchContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: .match)
-        try matchContainer.encode(AnySpanQuery(self.match), forKey: DynamicKey(stringValue: self.match.codingKey)!)
+        try matchContainer.encode(AnySpanQuery(self.match), forKey: DynamicKey(stringValue: type(of: self.match).typeKey.rawValue)!)
         try container.encode(end, forKey: .end)
     }
     

@@ -19,12 +19,14 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
     public let worker: Worker
     internal let encoder = JSONEncoder()
     internal let decoder = JSONDecoder()
+    internal var isConnected: Bool
     
     /// Creates a new Elasticsearch client.
     init(client: HTTPClient, worker: Worker) {
         self.esConnection = client
         self.extend = [:]
         self.isClosed = false
+        self.isConnected = false
         self.worker = worker
     }
     
@@ -33,8 +35,10 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         self.isClosed = true
         esConnection.close().do() {
             self.isClosed = true
+            self.isConnected = false
         }.catch() { error in
-                self.isClosed = true
+            self.isClosed = true
+            self.isConnected = false
         }
     }
 
