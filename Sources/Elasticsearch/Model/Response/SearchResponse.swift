@@ -35,6 +35,21 @@ public struct SearchResponse<T: Decodable>: Decodable {
                 case score = "_score"
                 case source = "_source"
             }
+            
+            public init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.index = try container.decode(String.self, forKey: .index)
+                self.type = try container.decode(String.self, forKey: .type)
+                self.id = try container.decode(String.self, forKey: .id)
+                self.score = try container.decode(Decimal.self, forKey: .score)
+                var source = try container.decode(T.self, forKey: .source)
+                if var settableIDSource = source as? SettableID {
+                    settableIDSource.setID(self.id)
+                    source = settableIDSource as! T
+                }
+                
+                self.source = source
+            }
         }
         
         enum CodingKeys: String, CodingKey {

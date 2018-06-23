@@ -109,7 +109,7 @@
 		C2CF0CB320D4E28100191480 /* SpanFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF0CB220D4E28100191480 /* SpanFirst.swift */; };
 		C2D5F61C20C413E8006AAF04 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61B20C413E8006AAF04 /* Mappable.swift */; };
 		C2D5F61E20C41A3A006AAF04 /* MapText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61D20C41A3A006AAF04 /* MapText.swift */; };
-		C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */; };
+		C2D5F62020C5E582006AAF04 /* SettableID.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D5F61F20C5E582006AAF04 /* SettableID.swift */; };
 		C2FD539820D38DC500427E8F /* AggregationExtendedStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD539720D38DC500427E8F /* AggregationExtendedStatsResponse.swift */; };
 		C2FD539A20D3906300427E8F /* AggregationGeoBoundsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD539920D3906300427E8F /* AggregationGeoBoundsResponse.swift */; };
 		C2FD539C20D3916F00427E8F /* AggregationGeoCentroidResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD539B20D3916F00427E8F /* AggregationGeoCentroidResponse.swift */; };
@@ -1696,7 +1696,7 @@
 		C2CF0CB220D4E28100191480 /* SpanFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanFirst.swift; sourceTree = "<group>"; };
 		C2D5F61B20C413E8006AAF04 /* Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
 		C2D5F61D20C41A3A006AAF04 /* MapText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapText.swift; sourceTree = "<group>"; };
-		C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchModel.swift; sourceTree = "<group>"; };
+		C2D5F61F20C5E582006AAF04 /* SettableID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettableID.swift; sourceTree = "<group>"; };
 		C2FD539720D38DC500427E8F /* AggregationExtendedStatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregationExtendedStatsResponse.swift; sourceTree = "<group>"; };
 		C2FD539920D3906300427E8F /* AggregationGeoBoundsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregationGeoBoundsResponse.swift; sourceTree = "<group>"; };
 		C2FD539B20D3916F00427E8F /* AggregationGeoCentroidResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregationGeoCentroidResponse.swift; sourceTree = "<group>"; };
@@ -2452,7 +2452,7 @@
 		C2D5F61A20C413A8006AAF04 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C2D5F61F20C5E582006AAF04 /* ElasticsearchModel.swift */,
+				C2D5F61F20C5E582006AAF04 /* SettableID.swift */,
 				C2254DDC20D1B3F700AF7D52 /* Response */,
 			);
 			path = Model;
@@ -4329,7 +4329,7 @@
 				C21D6B5C20CC842A00ED81B6 /* Match.swift in Sources */,
 				C21D6B5A20CC842A00ED81B6 /* Fuzzy.swift in Sources */,
 				OBJ_620 /* ElasticsearchClient+connect.swift in Sources */,
-				C2D5F62020C5E582006AAF04 /* ElasticsearchModel.swift in Sources */,
+				C2D5F62020C5E582006AAF04 /* SettableID.swift in Sources */,
 				C2D5F61C20C413E8006AAF04 /* Mappable.swift in Sources */,
 				C21D6B7F20CF13E500ED81B6 /* MapDouble.swift in Sources */,
 				C21D6B8120CF13E500ED81B6 /* MapHalfFloat.swift in Sources */,

@@ -13,7 +13,7 @@ extension ElasticsearchClient {
     }
 }
 
-struct TestModel: ElasticsearchModel {    
+struct TestModel: Codable, SettableID {
     init(name: String, number: Int) {
         self.name = name
         self.number = number
@@ -22,6 +22,10 @@ struct TestModel: ElasticsearchModel {
     var id: String?
     var name: String
     var number: Int
+    
+    mutating func setID(_ id: String) {
+        self.id = id
+    }
 }
 
 final class ElasticsearchTests: XCTestCase {

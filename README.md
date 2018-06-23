@@ -21,22 +21,12 @@ aggregations. Currently these goals are all being met on some level.
 * Automatic seralization of object models to Elasticsearch (via Swift Codable support)
 * Ability to specify the mapping for index creation
 
-
-## Issues/Questions
-
-* Every document has an id and frequently that id is exposed via an API. Sometimes
-  this id is computed externally from ES, sometimes the internally generated
-  ids are used. Currently the Codable setup knows nothing of ids and since they
-  are held outside of the document source there is not automatic solution for
-  having the ids populated in the model struct/class. Therefore, from search
-  results it's currently a real pain to get the ids into the models.
-
 ## TODO
 
 * Create a chainable query builder
 * Support configuration of tokenizers and analyzers
-* Implement the decoding of aggregation responses
 * Implement the remaining aggregation types
+* Implement the decoding for the above aggregation types
 * Implement remaining query DSL constructors
 	These are the remaining query DSL constructors that are left to be
 	implemented. They are not all of equal value. But pick off those that seem

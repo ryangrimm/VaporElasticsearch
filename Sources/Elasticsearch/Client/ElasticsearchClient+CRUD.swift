@@ -17,7 +17,7 @@ extension ElasticsearchClient {
     ///   - realtime: Fetch realtime results
     /// - Returns: A Future DocResponse
     /// - Throws: ElasticsearchError
-    public func get<T: ElasticsearchModel>(
+    public func get<T: Codable>(
         decodeTo resultType: T.Type,
         index: String,
         id: String,
@@ -45,7 +45,7 @@ extension ElasticsearchClient {
     ///   - forceCreate: Force creation
     /// - Returns: A Future IndexResponse
     /// - Throws: ElasticsearchError
-    public func index<T :ElasticsearchModel>(
+    public func index<T :Codable>(
         doc :T,
         index: String,
         id: String? = nil,
@@ -73,7 +73,7 @@ extension ElasticsearchClient {
     ///   - version: Version information
     /// - Returns: A Future IndexResponse
     /// - Throws: ElasticsearchError
-    public func update<T :ElasticsearchModel>(
+    public func update<T :Codable>(
         doc :T,
         index: String,
         id: String,
