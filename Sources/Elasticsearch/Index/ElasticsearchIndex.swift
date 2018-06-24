@@ -74,6 +74,7 @@ public class ElasticsearchIndex: Codable {
         var routing: String?
     }
     
+    var client: ElasticsearchClient? = nil
     var indexName: String? = nil
     var mappings = DefaultType(doc: Properties(properties: [String : AnyMap]()))
     var aliases = [String: Alias]()
@@ -85,7 +86,7 @@ public class ElasticsearchIndex: Codable {
         case settings
     }
     
-    static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex> {
+    internal static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex> {
         return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex.self) { response in
             let wrapper = try JSONDecoder().decode(FetchWrapper.self, from: response)
             wrapper.indexMappingValue.indexName = wrapper.indexName
@@ -93,8 +94,9 @@ public class ElasticsearchIndex: Codable {
         }
     }
     
-    init(indexName: String) {
+    internal init(indexName: String, client: ElasticsearchClient) {
         self.indexName = indexName
+        self.client = client
     }
     
     func settings(index: IndexSettings) -> Self {
@@ -117,18 +119,21 @@ public class ElasticsearchIndex: Codable {
         return self
     }
     
-    func create(client: ElasticsearchClient) throws -> Future<Void> {
+    func create() throws -> Future<Void> {
         guard let name = indexName else {
             throw ElasticsearchError(identifier: "missing_indexName", reason: "Missing index name for index creation", source: .capture())
         }
+        guard let _ = self.client else {
+            throw ElasticsearchError(identifier: "missing_client", reason: "Missing client for index creation", source: .capture())
+        }
         
         let body = try JSONEncoder().encode(self)
-        return try client.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
+        return try self.client!.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
         }
     }
     
-    // XXX - should add an option to ignore if index isn't present
-    static func delete(indexName: String, client: ElasticsearchClient) throws -> Future<Void> {
+    // TODO - should add an option to ignore if index isn't present
+    internal static func delete(indexName: String, client: ElasticsearchClient) throws -> Future<Void> {
         return try client.send(HTTPMethod.DELETE, to: "/\(indexName)").map(to: Void.self) { response in
         }
     }

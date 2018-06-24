@@ -23,6 +23,11 @@ struct TestModel: Codable, SettableID {
     var name: String
     var number: Int
     
+    enum CodingKeys: String, CodingKey {
+        case name
+        case number
+    }
+    
     mutating func setID(_ id: String) {
         self.id = id
     }
@@ -35,12 +40,12 @@ final class ElasticsearchTests: XCTestCase {
         
         try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
         
-        try ElasticsearchIndex(indexName: "test")
+        try es.createIndex(name: "test")
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
             .settings(index: IndexSettings(shards: 3, replicas: 2))
-            .create(client: es).wait()
+            .create().wait()
         
         let index = try ElasticsearchIndex.fetch(indexName: "test", client: es).wait()
         XCTAssertEqual(index.aliases.count, 1, "Incorrect number of aliases")
@@ -63,12 +68,12 @@ final class ElasticsearchTests: XCTestCase {
         
         try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
 
-        try ElasticsearchIndex(indexName: "test")
+        try es.createIndex(name: "test")
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
             .settings(index: IndexSettings(shards: 3, replicas: 2))
-            .create(client: es).wait()
+            .create().wait()
         
         var indexDoc: TestModel = TestModel(name: "bar", number: 26)
         var response = try es.index(doc: indexDoc, index: "test").wait()

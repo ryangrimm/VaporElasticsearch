@@ -75,18 +75,24 @@ public struct SearchResponse<T: Decodable>: Decodable {
         self.shards = try container.decode(Shards.self, forKey: .shards)
         self.hits = try container.decode(HitsContainer.self, forKey: .hits)
         
-        let aggsContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .aggregations)
-        
-        var aggregations = Aggregations()
-        for key in aggsContainer.allKeys {
-            let aggResponse = try aggsContainer.decode(AnyAggregationResponse.self, forKey: key).base
-            aggregations[key.stringValue] = aggResponse
-        }
-        if aggregations.count > 0 {
-            self.aggregations = aggregations
+        if container.contains(.aggregations) {
+            let aggsContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .aggregations)
+            
+            var aggregations = Aggregations()
+            for key in aggsContainer.allKeys {
+                let aggResponse = try aggsContainer.decode(AnyAggregationResponse.self, forKey: key).base
+                aggregations[key.stringValue] = aggResponse
+            }
+            if aggregations.count > 0 {
+                self.aggregations = aggregations
+            }
+            else {
+                self.aggregations = nil
+            }
         }
         else {
             self.aggregations = nil
         }
+        
     }
 }

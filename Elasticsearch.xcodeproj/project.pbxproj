@@ -93,6 +93,7 @@
 		C25F017720DE31A5006FD0DA /* SpanNear.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F017620DE31A5006FD0DA /* SpanNear.swift */; };
 		C25F017920DE335F006FD0DA /* SpanContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F017820DE335F006FD0DA /* SpanContaining.swift */; };
 		C25F017B20DE3440006FD0DA /* SpanWithin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F017A20DE3440006FD0DA /* SpanWithin.swift */; };
+		C25F017D20DF5135006FD0DA /* ElasticsearchClient+IndexMgmt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F017C20DF5135006FD0DA /* ElasticsearchClient+IndexMgmt.swift */; };
 		C2AC1D5020D08E4D00493FF5 /* AvgAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D4F20D08E4D00493FF5 /* AvgAggregation.swift */; };
 		C2AC1D5220D08F0100493FF5 /* AnyAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D5120D08F0100493FF5 /* AnyAggregation.swift */; };
 		C2AC1D5420D08F2600493FF5 /* Aggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D4B20D08D1800493FF5 /* Aggregation.swift */; };
@@ -1685,6 +1686,7 @@
 		C25F017620DE31A5006FD0DA /* SpanNear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanNear.swift; sourceTree = "<group>"; };
 		C25F017820DE335F006FD0DA /* SpanContaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanContaining.swift; sourceTree = "<group>"; };
 		C25F017A20DE3440006FD0DA /* SpanWithin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanWithin.swift; sourceTree = "<group>"; };
+		C25F017C20DF5135006FD0DA /* ElasticsearchClient+IndexMgmt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchClient+IndexMgmt.swift"; sourceTree = "<group>"; };
 		C2AC1D4B20D08D1800493FF5 /* Aggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aggregation.swift; sourceTree = "<group>"; };
 		C2AC1D4F20D08E4D00493FF5 /* AvgAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgAggregation.swift; sourceTree = "<group>"; };
 		C2AC1D5120D08F0100493FF5 /* AnyAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAggregation.swift; sourceTree = "<group>"; };
@@ -3364,6 +3366,7 @@
 				OBJ_10 /* ElasticsearchClient+connect.swift */,
 				C248179820C11A6900E4570F /* ElasticsearchClient+CRUD.swift */,
 				C21D6B6C20CC861800ED81B6 /* ElasticsearchClient+Search.swift */,
+				C25F017C20DF5135006FD0DA /* ElasticsearchClient+IndexMgmt.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -4383,6 +4386,7 @@
 				C21D6B6320CC842A00ED81B6 /* MatchNone.swift in Sources */,
 				C23D9F1E20CB8EB50082C3D9 /* MapInteger.swift in Sources */,
 				C21D6B4720CC675700ED81B6 /* SearchResponse.swift in Sources */,
+				C25F017D20DF5135006FD0DA /* ElasticsearchClient+IndexMgmt.swift in Sources */,
 				C2AC1D6020D0AB4000493FF5 /* GeoCentroidAggregation.swift in Sources */,
 				C21D6B6620CC842A00ED81B6 /* Range.swift in Sources */,
 				C2254DD320D1B03500AF7D52 /* StatsAggregation.swift in Sources */,
