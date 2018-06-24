@@ -81,27 +81,33 @@ public struct Script: Codable {
         self.source = try container.decode(String.self, forKey: .source)
         self.id = try container.decode(String.self, forKey: .id)
 
-        let paramsContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .params)
-        if paramsContainer.allKeys.count > 0 {
-            var params = [String: Any]()
-            for key in paramsContainer.allKeys {
-                if let value = try? paramsContainer.decode(Bool.self, forKey: key) {
-                    params[key.stringValue] = value
+        if container.contains(.params) {
+            let paramsContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .params)
+            if paramsContainer.allKeys.count > 0 {
+                var params = [String: Any]()
+                for key in paramsContainer.allKeys {
+                    if let value = try? paramsContainer.decode(Bool.self, forKey: key) {
+                        params[key.stringValue] = value
+                    }
+                    if let value = try? paramsContainer.decode(Int64.self, forKey: key) {
+                        params[key.stringValue] = value
+                    }
+                    if let value = try? paramsContainer.decode(Double.self, forKey: key) {
+                        params[key.stringValue] = value
+                    }
+                    if let value = try? paramsContainer.decode(String.self, forKey: key) {
+                        params[key.stringValue] = value
+                    }
                 }
-                if let value = try? paramsContainer.decode(Int64.self, forKey: key) {
-                    params[key.stringValue] = value
-                }
-                if let value = try? paramsContainer.decode(Double.self, forKey: key) {
-                    params[key.stringValue] = value
-                }
-                if let value = try? paramsContainer.decode(String.self, forKey: key) {
-                    params[key.stringValue] = value
-                }
+                self.params = params
             }
-            self.params = params
+            else {
+                self.params = nil
+            }
         }
         else {
             self.params = nil
         }
+
     }
 }
