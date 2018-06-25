@@ -11,14 +11,14 @@ public struct CommonTerms: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.commonTerms
     
-    let key: String
+    let field: String
     let query: String
     let cutoffFrequency: Float
     let lowFreqOperator: Operator?
     let minimumShouldMatch: Int?
     
-    public init(key: String, query: String, cutoffFrequency: Float, lowFreqOperator: Operator?, minimumShouldMatch: Int?) {
-        self.key = key
+    public init(field: String, query: String, cutoffFrequency: Float, lowFreqOperator: Operator?, minimumShouldMatch: Int?) {
+        self.field = field
         self.query = query
         self.cutoffFrequency = cutoffFrequency
         self.lowFreqOperator = lowFreqOperator
@@ -37,14 +37,14 @@ public struct CommonTerms: QueryElement {
         var container = encoder.container(keyedBy: DynamicKey.self)
         
         let inner = CommonTerms.Inner(query: self.query, cutoffFrequency: self.cutoffFrequency, lowFreqOperator: self.lowFreqOperator, minimumShouldMatch: self.minimumShouldMatch)
-        try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
+        try container.encode(inner, forKey: DynamicKey(stringValue: field)!)
     }
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first
-        self.key = key!.stringValue
+        self.field = key!.stringValue
         
         let inner = try container.decode(CommonTerms.Inner.self, forKey: key!)
         self.query = inner.query

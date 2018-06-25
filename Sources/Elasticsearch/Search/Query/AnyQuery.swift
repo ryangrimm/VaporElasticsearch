@@ -26,6 +26,7 @@ public enum QueryElementMap : String, Codable {
     case spanNear = "span_near"
     case spanContaining = "span_containing"
     case spanWithin = "span_within"
+    case geoPolygon = "geo_polygon"
     
     var metatype: QueryElement.Type {
         switch self {
@@ -79,6 +80,8 @@ public enum QueryElementMap : String, Codable {
             return SpanContaining.self
         case .spanWithin:
             return SpanWithin.self
+        case .geoPolygon:
+            return GeoPolygon.self
         }
     }
 }

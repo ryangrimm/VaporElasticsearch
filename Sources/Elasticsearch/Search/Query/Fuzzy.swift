@@ -12,7 +12,7 @@ public struct Fuzzy: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.fuzzy
 
-    let key: String
+    let field: String
     let value: String
     let fuzziness: Int?
     let prefixLength: Int?
@@ -20,14 +20,14 @@ public struct Fuzzy: QueryElement {
     let transpositions: Bool?
 
     public init(
-        key: String,
+        field: String,
         value: String,
         fuzziness: Int? = nil,
         prefixLength: Int? = nil,
         maxExpansions: Int? = nil,
         transpositions: Bool? = nil
     ) {
-        self.key = key
+        self.field = field
         self.value = value
         self.fuzziness = fuzziness
         self.prefixLength = prefixLength
@@ -62,14 +62,14 @@ public struct Fuzzy: QueryElement {
             transpositions: transpositions
         )
 
-        try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
+        try container.encode(inner, forKey: DynamicKey(stringValue: field)!)
     }
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first
-        self.key = key!.stringValue
+        self.field = key!.stringValue
         
         let innerDecoder = try container.superDecoder(forKey: key!)
         let inner = try Fuzzy.Inner(from: innerDecoder)

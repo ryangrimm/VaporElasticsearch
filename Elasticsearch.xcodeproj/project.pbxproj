@@ -94,6 +94,8 @@
 		C25F017920DE335F006FD0DA /* SpanContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F017820DE335F006FD0DA /* SpanContaining.swift */; };
 		C25F017B20DE3440006FD0DA /* SpanWithin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F017A20DE3440006FD0DA /* SpanWithin.swift */; };
 		C25F017D20DF5135006FD0DA /* ElasticsearchClient+IndexMgmt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F017C20DF5135006FD0DA /* ElasticsearchClient+IndexMgmt.swift */; };
+		C25F018620E04F8B006FD0DA /* GeoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F018120E04AF8006FD0DA /* GeoHelpers.swift */; };
+		C25F018720E04F8B006FD0DA /* GeoPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F018320E04F33006FD0DA /* GeoPolygon.swift */; };
 		C2AC1D5020D08E4D00493FF5 /* AvgAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D4F20D08E4D00493FF5 /* AvgAggregation.swift */; };
 		C2AC1D5220D08F0100493FF5 /* AnyAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D5120D08F0100493FF5 /* AnyAggregation.swift */; };
 		C2AC1D5420D08F2600493FF5 /* Aggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC1D4B20D08D1800493FF5 /* Aggregation.swift */; };
@@ -1687,6 +1689,8 @@
 		C25F017820DE335F006FD0DA /* SpanContaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanContaining.swift; sourceTree = "<group>"; };
 		C25F017A20DE3440006FD0DA /* SpanWithin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanWithin.swift; sourceTree = "<group>"; };
 		C25F017C20DF5135006FD0DA /* ElasticsearchClient+IndexMgmt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchClient+IndexMgmt.swift"; sourceTree = "<group>"; };
+		C25F018120E04AF8006FD0DA /* GeoHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoHelpers.swift; sourceTree = "<group>"; };
+		C25F018320E04F33006FD0DA /* GeoPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPolygon.swift; sourceTree = "<group>"; };
 		C2AC1D4B20D08D1800493FF5 /* Aggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aggregation.swift; sourceTree = "<group>"; };
 		C2AC1D4F20D08E4D00493FF5 /* AvgAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgAggregation.swift; sourceTree = "<group>"; };
 		C2AC1D5120D08F0100493FF5 /* AnyAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAggregation.swift; sourceTree = "<group>"; };
@@ -2411,6 +2415,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		C25F018020E04AE1006FD0DA /* Geo */ = {
+			isa = PBXGroup;
+			children = (
+				C25F018120E04AF8006FD0DA /* GeoHelpers.swift */,
+				C25F018320E04F33006FD0DA /* GeoPolygon.swift */,
+			);
+			path = Geo;
+			sourceTree = "<group>";
+		};
 		C2AC1D5320D08F0F00493FF5 /* Aggregation */ = {
 			isa = PBXGroup;
 			children = (
@@ -2445,6 +2458,7 @@
 				C2CF0CA020D47CC900191480 /* MatchPhrasePrefix.swift */,
 				C2CF0CA220D489AF00191480 /* CommonTerms.swift */,
 				C2CF0CA420D48D0000191480 /* ScriptQuery.swift */,
+				C25F018020E04AE1006FD0DA /* Geo */,
 				C2CF0CAC20D4DE5300191480 /* Span Queries */,
 			);
 			path = Query;
@@ -4343,6 +4357,7 @@
 				C2CF0CA920D4980100191480 /* SpanTerm.swift in Sources */,
 				C21D6B5F20CC842A00ED81B6 /* BoolQuery.swift in Sources */,
 				C248179720C1151C00E4570F /* Exports.swift in Sources */,
+				C25F018720E04F8B006FD0DA /* GeoPolygon.swift in Sources */,
 				C21D6B8D20CF13E500ED81B6 /* MapGeoPoint.swift in Sources */,
 				C21D6B5C20CC842A00ED81B6 /* Match.swift in Sources */,
 				C21D6B5A20CC842A00ED81B6 /* Fuzzy.swift in Sources */,
@@ -4429,6 +4444,7 @@
 				C25F017920DE335F006FD0DA /* SpanContaining.swift in Sources */,
 				C2AC1D6420D0ACC700493FF5 /* MinAggregation.swift in Sources */,
 				C25F017320DE1F5A006FD0DA /* SpanNot.swift in Sources */,
+				C25F018620E04F8B006FD0DA /* GeoHelpers.swift in Sources */,
 				C21D6B8320CF13E500ED81B6 /* MapDate.swift in Sources */,
 				C25F017B20DE3440006FD0DA /* SpanWithin.swift in Sources */,
 				C248179020C113E000E4570F /* ElasticsearchProvider.swift in Sources */,

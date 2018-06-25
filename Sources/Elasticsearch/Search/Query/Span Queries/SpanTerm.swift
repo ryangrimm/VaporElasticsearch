@@ -4,12 +4,12 @@ public struct SpanTerm: SpanQuery, QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.spanTerm
     
-    let key: String
+    let field: String
     let term: String
     let boost: Decimal?
 
-    public init(key: String, term: String, boost: Decimal? = nil) {
-        self.key = key
+    public init(field: String, term: String, boost: Decimal? = nil) {
+        self.field = field
         self.term = term
         self.boost = boost
     }
@@ -29,14 +29,14 @@ public struct SpanTerm: SpanQuery, QueryElement {
         var container = encoder.container(keyedBy: DynamicKey.self)
         let inner = SpanTerm.Inner(term: term, boost: boost)
         
-        try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
+        try container.encode(inner, forKey: DynamicKey(stringValue: field)!)
     }
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first
-        self.key = key!.stringValue
+        self.field = key!.stringValue
         
         let innerDecoder = try container.superDecoder(forKey: key!)
         let inner = try SpanTerm.Inner(from: innerDecoder)

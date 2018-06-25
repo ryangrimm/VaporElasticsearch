@@ -12,7 +12,7 @@ public struct Range: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.range
 
-    let key: String
+    let field: String
     let greaterThanOrEqual: RangePair?
     let greaterThan: RangePair?
     let lesserThanOrEqual: RangePair?
@@ -22,14 +22,14 @@ public struct Range: QueryElement {
     let timeZone: String?
 
     public init(
-        key: String,
+        field: String,
         greaterThanOrEqualTo: Double? = nil,
         greaterThan: Double? = nil,
         lesserThanOrEqualTo: Double? = nil,
         lesserThan: Double? = nil,
         boost: Decimal? = nil
     ) {
-        self.key = key
+        self.field = field
         self.greaterThanOrEqual = RangePair(greaterThanOrEqualTo, nil)
         self.greaterThan = RangePair(greaterThan, nil)
         self.lesserThanOrEqual = RangePair(lesserThanOrEqualTo, nil)
@@ -40,7 +40,7 @@ public struct Range: QueryElement {
     }
 
     public init(
-        key: String,
+        field: String,
         greaterThanOrEqualTo: String? = nil,
         greaterThan: String? = nil,
         lesserThanOrEqualTo: String? = nil,
@@ -49,7 +49,7 @@ public struct Range: QueryElement {
         format: String? = nil,
         timeZone: String? = nil
     ) {
-        self.key = key
+        self.field = field
         self.greaterThanOrEqual = RangePair(nil, greaterThanOrEqualTo)
         self.greaterThan = RangePair(nil, greaterThan)
         self.lesserThanOrEqual = RangePair(nil, lesserThanOrEqualTo)
@@ -150,14 +150,14 @@ public struct Range: QueryElement {
             timeZone: timeZone
         )
 
-        try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
+        try container.encode(inner, forKey: DynamicKey(stringValue: field)!)
     }
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first
-        self.key = key!.stringValue
+        self.field = key!.stringValue
         
         let innerDecoder = try container.superDecoder(forKey: key!)
         let inner = try Range.Inner(from: innerDecoder)

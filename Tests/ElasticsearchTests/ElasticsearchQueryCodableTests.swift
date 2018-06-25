@@ -96,7 +96,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"query":{"match":{"title":{"query":"Recipes with pasta or spaghetti","operator":"and"}}},"aggs":{"foo":{"avg":{"field":"bar","missing":5}}}}
         """
-        let match = Match(key: "title", value: "Recipes with pasta or spaghetti", operator: .and)
+        let match = Match(field: "title", value: "Recipes with pasta or spaghetti", operator: .and)
         let query = Query(match)
         let queryContainer = SearchContainer(query, aggs: [AvgAggregation(name: "foo", field: "bar", missing: 5)])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -140,7 +140,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"match":{"title":{"query":"Recipes with pasta or spaghetti","operator":"and"}}}
         """
-        let match = Match(key: "title", value: "Recipes with pasta or spaghetti", operator: .and)
+        let match = Match(field: "title", value: "Recipes with pasta or spaghetti", operator: .and)
         let query = Query(match)
         let encoded = try encoder.encodeToString(query)
         
@@ -156,7 +156,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"match_phrase":{"title":{"query":"puttanesca spaghetti"}}}
         """
-        let matchPhrase = MatchPhrase(key: "title", query: "puttanesca spaghetti")
+        let matchPhrase = MatchPhrase(field: "title", query: "puttanesca spaghetti")
         let query = Query(matchPhrase)
         let encoded = try encoder.encodeToString(query)
  
@@ -188,7 +188,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"term":{"description":{"value":"drinking","boost":2}}}
         """
-        let term = Term(key: "description", value: "drinking", boost: 2.0)
+        let term = Term(field: "description", value: "drinking", boost: 2.0)
         let query = Query(term)
         let encoded = try encoder.encodeToString(query)
   
@@ -204,7 +204,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"terms":{"tags.keyword":["Soup","Cake"]}}
         """
-        let terms = Terms(key: "tags.keyword", values: ["Soup", "Cake"])
+        let terms = Terms(field: "tags.keyword", values: ["Soup", "Cake"])
         let query = Query(terms)
         let encoded = try encoder.encodeToString(query)
 
@@ -220,7 +220,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"range":{"in_stock":{"gte":1,"lte":5}}}
         """
-        let range = Range(key: "in_stock", greaterThanOrEqualTo: 1, lesserThanOrEqualTo: 5)
+        let range = Range(field: "in_stock", greaterThanOrEqualTo: 1, lesserThanOrEqualTo: 5)
         let query = Query(range)
         let encoded = try encoder.encodeToString(query)
 
@@ -236,7 +236,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"range":{"created":{"gt":"01-01-2010","format":"dd-MM-yyyy","lt":"31-12-2010"}}}
         """
-        let range = Range(key: "created", greaterThan: "01-01-2010", lesserThan: "31-12-2010", format: "dd-MM-yyyy")
+        let range = Range(field: "created", greaterThan: "01-01-2010", lesserThan: "31-12-2010", format: "dd-MM-yyyy")
         let query = Query(range)
         let encoded = try encoder.encodeToString(query)
         
@@ -268,7 +268,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"bool":{"must":[{"match":{"title":{"query":"pasta"}}}]}}
         """
-        let match = Match(key: "title", value: "pasta")
+        let match = Match(field: "title", value: "pasta")
         // let range = Query(Range(key: "preparation_time_minutes", lesserThanOrEqualTo: 15))
         let bool = BoolQuery(must: [match])
         let query = Query(bool)
@@ -286,7 +286,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"prefix":{"tags.keyword":{"value":"Vege","boost":1}}}
         """
-        let prefix = Prefix(key: "tags.keyword", value: "Vege", boost: 1)
+        let prefix = Prefix(field: "tags.keyword", value: "Vege", boost: 1)
         let query = Query(prefix)
         let encoded = try encoder.encodeToString(query)
         
@@ -302,7 +302,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"wildcard":{"tags.keyword":{"value":"Veg*ble","boost":2}}}
         """
-        let wildcard = Wildcard(key: "tags.keyword", value: "Veg*ble", boost: 2)
+        let wildcard = Wildcard(field: "tags.keyword", value: "Veg*ble", boost: 2)
         let query = Query(wildcard)
         let encoded = try encoder.encodeToString(query)
         
@@ -319,7 +319,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"regexp":{"tags.keyword":{"value":"Veg[a-zA-Z]ble","boost":2.5}}}
         """
-        let regexp = Regexp(key: "tags.keyword", value: "Veg[a-zA-Z]ble", boost: 2.5)
+        let regexp = Regexp(field: "tags.keyword", value: "Veg[a-zA-Z]ble", boost: 2.5)
         let query = Query(regexp)
         let encoded = try encoder.encodeToString(query)
         
@@ -335,7 +335,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let json = """
         {"fuzzy":{"name":{"value":"bolster","fuzziness":2}}}
         """
-        let fuzzy = Fuzzy(key: "name", value: "bolster", fuzziness: 2)
+        let fuzzy = Fuzzy(field: "name", value: "bolster", fuzziness: 2)
         let query = Query(fuzzy)
         let encoded = try encoder.encodeToString(query)
         
@@ -368,7 +368,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         {"span_first":{"match":{"span_term":{"user":{"term":"kimchy"}}},"end":3}}
         """
         
-        let span  = SpanFirst(match: SpanTerm(key: "user", term: "kimchy"), end: 3)
+        let span  = SpanFirst(match: SpanTerm(field: "user", term: "kimchy"), end: 3)
         let query = Query(span)
         let encoded = try encoder.encodeToString(query)
         
@@ -385,7 +385,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         {"span_not":{"include":{"span_term":{"user":{"term":"kimchy"}}},"exclude":{"span_term":{"user":{"term":"yhcmik"}}},"pre":3}}
         """
         
-        let span  = SpanNot(include: SpanTerm(key: "user", term: "kimchy"), exclude: SpanTerm(key: "user", term: "yhcmik"), pre: 3)
+        let span  = SpanNot(include: SpanTerm(field: "user", term: "kimchy"), exclude: SpanTerm(field: "user", term: "yhcmik"), pre: 3)
         let query = Query(span)
         let encoded = try encoder.encodeToString(query)
         
@@ -402,7 +402,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         {"span_or":{"clauses":[{"span_term":{"field":{"term":"value1"}}},{"span_term":{"field":{"term":"value2"}}}]}}
         """
         
-        let span  = SpanOr([SpanTerm(key: "field", term: "value1"), SpanTerm(key: "field", term: "value2")])
+        let span  = SpanOr([SpanTerm(field: "field", term: "value1"), SpanTerm(field: "field", term: "value2")])
         let query = Query(span)
         let encoded = try encoder.encodeToString(query)
         
@@ -419,7 +419,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         {"span_near":{"clauses":[{"span_term":{"field":{"term":"value1"}}},{"span_term":{"field":{"term":"value2"}}}],"slop":10}}
         """
         
-        let span  = SpanNear([SpanTerm(key: "field", term: "value1"), SpanTerm(key: "field", term: "value2")], slop: 10)
+        let span  = SpanNear([SpanTerm(field: "field", term: "value1"), SpanTerm(field: "field", term: "value2")], slop: 10)
         let query = Query(span)
         let encoded = try encoder.encodeToString(query)
         
@@ -430,6 +430,24 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let encodedAgain = try encoder.encodeToString(decoded)
         XCTAssertEqual(json, encodedAgain)
     }
+    
+    func testGeoPolygon_encodesInQueryCorrectly() throws {
+        let json =  """
+        {"geo_polygon":{"person.location":{"points":[{"lat":40,"lon":-70},{"lat":30,"lon":-80},{"lat":20,"lon":-90}]}}}
+        """
+        
+        let poly  = GeoPolygon(field: "person.location", points: [GeoPoint(lat: 40, lon: -70), GeoPoint(lat: 30, lon: -80), GeoPoint(lat: 20, lon: -90)])
+        let query = Query(poly)
+        let encoded = try encoder.encodeToString(query)
+        
+        XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        XCTAssertEqual(json, encodedAgain)
+    }
+    
     
     func testLinuxTestSuiteIncludesAllTests() {
         #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
@@ -473,6 +491,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         ("testSpanNot_encodesInQueryCorrectly",     testSpanNot_encodesInQueryCorrectly),
         ("testSpanOr_encodesInQueryCorrectly",      testSpanOr_encodesInQueryCorrectly),
         ("testSpanNear_encodesInQueryCorrectly",    testSpanNear_encodesInQueryCorrectly),
+        ("testGeoPolygon_encodesInQueryCorrectly",  testGeoPolygon_encodesInQueryCorrectly),
         
         ("testLinuxTestSuiteIncludesAllTests",      testLinuxTestSuiteIncludesAllTests)
     ]

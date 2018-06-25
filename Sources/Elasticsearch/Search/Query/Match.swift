@@ -19,18 +19,18 @@ public struct Match: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.match
 
-    let key: String
+    let field: String
     let value: String
     let `operator`: Operator?
     let fuzziness: Int?
 
     public init(
-        key: String,
+        field: String,
         value: String,
         operator: Operator? = nil,
         fuzziness: Int? = nil
     ) {
-        self.key = key
+        self.field = field
         self.value = value
         self.operator = `operator`
         self.fuzziness = fuzziness
@@ -53,14 +53,14 @@ public struct Match: QueryElement {
         var container = encoder.container(keyedBy: DynamicKey.self)
         let inner = Match.Inner(value: value, operator: `operator`, fuzziness: fuzziness)
 
-        try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
+        try container.encode(inner, forKey: DynamicKey(stringValue: field)!)
     }
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first
-        self.key = key!.stringValue
+        self.field = key!.stringValue
         
         let innerDecoder = try container.superDecoder(forKey: key!)
         let inner = try Match.Inner(from: innerDecoder)

@@ -9,13 +9,13 @@ public struct MatchPhrasePrefix: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.matchPhrasePrefix
 
-    let key: String
+    let field: String
     let query: String
     let analyzer: String?
     let maxExpansions: Int?
     
-    public init(key: String, query: String, analyzer: String?, maxExpansions: Int?) {
-        self.key = key
+    public init(field: String, query: String, analyzer: String?, maxExpansions: Int?) {
+        self.field = field
         self.query = query
         self.analyzer = analyzer
         self.maxExpansions = maxExpansions
@@ -32,14 +32,14 @@ public struct MatchPhrasePrefix: QueryElement {
         var container = encoder.container(keyedBy: DynamicKey.self)
         
         let inner = MatchPhrasePrefix.Inner(query: self.query, analyzer: self.analyzer, maxExpansions: self.maxExpansions)
-        try container.encode(inner, forKey: DynamicKey(stringValue: key)!)
+        try container.encode(inner, forKey: DynamicKey(stringValue: field)!)
     }
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first
-        self.key = key!.stringValue
+        self.field = key!.stringValue
 
         let inner = try container.decode(MatchPhrasePrefix.Inner.self, forKey: key!)
         self.query = inner.query
