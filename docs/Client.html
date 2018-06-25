@@ -45,6 +45,9 @@
               <li class="nav-group-task">
                 <a href="Classes/ElasticsearchProvider.html">ElasticsearchProvider</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Structs/ElasticsearchClientConfig.html">ElasticsearchClientConfig</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -118,6 +121,24 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/SpanFirst.html">SpanFirst</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanNot.html">SpanNot</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanOr.html">SpanOr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanNear.html">SpanNear</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanContaining.html">SpanContaining</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanWithin.html">SpanWithin</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/GeoPolygon.html">GeoPolygon</a>
               </li>
             </ul>
           </li>
@@ -227,6 +248,12 @@
           <li class="nav-group-name">
             <a href="Index Mapping.html">Index Mapping</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/IndexSettings.html">IndexSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/IndexSettings.html#/s:13Elasticsearch13IndexSettingsV7VersionV">– Version</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Index Mapping.html#/s:13Elasticsearch9MapBinaryV">MapBinary</a>
               </li>
@@ -346,13 +373,17 @@
               <li class="nav-group-task">
                 <a href="Enums/TextIndexOptions.html">TextIndexOptions</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other Enums.html">Other Enumerations</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/GeoValidationMethod.html">GeoValidationMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/GeoPoint.html">GeoPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Script.html">Script</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AggregationBucket.html">AggregationBucket</a>
               </li>
             </ul>
           </li>
@@ -368,46 +399,10 @@
             <a href="Other Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/AggregationBucket.html">AggregationBucket</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/ElasticsearchClientConfig.html">ElasticsearchClientConfig</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Structs/ElasticsearchError.html">ElasticsearchError</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/GeoPoint.html">GeoPoint</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GeoPolygon.html">GeoPolygon</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/IndexSettings.html">IndexSettings</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/IndexSettings.html#/s:13Elasticsearch13IndexSettingsV7VersionV">– Version</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Script.html">Script</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Structs/SearchContainer.html">SearchContainer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/SpanContaining.html">SpanContaining</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/SpanNear.html">SpanNear</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/SpanNot.html">SpanNot</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/SpanOr.html">SpanOr</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/SpanWithin.html">SpanWithin</a>
               </li>
             </ul>
           </li>
@@ -551,6 +546,38 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">ElasticsearchProvider</span> <span class="p">:</span> <span class="kt">Provider</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A12ClientConfigV"></a>
+                    <a name="//apple_ref/swift/Struct/ElasticsearchClientConfig" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A12ClientConfigV">ElasticsearchClientConfig</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Config options for an <code><a href="Classes/ElasticsearchClient.html">ElasticsearchClient</a></code>.</p>
+
+                        <a href="Structs/ElasticsearchClientConfig.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ElasticsearchClientConfig</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
 
                         </div>
                       </div>

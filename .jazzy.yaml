@@ -8,6 +8,7 @@ custom_categories:
   - ElasticsearchIndex
   - ElasticsearchDatabase
   - ElasticsearchProvider
+  - ElasticsearchClientConfig
 
 - name: Query Constructors
   children:
@@ -33,6 +34,12 @@ custom_categories:
   - SpanQuery
   - SpanTerm
   - SpanFirst
+  - SpanNot
+  - SpanOr
+  - SpanNear
+  - SpanContaining
+  - SpanWithin
+  - GeoPolygon
 - name: Aggregation Constructors
   children:
   - MinAggregation
@@ -61,6 +68,7 @@ custom_categories:
   - SearchResponse
 - name: Index Mapping
   children:
+  - IndexSettings
   - MapBinary
   - MapBoolean
   - MapByte
@@ -97,3 +105,7 @@ custom_categories:
   - TermVector
   - SimilarityType
   - TextIndexOptions
+  - GeoValidationMethod
+  - GeoPoint
+  - Script
+  - AggregationBucket
