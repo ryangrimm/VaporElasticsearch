@@ -13,7 +13,7 @@
     <a title="Elasticsearch  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Elasticsearch Docs</a> (30% documented)</p>
+        <p><a href="index.html">Elasticsearch Docs</a> (29% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -201,7 +201,7 @@
                 <a href="Structs/AggregationTermsResponse.html">AggregationTermsResponse</a>
               </li>
               <li class="nav-group-task">
-                <a href="Response Structures.html#/s:13Elasticsearch11DocResponseV">DocResponse</a>
+                <a href="Structs/DocResponse.html">DocResponse</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/IndexResponse.html">IndexResponse</a>
@@ -348,6 +348,22 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="Other Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/GeoValidationMethod.html">GeoValidationMethod</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/SettableID.html">SettableID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="Other Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -360,16 +376,37 @@
                 <a href="Structs/ElasticsearchError.html">ElasticsearchError</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/ElasticsearchIndexSettingsIndex.html">ElasticsearchIndexSettingsIndex</a>
+                <a href="Structs/GeoPoint.html">GeoPoint</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/ElasticsearchIndexSettingsIndex.html#/s:13Elasticsearch0a13IndexSettingsB0V7VersionV">– Version</a>
+                <a href="Structs/GeoPolygon.html">GeoPolygon</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/IndexSettings.html">IndexSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/IndexSettings.html#/s:13Elasticsearch13IndexSettingsV7VersionV">– Version</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Script.html">Script</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/SearchContainer.html">SearchContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanContaining.html">SpanContaining</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanNear.html">SpanNear</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanNot.html">SpanNot</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanOr.html">SpanOr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SpanWithin.html">SpanWithin</a>
               </li>
             </ul>
           </li>
@@ -413,22 +450,13 @@ aggregations. Currently these goals are all being met on some level.</p>
 <li>Automatic seralization of object models to Elasticsearch (via Swift Codable support)</li>
 <li>Ability to specify the mapping for index creation</li>
 </ul>
-<h2 id='issues-questions' class='heading'>Issues/Questions</h2>
-
-<ul>
-<li>Every document has an id and frequently that id is exposed via an API. Sometimes
-this id is computed externally from ES, sometimes the internally generated
-ids are used. Currently the Codable setup knows nothing of ids and since they
-are held outside of the document source there is not automatic solution for
-having the ids populated in the model struct/class. Therefore, from search
-results it&rsquo;s currently a real pain to get the ids into the models.</li>
-</ul>
 <h2 id='todo' class='heading'>TODO</h2>
 
 <ul>
+<li>Create a chainable query builder</li>
 <li>Support configuration of tokenizers and analyzers</li>
-<li>Implement the decoding of aggregation responses</li>
 <li>Implement the remaining aggregation types</li>
+<li>Implement the decoding for the above aggregation types</li>
 <li><p>Implement remaining query DSL constructors
 These are the remaining query DSL constructors that are left to be
 implemented. They are not all of equal value. But pick off those that seem
@@ -439,13 +467,8 @@ useful/easy first.</p>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html">Simple query string</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-terms-set-query.html">Terms set</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-multi-term-query.html">Span multi-term query</a></li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-near-query.html">Span near query</a></li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-or-query.html">Span or query</a></li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-not-query.html">Span not query</a></li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-containing-query.html">Span containing query</a></li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-within-query.html">Span within query</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-field-masking-query.html">Span field masking query</a></li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.htmlo">Function score query</a></li>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html">Function score query</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-boosting-query.html">Boosting query</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-constant-score-query.html">Constant score query</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-nested-query.html">Nested query</a></li>
@@ -455,7 +478,6 @@ useful/easy first.</p>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-shape-query.html">Geo shape query</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-bounding-box-query.html">Geo bounding box</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-query.html">Geo distance</a></li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-polygon-query.html">Geo polygon</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html">More like this query</a></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html">Percolate query</a></li>
 </ul></li>
@@ -472,7 +494,7 @@ useful/easy first.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-22)</p>
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

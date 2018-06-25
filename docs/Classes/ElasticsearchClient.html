@@ -14,7 +14,7 @@
     <a title="ElasticsearchClient Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Elasticsearch Docs</a> (30% documented)</p>
+        <p><a href="../index.html">Elasticsearch Docs</a> (29% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -202,7 +202,7 @@
                 <a href="../Structs/AggregationTermsResponse.html">AggregationTermsResponse</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Response Structures.html#/s:13Elasticsearch11DocResponseV">DocResponse</a>
+                <a href="../Structs/DocResponse.html">DocResponse</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/IndexResponse.html">IndexResponse</a>
@@ -349,6 +349,22 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Other Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/GeoValidationMethod.html">GeoValidationMethod</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/SettableID.html">SettableID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Other Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -361,16 +377,37 @@
                 <a href="../Structs/ElasticsearchError.html">ElasticsearchError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ElasticsearchIndexSettingsIndex.html">ElasticsearchIndexSettingsIndex</a>
+                <a href="../Structs/GeoPoint.html">GeoPoint</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ElasticsearchIndexSettingsIndex.html#/s:13Elasticsearch0a13IndexSettingsB0V7VersionV">– Version</a>
+                <a href="../Structs/GeoPolygon.html">GeoPolygon</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndexSettings.html">IndexSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndexSettings.html#/s:13Elasticsearch13IndexSettingsV7VersionV">– Version</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Script.html">Script</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/SearchContainer.html">SearchContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SpanContaining.html">SpanContaining</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SpanNear.html">SpanNear</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SpanNot.html">SpanNot</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SpanOr.html">SpanOr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SpanWithin.html">SpanWithin</a>
               </li>
             </ul>
           </li>
@@ -666,9 +703,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13Elasticsearch0A6ClientC3get3NIO15EventLoopFutureCyAA11DocResponseVyxGGxm8decodeTo_SS5indexSS2idSS4typeSSSg7routingSiSg7versionSaySSGSg12storedFieldsSbSg8realtimetKAA0A5ModelRzlF"></a>
+                    <a name="/s:13Elasticsearch0A6ClientC3get3NIO15EventLoopFutureCyAA11DocResponseVyxGGxm8decodeTo_SS5indexSS2idSS4typeSSSg7routingSiSg7versionSaySSGSg12storedFieldsSbSg8realtimetKs9DecodableRzs9EncodableRzlF"></a>
                     <a name="//apple_ref/swift/Method/get(decodeTo:index:id:type:routing:version:storedFields:realtime:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13Elasticsearch0A6ClientC3get3NIO15EventLoopFutureCyAA11DocResponseVyxGGxm8decodeTo_SS5indexSS2idSS4typeSSSg7routingSiSg7versionSaySSGSg12storedFieldsSbSg8realtimetKAA0A5ModelRzlF">get(decodeTo:index:id:type:routing:version:storedFields:realtime:)</a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC3get3NIO15EventLoopFutureCyAA11DocResponseVyxGGxm8decodeTo_SS5indexSS2idSS4typeSSSg7routingSiSg7versionSaySSGSg12storedFieldsSbSg8realtimetKs9DecodableRzs9EncodableRzlF">get(decodeTo:index:id:type:routing:version:storedFields:realtime:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -688,7 +725,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="k">get</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">ElasticsearchModel</span><span class="o">&gt;</span><span class="p">(</span>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="k">get</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span>
     <span class="n">decodeTo</span> <span class="nv">resultType</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span>
     <span class="nv">index</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
     <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
@@ -697,7 +734,7 @@
     <span class="nv">version</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">storedFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">realtime</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
-<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt"><a href="../Response Structures.html#/s:13Elasticsearch11DocResponseV">DocResponse</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;&gt;</span></code></pre>
+<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/DocResponse.html">DocResponse</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -814,9 +851,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13Elasticsearch0A6ClientC5index3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SSADSSSg2idSS4typeAL7routingSiSg7versionSbSg11forceCreatetKAA0A5ModelRzlF"></a>
+                    <a name="/s:13Elasticsearch0A6ClientC5index3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SSADSSSg2idSS4typeAL7routingSiSg7versionSbSg11forceCreatetKs9DecodableRzs9EncodableRzlF"></a>
                     <a name="//apple_ref/swift/Method/index(doc:index:id:type:routing:version:forceCreate:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13Elasticsearch0A6ClientC5index3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SSADSSSg2idSS4typeAL7routingSiSg7versionSbSg11forceCreatetKAA0A5ModelRzlF">index(doc:index:id:type:routing:version:forceCreate:)</a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC5index3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SSADSSSg2idSS4typeAL7routingSiSg7versionSbSg11forceCreatetKs9DecodableRzs9EncodableRzlF">index(doc:index:id:type:routing:version:forceCreate:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -836,7 +873,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">index</span><span class="o">&lt;</span><span class="kt">T</span> <span class="p">:</span><span class="kt">ElasticsearchModel</span><span class="o">&gt;</span><span class="p">(</span>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">index</span><span class="o">&lt;</span><span class="kt">T</span> <span class="p">:</span><span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span>
     <span class="nv">doc</span> <span class="p">:</span><span class="kt">T</span><span class="p">,</span>
     <span class="nv">index</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
     <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
@@ -949,9 +986,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13Elasticsearch0A6ClientC6update3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SS5indexSS2idSS4typeSSSg7routingSiSg7versiontKAA0A5ModelRzlF"></a>
+                    <a name="/s:13Elasticsearch0A6ClientC6update3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SS5indexSS2idSS4typeSSSg7routingSiSg7versiontKs9DecodableRzs9EncodableRzlF"></a>
                     <a name="//apple_ref/swift/Method/update(doc:index:id:type:routing:version:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13Elasticsearch0A6ClientC6update3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SS5indexSS2idSS4typeSSSg7routingSiSg7versiontKAA0A5ModelRzlF">update(doc:index:id:type:routing:version:)</a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC6update3NIO15EventLoopFutureCyAA13IndexResponseVGx3doc_SS5indexSS2idSS4typeSSSg7routingSiSg7versiontKs9DecodableRzs9EncodableRzlF">update(doc:index:id:type:routing:version:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -971,7 +1008,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">update</span><span class="o">&lt;</span><span class="kt">T</span> <span class="p">:</span><span class="kt">ElasticsearchModel</span><span class="o">&gt;</span><span class="p">(</span>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">update</span><span class="o">&lt;</span><span class="kt">T</span> <span class="p">:</span><span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span>
     <span class="nv">doc</span> <span class="p">:</span><span class="kt">T</span><span class="p">,</span>
     <span class="nv">index</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
     <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
@@ -1173,6 +1210,91 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>A Future IndexResponse</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC10fetchIndex3NIO15EventLoopFutureCyAA0aD0CGSS4name_tKF"></a>
+                    <a name="//apple_ref/swift/Method/fetchIndex(name:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC10fetchIndex3NIO15EventLoopFutureCyAA0aD0CGSS4name_tKF">fetchIndex(name:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchIndex</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/ElasticsearchIndex.html">ElasticsearchIndex</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC11createIndexAA0aD0CSS4name_tF"></a>
+                    <a name="//apple_ref/swift/Method/createIndex(name:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC11createIndexAA0aD0CSS4name_tF">createIndex(name:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createIndex</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ElasticsearchIndex.html">ElasticsearchIndex</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC11deleteIndex3NIO15EventLoopFutureCyytGSS4name_tKF"></a>
+                    <a name="//apple_ref/swift/Method/deleteIndex(name:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC11deleteIndex3NIO15EventLoopFutureCyytGSS4name_tKF">deleteIndex(name:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteIndex</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -1416,7 +1538,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-22)</p>
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
