@@ -3288,7 +3288,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_8 /* Elasticsearch */,
-				C248179320C1151C00E4570F /* Utilities */,
 			);
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -3340,6 +3339,7 @@
 		OBJ_8 /* Elasticsearch */ = {
 			isa = PBXGroup;
 			children = (
+				C248179320C1151C00E4570F /* Utilities */,
 				C21D6B4820CC83ED00ED81B6 /* Search */,
 				C23D9F1720CB5E530082C3D9 /* Index */,
 				C2D5F61A20C413A8006AAF04 /* Model */,

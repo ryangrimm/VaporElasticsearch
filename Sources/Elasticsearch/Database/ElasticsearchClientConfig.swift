@@ -8,6 +8,7 @@ public struct ElasticsearchClientConfig: Codable {
     /// The Elasticsearch server's port.
     public var port: Int
     
+    
     /// The Elasticsearch server's optional username.
     public var username: String?
     
