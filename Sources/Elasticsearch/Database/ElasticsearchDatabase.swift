@@ -1,4 +1,9 @@
+import DatabaseKit
+import Async
+
 public final class ElasticsearchDatabase: Database {
+    public typealias Connection = ElasticsearchClient
+    
     /// This client's configuration.
     public let config: ElasticsearchClientConfig
     

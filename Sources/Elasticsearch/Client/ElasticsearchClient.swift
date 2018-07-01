@@ -1,7 +1,10 @@
 import HTTP
+import DatabaseKit
 
 /// A Elasticsearch client.
 public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
+    public typealias Database = ElasticsearchDatabase
+    
     /// See `BasicWorker`.
     public var eventLoop: EventLoop {
         return worker.eventLoop

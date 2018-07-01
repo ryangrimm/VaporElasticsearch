@@ -1,9 +1,4 @@
-//
-//  ElasticsearchClient+IndexMgmt.swift
-//  Elasticsearch
-//
-//  Created by Ryan Grimm on 6/23/18.
-//
+import Async
 
 extension ElasticsearchClient {
     public func fetchIndex(name: String) throws -> Future<ElasticsearchIndex> {

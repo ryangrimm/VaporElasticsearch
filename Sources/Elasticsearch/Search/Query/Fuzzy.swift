@@ -54,6 +54,10 @@ public struct Fuzzy: QueryElement {
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
+        
+        
+        
+        
         let inner = Fuzzy.Inner(
             value: value,
             fuzziness: fuzziness,
