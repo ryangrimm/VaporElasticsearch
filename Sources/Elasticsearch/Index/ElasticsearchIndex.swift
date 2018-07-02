@@ -38,6 +38,20 @@ public struct IndexSettings: Codable {
     }
 }
 
+internal struct IndexMeta: Codable {
+    var `private`: PrivateIndexMeta
+    var userDefined: [String: String]?
+    
+    init() {
+        self.private = PrivateIndexMeta(serialVersion: 1)
+    }
+}
+
+public struct PrivateIndexMeta: Codable {
+    let serialVersion: Int
+    /// TODO - Add in a hashed value of the properties JSON so we know if the configuration has changed
+}
+
 public class ElasticsearchIndex: Codable {
     
     struct FetchWrapper: Codable {
@@ -59,29 +73,35 @@ public class ElasticsearchIndex: Codable {
     }
     
     struct DefaultType: Codable {
-        var doc: Properties
+        var doc: DocumentTypeSettings
         
         enum CodingKeys: String, CodingKey {
             case doc = "_doc"
         }
     }
     
-    struct Properties: Codable {
+    struct DocumentTypeSettings: Codable {
         var properties = [String: AnyMap]()
         var enabled = true
         var dynamic = false
+        var meta: IndexMeta
         
         enum CodingKeys: String, CodingKey {
             case properties
             case enabled
             case dynamic
+            case meta = "_meta"
         }
         
-        init() {}
+        init() {
+            self.meta = IndexMeta()
+        }
         
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.properties = try container.decode([String: AnyMap].self, forKey: .properties)
+            self.meta = try container.decode(IndexMeta.self, forKey: .meta)
+
             if container.contains(.enabled) {
                 do {
                     self.enabled = (try container.decode(Bool.self, forKey: .enabled))
@@ -107,7 +127,7 @@ public class ElasticsearchIndex: Codable {
     
     var client: ElasticsearchClient? = nil
     var indexName: String? = nil
-    var mappings = DefaultType(doc: Properties())
+    var mappings = DefaultType(doc: DocumentTypeSettings())
     var aliases = [String: Alias]()
     var settings: Settings? = nil
 
@@ -133,7 +153,7 @@ public class ElasticsearchIndex: Codable {
     }
     
     func settings(index: IndexSettings) -> Self {
-        if (self.settings == nil) {
+        if self.settings == nil {
             self.settings = Settings()
         }
         
@@ -149,6 +169,14 @@ public class ElasticsearchIndex: Codable {
     
     func property(key: String, type: Mappable) -> Self {
         mappings.doc.properties[key] = AnyMap(type)
+        return self
+    }
+    
+    func add(metaKey: String, metaValue: String) -> Self {
+        if mappings.doc.meta.userDefined == nil {
+            mappings.doc.meta.userDefined = [String: String]()
+        }
+        mappings.doc.meta.userDefined![metaKey] = metaValue
         return self
     }
     
