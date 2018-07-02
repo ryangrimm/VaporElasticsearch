@@ -1,4 +1,5 @@
 import HTTP
+import Crypto
 
 public struct IndexSettings: Codable {
     let numberOfShards: Int
@@ -43,13 +44,18 @@ internal struct IndexMeta: Codable {
     var userDefined: [String: String]?
     
     init() {
-        self.private = PrivateIndexMeta(serialVersion: 1)
+        self.private = PrivateIndexMeta(version: 1)
     }
 }
 
 public struct PrivateIndexMeta: Codable {
     let serialVersion: Int
-    /// TODO - Add in a hashed value of the properties JSON so we know if the configuration has changed
+    var propertiesHash: String
+    
+    init(version: Int) {
+        self.serialVersion = version
+        self.propertiesHash = ""
+    }
 }
 
 public class ElasticsearchIndex: Codable {
@@ -187,6 +193,10 @@ public class ElasticsearchIndex: Codable {
         guard let _ = self.client else {
             throw ElasticsearchError(identifier: "missing_client", reason: "Missing client for index creation", source: .capture())
         }
+        
+        let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties)
+        let digest = try SHA1.hash(propertiesJSON)
+        self.mappings.doc.meta.private.propertiesHash = digest.hexEncodedString()
         
         let body = try JSONEncoder().encode(self)
         return try self.client!.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in

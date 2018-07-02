@@ -12,6 +12,9 @@ let package = Package(
 		// Core extensions, type-aliases, and functions that facilitate common tasks.
 		.package(url: "https://github.com/vapor/core.git", from: "3.0.0"),
 
+		// Crypto goodies
+		.package(url: "https://github.com/vapor/crypto.git", from: "3.2.0"),
+
 		// Core services for creating database integrations.
 		.package(url: "https://github.com/vapor/database-kit.git", from: "1.0.0"),
 
@@ -22,7 +25,7 @@ let package = Package(
 		.package(url: "https://github.com/vapor/http.git", from: "3.0.0"),
     ],
     targets: [
-        .target( name: "Elasticsearch", dependencies: ["Async", "Bits", "DatabaseKit", "Debugging", "NIO", "COperatingSystem", "HTTP"]),
+        .target( name: "Elasticsearch", dependencies: ["Crypto", "Async", "Bits", "DatabaseKit", "Debugging", "NIO", "COperatingSystem", "HTTP"]),
         .testTarget( name: "ElasticsearchTests", dependencies: ["Elasticsearch"])
     ]
 )
