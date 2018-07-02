@@ -8,6 +8,8 @@ public struct ElasticsearchClientConfig: Codable {
     /// The Elasticsearch server's port.
     public var port: Int
     
+    /// Connect using SSL (defaults to false).
+    public var useSSL = false
     
     /// The Elasticsearch server's optional username.
     public var username: String?

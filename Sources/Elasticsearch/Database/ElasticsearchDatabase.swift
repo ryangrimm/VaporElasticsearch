@@ -18,7 +18,7 @@ public final class ElasticsearchDatabase: Database {
     
     /// See `Database`.
     public func newConnection(on worker: Worker) -> Future<ElasticsearchClient> {
-        return ElasticsearchClient.connect(hostname: config.hostname, port: config.port, username: config.username, password: config.password, on: worker) { error in
+        return ElasticsearchClient.connect(config: config, on: worker) { error in
             print("[Elasticsearch] \(error)")
         }
     }

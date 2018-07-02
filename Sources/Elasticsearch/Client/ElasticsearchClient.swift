@@ -24,12 +24,15 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
     internal let decoder = JSONDecoder()
     internal var isConnected: Bool
     
+    internal let config: ElasticsearchClientConfig
+    
     /// Creates a new Elasticsearch client.
-    init(client: HTTPClient, worker: Worker) {
+    init(client: HTTPClient, config: ElasticsearchClientConfig, worker: Worker) {
         self.esConnection = client
         self.extend = [:]
         self.isClosed = false
         self.isConnected = false
+        self.config = config
         self.worker = worker
     }
     
@@ -77,8 +80,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         _ method: HTTPMethod,
         to path: String
     ) throws -> Future<Data> {
-        var httpReq = HTTPRequest(method: method, url: path)
-        httpReq.headers.add(name: "Content-Type", value: "application/json")
+        let httpReq = HTTPRequest(method: method, url: path)
         return try send(httpReq)
     }
     
@@ -96,15 +98,23 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         to path: String,
         with body: Data
     ) throws -> Future<Data> {
-        var httpReq = HTTPRequest(method: method, url: path, body: HTTPBody(data: body))
-        httpReq.headers.add(name: "Content-Type", value: "application/json")
+        let httpReq = HTTPRequest(method: method, url: path, body: HTTPBody(data: body))
         return try send(httpReq)
     }
     
     public func send(
         _ request: HTTPRequest
     ) throws -> Future<Data> {
-        // XXX should be debug logged
+        var request = request
+        request.headers.add(name: "Content-Type", value: "application/json")
+        if self.config.username != nil && self.config.password != nil {
+            let token = "\(config.username!):\(config.password!)".data(using: String.Encoding.utf8)?.base64EncodedString()
+            if token != nil {
+                request.headers.add(name: "Authorization", value: "Basic \(token!)")
+            }
+        }
+
+        // TODO should be debug logged
         print(request.description)
         
         return self.esConnection.send(request).map(to: Data.self) { response in
@@ -121,7 +131,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
                 throw ElasticsearchError(identifier: "elasticsearch_error", reason: error.description, source: .capture(), statusCode: response.status.code)
             }
             
-            // XXX should be debug logged
+            // TODO should be debug logged
             let bodyString = String(data: response.body.data!, encoding: String.Encoding.utf8) as String?
             print(bodyString!)
             
