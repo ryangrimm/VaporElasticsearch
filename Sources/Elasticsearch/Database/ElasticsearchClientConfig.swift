@@ -27,16 +27,17 @@ public struct ElasticsearchClientConfig: Codable {
     /// Name of the index to use for the keyed cache
     public var keyedCacheIndexName: String = "_vapor_keyed_cache"
 
-    /// Create a new `ElasticsearchClientConfig`
+    /// Create a new `ElasticsearchClientConfig` from a URL
     public init(url: URL) {
         self.hostname = url.host ?? "localhost"
         self.port = url.port ?? 9200
         self.username = url.user
         self.password = url.password
     }
-
-    public init() {
-        self.hostname = "localhost"
-        self.port = 9200
+    
+    /// Create a new `ElasticsearchClientConfig`
+    public init(hostname: String = "localhost", port: Int = 9200) {
+        self.hostname = hostname
+        self.port = port
     }
 }

@@ -6,7 +6,8 @@ extension ElasticsearchClient {
     /// Creates a test event loop and Elasticsearch client.
     static func makeTest() throws -> ElasticsearchClient {
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-        let client = try ElasticsearchClient.connect(hostname: "localhost", port: 9200, on: group) { error in
+        let config = ElasticsearchClientConfig()
+        let client = try ElasticsearchClient.connect(config: config, on: group) { error in
             XCTFail("\(error)")
         }.wait()
         return client
@@ -34,7 +35,7 @@ struct TestModel: Codable, SettableID {
 }
 
 final class ElasticsearchTests: XCTestCase {
-    func testIndexCreation() throws {
+        func testIndexCreation() throws {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         

@@ -67,7 +67,38 @@ public class ElasticsearchIndex: Codable {
     }
     
     struct Properties: Codable {
-        var properties: [String: AnyMap]
+        var properties = [String: AnyMap]()
+        var enabled = true
+        var dynamic = false
+        
+        enum CodingKeys: String, CodingKey {
+            case properties
+            case enabled
+            case dynamic
+        }
+        
+        init() {}
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.properties = try container.decode([String: AnyMap].self, forKey: .properties)
+            if container.contains(.enabled) {
+                do {
+                    self.enabled = (try container.decode(Bool.self, forKey: .enabled))
+                }
+                catch {
+                    self.enabled = try container.decode(String.self, forKey: .enabled) == "true"
+                }
+            }
+            if container.contains(.dynamic) {
+                do {
+                    self.dynamic = (try container.decode(Bool.self, forKey: .dynamic))
+                }
+                catch {
+                    self.dynamic = try container.decode(String.self, forKey: .dynamic) == "true"
+                }
+            }
+        }
     }
     
     struct Alias: Codable {
@@ -76,7 +107,7 @@ public class ElasticsearchIndex: Codable {
     
     var client: ElasticsearchClient? = nil
     var indexName: String? = nil
-    var mappings = DefaultType(doc: Properties(properties: [String : AnyMap]()))
+    var mappings = DefaultType(doc: Properties())
     var aliases = [String: Alias]()
     var settings: Settings? = nil
 
@@ -94,9 +125,11 @@ public class ElasticsearchIndex: Codable {
         }
     }
     
-    internal init(indexName: String, client: ElasticsearchClient) {
+    internal init(indexName: String, client: ElasticsearchClient, dynamicMapping: Bool = false, enableQuerying: Bool = true) {
         self.indexName = indexName
         self.client = client
+        self.mappings.doc.enabled = enableQuerying
+        self.mappings.doc.dynamic = dynamicMapping
     }
     
     func settings(index: IndexSettings) -> Self {
