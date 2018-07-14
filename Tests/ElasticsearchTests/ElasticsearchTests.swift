@@ -133,9 +133,10 @@ final class ElasticsearchTests: XCTestCase {
         doc0.id = response.id
         
         let bulk = es.bulkOperation()
-        try bulk.index(doc: doc1, index: "test")
-        try bulk.index(doc: doc2, index: "test")
-        try bulk.delete(index: "test", id: doc0.id!)
+        bulk.defaultHeader.index = "test"
+        try bulk.index(doc: doc1)
+        try bulk.index(doc: doc2)
+        try bulk.delete(id: doc0.id!)
         let bulkResponse = try bulk.send().wait()
         
         XCTAssert(bulkResponse.errors == false, "There were errors in the bulk request")

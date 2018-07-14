@@ -3,8 +3,26 @@ import Foundation
 import HTTP
 
 extension ElasticsearchClient {
-    public func bulkOperation(capacity: Int = 10 * 1024 * 1024) -> ElasticsearchBulk {
-        return ElasticsearchBulk(client: self, capacity: capacity)
+    public func bulkOperation(estimatedBodySize capacity: Int = 10 * 1024 * 1024)  -> ElasticsearchBulk {
+        return ElasticsearchBulk(client: self, estimatedBodySize: capacity)
+    }
+}
+
+public struct BulkHeader: Encodable {
+    var index: String?
+    var id: String?
+    var type: String?
+    var routing: String?
+    var version: Int?
+    var retryOnConflict: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case index = "_index"
+        case id = "_id"
+        case type = "_type"
+        case routing = "_routing"
+        case version = "_version"
+        case retryOnConflict = "retry_on_conflict"
     }
 }
 
@@ -13,54 +31,22 @@ public class ElasticsearchBulk {
     let encoder = JSONEncoder()
     let client: ElasticsearchClient
     
-    init(client: ElasticsearchClient, capacity: Int) {
+    public var defaultHeader: BulkHeader = BulkHeader(index: nil, id: nil, type: "_doc", routing: nil, version: nil, retryOnConflict: nil)
+    
+    init(client: ElasticsearchClient, estimatedBodySize capacity: Int) {
         self.client = client
         requestBody = Data(capacity: capacity)
     }
     
-    struct BasicHeader: Encodable {
-        let index: String
-        let id: String?
-        let type: String
-        let routing: String?
-        let version: Int?
-        
-        enum CodingKeys: String, CodingKey {
-            case index = "_index"
-            case id = "_id"
-            case type = "_type"
-            case routing = "_routing"
-            case version = "_version"
-        }
-    }
-    
-    struct UpdateHeader: Encodable {
-        let index: String
-        let id: String?
-        let type: String
-        let routing: String?
-        let version: Int?
-        let retryOnConflict: Int?
-        
-        enum CodingKeys: String, CodingKey {
-            case index = "_index"
-            case id = "_id"
-            case type = "_type"
-            case routing = "_routing"
-            case version = "_version"
-            case retryOnConflict = "retry_on_conflict"
-        }
-    }
-    
     public func index<T: Codable>(
         doc :T,
-        index: String,
+        index: String? = nil,
         id: String? = nil,
-        type: String = "_doc",
+        type: String? = nil,
         routing: String? = nil,
         version: Int? = nil
         ) throws {
-        let header = ["index": BasicHeader(index: index, id: id, type: type, routing: routing, version: version)]
+        let header = ["index": mergeHeaders(defaultHeader, BulkHeader(index: index, id: id, type: type, routing: routing, version: version, retryOnConflict: nil))]
         // Add the header to the request body followed by a newline character (newline -> 10)
         requestBody.append(try encoder.encode(header))
         requestBody.append(10)
@@ -72,13 +58,13 @@ public class ElasticsearchBulk {
     
     public func create<T: Codable>(
         doc :T,
-        index: String,
+        index: String? = nil,
         id: String? = nil,
-        type: String = "_doc",
+        type: String? = nil,
         routing: String? = nil,
         version: Int? = nil
         ) throws {
-        let header = ["create": BasicHeader(index: index, id: id, type: type, routing: routing, version: version)]
+        let header = ["create": mergeHeaders(defaultHeader, BulkHeader(index: index, id: id, type: type, routing: routing, version: version, retryOnConflict: nil))]
         // Add the header to the request body followed by a newline character (newline -> 10)
         requestBody.append(try encoder.encode(header))
         requestBody.append(10)
@@ -90,14 +76,14 @@ public class ElasticsearchBulk {
     
     public func update<T: Codable>(
         doc :T,
-        index: String,
+        index: String? = nil,
         id: String? = nil,
-        type: String = "_doc",
+        type: String? = nil,
         routing: String? = nil,
         version: Int? = nil,
         retryOnConflict: Int? = nil
         ) throws {
-        let header = ["update": UpdateHeader(index: index, id: id, type: type, routing: routing, version: version, retryOnConflict: retryOnConflict)]
+        let header = ["update": mergeHeaders(defaultHeader, BulkHeader(index: index, id: id, type: type, routing: routing, version: version, retryOnConflict: retryOnConflict))]
         // Add the header to the request body followed by a newline character (newline -> 10)
         requestBody.append(try encoder.encode(header))
         requestBody.append(10)
@@ -108,13 +94,13 @@ public class ElasticsearchBulk {
     }
     
     public func delete(
-        index: String,
-        id: String,
-        type: String = "_doc",
+        id: String? = nil,
+        index: String? = nil,
+        type: String? = nil,
         routing: String? = nil,
         version: Int? = nil
         ) throws {
-        let header = ["delete": BasicHeader(index: index, id: id, type: type, routing: routing, version: version)]
+        let header = ["delete": mergeHeaders(defaultHeader, BulkHeader(index: index, id: id, type: type, routing: routing, version: version, retryOnConflict: nil))]
         // Add the header to the request body followed by a newline character (newline -> 10)
         requestBody.append(try encoder.encode(header))
         requestBody.append(10)
@@ -131,5 +117,14 @@ public class ElasticsearchBulk {
         return try client.send(request).map(to: BulkResponse.self) {jsonData in
             return try JSONDecoder().decode(BulkResponse.self, from: jsonData)
         }
+    }
+    
+    private func mergeHeaders(_ base: BulkHeader, _ override: BulkHeader) -> BulkHeader {
+        return BulkHeader(index: override.index ?? base.index,
+                          id: override.id ?? base.id,
+                          type: override.type ?? base.type,
+                          routing: override.routing ?? base.routing,
+                          version: override.version ?? base.version,
+                          retryOnConflict: override.retryOnConflict ?? base.retryOnConflict)
     }
 }
