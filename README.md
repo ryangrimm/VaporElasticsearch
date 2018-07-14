@@ -56,7 +56,7 @@ import Elasticsearch
 
 ### Adding the Service
 
-Add the `Elastisearchdatabase` in your `configure.swift` file:
+Add the `ElasticsearchDatabase` in your `configure.swift` file:
 
 ```swift
 let esConfig = ElasticsearchClientConfig(hostname: "localhost", port: 9200)
