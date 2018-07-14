@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		C2261A9620F9DED300B82E77 /* ElasticsearchBulk.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2261A9520F9DED300B82E77 /* ElasticsearchBulk.swift */; };
+		C2261A9820F9EA0900B82E77 /* BulkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2261A9720F9EA0900B82E77 /* BulkResponse.swift */; };
 		OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ElasticsearchAggregationCodableTests.swift */; };
 		OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* ElasticsearchQueryCodableTests.swift */; };
 		OBJ_1003 /* ElasticsearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ElasticsearchTests.swift */; };
@@ -1900,6 +1902,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C2261A9520F9DED300B82E77 /* ElasticsearchBulk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchBulk.swift; sourceTree = "<group>"; };
+		C2261A9720F9EA0900B82E77 /* BulkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkResponse.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3724,7 +3728,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -3734,7 +3738,6 @@
 				OBJ_131 /* Dependencies */,
 				OBJ_465 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_50 /* Model */ = {
@@ -3760,6 +3763,7 @@
 				OBJ_60 /* DocResponse.swift */,
 				OBJ_61 /* IndexResponse.swift */,
 				OBJ_62 /* SearchResponse.swift */,
+				C2261A9720F9EA0900B82E77 /* BulkResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -3881,6 +3885,7 @@
 				OBJ_12 /* ElasticsearchClient+Search.swift */,
 				OBJ_13 /* ElasticsearchClient+connect.swift */,
 				OBJ_14 /* ElasticsearchClient.swift */,
+				C2261A9520F9DED300B82E77 /* ElasticsearchBulk.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -4637,7 +4642,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_465 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -5184,6 +5189,7 @@
 				OBJ_850 /* MapFloatRange.swift in Sources */,
 				OBJ_851 /* MapGeoPoint.swift in Sources */,
 				OBJ_852 /* MapGeoShape.swift in Sources */,
+				C2261A9820F9EA0900B82E77 /* BulkResponse.swift in Sources */,
 				OBJ_853 /* MapHalfFloat.swift in Sources */,
 				OBJ_854 /* MapIPAddress.swift in Sources */,
 				OBJ_855 /* MapInteger.swift in Sources */,
@@ -5233,6 +5239,7 @@
 				OBJ_899 /* Exists.swift in Sources */,
 				OBJ_900 /* Fuzzy.swift in Sources */,
 				OBJ_901 /* GeoHelpers.swift in Sources */,
+				C2261A9620F9DED300B82E77 /* ElasticsearchBulk.swift in Sources */,
 				OBJ_902 /* GeoPolygon.swift in Sources */,
 				OBJ_903 /* IDs.swift in Sources */,
 				OBJ_904 /* Match.swift in Sources */,

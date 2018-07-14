@@ -20,6 +20,7 @@ public struct IndexResponse: Codable {
         case created = "created"
         case updated = "updated"
         case deleted = "deleted"
+        case notFound = "not_found"
         case noop = "noop"
     }
     

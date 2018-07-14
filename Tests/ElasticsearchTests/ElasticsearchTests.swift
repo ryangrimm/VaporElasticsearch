@@ -112,8 +112,38 @@ final class ElasticsearchTests: XCTestCase {
         try ElasticsearchIndex.delete(indexName: "test", client: es).wait()
     }
     
+    func testBulk() throws {
+        let es = try ElasticsearchClient.makeTest()
+        defer { es.close() }
+        
+        try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
+        
+        try es.createIndex(name: "test")
+            .property(key: "name", type: MapText())
+            .property(key: "number", type: MapInteger())
+            .alias(name: "testalias")
+            .settings(index: IndexSettings(shards: 3, replicas: 2))
+            .create().wait()
+        
+        var doc0: TestModel = TestModel(name: "foo", number: 26)
+        let doc1: TestModel = TestModel(name: "bar", number: 27)
+        let doc2: TestModel = TestModel(name: "baz", number: 28)
+        
+        let response = try es.index(doc: doc0, index: "test").wait()
+        doc0.id = response.id
+        
+        let bulk = es.bulkOperation()
+        try bulk.index(doc: doc1, index: "test")
+        try bulk.index(doc: doc2, index: "test")
+        try bulk.delete(index: "test", id: doc0.id!)
+        let bulkResponse = try bulk.send().wait()
+        
+        XCTAssert(bulkResponse.errors == false, "There were errors in the bulk request")
+    }
+    
     static var allTests = [
         ("testIndexCreation", testIndexCreation),
-        ("testCRUD", testCRUD)
+        ("testCRUD", testCRUD),
+        ("testBulk", testBulk)
     ]
 }

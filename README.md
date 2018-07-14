@@ -23,6 +23,8 @@ aggregations. Currently these goals are all being met on some level.
 
 ## TODO
 
+* Support copy_to 
+
 * Implement the KeyedCacheSupporting protocol
 * Implement the DatabaseQueryable protocol
 * Create a chainable query builder

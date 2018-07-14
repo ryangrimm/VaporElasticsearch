@@ -106,7 +106,9 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
         _ request: HTTPRequest
     ) throws -> Future<Data> {
         var request = request
-        request.headers.add(name: "Content-Type", value: "application/json")
+        if request.headers.contains(name: "Content-Type") == false {
+            request.headers.add(name: "Content-Type", value: "application/json")
+        }
         if self.config.username != nil && self.config.password != nil {
             let token = "\(config.username!):\(config.password!)".data(using: String.Encoding.utf8)?.base64EncodedString()
             if token != nil {
