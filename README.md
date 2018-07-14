@@ -1,4 +1,4 @@
-# A Vapor/Swift Elasticsearch Client
+# A Vapor/Swift Elasticsearch Client 🔎
 
 The goal of this project is to provide a comprehensive yet easy to use
 Elasticsearch client for Swift. The Vapor server side framework has a large
@@ -20,6 +20,83 @@ aggregations. Currently these goals are all being met on some level.
 * Population of object models when fetching a document and search results (via Swift Codable support)
 * Automatic seralization of object models to Elasticsearch (via Swift Codable support)
 * Ability to specify the mapping for index creation
+
+## 📦 Installation
+
+### Package.swift
+
+Add `Elasticsearch` to the Package dependencies:
+```swift
+dependencies: [
+    ...,
+    .package(url: "https://github.com/ryangrimm/VaporElasticsearch", .branch("master"))
+]
+```
+
+as well as to your target (e.g. "App"):
+
+```swift
+targets: [
+    ...
+    .target(
+        name: "App",
+        dependencies: [... "Elasticsearch" ...]
+    ),
+    ...
+]
+```
+
+## Getting started 🚀
+
+Make sure that you've imported Elasticsearch everywhere when needed:
+
+```swift
+import Elasticsearch
+```
+
+### Adding the Service
+
+Add the `Elastisearchdatabase` in your `configure.swift` file:
+
+```swift
+let esConfig = ElasticsearchClientConfig(hostname: "localhost", port: 9200)
+let es = try ElasticsearchDatabase(config: esConfig)
+var databases = DatabasesConfig()
+databases.add(database: es, as: .elasticsearch)
+services.register(databases)
+```
+
+### Simple search example
+
+```
+struct Document: Codable {
+
+    var id: String
+    var title: String
+}
+
+func list(_ req: Request) throws -> Future<[Document]> {
+
+	let query = Query(
+	    Match(field: "id", value: "42")
+	)
+
+	return req.withNewConnection(to: .elasticsearch) { conn in
+
+	    return try conn.search(
+		decodeTo: Document.self,
+		index: "index",
+		query: SearchContainer(query)
+	    )
+
+	}.map(to: [Document].self ) { searchResponse in
+
+	    guard let hits = searchResponse.hits else { return [Document]() }
+	    let results = hits.hits.map { $0.source }
+	    return results
+	}
+}
+```
 
 ## TODO
 
