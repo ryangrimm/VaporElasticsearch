@@ -14,7 +14,7 @@
     <a title="ElasticsearchClientConfig Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Elasticsearch Docs</a> (29% documented)</p>
+        <p><a href="../index.html">Elasticsearch Docs</a> (32% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -48,11 +48,17 @@
               <li class="nav-group-task">
                 <a href="../Structs/ElasticsearchClientConfig.html">ElasticsearchClientConfig</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchBulk.html">ElasticsearchBulk</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="../Query Constructors.html">Query Constructors</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/SearchContainer.html">SearchContainer</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Structs/BoolQuery.html">BoolQuery</a>
               </li>
@@ -243,6 +249,18 @@
               <li class="nav-group-task">
                 <a href="../Structs/SearchResponse/HitsContainer.html">– HitsContainer</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Response Structures.html#/s:13Elasticsearch12BulkResponseV">BulkResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BulkItemResponse.html">BulkItemResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BulkItemResponse/Shards.html">– Shards</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BulkItemResponse/ResultType.html">– ResultType</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -385,6 +403,12 @@
               <li class="nav-group-task">
                 <a href="../Structs/AggregationBucket.html">AggregationBucket</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BulkHeader.html">BulkHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OperationType.html">OperationType</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -402,7 +426,7 @@
                 <a href="../Structs/ElasticsearchError.html">ElasticsearchError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SearchContainer.html">SearchContainer</a>
+                <a href="../Other Structs.html#/s:13Elasticsearch16PrivateIndexMetaV">PrivateIndexMeta</a>
               </li>
             </ul>
           </li>
@@ -492,6 +516,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:13Elasticsearch0A12ClientConfigV6useSSLSbvp"></a>
+                    <a name="//apple_ref/swift/Property/useSSL" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A12ClientConfigV6useSSLSbvp">useSSL</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Connect using SSL (defaults to false).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">useSSL</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:13Elasticsearch0A12ClientConfigV8usernameSSSgvp"></a>
                     <a name="//apple_ref/swift/Property/username" class="dashAnchor"></a>
                     <a class="token" href="#/s:13Elasticsearch0A12ClientConfigV8usernameSSSgvp">username</a>
@@ -546,6 +597,64 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:13Elasticsearch0A12ClientConfigV16enableKeyedCacheSbvp"></a>
+                    <a name="//apple_ref/swift/Property/enableKeyedCache" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A12ClientConfigV16enableKeyedCacheSbvp">enableKeyedCache</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If wanting to use Elasticsearch as a key/value store <code>enableKeyedCache</code> must be set to <code>true</code>.
+This will create a new index in Elasticsearch automatically. By default the name of this
+index is <q>_vapor_keyed_cache</q> but can be controlled via the <code><a href="../Structs/ElasticsearchClientConfig.html#/s:13Elasticsearch0A12ClientConfigV19keyedCacheIndexNameSSvp">keyedCacheIndexName</a></code>.
+If <code>enableKeyedCache</code> was set to <code>true</code> and then later set to <code>false</code>, the Elasticsearch
+index will be deleted.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">enableKeyedCache</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A12ClientConfigV19keyedCacheIndexNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/keyedCacheIndexName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A12ClientConfigV19keyedCacheIndexNameSSvp">keyedCacheIndexName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Name of the index to use for the keyed cache</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">keyedCacheIndexName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:13Elasticsearch0A12ClientConfigVAC10Foundation3URLV3url_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(url:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:13Elasticsearch0A12ClientConfigVAC10Foundation3URLV3url_tcfc">init(url:)</a>
@@ -556,7 +665,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Create a new <code>ElasticsearchClientConfig</code></p>
+                        <p>Create a new <code>ElasticsearchClientConfig</code> from a URL</p>
 
                       </div>
                       <div class="declaration">
@@ -573,9 +682,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13Elasticsearch0A12ClientConfigVACycfc"></a>
-                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13Elasticsearch0A12ClientConfigVACycfc">init()</a>
+                    <a name="/s:13Elasticsearch0A12ClientConfigVACSS8hostname_Si4porttcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(hostname:port:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A12ClientConfigVACSS8hostname_Si4porttcfc">init(hostname:port:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -583,14 +692,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create a new <code>ElasticsearchClientConfig</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">hostname</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">9200</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -633,7 +742,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-24)</p>
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-07-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

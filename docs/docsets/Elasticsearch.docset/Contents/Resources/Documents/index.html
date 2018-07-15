@@ -13,7 +13,7 @@
     <a title="Elasticsearch  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Elasticsearch Docs</a> (29% documented)</p>
+        <p><a href="index.html">Elasticsearch Docs</a> (32% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -47,11 +47,17 @@
               <li class="nav-group-task">
                 <a href="Structs/ElasticsearchClientConfig.html">ElasticsearchClientConfig</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Classes/ElasticsearchBulk.html">ElasticsearchBulk</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="Query Constructors.html">Query Constructors</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/SearchContainer.html">SearchContainer</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Structs/BoolQuery.html">BoolQuery</a>
               </li>
@@ -242,6 +248,18 @@
               <li class="nav-group-task">
                 <a href="Structs/SearchResponse/HitsContainer.html">– HitsContainer</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Response Structures.html#/s:13Elasticsearch12BulkResponseV">BulkResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/BulkItemResponse.html">BulkItemResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/BulkItemResponse/Shards.html">– Shards</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/BulkItemResponse/ResultType.html">– ResultType</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -384,6 +402,12 @@
               <li class="nav-group-task">
                 <a href="Structs/AggregationBucket.html">AggregationBucket</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Structs/BulkHeader.html">BulkHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/OperationType.html">OperationType</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -401,7 +425,7 @@
                 <a href="Structs/ElasticsearchError.html">ElasticsearchError</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/SearchContainer.html">SearchContainer</a>
+                <a href="Other Structs.html#/s:13Elasticsearch16PrivateIndexMetaV">PrivateIndexMeta</a>
               </li>
             </ul>
           </li>
@@ -422,7 +446,7 @@
         <section>
           <section class="section">
             
-            <h1 id='a-vapor-swift-elasticsearch-client' class='heading'>A Vapor/Swift Elasticsearch Client</h1>
+            <h1 id='a-vapor-swift-elasticsearch-client' class='heading'>A Vapor/Swift Elasticsearch Client 🔎</h1>
 
 <p>The goal of this project is to provide a comprehensive yet easy to use
 Elasticsearch client for Swift. The Vapor server side framework has a large
@@ -444,14 +468,81 @@ aggregations. Currently these goals are all being met on some level.</p>
 <li>Population of object models when fetching a document and search results (via Swift Codable support)</li>
 <li>Automatic seralization of object models to Elasticsearch (via Swift Codable support)</li>
 <li>Ability to specify the mapping for index creation</li>
+<li>Support for bulk operations</li>
 </ul>
+<h2 id='installation' class='heading'>📦 Installation</h2>
+<h3 id='package-swift' class='heading'>Package.swift</h3>
+
+<p>Add <code>Elasticsearch</code> to the Package dependencies:</p>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">...</span><span class="p">,</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/ryangrimm/VaporElasticsearch"</span><span class="p">,</span> <span class="o">.</span><span class="nf">branch</span><span class="p">(</span><span class="s">"master"</span><span class="p">))</span>
+<span class="p">]</span>
+</code></pre>
+
+<p>as well as to your target (e.g. <q>App</q>):</p>
+<pre class="highlight swift"><code><span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="o">.</span><span class="nf">target</span><span class="p">(</span>
+        <span class="nv">name</span><span class="p">:</span> <span class="s">"App"</span><span class="p">,</span>
+        <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span> <span class="s">"Elasticsearch"</span> <span class="o">...</span><span class="p">]</span>
+    <span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</code></pre>
+<h2 id='getting-started' class='heading'>Getting started 🚀</h2>
+
+<p>Make sure that you&rsquo;ve imported Elasticsearch everywhere when needed:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Elasticsearch</span>
+</code></pre>
+<h3 id='adding-the-service' class='heading'>Adding the Service</h3>
+
+<p>Add the <code><a href="Classes/ElasticsearchDatabase.html">ElasticsearchDatabase</a></code> in your <code>configure.swift</code> file:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">esConfig</span> <span class="o">=</span> <span class="kt">ElasticsearchClientConfig</span><span class="p">(</span><span class="nv">hostname</span><span class="p">:</span> <span class="s">"localhost"</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="mi">9200</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">es</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">ElasticsearchDatabase</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="n">esConfig</span><span class="p">)</span>
+<span class="k">var</span> <span class="nv">databases</span> <span class="o">=</span> <span class="kt">DatabasesConfig</span><span class="p">()</span>
+<span class="n">databases</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="nv">database</span><span class="p">:</span> <span class="n">es</span><span class="p">,</span> <span class="nv">as</span><span class="p">:</span> <span class="o">.</span><span class="n">elasticsearch</span><span class="p">)</span>
+<span class="n">services</span><span class="o">.</span><span class="nf">register</span><span class="p">(</span><span class="n">databases</span><span class="p">)</span>
+</code></pre>
+<h3 id='simple-search-example' class='heading'>Simple search example</h3>
+<pre class="highlight plaintext"><code>struct Document: Codable {
+
+    var id: String
+    var title: String
+}
+
+func list(_ req: Request) throws -&gt; Future&lt;[Document]&gt; {
+
+    let query = Query(
+        Match(field: "id", value: "42")
+    )
+
+    return req.withNewConnection(to: .elasticsearch) { conn in
+
+        return try conn.search(
+        decodeTo: Document.self,
+        index: "index",
+        query: SearchContainer(query)
+        )
+
+    }.map(to: [Document].self ) { searchResponse in
+
+        guard let hits = searchResponse.hits else { return [Document]() }
+        let results = hits.hits.map { $0.source }
+        return results
+    }
+}
+</code></pre>
 <h2 id='todo' class='heading'>TODO</h2>
 
 <ul>
-<li>Create a chainable query builder</li>
-<li>Support configuration of tokenizers and analyzers</li>
-<li>Implement the remaining aggregation types</li>
-<li>Implement the decoding for the above aggregation types</li>
+<li><p>Support copy_to </p></li>
+<li><p>Implement the KeyedCacheSupporting protocol</p></li>
+<li><p>Implement the DatabaseQueryable protocol</p></li>
+<li><p>Create a chainable query builder</p></li>
+<li><p>Support configuration of tokenizers and analyzers</p></li>
+<li><p>Implement the remaining aggregation types</p></li>
+<li><p>Implement the decoding for the above aggregation types</p></li>
 <li><p>Implement remaining query DSL constructors
 These are the remaining query DSL constructors that are left to be
 implemented. They are not all of equal value. But pick off those that seem
@@ -489,7 +580,7 @@ useful/easy first.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-24)</p>
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-07-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

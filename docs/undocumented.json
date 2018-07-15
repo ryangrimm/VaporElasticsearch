@@ -2,64 +2,64 @@
   "warnings": [
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient+IndexMgmt.swift",
-      "line": 9,
+      "line": 4,
       "symbol": "ElasticsearchClient.fetchIndex(name:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient+IndexMgmt.swift",
-      "line": 13,
+      "line": 8,
       "symbol": "ElasticsearchClient.createIndex(name:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient+IndexMgmt.swift",
-      "line": 17,
+      "line": 12,
       "symbol": "ElasticsearchClient.deleteIndex(name:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 19,
+      "line": 6,
+      "symbol": "ElasticsearchClient.Database",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
+      "line": 22,
       "symbol": "ElasticsearchClient.worker",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 73,
+      "line": 79,
       "symbol": "ElasticsearchClient.send(_:to:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 82,
+      "line": 87,
       "symbol": "ElasticsearchClient.send(_:to:with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 91,
+      "line": 96,
       "symbol": "ElasticsearchClient.send(_:to:with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 101,
+      "line": 105,
       "symbol": "ElasticsearchClient.send(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Database/ElasticsearchClientConfig.swift",
-      "line": 23,
-      "symbol": "ElasticsearchClientConfig.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -72,42 +72,49 @@
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Database/ElasticsearchDatabase.swift",
-      "line": 1,
+      "line": 4,
       "symbol": "ElasticsearchDatabase",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Database/ElasticsearchDatabase.swift",
-      "line": 10,
+      "line": 15,
       "symbol": "ElasticsearchDatabase.init(url:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
-      "line": 3,
+      "line": 4,
       "symbol": "IndexSettings",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
-      "line": 36,
+      "line": 37,
       "symbol": "IndexSettings.Version",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
-      "line": 41,
+      "line": 51,
+      "symbol": "PrivateIndexMeta",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
+      "line": 61,
       "symbol": "ElasticsearchIndex",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
-      "line": 141,
+      "line": 212,
       "symbol": "ElasticsearchIndex.Settings",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -981,6 +988,132 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 2,
+      "symbol": "OperationType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 3,
+      "symbol": "OperationType.index",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 4,
+      "symbol": "OperationType.create",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 5,
+      "symbol": "OperationType.update",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 6,
+      "symbol": "OperationType.delete",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 9,
+      "symbol": "BulkItemResponse",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 21,
+      "symbol": "BulkItemResponse.Shards",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 22,
+      "symbol": "BulkItemResponse.Shards.total",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 23,
+      "symbol": "BulkItemResponse.Shards.successful",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 24,
+      "symbol": "BulkItemResponse.Shards.failed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 25,
+      "symbol": "BulkItemResponse.Shards.skipped",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 28,
+      "symbol": "BulkItemResponse.ResultType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 29,
+      "symbol": "BulkItemResponse.ResultType.created",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 30,
+      "symbol": "BulkItemResponse.ResultType.updated",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 31,
+      "symbol": "BulkItemResponse.ResultType.deleted",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 32,
+      "symbol": "BulkItemResponse.ResultType.notFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 33,
+      "symbol": "BulkItemResponse.ResultType.noop",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/BulkResponse.swift",
+      "line": 49,
+      "symbol": "BulkResponse",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/DocResponse.swift",
       "line": 2,
       "symbol": "DocResponse",
@@ -1060,6 +1193,13 @@
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/IndexResponse.swift",
       "line": 23,
+      "symbol": "IndexResponse.ResultType.notFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Model/Response/IndexResponse.swift",
+      "line": 24,
       "symbol": "IndexResponse.ResultType.noop",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
@@ -1667,14 +1807,14 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Utilities/ElasticsearchError.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Utilities/ElasticsearchError.swift",
       "line": 10,
       "symbol": "ElasticsearchError.stackTrace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Utilities/ElasticsearchError.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Utilities/ElasticsearchError.swift",
       "line": 13,
       "symbol": "ElasticsearchError.statusCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",

@@ -20,6 +20,7 @@ aggregations. Currently these goals are all being met on some level.
 * Population of object models when fetching a document and search results (via Swift Codable support)
 * Automatic seralization of object models to Elasticsearch (via Swift Codable support)
 * Ability to specify the mapping for index creation
+* Support for bulk operations
 
 ## 📦 Installation
 

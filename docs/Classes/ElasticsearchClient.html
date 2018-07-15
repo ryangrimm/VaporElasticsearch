@@ -14,7 +14,7 @@
     <a title="ElasticsearchClient Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Elasticsearch Docs</a> (29% documented)</p>
+        <p><a href="../index.html">Elasticsearch Docs</a> (32% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -48,11 +48,17 @@
               <li class="nav-group-task">
                 <a href="../Structs/ElasticsearchClientConfig.html">ElasticsearchClientConfig</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchBulk.html">ElasticsearchBulk</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="../Query Constructors.html">Query Constructors</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/SearchContainer.html">SearchContainer</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Structs/BoolQuery.html">BoolQuery</a>
               </li>
@@ -243,6 +249,18 @@
               <li class="nav-group-task">
                 <a href="../Structs/SearchResponse/HitsContainer.html">– HitsContainer</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Response Structures.html#/s:13Elasticsearch12BulkResponseV">BulkResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BulkItemResponse.html">BulkItemResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BulkItemResponse/Shards.html">– Shards</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BulkItemResponse/ResultType.html">– ResultType</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -385,6 +403,12 @@
               <li class="nav-group-task">
                 <a href="../Structs/AggregationBucket.html">AggregationBucket</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BulkHeader.html">BulkHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OperationType.html">OperationType</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -402,7 +426,7 @@
                 <a href="../Structs/ElasticsearchError.html">ElasticsearchError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SearchContainer.html">SearchContainer</a>
+                <a href="../Other Structs.html#/s:13Elasticsearch16PrivateIndexMetaV">PrivateIndexMeta</a>
               </li>
             </ul>
           </li>
@@ -435,6 +459,33 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC8Databasea"></a>
+                    <a name="//apple_ref/swift/Alias/Database" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC8Databasea">Database</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Database</span> <span class="o">=</span> <span class="kt"><a href="../Classes/ElasticsearchDatabase.html">ElasticsearchDatabase</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -687,6 +738,62 @@
 <span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt">Data</span><span class="o">&gt;</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch0A6ClientC13bulkOperationAA0A4BulkCSi17estimatedBodySize_tF"></a>
+                    <a name="//apple_ref/swift/Method/bulkOperation(estimatedBodySize:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC13bulkOperationAA0A4BulkCSi17estimatedBodySize_tF">bulkOperation(estimatedBodySize:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new bulk operation.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html">Here&rsquo;s more information on bulk operations</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bulkOperation</span><span class="p">(</span><span class="n">estimatedBodySize</span> <span class="nv">capacity</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ElasticsearchBulk.html">ElasticsearchBulk</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>capacity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This is the estimated number of bytes for the body of the request. Defaults to 10MB.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns an <code><a href="../Classes/ElasticsearchBulk.html">ElasticsearchBulk</a></code> class for adding operations to.</p>
                       </div>
                     </section>
                   </div>
@@ -1414,9 +1521,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13Elasticsearch0A6ClientC7connect3NIO15EventLoopFutureCyACGSS8hostname_Si4portSSSg8usernameAK8passwordAE0eF5Group_p2onys5Error_pc0mN0tFZ"></a>
-                    <a name="//apple_ref/swift/Method/connect(hostname:port:username:password:on:onError:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13Elasticsearch0A6ClientC7connect3NIO15EventLoopFutureCyACGSS8hostname_Si4portSSSg8usernameAK8passwordAE0eF5Group_p2onys5Error_pc0mN0tFZ">connect(hostname:port:username:password:on:onError:)</a>
+                    <a name="/s:13Elasticsearch0A6ClientC7connect3NIO15EventLoopFutureCyACGAA0aB6ConfigV6config_AE0eF5Group_p2onys5Error_pc0kL0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/connect(config:on:onError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch0A6ClientC7connect3NIO15EventLoopFutureCyACGAA0aB6ConfigV6config_AE0eF5Group_p2onys5Error_pc0kL0tFZ">connect(config:on:onError:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1432,10 +1539,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">connect</span><span class="p">(</span>
-    <span class="nv">hostname</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="p">,</span>
-    <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">9200</span><span class="p">,</span>
-    <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
-    <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">config</span><span class="p">:</span> <span class="kt"><a href="../Structs/ElasticsearchClientConfig.html">ElasticsearchClientConfig</a></span><span class="p">,</span>
     <span class="n">on</span> <span class="nv">worker</span><span class="p">:</span> <span class="kt">Worker</span><span class="p">,</span>
     <span class="nv">onError</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Future</span><span class="o">&lt;</span><span class="kt">ElasticsearchClient</span><span class="o">&gt;</span></code></pre>
@@ -1449,48 +1553,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>hostname</em>
+                                <em>config</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Hostname for the server</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>port</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Port for the server</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>username</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>currently unused</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>password</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>currently unused</p>
+                                  <p>The connection configuration to use</p>
                                 </div>
                               </td>
                             </tr>
@@ -1533,7 +1601,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-06-24)</p>
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-07-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
