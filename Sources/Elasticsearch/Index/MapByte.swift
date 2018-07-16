@@ -8,7 +8,8 @@
  */
 
 public struct MapByte: Mappable {
-    static var typeKey = MapType.byte
+    /// :nodoc:
+    public static var typeKey = MapType.byte
 
     let type = typeKey.rawValue
     

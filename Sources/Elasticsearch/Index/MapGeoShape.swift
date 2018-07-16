@@ -8,7 +8,8 @@
  */
 
 public struct MapGeoShape: Mappable {
-    static var typeKey = MapType.geoShape
+    /// :nodoc:
+    public static var typeKey = MapType.geoShape
 
     public enum GeoShapePrefixTree: String, Codable {
         case geohash = "geohash"

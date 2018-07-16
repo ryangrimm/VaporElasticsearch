@@ -11,7 +11,8 @@
 import Foundation
 
 public struct MapText: Mappable {
-    static var typeKey = MapType.text
+    /// :nodoc:
+    public static var typeKey = MapType.text
 
     let type = typeKey.rawValue
     

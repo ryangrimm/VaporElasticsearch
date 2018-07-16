@@ -158,7 +158,7 @@ public class ElasticsearchIndex: Codable {
         self.mappings.doc.dynamic = dynamicMapping
     }
     
-    func settings(index: IndexSettings) -> Self {
+    public func settings(index: IndexSettings) -> Self {
         if self.settings == nil {
             self.settings = Settings()
         }
@@ -167,18 +167,18 @@ public class ElasticsearchIndex: Codable {
         return self
     }
     
-    func alias(name: String, routing: String? = nil) -> Self {
+    public func alias(name: String, routing: String? = nil) -> Self {
         let alias = Alias(routing: routing)
         aliases[name] = alias
         return self
     }
     
-    func property(key: String, type: Mappable) -> Self {
+    public func property(key: String, type: Mappable) -> Self {
         mappings.doc.properties[key] = AnyMap(type)
         return self
     }
     
-    func add(metaKey: String, metaValue: String) -> Self {
+    public func add(metaKey: String, metaValue: String) -> Self {
         if mappings.doc.meta.userDefined == nil {
             mappings.doc.meta.userDefined = [String: String]()
         }
@@ -186,7 +186,7 @@ public class ElasticsearchIndex: Codable {
         return self
     }
     
-    func create() throws -> Future<Void> {
+    public func create() throws -> Future<Void> {
         guard let name = indexName else {
             throw ElasticsearchError(identifier: "missing_indexName", reason: "Missing index name for index creation", source: .capture())
         }

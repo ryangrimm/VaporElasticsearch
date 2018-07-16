@@ -8,7 +8,8 @@
  */
 
 public struct MapFloatRange: Mappable {
-    static var typeKey = MapType.floatRange
+    /// :nodoc:
+    public static var typeKey = MapType.floatRange
 
     let type = typeKey.rawValue
     

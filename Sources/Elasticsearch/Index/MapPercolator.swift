@@ -8,7 +8,8 @@
  */
 
 public struct MapPercolator: Mappable {
-    static var typeKey = MapType.percolator
+    /// :nodoc:
+    public static var typeKey = MapType.percolator
     
     let type = typeKey.rawValue
     

@@ -8,7 +8,8 @@
  */
 
 public struct MapIPAddress: Mappable {
-    static var typeKey = MapType.ipAddress
+    /// :nodoc:
+    public static var typeKey = MapType.ipAddress
 
     let type = typeKey.rawValue
     

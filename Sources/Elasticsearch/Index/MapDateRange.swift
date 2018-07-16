@@ -8,7 +8,8 @@
  */
 
 public struct MapDateRange: Mappable {
-    static var typeKey = MapType.dateRange
+    /// :nodoc:
+    public static var typeKey = MapType.dateRange
     
     let type = typeKey.rawValue
     

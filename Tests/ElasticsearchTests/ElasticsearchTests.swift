@@ -35,7 +35,7 @@ struct TestModel: Codable, SettableID {
 }
 
 final class ElasticsearchTests: XCTestCase {
-        func testIndexCreation() throws {
+    func testIndexCreation() throws {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         

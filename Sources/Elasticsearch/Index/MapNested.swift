@@ -11,7 +11,8 @@
 import Foundation
 
 public struct MapNested: Mappable {
-    static var typeKey = MapType.nested
+    /// :nodoc:
+    public static var typeKey = MapType.nested
 
     var properties: [String: AnyMap]?
     var dynamic: Bool? = false

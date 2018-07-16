@@ -10,7 +10,8 @@
 import Foundation
 
 public struct MapKeyword: Mappable {
-    static var typeKey = MapType.keyword
+    /// :nodoc:
+    public static var typeKey = MapType.keyword
 
     let type = typeKey.rawValue
     

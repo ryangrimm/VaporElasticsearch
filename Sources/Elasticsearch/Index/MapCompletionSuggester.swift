@@ -8,7 +8,8 @@
  */
 
 public struct MapCompletionSuggester: Mappable {
-    static var typeKey = MapType.completionSuggester
+    /// :nodoc:
+    public static var typeKey = MapType.completionSuggester
     
     let type = typeKey.rawValue
     

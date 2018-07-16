@@ -8,7 +8,8 @@
  */
 
 public struct MapInteger: Mappable {
-    static var typeKey = MapType.integer
+    /// :nodoc:
+    public static var typeKey = MapType.integer
 
     let type = typeKey.rawValue
     

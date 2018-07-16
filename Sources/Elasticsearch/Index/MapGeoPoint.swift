@@ -11,7 +11,8 @@
 import Foundation
 
 public struct MapGeoPoint: Mappable {
-    static var typeKey = MapType.geoPoint
+    /// :nodoc:
+    public static var typeKey = MapType.geoPoint
 
     let type = typeKey.rawValue
 

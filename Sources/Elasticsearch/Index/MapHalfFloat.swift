@@ -8,7 +8,8 @@
  */
 
 public struct MapHalfFloat: Mappable {
-    static var typeKey = MapType.halfFloat
+    /// :nodoc:
+    public static var typeKey = MapType.halfFloat
 
     let type = typeKey.rawValue
     

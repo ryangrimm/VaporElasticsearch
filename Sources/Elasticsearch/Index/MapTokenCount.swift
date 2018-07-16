@@ -8,7 +8,8 @@
  */
 
 public struct MapTokenCount: Mappable {
-    static var typeKey = MapType.tokenCount
+    /// :nodoc:
+    public static var typeKey = MapType.tokenCount
     
     let type = typeKey.rawValue
     

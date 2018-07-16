@@ -8,7 +8,8 @@
  */
 
 public struct MapBoolean: Mappable {
-    static var typeKey = MapType.boolean
+    /// :nodoc:
+    public static var typeKey = MapType.boolean
     
     let type = typeKey.rawValue
     

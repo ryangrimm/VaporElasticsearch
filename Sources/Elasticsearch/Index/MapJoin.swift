@@ -8,7 +8,8 @@
  */
 
 public struct MapJoin: Mappable {
-    static var typeKey = MapType.join
+    /// :nodoc:
+    public static var typeKey = MapType.join
     
     let type = typeKey.rawValue
     var relations: [String: String]

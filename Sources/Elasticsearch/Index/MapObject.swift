@@ -11,7 +11,8 @@
 import Foundation
 
 public struct MapObject: Mappable {
-    static var typeKey = MapType.object
+    /// :nodoc:
+    public static var typeKey = MapType.object
 
     var properties: [String: AnyMap]?
     var dynamic: Bool? = false

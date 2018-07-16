@@ -1,4 +1,4 @@
-enum MapType: String, Codable {
+public enum MapType: String, Codable {
     case text
     case keyword
     case long

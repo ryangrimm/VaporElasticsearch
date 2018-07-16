@@ -8,7 +8,8 @@
  */
 
 public struct MapShort: Mappable {
-    static var typeKey = MapType.short
+    /// :nodoc:
+    public static var typeKey = MapType.short
 
     let type = typeKey.rawValue
     
