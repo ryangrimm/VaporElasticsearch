@@ -24,6 +24,7 @@ public struct MapText: Mappable {
     var norms: Bool? = true
     var store: Bool? = false
     var similarity: SimilarityType? = .bm25
+    public var fields: [String: TextField]?
     
     var analyzer: String?
     var searchAnalyzer: String?

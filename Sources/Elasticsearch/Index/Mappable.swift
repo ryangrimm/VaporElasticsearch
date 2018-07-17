@@ -25,9 +25,19 @@ public enum TextFieldType: String, Codable {
 }
 
 public struct TextField: Codable {
-    var name: String
     var type: TextFieldType
     var analyzer: String?
+    var normalizer: String?
+
+    public init(
+        type: TextFieldType,
+        analyzer: String? = nil,
+        normalizer: String? = nil) {
+
+        self.type = type
+        self.analyzer = analyzer
+        self.normalizer = normalizer
+    }
 }
 
 public protocol Mappable: Codable {
