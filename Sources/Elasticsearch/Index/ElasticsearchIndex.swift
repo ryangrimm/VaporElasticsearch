@@ -90,7 +90,7 @@ public class ElasticsearchIndex: Codable {
         var properties = [String: AnyMap]()
         var enabled = true
         var dynamic = false
-        var meta: IndexMeta
+        var meta: IndexMeta?
         
         enum CodingKeys: String, CodingKey {
             case properties
@@ -106,7 +106,7 @@ public class ElasticsearchIndex: Codable {
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.properties = try container.decode([String: AnyMap].self, forKey: .properties)
-            self.meta = try container.decode(IndexMeta.self, forKey: .meta)
+            self.meta = try? container.decode(IndexMeta.self, forKey: .meta)
 
             if container.contains(.enabled) {
                 do {
@@ -179,10 +179,10 @@ public class ElasticsearchIndex: Codable {
     }
     
     public func add(metaKey: String, metaValue: String) -> Self {
-        if mappings.doc.meta.userDefined == nil {
-            mappings.doc.meta.userDefined = [String: String]()
+        if let meta = mappings.doc.meta, meta.userDefined == nil {
+            mappings.doc.meta!.userDefined = [String: String]()
         }
-        mappings.doc.meta.userDefined![metaKey] = metaValue
+        mappings.doc.meta!.userDefined![metaKey] = metaValue
         return self
     }
     
@@ -196,7 +196,9 @@ public class ElasticsearchIndex: Codable {
         
         let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties)
         let digest = try SHA1.hash(propertiesJSON)
-        self.mappings.doc.meta.private.propertiesHash = digest.hexEncodedString()
+        if let _ = self.mappings.doc.meta {
+            self.mappings.doc.meta!.private.propertiesHash = digest.hexEncodedString()
+        }
         
         let body = try JSONEncoder().encode(self)
         return try self.client!.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
