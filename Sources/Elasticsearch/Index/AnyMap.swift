@@ -26,6 +26,9 @@ public enum MapType: String, Codable {
     case tokenCount = "token_count"
     case percolator
     case join
+    case analyzer
+    case filter
+    case normalizer
     
     var metatype: Mappable.Type {
         switch self {
@@ -83,11 +86,17 @@ public enum MapType: String, Codable {
             return MapPercolator.self
         case .join:
             return MapJoin.self
+        case .analyzer:
+            return MapAnalyzer.self
+        case .filter:
+            return MapFilter.self
+        case .normalizer:
+            return MapNormalizer.self
         }
     }
 }
 
-struct AnyMap : Codable {
+public struct AnyMap : Codable {
     var base: Mappable
     
     init(_ base: Mappable) {
@@ -99,14 +108,14 @@ struct AnyMap : Codable {
         case base
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let type = try container.decode(MapType.self, forKey: .type)
         self.base = try type.metatype.init(from: decoder)
     }
     
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
         try container.encode(type(of: base).typeKey, forKey: .type)
