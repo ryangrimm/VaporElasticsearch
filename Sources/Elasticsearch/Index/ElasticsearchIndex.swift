@@ -2,12 +2,30 @@ import HTTP
 import Crypto
 
 public struct IndexSettings: Codable {
+
+    public struct Analysis: Codable {
+        public var filter: [String: MapFilter]?
+        public var analyzer: [String: MapAnalyzer]?
+        public var normalizer: [String: MapNormalizer]?
+
+        public init(
+            filter: [String: MapFilter]? = nil,
+            analyzer: [String: MapAnalyzer]? = nil,
+            normalizer: [String: MapNormalizer]? = nil) {
+
+            self.filter = filter
+            self.analyzer = analyzer
+            self.normalizer = normalizer
+        }
+    }
+
     let numberOfShards: Int
     let numberOfReplicas: Int
     var creationDate: String? = nil
     var uuid: String? = nil
     var version: Version? = nil
     var providedName: String? = nil
+    var analysis: Analysis? = nil
     
     enum CodingKeys: String, CodingKey {
         case numberOfShards = "number_of_shards"
@@ -16,11 +34,13 @@ public struct IndexSettings: Codable {
         case uuid
         case version
         case providedName = "provided_name"
+        case analysis
     }
     
-    init(shards: Int, replicas: Int) {
+    public init(shards: Int, replicas: Int, analysis: Analysis? = nil) {
         numberOfShards = shards
         numberOfReplicas = replicas
+        self.analysis = analysis
     }
     
     public init(from decoder: Decoder) throws {
@@ -32,6 +52,7 @@ public struct IndexSettings: Codable {
         uuid = try container.decodeIfPresent(String.self, forKey: .uuid)
         version = try container.decodeIfPresent(Version.self, forKey: .version)
         providedName = try container.decodeIfPresent(String.self, forKey: .providedName)
+        analysis = try container.decodeIfPresent(Analysis.self, forKey: .analysis)
     }
     
     public struct Version: Codable {

@@ -16,21 +16,20 @@ public struct MapText: Mappable {
 
     let type = typeKey.rawValue
     
-    var boost: Float? = 1.0
-    var eagerGlobalOrdinals: Bool? = false
-    var fields: [TextField]?
-    var index: Bool? = true
-    var indexOptions: TextIndexOptions? = .positions
-    var norms: Bool? = true
-    var store: Bool? = false
-    var similarity: SimilarityType? = .bm25
+    public var boost: Float? = 1.0
+    public var eagerGlobalOrdinals: Bool? = false
     public var fields: [String: TextField]?
+    public var index: Bool? = true
+    public var indexOptions: TextIndexOptions? = .positions
+    public var norms: Bool? = true
+    public var store: Bool? = false
+    public var similarity: SimilarityType? = .bm25
     
-    var analyzer: String?
-    var searchAnalyzer: String?
-    var searchQuoteAnalyzer: String?
-    var fielddata: Bool? = false
-    var termVector: TermVector? = .no
+    public var analyzer: String?
+    public var searchAnalyzer: String?
+    public var searchQuoteAnalyzer: String?
+    public var fielddata: Bool? = false
+    public var termVector: TermVector? = .no
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -48,4 +47,6 @@ public struct MapText: Mappable {
         case fielddata
         case termVector = "term_vector"
     }
+
+    public init() {}
 }

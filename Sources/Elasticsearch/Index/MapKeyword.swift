@@ -15,20 +15,19 @@ public struct MapKeyword: Mappable {
 
     let type = typeKey.rawValue
     
-    var boost: Float? = 1.0
-    var eagerGlobalOrdinals: Bool? = false
-    var fields: [TextField]?
-    var index: Bool? = true
-    var indexOptions: TextIndexOptions? = .positions
-    var norms: Bool? = true
-    var store: Bool? = false
-    var similarity: SimilarityType? = .bm25
+    public var boost: Float? = 1.0
+    public var eagerGlobalOrdinals: Bool? = false
     public var fields: [String: TextField]?
+    public var index: Bool? = true
+    public var indexOptions: TextIndexOptions?
+    public var norms: Bool? = true
+    public var store: Bool? = false
+    public var similarity: SimilarityType? = .bm25
     
-    var docValues: Bool? = true
-    var ignoreAbove: Int? = 2147483647
-    var nullValue: String?
-    // var normalizer
+    public var docValues: Bool? = true
+    public var ignoreAbove: Int? = 2147483647
+    public var nullValue: String?
+    public var normalizer: String?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -43,5 +42,8 @@ public struct MapKeyword: Mappable {
         case docValues = "doc_values"
         case ignoreAbove = "ignore_above"
         case nullValue = "null_value"
+        case normalizer
     }
+
+    public init() {}
 }
