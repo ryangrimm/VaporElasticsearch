@@ -2,12 +2,30 @@ import HTTP
 import Crypto
 
 public struct IndexSettings: Codable {
+
+    public struct Analysis: Codable {
+        public var filter: [String: MapFilter]?
+        public var analyzer: [String: MapAnalyzer]?
+        public var normalizer: [String: MapNormalizer]?
+
+        public init(
+            filter: [String: MapFilter]? = nil,
+            analyzer: [String: MapAnalyzer]? = nil,
+            normalizer: [String: MapNormalizer]? = nil) {
+
+            self.filter = filter
+            self.analyzer = analyzer
+            self.normalizer = normalizer
+        }
+    }
+
     let numberOfShards: Int
     let numberOfReplicas: Int
     var creationDate: String? = nil
     var uuid: String? = nil
     var version: Version? = nil
     var providedName: String? = nil
+    var analysis: Analysis? = nil
     
     enum CodingKeys: String, CodingKey {
         case numberOfShards = "number_of_shards"
@@ -16,11 +34,13 @@ public struct IndexSettings: Codable {
         case uuid
         case version
         case providedName = "provided_name"
+        case analysis
     }
     
-    init(shards: Int, replicas: Int) {
+    public init(shards: Int, replicas: Int, analysis: Analysis? = nil) {
         numberOfShards = shards
         numberOfReplicas = replicas
+        self.analysis = analysis
     }
     
     public init(from decoder: Decoder) throws {
@@ -32,6 +52,7 @@ public struct IndexSettings: Codable {
         uuid = try container.decodeIfPresent(String.self, forKey: .uuid)
         version = try container.decodeIfPresent(Version.self, forKey: .version)
         providedName = try container.decodeIfPresent(String.self, forKey: .providedName)
+        analysis = try container.decodeIfPresent(Analysis.self, forKey: .analysis)
     }
     
     public struct Version: Codable {
@@ -90,7 +111,7 @@ public class ElasticsearchIndex: Codable {
         var properties = [String: AnyMap]()
         var enabled = true
         var dynamic = false
-        var meta: IndexMeta
+        var meta: IndexMeta?
         
         enum CodingKeys: String, CodingKey {
             case properties
@@ -106,7 +127,7 @@ public class ElasticsearchIndex: Codable {
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.properties = try container.decode([String: AnyMap].self, forKey: .properties)
-            self.meta = try container.decode(IndexMeta.self, forKey: .meta)
+            self.meta = try? container.decode(IndexMeta.self, forKey: .meta)
 
             if container.contains(.enabled) {
                 do {
@@ -179,10 +200,10 @@ public class ElasticsearchIndex: Codable {
     }
     
     public func add(metaKey: String, metaValue: String) -> Self {
-        if mappings.doc.meta.userDefined == nil {
-            mappings.doc.meta.userDefined = [String: String]()
+        if let meta = mappings.doc.meta, meta.userDefined == nil {
+            mappings.doc.meta!.userDefined = [String: String]()
         }
-        mappings.doc.meta.userDefined![metaKey] = metaValue
+        mappings.doc.meta!.userDefined![metaKey] = metaValue
         return self
     }
     
@@ -196,7 +217,9 @@ public class ElasticsearchIndex: Codable {
         
         let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties)
         let digest = try SHA1.hash(propertiesJSON)
-        self.mappings.doc.meta.private.propertiesHash = digest.hexEncodedString()
+        if let _ = self.mappings.doc.meta {
+            self.mappings.doc.meta!.private.propertiesHash = digest.hexEncodedString()
+        }
         
         let body = try JSONEncoder().encode(self)
         return try self.client!.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
