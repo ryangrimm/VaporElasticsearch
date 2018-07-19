@@ -3,16 +3,6 @@ import Foundation
 
 public struct Analysis: Codable {
     
-    public struct Analyzer: Codable {
-        public var tokenizer: String
-        public var filter: [String]?
-        
-        public init(filter: [String]? = [], tokenizer: String) {
-            self.filter = filter
-            self.tokenizer = tokenizer
-        }
-    }
-    
     public struct Filter: Codable {
         public let type: String
         public var name: String?
@@ -34,7 +24,7 @@ public struct Analysis: Codable {
     }
     
     public var filter: [String: Filter]?
-    public var analyzer: [String: Analyzer]?
+    public var analyzer: [String: AnyAnalyzer]?
     public var normalizer: [String: Normalizer]?
     
     public init(
@@ -43,7 +33,9 @@ public struct Analysis: Codable {
         normalizer: [String: Normalizer]? = nil) {
         
         self.filter = filter
-        self.analyzer = analyzer
+        self.analyzer = analyzer?.mapValues({ analyzer -> AnyAnalyzer in
+            return AnyAnalyzer(analyzer)
+        })
         self.normalizer = normalizer
     }
 }
