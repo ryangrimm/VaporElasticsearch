@@ -9,9 +9,9 @@ public struct CustomAnalyzer: Analyzer {
     
     public var tokenizer: String
     // Note: Should create a CharFilter struct/protocol
-    public var charFilter: [String]
+    public var charFilter: [String]?
     // Note: Should create a Filter struct/protocol
-    public var filter: [String]
+    public var filter: [String]?
     public var positionIncrementGap: Int? = nil
     
     enum CodingKeys: String, CodingKey {
