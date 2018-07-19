@@ -36,6 +36,21 @@
 		C293BC162100577B00C31D94 /* PatternAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC152100577B00C31D94 /* PatternAnalyzer.swift */; };
 		C293BC18210058FC00C31D94 /* SimpleAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC17210058FC00C31D94 /* SimpleAnalyzer.swift */; };
 		C293BC1A2100592600C31D94 /* WhitespaceAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC192100592600C31D94 /* WhitespaceAnalyzer.swift */; };
+		C293BC1D210061A100C31D94 /* AnyTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC1C210061A100C31D94 /* AnyTokenizer.swift */; };
+		C293BC1F2100622B00C31D94 /* StandardTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC1E2100622B00C31D94 /* StandardTokenizer.swift */; };
+		C293BC21210062BB00C31D94 /* LetterTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC20210062BB00C31D94 /* LetterTokenizer.swift */; };
+		C293BC232100631D00C31D94 /* LowercaseTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC222100631D00C31D94 /* LowercaseTokenizer.swift */; };
+		C293BC252100634E00C31D94 /* WhitespaceTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC242100634E00C31D94 /* WhitespaceTokenizer.swift */; };
+		C293BC27210063A100C31D94 /* UAXURLEmailTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC26210063A100C31D94 /* UAXURLEmailTokenizer.swift */; };
+		C293BC292100641B00C31D94 /* ClassicTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC282100641B00C31D94 /* ClassicTokenizer.swift */; };
+		C293BC2B2100645D00C31D94 /* ThaiTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC2A2100645D00C31D94 /* ThaiTokenizer.swift */; };
+		C293BC2D210064F900C31D94 /* NGramTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC2C210064F900C31D94 /* NGramTokenizer.swift */; };
+		C293BC2F2100675E00C31D94 /* EdgeNGramTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC2E2100675E00C31D94 /* EdgeNGramTokenizer.swift */; };
+		C293BC31210067BD00C31D94 /* KeywordTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC30210067BD00C31D94 /* KeywordTokenizer.swift */; };
+		C293BC332100686600C31D94 /* PatternTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC322100686600C31D94 /* PatternTokenizer.swift */; };
+		C293BC35210068F700C31D94 /* SimplePatternTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC34210068F700C31D94 /* SimplePatternTokenizer.swift */; };
+		C293BC372100695F00C31D94 /* SimplePatternSplitTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC362100695F00C31D94 /* SimplePatternSplitTokenizer.swift */; };
+		C293BC39210069BB00C31D94 /* PathHierarchyTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC38210069BB00C31D94 /* PathHierarchyTokenizer.swift */; };
 		OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ElasticsearchAggregationCodableTests.swift */; };
 		OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* ElasticsearchQueryCodableTests.swift */; };
 		OBJ_1003 /* ElasticsearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ElasticsearchTests.swift */; };
@@ -1930,6 +1945,21 @@
 		C293BC152100577B00C31D94 /* PatternAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternAnalyzer.swift; sourceTree = "<group>"; };
 		C293BC17210058FC00C31D94 /* SimpleAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAnalyzer.swift; sourceTree = "<group>"; };
 		C293BC192100592600C31D94 /* WhitespaceAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitespaceAnalyzer.swift; sourceTree = "<group>"; };
+		C293BC1C210061A100C31D94 /* AnyTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTokenizer.swift; sourceTree = "<group>"; };
+		C293BC1E2100622B00C31D94 /* StandardTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardTokenizer.swift; sourceTree = "<group>"; };
+		C293BC20210062BB00C31D94 /* LetterTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterTokenizer.swift; sourceTree = "<group>"; };
+		C293BC222100631D00C31D94 /* LowercaseTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowercaseTokenizer.swift; sourceTree = "<group>"; };
+		C293BC242100634E00C31D94 /* WhitespaceTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitespaceTokenizer.swift; sourceTree = "<group>"; };
+		C293BC26210063A100C31D94 /* UAXURLEmailTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UAXURLEmailTokenizer.swift; sourceTree = "<group>"; };
+		C293BC282100641B00C31D94 /* ClassicTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicTokenizer.swift; sourceTree = "<group>"; };
+		C293BC2A2100645D00C31D94 /* ThaiTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThaiTokenizer.swift; sourceTree = "<group>"; };
+		C293BC2C210064F900C31D94 /* NGramTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NGramTokenizer.swift; sourceTree = "<group>"; };
+		C293BC2E2100675E00C31D94 /* EdgeNGramTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeNGramTokenizer.swift; sourceTree = "<group>"; };
+		C293BC30210067BD00C31D94 /* KeywordTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTokenizer.swift; sourceTree = "<group>"; };
+		C293BC322100686600C31D94 /* PatternTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternTokenizer.swift; sourceTree = "<group>"; };
+		C293BC34210068F700C31D94 /* SimplePatternTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePatternTokenizer.swift; sourceTree = "<group>"; };
+		C293BC362100695F00C31D94 /* SimplePatternSplitTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePatternSplitTokenizer.swift; sourceTree = "<group>"; };
+		C293BC38210069BB00C31D94 /* PathHierarchyTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathHierarchyTokenizer.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2741,7 +2771,7 @@
 			path = "Mapping Types";
 			sourceTree = "<group>";
 		};
-		C293BC0821004FCC00C31D94 /* Analyzer Types */ = {
+		C293BC0821004FCC00C31D94 /* Analyzers */ = {
 			isa = PBXGroup;
 			children = (
 				C293BC0921004FFB00C31D94 /* AnyAnalyzer.swift */,
@@ -2754,7 +2784,29 @@
 				C293BC17210058FC00C31D94 /* SimpleAnalyzer.swift */,
 				C293BC192100592600C31D94 /* WhitespaceAnalyzer.swift */,
 			);
-			path = "Analyzer Types";
+			path = Analyzers;
+			sourceTree = "<group>";
+		};
+		C293BC1B2100614100C31D94 /* Tokenizers */ = {
+			isa = PBXGroup;
+			children = (
+				C293BC1C210061A100C31D94 /* AnyTokenizer.swift */,
+				C293BC1E2100622B00C31D94 /* StandardTokenizer.swift */,
+				C293BC20210062BB00C31D94 /* LetterTokenizer.swift */,
+				C293BC222100631D00C31D94 /* LowercaseTokenizer.swift */,
+				C293BC242100634E00C31D94 /* WhitespaceTokenizer.swift */,
+				C293BC26210063A100C31D94 /* UAXURLEmailTokenizer.swift */,
+				C293BC282100641B00C31D94 /* ClassicTokenizer.swift */,
+				C293BC2A2100645D00C31D94 /* ThaiTokenizer.swift */,
+				C293BC2C210064F900C31D94 /* NGramTokenizer.swift */,
+				C293BC2E2100675E00C31D94 /* EdgeNGramTokenizer.swift */,
+				C293BC30210067BD00C31D94 /* KeywordTokenizer.swift */,
+				C293BC322100686600C31D94 /* PatternTokenizer.swift */,
+				C293BC34210068F700C31D94 /* SimplePatternTokenizer.swift */,
+				C293BC362100695F00C31D94 /* SimplePatternSplitTokenizer.swift */,
+				C293BC38210069BB00C31D94 /* PathHierarchyTokenizer.swift */,
+			);
+			path = Tokenizers;
 			sourceTree = "<group>";
 		};
 		OBJ_104 /* Span Queries */ = {
@@ -3004,7 +3056,8 @@
 				C293BC0121000F8A00C31D94 /* Analysis.swift */,
 				C293BC06210014F500C31D94 /* DocumentTypeSettings.swift */,
 				C293BC042100147E00C31D94 /* IndexMeta.swift */,
-				C293BC0821004FCC00C31D94 /* Analyzer Types */,
+				C293BC1B2100614100C31D94 /* Tokenizers */,
+				C293BC0821004FCC00C31D94 /* Analyzers */,
 				C293BC032100114D00C31D94 /* Mapping Types */,
 			);
 			path = Index;
@@ -5232,6 +5285,7 @@
 				OBJ_838 /* ElasticsearchProvider.swift in Sources */,
 				C293BC0021000F2900C31D94 /* IndexSettings.swift in Sources */,
 				OBJ_839 /* AnyMap.swift in Sources */,
+				C293BC332100686600C31D94 /* PatternTokenizer.swift in Sources */,
 				OBJ_840 /* ElasticsearchIndex.swift in Sources */,
 				C293BC142100575600C31D94 /* KeywordAnalyzer.swift in Sources */,
 				OBJ_841 /* MapBinary.swift in Sources */,
@@ -5252,20 +5306,25 @@
 				OBJ_855 /* MapInteger.swift in Sources */,
 				OBJ_856 /* MapIntegerRange.swift in Sources */,
 				OBJ_857 /* MapJoin.swift in Sources */,
+				C293BC2F2100675E00C31D94 /* EdgeNGramTokenizer.swift in Sources */,
 				OBJ_858 /* MapKeyword.swift in Sources */,
 				OBJ_859 /* MapLong.swift in Sources */,
 				OBJ_860 /* MapLongRange.swift in Sources */,
 				OBJ_861 /* MapNested.swift in Sources */,
 				OBJ_862 /* MapObject.swift in Sources */,
+				C293BC232100631D00C31D94 /* LowercaseTokenizer.swift in Sources */,
 				OBJ_863 /* MapPercolator.swift in Sources */,
 				OBJ_864 /* MapScaledFloat.swift in Sources */,
 				OBJ_865 /* MapShort.swift in Sources */,
 				C293BC1A2100592600C31D94 /* WhitespaceAnalyzer.swift in Sources */,
 				OBJ_866 /* MapText.swift in Sources */,
 				C293BC0C210050E600C31D94 /* StandardAnalyzer.swift in Sources */,
+				C293BC35210068F700C31D94 /* SimplePatternTokenizer.swift in Sources */,
 				OBJ_867 /* MapTokenCount.swift in Sources */,
 				OBJ_868 /* Mappable.swift in Sources */,
 				OBJ_869 /* AggregationExtendedStatsResponse.swift in Sources */,
+				C293BC39210069BB00C31D94 /* PathHierarchyTokenizer.swift in Sources */,
+				C293BC292100641B00C31D94 /* ClassicTokenizer.swift in Sources */,
 				OBJ_870 /* AggregationGeoBoundsResponse.swift in Sources */,
 				OBJ_871 /* AggregationGeoCentroidResponse.swift in Sources */,
 				OBJ_872 /* AggregationResponse.swift in Sources */,
@@ -5280,6 +5339,7 @@
 				C293BC102100534600C31D94 /* CustomAnalyzer.swift in Sources */,
 				OBJ_881 /* Aggregation.swift in Sources */,
 				OBJ_882 /* AnyAggregation.swift in Sources */,
+				C293BC372100695F00C31D94 /* SimplePatternSplitTokenizer.swift in Sources */,
 				OBJ_883 /* TermsAggregation.swift in Sources */,
 				C293BC122100563500C31D94 /* StopAnalyzer.swift in Sources */,
 				OBJ_884 /* AvgAggregation.swift in Sources */,
@@ -5292,9 +5352,11 @@
 				C293BC07210014F500C31D94 /* DocumentTypeSettings.swift in Sources */,
 				OBJ_891 /* StatsAggregation.swift in Sources */,
 				OBJ_892 /* SumAggregation.swift in Sources */,
+				C293BC1F2100622B00C31D94 /* StandardTokenizer.swift in Sources */,
 				OBJ_893 /* TopHitsAggregation.swift in Sources */,
 				OBJ_894 /* ValueCountAggregation.swift in Sources */,
 				OBJ_895 /* Decoder+AggregationUserInfo.swift in Sources */,
+				C293BC1D210061A100C31D94 /* AnyTokenizer.swift in Sources */,
 				OBJ_896 /* AnyQuery.swift in Sources */,
 				OBJ_897 /* BoolQuery.swift in Sources */,
 				OBJ_898 /* CommonTerms.swift in Sources */,
@@ -5313,7 +5375,10 @@
 				OBJ_908 /* MatchPhrasePrefix.swift in Sources */,
 				OBJ_909 /* MultiMatch.swift in Sources */,
 				OBJ_910 /* Prefix.swift in Sources */,
+				C293BC2B2100645D00C31D94 /* ThaiTokenizer.swift in Sources */,
+				C293BC2D210064F900C31D94 /* NGramTokenizer.swift in Sources */,
 				OBJ_911 /* Query.swift in Sources */,
+				C293BC31210067BD00C31D94 /* KeywordTokenizer.swift in Sources */,
 				C293BC052100147E00C31D94 /* IndexMeta.swift in Sources */,
 				OBJ_912 /* Range.swift in Sources */,
 				OBJ_913 /* Regexp.swift in Sources */,
@@ -5328,12 +5393,15 @@
 				OBJ_921 /* SpanOr.swift in Sources */,
 				OBJ_922 /* SpanTerm.swift in Sources */,
 				OBJ_923 /* SpanWithin.swift in Sources */,
+				C293BC252100634E00C31D94 /* WhitespaceTokenizer.swift in Sources */,
 				OBJ_924 /* Term.swift in Sources */,
+				C293BC27210063A100C31D94 /* UAXURLEmailTokenizer.swift in Sources */,
 				OBJ_925 /* Terms.swift in Sources */,
 				OBJ_926 /* Wildcard.swift in Sources */,
 				C293BC0A21004FFB00C31D94 /* AnyAnalyzer.swift in Sources */,
 				OBJ_927 /* Script.swift in Sources */,
 				OBJ_928 /* SearchContainer.swift in Sources */,
+				C293BC21210062BB00C31D94 /* LetterTokenizer.swift in Sources */,
 				C293BC162100577B00C31D94 /* PatternAnalyzer.swift in Sources */,
 				OBJ_929 /* DynamicKey.swift in Sources */,
 				OBJ_930 /* ElasticsearchError.swift in Sources */,

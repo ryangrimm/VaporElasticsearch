@@ -12,25 +12,25 @@ public struct MapGeoShape: Mappable {
     public static var typeKey = MapType.geoShape
 
     public enum GeoShapePrefixTree: String, Codable {
-        case geohash = "geohash"
-        case quadtree = "quadtree"
+        case geohash
+        case quadtree
     }
     
     public enum GeoShapePrecision: String, Codable {
-        case `in` = "geohash"
-        case inch = "quadtree"
-        case yd = "yd"
-        case yard = "yard"
-        case mi = "mi"
-        case miles = "miles"
-        case km = "km"
-        case kilometers = "kilometers"
-        case m = "m"
-        case meters = "meters"
-        case cm = "cm"
-        case centimeters = "centimeters"
-        case mm = "mm"
-        case millimeters = "millimeters"
+        case `in`
+        case inch
+        case yd
+        case yard
+        case mi
+        case miles
+        case km
+        case kilometers
+        case m
+        case meters
+        case cm
+        case centimeters
+        case mm
+        case millimeters
     }
     
     public enum GeoShapeStrategy: String, Codable {

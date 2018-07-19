@@ -26,16 +26,21 @@ public struct Analysis: Codable {
     public var filter: [String: Filter]?
     public var analyzer: [String: AnyAnalyzer]?
     public var normalizer: [String: Normalizer]?
+    public var tokenizers: [String: AnyTokenizer]?
     
     public init(
         filter: [String: Filter]? = nil,
         analyzer: [String: Analyzer]? = nil,
-        normalizer: [String: Normalizer]? = nil) {
+        normalizer: [String: Normalizer]? = nil,
+        tokenizer: [String: Tokenizer]? = nil) {
         
         self.filter = filter
         self.analyzer = analyzer?.mapValues({ analyzer -> AnyAnalyzer in
             return AnyAnalyzer(analyzer)
         })
         self.normalizer = normalizer
+        self.tokenizers = tokenizer?.mapValues({ tokenizer -> AnyTokenizer in
+            return AnyTokenizer(tokenizer)
+        })
     }
 }
