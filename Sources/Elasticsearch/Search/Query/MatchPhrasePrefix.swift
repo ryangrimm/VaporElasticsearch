@@ -13,25 +13,28 @@ public struct MatchPhrasePrefix: QueryElement {
     let query: String
     let analyzer: String?
     let maxExpansions: Int?
+    let boost: Decimal?
     
-    public init(field: String, query: String, analyzer: String?, maxExpansions: Int?) {
+    public init(field: String, query: String, analyzer: String? = nil, maxExpansions: Int? = nil, boost: Decimal? = nil) {
         self.field = field
         self.query = query
         self.analyzer = analyzer
         self.maxExpansions = maxExpansions
+        self.boost = boost
     }
     
     private struct Inner: Codable {
         let query: String
         let analyzer: String?
         let maxExpansions: Int?
+        let boost: Decimal?
     }
     
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         
-        let inner = MatchPhrasePrefix.Inner(query: self.query, analyzer: self.analyzer, maxExpansions: self.maxExpansions)
+        let inner = MatchPhrasePrefix.Inner(query: self.query, analyzer: self.analyzer, maxExpansions: self.maxExpansions, boost: self.boost)
         try container.encode(inner, forKey: DynamicKey(stringValue: field)!)
     }
     
@@ -45,5 +48,6 @@ public struct MatchPhrasePrefix: QueryElement {
         self.query = inner.query
         self.analyzer = inner.analyzer
         self.maxExpansions = inner.maxExpansions
+        self.boost = inner.boost
     }
 }

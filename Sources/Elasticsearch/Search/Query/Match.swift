@@ -23,35 +23,40 @@ public struct Match: QueryElement {
     let value: String
     let `operator`: Operator?
     let fuzziness: Int?
+    let boost: Decimal?
 
     public init(
         field: String,
         value: String,
         operator: Operator? = nil,
-        fuzziness: Int? = nil
+        fuzziness: Int? = nil,
+        boost: Decimal? = nil
     ) {
         self.field = field
         self.value = value
         self.operator = `operator`
         self.fuzziness = fuzziness
+        self.boost = boost
     }
 
     private struct Inner: Codable {
         let value: String
         let `operator`: Operator?
         let fuzziness: Int?
+        let boost: Decimal?
 
         enum CodingKeys: String, CodingKey {
             case value = "query"
             case `operator`
             case fuzziness
+            case boost
         }
     }
 
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
-        let inner = Match.Inner(value: value, operator: `operator`, fuzziness: fuzziness)
+        let inner = Match.Inner(value: value, operator: `operator`, fuzziness: fuzziness, boost: boost)
 
         try container.encode(inner, forKey: DynamicKey(stringValue: field)!)
     }
@@ -67,6 +72,7 @@ public struct Match: QueryElement {
         self.value = inner.value
         self.`operator` = inner.`operator`
         self.fuzziness = inner.fuzziness
+        self.boost = inner.boost
     }
 }
 

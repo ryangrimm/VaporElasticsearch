@@ -12,23 +12,26 @@ public struct MatchPhrase: QueryElement {
     let field: String
     let query: String
     let analyzer: String?
+    let boost: Decimal?
 
-    public init(field: String, query: String, analyzer: String? = nil) {
+    public init(field: String, query: String, analyzer: String? = nil, boost: Decimal? = nil) {
         self.field = field
         self.query = query
         self.analyzer = analyzer
+        self.boost = boost
     }
     
     private struct Inner: Codable {
         let query: String
         let analyzer: String?
+        let boost: Decimal?
     }
 
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         
-        let inner = MatchPhrase.Inner(query: self.query, analyzer: self.analyzer)
+        let inner = MatchPhrase.Inner(query: self.query, analyzer: self.analyzer, boost: self.boost)
         try container.encode(inner, forKey: DynamicKey(stringValue: field)!)
     }
     
@@ -41,5 +44,6 @@ public struct MatchPhrase: QueryElement {
         let inner = try container.decode(MatchPhrase.Inner.self, forKey: key!)
         self.query = inner.query
         self.analyzer = inner.analyzer
+        self.boost = inner.boost
     }
 }
