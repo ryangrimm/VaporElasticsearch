@@ -13,7 +13,18 @@ public struct CustomAnalyzer: Analyzer {
     // Note: Should create a Filter struct/protocol
     public var filter: [String]?
     public var positionIncrementGap: Int? = nil
-    
+
+    public init(tokenizer: String,
+                charFilter: [String]? = nil,
+                filter: [String]? = nil,
+                positionIncrementGap: Int? = nil) {
+
+        self.tokenizer = tokenizer
+        self.charFilter = charFilter
+        self.filter = filter
+        self.positionIncrementGap = positionIncrementGap
+    }
+
     enum CodingKeys: String, CodingKey {
         case tokenizer
         case charFilter = "char_filter"
