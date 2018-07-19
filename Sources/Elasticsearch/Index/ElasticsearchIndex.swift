@@ -60,12 +60,21 @@ public class ElasticsearchIndex: Codable {
         self.mappings.doc.dynamic = dynamicMapping
     }
     
-    public func settings(index: IndexSettings) -> Self {
+    public func indexSettings(index: IndexSettings) -> Self {
         if self.settings == nil {
             self.settings = Settings()
         }
         
         self.settings!.index = index
+        return self
+    }
+    
+    public func analysisSettings(analysis: Analysis) -> Self {
+        if self.settings == nil {
+            self.settings = Settings()
+        }
+        
+        self.settings!.analysis = analysis
         return self
     }
     
@@ -114,7 +123,7 @@ public class ElasticsearchIndex: Codable {
     }
     
     public struct Settings: Codable {
-        var index: IndexSettings?
+        var index: IndexSettings? = nil
         var analysis: Analysis? = nil
     }
 }

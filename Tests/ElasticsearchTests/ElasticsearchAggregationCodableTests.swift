@@ -112,7 +112,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
         XCTAssertEqual(linuxCount, darwinCount, "\(darwinCount - linuxCount) tests are missing from allTests")
         #endif
     }
-    
+
     static var allTests = [
         ("testSingleValueResponse_response", testSingleValueResponse_response),
         ("testAvgAggregation_encodesCorrectly",     testAvgAggregation_encodesCorrectly),
