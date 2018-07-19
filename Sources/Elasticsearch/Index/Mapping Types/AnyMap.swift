@@ -26,9 +26,6 @@ public enum MapType: String, Codable {
     case tokenCount = "token_count"
     case percolator
     case join
-    case analyzer
-    case filter
-    case normalizer
     
     var metatype: Mappable.Type {
         switch self {
@@ -86,12 +83,6 @@ public enum MapType: String, Codable {
             return MapPercolator.self
         case .join:
             return MapJoin.self
-        case .analyzer:
-            return MapAnalyzer.self
-        case .filter:
-            return MapFilter.self
-        case .normalizer:
-            return MapNormalizer.self
         }
     }
 }

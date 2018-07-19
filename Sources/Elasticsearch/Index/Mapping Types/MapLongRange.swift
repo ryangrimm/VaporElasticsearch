@@ -7,15 +7,22 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct MapJoin: Mappable {
+public struct MapLongRange: Mappable {
     /// :nodoc:
-    public static var typeKey = MapType.join
+    public static var typeKey = MapType.longRange
     
     let type = typeKey.rawValue
-    var relations: [String: String]
+    
+    public var coerce: Bool? = true
+    public var boost: Float? = 1.0
+    public var index: Bool? = true
+    public var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
-        case relations
+        case coerce
+        case boost
+        case index
+        case store
     }
 }

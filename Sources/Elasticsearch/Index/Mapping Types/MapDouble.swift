@@ -7,24 +7,28 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct MapDateRange: Mappable {
+public struct MapDouble: Mappable {
     /// :nodoc:
-    public static var typeKey = MapType.dateRange
-    
+    public static var typeKey = MapType.double
+
     let type = typeKey.rawValue
     
-    var format: String
-    var coerce: Bool? = true
-    var boost: Float? = 1.0
-    var index: Bool? = true
-    var store: Bool? = false
+    public var coerce: Bool? = true
+    public var boost: Float? = 1.0
+    public var docValues: Bool? = true
+    public var ignoreMalformed: Bool? = false
+    public var index: Bool? = true
+    public var nullValue: Double? = nil
+    public var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
-        case format
         case coerce
         case boost
+        case docValues = "doc_values"
+        case ignoreMalformed = "ignore_malformed"
         case index
+        case nullValue = "null_value"
         case store
     }
 }

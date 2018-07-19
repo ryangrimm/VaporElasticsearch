@@ -7,22 +7,19 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct MapIntegerRange: Mappable {
+
+import Foundation
+
+public struct MapGeoPoint: Mappable {
     /// :nodoc:
-    public static var typeKey = MapType.integerRange
+    public static var typeKey = MapType.geoPoint
 
     let type = typeKey.rawValue
-    
-    var coerce: Bool? = true
-    var boost: Float? = 1.0
-    var index: Bool? = true
-    var store: Bool? = false
+
+    public var ignoreMalformed: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
-        case coerce
-        case boost
-        case index
-        case store
+        case ignoreMalformed = "ignore_malformed"
     }
 }

@@ -1,84 +1,6 @@
 import HTTP
 import Crypto
 
-public struct IndexSettings: Codable {
-
-    public struct Analysis: Codable {
-        public var filter: [String: MapFilter]?
-        public var analyzer: [String: MapAnalyzer]?
-        public var normalizer: [String: MapNormalizer]?
-
-        public init(
-            filter: [String: MapFilter]? = nil,
-            analyzer: [String: MapAnalyzer]? = nil,
-            normalizer: [String: MapNormalizer]? = nil) {
-
-            self.filter = filter
-            self.analyzer = analyzer
-            self.normalizer = normalizer
-        }
-    }
-
-    let numberOfShards: Int
-    let numberOfReplicas: Int
-    var creationDate: String? = nil
-    var uuid: String? = nil
-    var version: Version? = nil
-    var providedName: String? = nil
-    var analysis: Analysis? = nil
-    
-    enum CodingKeys: String, CodingKey {
-        case numberOfShards = "number_of_shards"
-        case numberOfReplicas = "number_of_replicas"
-        case creationDate = "creation_date"
-        case uuid
-        case version
-        case providedName = "provided_name"
-        case analysis
-    }
-    
-    public init(shards: Int, replicas: Int, analysis: Analysis? = nil) {
-        numberOfShards = shards
-        numberOfReplicas = replicas
-        self.analysis = analysis
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        numberOfShards = Int(try container.decode(String.self, forKey: .numberOfShards))!
-        numberOfReplicas = Int(try container.decode(String.self, forKey: .numberOfReplicas))!
-        creationDate = try container.decodeIfPresent(String.self, forKey: .creationDate)
-        uuid = try container.decodeIfPresent(String.self, forKey: .uuid)
-        version = try container.decodeIfPresent(Version.self, forKey: .version)
-        providedName = try container.decodeIfPresent(String.self, forKey: .providedName)
-        analysis = try container.decodeIfPresent(Analysis.self, forKey: .analysis)
-    }
-    
-    public struct Version: Codable {
-        let created: String
-    }
-}
-
-internal struct IndexMeta: Codable {
-    var `private`: PrivateIndexMeta
-    var userDefined: [String: String]?
-    
-    init() {
-        self.private = PrivateIndexMeta(version: 1)
-    }
-}
-
-public struct PrivateIndexMeta: Codable {
-    let serialVersion: Int
-    var propertiesHash: String
-    
-    init(version: Int) {
-        self.serialVersion = version
-        self.propertiesHash = ""
-    }
-}
-
 public class ElasticsearchIndex: Codable {
     
     struct FetchWrapper: Codable {
@@ -104,47 +26,6 @@ public class ElasticsearchIndex: Codable {
         
         enum CodingKeys: String, CodingKey {
             case doc = "_doc"
-        }
-    }
-    
-    struct DocumentTypeSettings: Codable {
-        var properties = [String: AnyMap]()
-        var enabled = true
-        var dynamic = false
-        var meta: IndexMeta?
-        
-        enum CodingKeys: String, CodingKey {
-            case properties
-            case enabled
-            case dynamic
-            case meta = "_meta"
-        }
-        
-        init() {
-            self.meta = IndexMeta()
-        }
-        
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.properties = try container.decode([String: AnyMap].self, forKey: .properties)
-            self.meta = try? container.decode(IndexMeta.self, forKey: .meta)
-
-            if container.contains(.enabled) {
-                do {
-                    self.enabled = (try container.decode(Bool.self, forKey: .enabled))
-                }
-                catch {
-                    self.enabled = try container.decode(String.self, forKey: .enabled) == "true"
-                }
-            }
-            if container.contains(.dynamic) {
-                do {
-                    self.dynamic = (try container.decode(Bool.self, forKey: .dynamic))
-                }
-                catch {
-                    self.dynamic = try container.decode(String.self, forKey: .dynamic) == "true"
-                }
-            }
         }
     }
     
@@ -234,5 +115,6 @@ public class ElasticsearchIndex: Codable {
     
     public struct Settings: Codable {
         var index: IndexSettings?
+        var analysis: Analysis? = nil
     }
 }

@@ -50,14 +50,14 @@ public struct MapGeoShape: Mappable {
     
     let type = typeKey.rawValue
     
-    var tree: GeoShapePrefixTree? = .geohash
-    var precision: GeoShapePrecision? = .meters
-    var treeLevels: String?
-    var strategy: GeoShapeStrategy? = .recursive
-    var distanceErrorPct: Float? = 0.025
-    var orientation: GeoShapeOrientation? = .ccw
-    var pointsOnly: Bool? = false
-    var ignoreMalformed: Bool? = false
+    public var tree: GeoShapePrefixTree? = .geohash
+    public var precision: GeoShapePrecision? = .meters
+    public var treeLevels: String?
+    public var strategy: GeoShapeStrategy? = .recursive
+    public var distanceErrorPct: Float? = 0.025
+    public var orientation: GeoShapeOrientation? = .ccw
+    public var pointsOnly: Bool? = false
+    public var ignoreMalformed: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type

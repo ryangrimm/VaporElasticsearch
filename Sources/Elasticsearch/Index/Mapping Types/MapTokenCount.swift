@@ -7,27 +7,26 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct MapByte: Mappable {
+public struct MapTokenCount: Mappable {
     /// :nodoc:
-    public static var typeKey = MapType.byte
-
+    public static var typeKey = MapType.tokenCount
+    
     let type = typeKey.rawValue
     
-    var coerce: Bool? = true
-    var boost: Float? = 1.0
-    var docValues: Bool? = true
-    var ignoreMalformed: Bool? = false
-    var index: Bool? = true
-    var nullValue: Int8? = nil
-    var store: Bool? = false
+    public var analyzer: String?
+    public var enablePositionIncrements: Bool?
+    public var boost: Float? = 1.0
+    public var docValues: Bool? = true
+    public var index: Bool? = true
+    public var nullValue: Bool? = nil
+    public var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
-        case coerce
+        case analyzer
+        case enablePositionIncrements = "enable_position_increments"
         case boost
         case docValues = "doc_values"
-        case ignoreMalformed = "ignore_malformed"
-        case index
         case nullValue = "null_value"
         case store
     }

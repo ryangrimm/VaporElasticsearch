@@ -13,10 +13,10 @@ public struct MapDoubleRange: Mappable {
 
     let type = typeKey.rawValue
     
-    var coerce: Bool? = true
-    var boost: Float? = 1.0
-    var index: Bool? = true
-    var store: Bool? = false
+    public var coerce: Bool? = true
+    public var boost: Float? = 1.0
+    public var index: Bool? = true
+    public var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type

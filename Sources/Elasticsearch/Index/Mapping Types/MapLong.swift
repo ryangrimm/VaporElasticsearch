@@ -7,19 +7,19 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct MapDouble: Mappable {
+public struct MapLong: Mappable {
     /// :nodoc:
-    public static var typeKey = MapType.double
+    public static var typeKey = MapType.long
 
     let type = typeKey.rawValue
     
-    var coerce: Bool? = true
-    var boost: Float? = 1.0
-    var docValues: Bool? = true
-    var ignoreMalformed: Bool? = false
-    var index: Bool? = true
-    var nullValue: Double? = nil
-    var store: Bool? = false
+    public var coerce: Bool? = true
+    public var boost: Float? = 1.0
+    public var docValues: Bool? = true
+    public var ignoreMalformed: Bool? = false
+    public var index: Bool? = true
+    public var nullValue: Int64? = nil
+    public var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type

@@ -7,24 +7,22 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct MapIPAddress: Mappable {
+public struct MapFloatRange: Mappable {
     /// :nodoc:
-    public static var typeKey = MapType.ipAddress
+    public static var typeKey = MapType.floatRange
 
     let type = typeKey.rawValue
     
-    var boost: Float? = 1.0
-    var docValues: Bool? = true
-    var index: Bool? = true
-    var nullValue: Bool? = nil
-    var store: Bool? = false
+    public var coerce: Bool? = true
+    public var boost: Float? = 1.0
+    public var index: Bool? = true
+    public var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type
+        case coerce
         case boost
-        case docValues = "doc_values"
         case index
-        case nullValue = "null_value"
         case store
     }
 }

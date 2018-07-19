@@ -13,13 +13,13 @@ public struct MapFloat: Mappable {
 
     let type = typeKey.rawValue
     
-    var coerce: Bool? = true
-    var boost: Float? = 1.0
-    var docValues: Bool? = true
-    var ignoreMalformed: Bool? = false
-    var index: Bool? = true
-    var nullValue: Float? = nil
-    var store: Bool? = false
+    public var coerce: Bool? = true
+    public var boost: Float? = 1.0
+    public var docValues: Bool? = true
+    public var ignoreMalformed: Bool? = false
+    public var index: Bool? = true
+    public var nullValue: Float? = nil
+    public var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type

@@ -7,20 +7,18 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-
-import Foundation
-
-public struct MapObject: Mappable {
+public struct MapBinary: Mappable {
     /// :nodoc:
-    public static var typeKey = MapType.object
+    public static var typeKey = MapType.binary
 
-    var properties: [String: AnyMap]?
-    var dynamic: Bool? = false
-    var enabled: Bool? = true
+    let type = typeKey.rawValue
+    
+    public var docValues: Bool? = true
+    public var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
-        case properties
-        case dynamic
-        case enabled
+        case type
+        case docValues = "doc_values"
+        case store
     }
 }

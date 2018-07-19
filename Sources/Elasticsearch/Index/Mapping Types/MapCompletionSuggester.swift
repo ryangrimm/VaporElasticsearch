@@ -13,11 +13,11 @@ public struct MapCompletionSuggester: Mappable {
     
     let type = typeKey.rawValue
     
-    var analyzer: String?
-    var searchAnalyzer: String?
-    var preserveSeparators: Bool?
-    var preservePositionIncrements: Bool?
-    var maxInputLength: Int?
+    public var analyzer: String?
+    public var searchAnalyzer: String?
+    public var preserveSeparators: Bool?
+    public var preservePositionIncrements: Bool?
+    public var maxInputLength: Int?
 
     enum CodingKeys: String, CodingKey {
         case type

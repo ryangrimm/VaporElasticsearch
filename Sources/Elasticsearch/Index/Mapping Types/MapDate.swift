@@ -13,14 +13,14 @@ public struct MapDate: Mappable {
 
     let type = typeKey.rawValue
     
-    var boost: Float? = 1.0
-    var docValues: Bool? = true
-    var format: String?
-    var locale: String?
-    var ignoreMalformed: Bool? = false
-    var index: Bool? = true
-    var nullValue: Bool? = nil
-    var store: Bool? = false
+    public var boost: Float? = 1.0
+    public var docValues: Bool? = true
+    public var format: String?
+    public var locale: String?
+    public var ignoreMalformed: Bool? = false
+    public var index: Bool? = true
+    public var nullValue: Bool? = nil
+    public var store: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case type

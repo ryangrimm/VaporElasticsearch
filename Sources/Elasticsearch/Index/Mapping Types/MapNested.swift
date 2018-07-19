@@ -10,16 +10,15 @@
 
 import Foundation
 
-public struct MapGeoPoint: Mappable {
+public struct MapNested: Mappable {
     /// :nodoc:
-    public static var typeKey = MapType.geoPoint
+    public static var typeKey = MapType.nested
 
-    let type = typeKey.rawValue
-
-    var ignoreMalformed: Bool? = false
+    public var properties: [String: AnyMap]?
+    public var dynamic: Bool? = false
     
     enum CodingKeys: String, CodingKey {
-        case type
-        case ignoreMalformed = "ignore_malformed"
+        case properties
+        case dynamic
     }
 }
