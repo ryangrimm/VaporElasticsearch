@@ -8,7 +8,7 @@ public enum AggregationResponseMap : String, Encodable {
     case cardinality
     case extendedStats = "extended_stats"
     case geoBounds = "geo_bounds"
-    case geoCentroid = "geo_point"
+    case geoCentroid = "geo_centroid"
     case max
     case min
     case stats
