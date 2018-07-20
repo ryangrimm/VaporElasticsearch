@@ -1,3 +1,4 @@
+# jazzy --clean --module Elasticsearch --xcodebuild-arguments -scheme,Elasticsearch-Package --output docs
 ---
 author: Ryan Grimm
 
@@ -100,6 +101,32 @@ custom_categories:
   - MapShort
   - MapText
   - MapTokenCount
+- name: Analyzers
+  children:
+  - StandardAnalyzer
+  - WhitespaceAnalyzer
+  - CustomAnalyzer
+  - KeywordAnalyzer
+  - FingerprintAnalyzer
+  - PatternAnalyzer
+  - SimpleAnalyzer
+  - StopAnalyzer
+- name: Tokenizers
+  children:
+  - ClassicTokenizer
+  - EdgeNGramTokenizer
+  - KeywordTokenizer
+  - LetterTokenizer
+  - LowercaseTokenizer
+  - NGramTokenizer
+  - PathHierarchyTokenizer
+  - PatternTokenizer
+  - SimplePatternSplitTokenizer
+  - SimplePatternTokenizer
+  - StandardTokenizer
+  - ThaiTokenizer
+  - UAXURLEmailTokenizer
+  - WhitespaceTokenizer
 - name: Supporting Structures
   children:
   - Operator
@@ -115,3 +142,4 @@ custom_categories:
   - AggregationBucket
   - BulkHeader
   - OperationType
+  - Analysis

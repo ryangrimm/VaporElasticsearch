@@ -30,35 +30,35 @@
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 22,
+      "line": 25,
       "symbol": "ElasticsearchClient.worker",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 79,
+      "line": 82,
       "symbol": "ElasticsearchClient.send(_:to:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 87,
+      "line": 90,
       "symbol": "ElasticsearchClient.send(_:to:with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 96,
+      "line": 99,
       "symbol": "ElasticsearchClient.send(_:to:with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Client/ElasticsearchClient.swift",
-      "line": 105,
+      "line": 108,
       "symbol": "ElasticsearchClient.send(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -85,549 +85,2656 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 4,
+      "symbol": "Analysis",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 6,
+      "symbol": "Analysis.Filter",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 7,
+      "symbol": "Analysis.Filter.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 8,
+      "symbol": "Analysis.Filter.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 9,
+      "symbol": "Analysis.Filter.synonyms",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 11,
+      "symbol": "Analysis.Filter.init(type:name:synonyms:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 18,
+      "symbol": "Analysis.filter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 19,
+      "symbol": "Analysis.analyzer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 20,
+      "symbol": "Analysis.normalizer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 21,
+      "symbol": "Analysis.tokenizers",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analysis.swift",
+      "line": 23,
+      "symbol": "Analysis.init(filter:analyzer:normalizer:tokenizer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/AnyAnalyzer.swift",
+      "line": 4,
+      "symbol": "Analyzer",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/AnyAnalyzer.swift",
+      "line": 5,
+      "symbol": "Analyzer.typeKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/AnyAnalyzer.swift",
+      "line": 41,
+      "symbol": "AnyAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/CustomAnalyzer.swift",
+      "line": 4,
+      "symbol": "CustomAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/CustomAnalyzer.swift",
+      "line": 10,
+      "symbol": "CustomAnalyzer.tokenizer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/CustomAnalyzer.swift",
+      "line": 12,
+      "symbol": "CustomAnalyzer.charFilter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/CustomAnalyzer.swift",
+      "line": 14,
+      "symbol": "CustomAnalyzer.filter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/CustomAnalyzer.swift",
+      "line": 15,
+      "symbol": "CustomAnalyzer.positionIncrementGap",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/CustomAnalyzer.swift",
+      "line": 24,
+      "symbol": "CustomAnalyzer.init(tokenizer:charFilter:filter:positionIncrementGap:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/FingerprintAnalyzer.swift",
+      "line": 4,
+      "symbol": "FingerprintAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/FingerprintAnalyzer.swift",
+      "line": 10,
+      "symbol": "FingerprintAnalyzer.separator",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/FingerprintAnalyzer.swift",
+      "line": 11,
+      "symbol": "FingerprintAnalyzer.maxOutputSize",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/FingerprintAnalyzer.swift",
+      "line": 12,
+      "symbol": "FingerprintAnalyzer.stopwords",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/FingerprintAnalyzer.swift",
+      "line": 13,
+      "symbol": "FingerprintAnalyzer.stopwordsPath",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/FingerprintAnalyzer.swift",
+      "line": 22,
+      "symbol": "FingerprintAnalyzer.init(separator:maxOutputSize:stopwords:stopwordsPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/KeywordAnalyzer.swift",
+      "line": 4,
+      "symbol": "KeywordAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/KeywordAnalyzer.swift",
+      "line": 10,
+      "symbol": "KeywordAnalyzer.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/PatternAnalyzer.swift",
+      "line": 4,
+      "symbol": "PatternAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/PatternAnalyzer.swift",
+      "line": 10,
+      "symbol": "PatternAnalyzer.pattern",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/PatternAnalyzer.swift",
+      "line": 11,
+      "symbol": "PatternAnalyzer.flags",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/PatternAnalyzer.swift",
+      "line": 12,
+      "symbol": "PatternAnalyzer.lowercase",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/PatternAnalyzer.swift",
+      "line": 13,
+      "symbol": "PatternAnalyzer.stopwords",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/PatternAnalyzer.swift",
+      "line": 14,
+      "symbol": "PatternAnalyzer.stopwordsPath",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/PatternAnalyzer.swift",
+      "line": 24,
+      "symbol": "PatternAnalyzer.init(pattern:flags:lowercase:stopwords:stopwordsPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/SimpleAnalyzer.swift",
+      "line": 4,
+      "symbol": "SimpleAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/SimpleAnalyzer.swift",
+      "line": 10,
+      "symbol": "SimpleAnalyzer.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/StandardAnalyzer.swift",
+      "line": 4,
+      "symbol": "StandardAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/StandardAnalyzer.swift",
+      "line": 10,
+      "symbol": "StandardAnalyzer.maxTokenLength",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/StandardAnalyzer.swift",
+      "line": 11,
+      "symbol": "StandardAnalyzer.stopwords",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/StandardAnalyzer.swift",
+      "line": 12,
+      "symbol": "StandardAnalyzer.stopwordsPath",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/StandardAnalyzer.swift",
+      "line": 20,
+      "symbol": "StandardAnalyzer.init(stopwords:stopwordsPath:maxTokenLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/StopAnalyzer.swift",
+      "line": 4,
+      "symbol": "StopAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/StopAnalyzer.swift",
+      "line": 10,
+      "symbol": "StopAnalyzer.stopwords",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/StopAnalyzer.swift",
+      "line": 11,
+      "symbol": "StopAnalyzer.stopwordsPath",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/StopAnalyzer.swift",
+      "line": 18,
+      "symbol": "StopAnalyzer.init(stopwords:stopwordsPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/WhitespaceAnalyzer.swift",
+      "line": 4,
+      "symbol": "WhitespaceAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Analyzers/WhitespaceAnalyzer.swift",
+      "line": 10,
+      "symbol": "WhitespaceAnalyzer.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
       "line": 4,
-      "symbol": "IndexSettings",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
-      "line": 37,
-      "symbol": "IndexSettings.Version",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
-      "line": 51,
-      "symbol": "PrivateIndexMeta",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
-      "line": 61,
       "symbol": "ElasticsearchIndex",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
-      "line": 212,
+      "line": 63,
+      "symbol": "ElasticsearchIndex.indexSettings(index:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
+      "line": 72,
+      "symbol": "ElasticsearchIndex.analysisSettings(analysis:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
+      "line": 81,
+      "symbol": "ElasticsearchIndex.alias(name:routing:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
+      "line": 87,
+      "symbol": "ElasticsearchIndex.property(key:type:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
+      "line": 92,
+      "symbol": "ElasticsearchIndex.add(metaKey:metaValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
+      "line": 100,
+      "symbol": "ElasticsearchIndex.create()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/ElasticsearchIndex.swift",
+      "line": 125,
       "symbol": "ElasticsearchIndex.Settings",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapBinary.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/IndexSettings.swift",
+      "line": 4,
+      "symbol": "IndexSettings",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/IndexSettings.swift",
+      "line": 21,
+      "symbol": "IndexSettings.init(shards:replicas:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/IndexSettings.swift",
+      "line": 37,
+      "symbol": "IndexSettings.Version",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBinary.swift",
       "line": 10,
       "symbol": "MapBinary",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapBoolean.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBinary.swift",
+      "line": 16,
+      "symbol": "MapBinary.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBinary.swift",
+      "line": 17,
+      "symbol": "MapBinary.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBinary.swift",
+      "line": 25,
+      "symbol": "MapBinary.init(docValues:store:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBoolean.swift",
       "line": 10,
       "symbol": "MapBoolean",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapByte.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBoolean.swift",
+      "line": 16,
+      "symbol": "MapBoolean.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBoolean.swift",
+      "line": 17,
+      "symbol": "MapBoolean.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBoolean.swift",
+      "line": 18,
+      "symbol": "MapBoolean.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBoolean.swift",
+      "line": 19,
+      "symbol": "MapBoolean.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBoolean.swift",
+      "line": 20,
+      "symbol": "MapBoolean.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapBoolean.swift",
+      "line": 31,
+      "symbol": "MapBoolean.init(docValues:index:store:boost:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapByte.swift",
       "line": 10,
       "symbol": "MapByte",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapCompletionSuggester.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapByte.swift",
+      "line": 16,
+      "symbol": "MapByte.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapByte.swift",
+      "line": 17,
+      "symbol": "MapByte.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapByte.swift",
+      "line": 18,
+      "symbol": "MapByte.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapByte.swift",
+      "line": 19,
+      "symbol": "MapByte.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapByte.swift",
+      "line": 20,
+      "symbol": "MapByte.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapByte.swift",
+      "line": 21,
+      "symbol": "MapByte.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapByte.swift",
+      "line": 22,
+      "symbol": "MapByte.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapByte.swift",
+      "line": 35,
+      "symbol": "MapByte.init(docValues:index:store:boost:coerce:ignoreMalformed:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapCompletionSuggester.swift",
       "line": 10,
       "symbol": "MapCompletionSuggester",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapDate.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapCompletionSuggester.swift",
+      "line": 16,
+      "symbol": "MapCompletionSuggester.analyzer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapCompletionSuggester.swift",
+      "line": 17,
+      "symbol": "MapCompletionSuggester.searchAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapCompletionSuggester.swift",
+      "line": 18,
+      "symbol": "MapCompletionSuggester.preserveSeparators",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapCompletionSuggester.swift",
+      "line": 19,
+      "symbol": "MapCompletionSuggester.preservePositionIncrements",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapCompletionSuggester.swift",
+      "line": 20,
+      "symbol": "MapCompletionSuggester.maxInputLength",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapCompletionSuggester.swift",
+      "line": 31,
+      "symbol": "MapCompletionSuggester.init(analyzer:searchAnalyzer:preserveSeparators:preservePositionIncrements:maxInputLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
       "line": 10,
       "symbol": "MapDate",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapDateRange.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
+      "line": 16,
+      "symbol": "MapDate.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
+      "line": 17,
+      "symbol": "MapDate.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
+      "line": 18,
+      "symbol": "MapDate.format",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
+      "line": 19,
+      "symbol": "MapDate.locale",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
+      "line": 20,
+      "symbol": "MapDate.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
+      "line": 21,
+      "symbol": "MapDate.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
+      "line": 22,
+      "symbol": "MapDate.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
+      "line": 23,
+      "symbol": "MapDate.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDate.swift",
+      "line": 37,
+      "symbol": "MapDate.init(format:docValues:index:store:boost:locale:ignoreMalformed:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDateRange.swift",
       "line": 10,
       "symbol": "MapDateRange",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapDouble.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDateRange.swift",
+      "line": 16,
+      "symbol": "MapDateRange.format",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDateRange.swift",
+      "line": 17,
+      "symbol": "MapDateRange.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDateRange.swift",
+      "line": 18,
+      "symbol": "MapDateRange.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDateRange.swift",
+      "line": 19,
+      "symbol": "MapDateRange.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDateRange.swift",
+      "line": 20,
+      "symbol": "MapDateRange.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDateRange.swift",
+      "line": 31,
+      "symbol": "MapDateRange.init(format:index:store:boost:coerce:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDouble.swift",
       "line": 10,
       "symbol": "MapDouble",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapDoubleRange.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDouble.swift",
+      "line": 16,
+      "symbol": "MapDouble.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDouble.swift",
+      "line": 17,
+      "symbol": "MapDouble.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDouble.swift",
+      "line": 18,
+      "symbol": "MapDouble.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDouble.swift",
+      "line": 19,
+      "symbol": "MapDouble.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDouble.swift",
+      "line": 20,
+      "symbol": "MapDouble.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDouble.swift",
+      "line": 21,
+      "symbol": "MapDouble.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDouble.swift",
+      "line": 22,
+      "symbol": "MapDouble.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDouble.swift",
+      "line": 35,
+      "symbol": "MapDouble.init(docValues:index:store:boost:coerce:ignoreMalformed:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDoubleRange.swift",
       "line": 10,
       "symbol": "MapDoubleRange",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapFloat.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDoubleRange.swift",
+      "line": 16,
+      "symbol": "MapDoubleRange.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDoubleRange.swift",
+      "line": 17,
+      "symbol": "MapDoubleRange.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDoubleRange.swift",
+      "line": 18,
+      "symbol": "MapDoubleRange.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDoubleRange.swift",
+      "line": 19,
+      "symbol": "MapDoubleRange.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapDoubleRange.swift",
+      "line": 29,
+      "symbol": "MapDoubleRange.init(index:store:boost:coerce:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloat.swift",
       "line": 10,
       "symbol": "MapFloat",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapFloatRange.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloat.swift",
+      "line": 16,
+      "symbol": "MapFloat.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloat.swift",
+      "line": 17,
+      "symbol": "MapFloat.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloat.swift",
+      "line": 18,
+      "symbol": "MapFloat.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloat.swift",
+      "line": 19,
+      "symbol": "MapFloat.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloat.swift",
+      "line": 20,
+      "symbol": "MapFloat.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloat.swift",
+      "line": 21,
+      "symbol": "MapFloat.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloat.swift",
+      "line": 22,
+      "symbol": "MapFloat.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloat.swift",
+      "line": 35,
+      "symbol": "MapFloat.init(docValues:index:store:boost:coerce:ignoreMalformed:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloatRange.swift",
       "line": 10,
       "symbol": "MapFloatRange",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoPoint.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloatRange.swift",
+      "line": 16,
+      "symbol": "MapFloatRange.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloatRange.swift",
+      "line": 17,
+      "symbol": "MapFloatRange.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloatRange.swift",
+      "line": 18,
+      "symbol": "MapFloatRange.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloatRange.swift",
+      "line": 19,
+      "symbol": "MapFloatRange.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapFloatRange.swift",
+      "line": 29,
+      "symbol": "MapFloatRange.init(index:store:boost:coerce:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoPoint.swift",
       "line": 13,
       "symbol": "MapGeoPoint",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoPoint.swift",
+      "line": 19,
+      "symbol": "MapGeoPoint.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoPoint.swift",
+      "line": 26,
+      "symbol": "MapGeoPoint.init(ignoreMalformed:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
       "line": 10,
       "symbol": "MapGeoShape",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 13,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 14,
       "symbol": "MapGeoShape.GeoShapePrefixTree",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 14,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 15,
       "symbol": "MapGeoShape.GeoShapePrefixTree.geohash",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 15,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 16,
       "symbol": "MapGeoShape.GeoShapePrefixTree.quadtree",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 18,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 19,
       "symbol": "MapGeoShape.GeoShapePrecision",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 19,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 20,
       "symbol": "MapGeoShape.GeoShapePrecision.in",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 20,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 21,
       "symbol": "MapGeoShape.GeoShapePrecision.inch",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 21,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 22,
       "symbol": "MapGeoShape.GeoShapePrecision.yd",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 22,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 23,
       "symbol": "MapGeoShape.GeoShapePrecision.yard",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 23,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 24,
       "symbol": "MapGeoShape.GeoShapePrecision.mi",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 24,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 25,
       "symbol": "MapGeoShape.GeoShapePrecision.miles",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 25,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 26,
       "symbol": "MapGeoShape.GeoShapePrecision.km",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 26,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 27,
       "symbol": "MapGeoShape.GeoShapePrecision.kilometers",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 27,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 28,
       "symbol": "MapGeoShape.GeoShapePrecision.m",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 28,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 29,
       "symbol": "MapGeoShape.GeoShapePrecision.meters",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 29,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 30,
       "symbol": "MapGeoShape.GeoShapePrecision.cm",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 30,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 31,
       "symbol": "MapGeoShape.GeoShapePrecision.centimeters",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 31,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 32,
       "symbol": "MapGeoShape.GeoShapePrecision.mm",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 32,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 33,
       "symbol": "MapGeoShape.GeoShapePrecision.millimeters",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 35,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 36,
       "symbol": "MapGeoShape.GeoShapeStrategy",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 36,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 37,
       "symbol": "MapGeoShape.GeoShapeStrategy.recursive",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 37,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 38,
       "symbol": "MapGeoShape.GeoShapeStrategy.term",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 40,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 41,
       "symbol": "MapGeoShape.GeoShapeOrientation",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 41,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 42,
       "symbol": "MapGeoShape.GeoShapeOrientation.right",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 42,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 43,
       "symbol": "MapGeoShape.GeoShapeOrientation.ccw",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 43,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 44,
       "symbol": "MapGeoShape.GeoShapeOrientation.counterclockwise",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 44,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 45,
       "symbol": "MapGeoShape.GeoShapeOrientation.left",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 45,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 46,
       "symbol": "MapGeoShape.GeoShapeOrientation.cw",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapGeoShape.swift",
-      "line": 46,
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 47,
       "symbol": "MapGeoShape.GeoShapeOrientation.clockwise",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapHalfFloat.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 53,
+      "symbol": "MapGeoShape.tree",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 54,
+      "symbol": "MapGeoShape.precision",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 55,
+      "symbol": "MapGeoShape.treeLevels",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 56,
+      "symbol": "MapGeoShape.strategy",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 57,
+      "symbol": "MapGeoShape.distanceErrorPct",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 58,
+      "symbol": "MapGeoShape.orientation",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 59,
+      "symbol": "MapGeoShape.pointsOnly",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 60,
+      "symbol": "MapGeoShape.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapGeoShape.swift",
+      "line": 74,
+      "symbol": "MapGeoShape.init(tree:precision:treeLevels:strategy:distanceErrorPct:orientation:pointsOnly:ignoreMalformed:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapHalfFloat.swift",
       "line": 10,
       "symbol": "MapHalfFloat",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapIPAddress.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapHalfFloat.swift",
+      "line": 16,
+      "symbol": "MapHalfFloat.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapHalfFloat.swift",
+      "line": 17,
+      "symbol": "MapHalfFloat.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapHalfFloat.swift",
+      "line": 18,
+      "symbol": "MapHalfFloat.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapHalfFloat.swift",
+      "line": 19,
+      "symbol": "MapHalfFloat.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapHalfFloat.swift",
+      "line": 20,
+      "symbol": "MapHalfFloat.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapHalfFloat.swift",
+      "line": 21,
+      "symbol": "MapHalfFloat.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapHalfFloat.swift",
+      "line": 22,
+      "symbol": "MapHalfFloat.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapHalfFloat.swift",
+      "line": 35,
+      "symbol": "MapHalfFloat.init(docValues:index:store:boost:coerce:ignoreMalformed:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIPAddress.swift",
       "line": 10,
       "symbol": "MapIPAddress",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapInteger.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIPAddress.swift",
+      "line": 16,
+      "symbol": "MapIPAddress.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIPAddress.swift",
+      "line": 17,
+      "symbol": "MapIPAddress.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIPAddress.swift",
+      "line": 18,
+      "symbol": "MapIPAddress.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIPAddress.swift",
+      "line": 19,
+      "symbol": "MapIPAddress.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIPAddress.swift",
+      "line": 20,
+      "symbol": "MapIPAddress.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIPAddress.swift",
+      "line": 31,
+      "symbol": "MapIPAddress.init(docValues:index:store:boost:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapInteger.swift",
       "line": 10,
       "symbol": "MapInteger",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapIntegerRange.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapInteger.swift",
+      "line": 16,
+      "symbol": "MapInteger.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapInteger.swift",
+      "line": 17,
+      "symbol": "MapInteger.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapInteger.swift",
+      "line": 18,
+      "symbol": "MapInteger.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapInteger.swift",
+      "line": 19,
+      "symbol": "MapInteger.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapInteger.swift",
+      "line": 20,
+      "symbol": "MapInteger.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapInteger.swift",
+      "line": 21,
+      "symbol": "MapInteger.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapInteger.swift",
+      "line": 22,
+      "symbol": "MapInteger.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapInteger.swift",
+      "line": 35,
+      "symbol": "MapInteger.init(docValues:index:store:boost:coerce:ignoreMalformed:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIntegerRange.swift",
       "line": 10,
       "symbol": "MapIntegerRange",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapJoin.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIntegerRange.swift",
+      "line": 16,
+      "symbol": "MapIntegerRange.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIntegerRange.swift",
+      "line": 17,
+      "symbol": "MapIntegerRange.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIntegerRange.swift",
+      "line": 18,
+      "symbol": "MapIntegerRange.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIntegerRange.swift",
+      "line": 19,
+      "symbol": "MapIntegerRange.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapIntegerRange.swift",
+      "line": 29,
+      "symbol": "MapIntegerRange.init(index:store:boost:coerce:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapJoin.swift",
       "line": 10,
       "symbol": "MapJoin",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapKeyword.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapJoin.swift",
+      "line": 16,
+      "symbol": "MapJoin.relations",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapJoin.swift",
+      "line": 23,
+      "symbol": "MapJoin.init(relations:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
       "line": 12,
       "symbol": "MapKeyword",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapLong.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 18,
+      "symbol": "MapKeyword.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 19,
+      "symbol": "MapKeyword.eagerGlobalOrdinals",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 20,
+      "symbol": "MapKeyword.fields",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 21,
+      "symbol": "MapKeyword.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 22,
+      "symbol": "MapKeyword.indexOptions",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 23,
+      "symbol": "MapKeyword.norms",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 24,
+      "symbol": "MapKeyword.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 25,
+      "symbol": "MapKeyword.similarity",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 26,
+      "symbol": "MapKeyword.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 27,
+      "symbol": "MapKeyword.ignoreAbove",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 28,
+      "symbol": "MapKeyword.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 29,
+      "symbol": "MapKeyword.normalizer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapKeyword.swift",
+      "line": 47,
+      "symbol": "MapKeyword.init(docValues:index:store:fields:boost:eagerGlobalOrdinals:indexOptions:norms:similarity:ignoreAbove:nullValue:normalizer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLong.swift",
       "line": 10,
       "symbol": "MapLong",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapLongRange.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLong.swift",
+      "line": 16,
+      "symbol": "MapLong.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLong.swift",
+      "line": 17,
+      "symbol": "MapLong.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLong.swift",
+      "line": 18,
+      "symbol": "MapLong.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLong.swift",
+      "line": 19,
+      "symbol": "MapLong.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLong.swift",
+      "line": 20,
+      "symbol": "MapLong.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLong.swift",
+      "line": 21,
+      "symbol": "MapLong.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLong.swift",
+      "line": 22,
+      "symbol": "MapLong.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLong.swift",
+      "line": 35,
+      "symbol": "MapLong.init(docValues:index:store:boost:coerce:ignoreMalformed:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLongRange.swift",
       "line": 10,
       "symbol": "MapLongRange",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapNested.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLongRange.swift",
+      "line": 16,
+      "symbol": "MapLongRange.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLongRange.swift",
+      "line": 17,
+      "symbol": "MapLongRange.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLongRange.swift",
+      "line": 18,
+      "symbol": "MapLongRange.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLongRange.swift",
+      "line": 19,
+      "symbol": "MapLongRange.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapLongRange.swift",
+      "line": 29,
+      "symbol": "MapLongRange.init(index:store:boost:coerce:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapNested.swift",
       "line": 13,
       "symbol": "MapNested",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapObject.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapNested.swift",
+      "line": 17,
+      "symbol": "MapNested.properties",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapNested.swift",
+      "line": 18,
+      "symbol": "MapNested.dynamic",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapNested.swift",
+      "line": 25,
+      "symbol": "MapNested.init(properties:dynamic:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapObject.swift",
       "line": 13,
       "symbol": "MapObject",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapPercolator.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapObject.swift",
+      "line": 17,
+      "symbol": "MapObject.properties",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapObject.swift",
+      "line": 18,
+      "symbol": "MapObject.dynamic",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapObject.swift",
+      "line": 19,
+      "symbol": "MapObject.enabled",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapObject.swift",
+      "line": 27,
+      "symbol": "MapObject.init(properties:dynamic:enabled:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapPercolator.swift",
       "line": 10,
       "symbol": "MapPercolator",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapScaledFloat.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapPercolator.swift",
+      "line": 20,
+      "symbol": "MapPercolator.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
       "line": 10,
       "symbol": "MapScaledFloat",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapShort.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
+      "line": 16,
+      "symbol": "MapScaledFloat.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
+      "line": 17,
+      "symbol": "MapScaledFloat.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
+      "line": 18,
+      "symbol": "MapScaledFloat.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
+      "line": 19,
+      "symbol": "MapScaledFloat.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
+      "line": 20,
+      "symbol": "MapScaledFloat.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
+      "line": 21,
+      "symbol": "MapScaledFloat.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
+      "line": 22,
+      "symbol": "MapScaledFloat.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
+      "line": 24,
+      "symbol": "MapScaledFloat.scalingFactor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapScaledFloat.swift",
+      "line": 38,
+      "symbol": "MapScaledFloat.init(scalingFactor:docValues:index:store:boost:coerce:ignoreMalformed:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapShort.swift",
       "line": 10,
       "symbol": "MapShort",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapText.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapShort.swift",
+      "line": 16,
+      "symbol": "MapShort.coerce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapShort.swift",
+      "line": 17,
+      "symbol": "MapShort.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapShort.swift",
+      "line": 18,
+      "symbol": "MapShort.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapShort.swift",
+      "line": 19,
+      "symbol": "MapShort.ignoreMalformed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapShort.swift",
+      "line": 20,
+      "symbol": "MapShort.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapShort.swift",
+      "line": 21,
+      "symbol": "MapShort.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapShort.swift",
+      "line": 22,
+      "symbol": "MapShort.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapShort.swift",
+      "line": 35,
+      "symbol": "MapShort.init(docValues:index:store:boost:coerce:ignoreMalformed:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
       "line": 13,
       "symbol": "MapText",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/MapTokenCount.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 19,
+      "symbol": "MapText.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 20,
+      "symbol": "MapText.eagerGlobalOrdinals",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 21,
+      "symbol": "MapText.fields",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 22,
+      "symbol": "MapText.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 23,
+      "symbol": "MapText.indexOptions",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 24,
+      "symbol": "MapText.norms",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 25,
+      "symbol": "MapText.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 26,
+      "symbol": "MapText.similarity",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 28,
+      "symbol": "MapText.analyzer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 29,
+      "symbol": "MapText.searchAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 30,
+      "symbol": "MapText.searchQuoteAnalyzer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 31,
+      "symbol": "MapText.fielddata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 32,
+      "symbol": "MapText.termVector",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapText.swift",
+      "line": 51,
+      "symbol": "MapText.init(index:store:fields:analyzer:searchAnalyzer:searchQuoteAnalyzer:fielddata:termVector:boost:eagerGlobalOrdinals:indexOptions:norms:similarity:ignoreAbove:nullValue:normalizer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapTokenCount.swift",
       "line": 10,
       "symbol": "MapTokenCount",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapTokenCount.swift",
+      "line": 16,
+      "symbol": "MapTokenCount.analyzer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapTokenCount.swift",
+      "line": 17,
+      "symbol": "MapTokenCount.enablePositionIncrements",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapTokenCount.swift",
+      "line": 18,
+      "symbol": "MapTokenCount.boost",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapTokenCount.swift",
+      "line": 19,
+      "symbol": "MapTokenCount.docValues",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapTokenCount.swift",
+      "line": 20,
+      "symbol": "MapTokenCount.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapTokenCount.swift",
+      "line": 21,
+      "symbol": "MapTokenCount.nullValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapTokenCount.swift",
+      "line": 22,
+      "symbol": "MapTokenCount.store",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/MapTokenCount.swift",
+      "line": 34,
+      "symbol": "MapTokenCount.init(docValues:index:store:analyzer:enablePositionIncrements:boost:nullValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 2,
       "symbol": "TextIndexOptions",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 3,
       "symbol": "TextIndexOptions.docs",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 4,
       "symbol": "TextIndexOptions.freqs",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 5,
       "symbol": "TextIndexOptions.positions",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 6,
       "symbol": "TextIndexOptions.offsets",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 9,
       "symbol": "SimilarityType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 10,
       "symbol": "SimilarityType.bm25",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 11,
       "symbol": "SimilarityType.classic",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 12,
       "symbol": "SimilarityType.boolean",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 15,
       "symbol": "TermVector",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 16,
       "symbol": "TermVector.no",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 17,
       "symbol": "TermVector.yes",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 18,
       "symbol": "TermVector.withPositions",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 19,
       "symbol": "TermVector.withPositionsOffsets",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 22,
       "symbol": "TextFieldType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 23,
       "symbol": "TextFieldType.text",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 24,
       "symbol": "TextFieldType.keyword",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mappable.swift",
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
       "line": 27,
       "symbol": "TextField",
       "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
+      "line": 32,
+      "symbol": "TextField.init(type:analyzer:normalizer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
+      "line": 43,
+      "symbol": "Mappable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Mapping Types/Mappable.swift",
+      "line": 44,
+      "symbol": "Mappable.typeKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Normalizer.swift",
+      "line": 4,
+      "symbol": "Normalizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Normalizer.swift",
+      "line": 6,
+      "symbol": "Normalizer.charFilter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Normalizer.swift",
+      "line": 7,
+      "symbol": "Normalizer.filter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Normalizer.swift",
+      "line": 15,
+      "symbol": "Normalizer.init(charFilter:filter:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/AnyTokenizer.swift",
+      "line": 4,
+      "symbol": "Tokenizer",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/AnyTokenizer.swift",
+      "line": 5,
+      "symbol": "Tokenizer.typeKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/ClassicTokenizer.swift",
+      "line": 4,
+      "symbol": "ClassicTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/ClassicTokenizer.swift",
+      "line": 10,
+      "symbol": "ClassicTokenizer.maxTokenLength",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/ClassicTokenizer.swift",
+      "line": 16,
+      "symbol": "ClassicTokenizer.init(maxTokenLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 4,
+      "symbol": "EdgeNGramTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 8,
+      "symbol": "EdgeNGramTokenizer.CharacterClass",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 9,
+      "symbol": "EdgeNGramTokenizer.CharacterClass.letter",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 10,
+      "symbol": "EdgeNGramTokenizer.CharacterClass.digit",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 11,
+      "symbol": "EdgeNGramTokenizer.CharacterClass.whitespace",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 12,
+      "symbol": "EdgeNGramTokenizer.CharacterClass.punctuation",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 13,
+      "symbol": "EdgeNGramTokenizer.CharacterClass.symbol",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 18,
+      "symbol": "EdgeNGramTokenizer.minGram",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 19,
+      "symbol": "EdgeNGramTokenizer.maxGram",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 20,
+      "symbol": "EdgeNGramTokenizer.tokenChars",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/EdgeNGramTokenizer.swift",
+      "line": 28,
+      "symbol": "EdgeNGramTokenizer.init(minGram:maxGram:tokenChars:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/KeywordTokenizer.swift",
+      "line": 4,
+      "symbol": "KeywordTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/KeywordTokenizer.swift",
+      "line": 10,
+      "symbol": "KeywordTokenizer.bufferSize",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/KeywordTokenizer.swift",
+      "line": 16,
+      "symbol": "KeywordTokenizer.init(bufferSize:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/LetterTokenizer.swift",
+      "line": 4,
+      "symbol": "LetterTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/LetterTokenizer.swift",
+      "line": 10,
+      "symbol": "LetterTokenizer.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/LowercaseTokenizer.swift",
+      "line": 4,
+      "symbol": "LowercaseTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/LowercaseTokenizer.swift",
+      "line": 10,
+      "symbol": "LowercaseTokenizer.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 4,
+      "symbol": "NGramTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 8,
+      "symbol": "NGramTokenizer.CharacterClass",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 9,
+      "symbol": "NGramTokenizer.CharacterClass.letter",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 10,
+      "symbol": "NGramTokenizer.CharacterClass.digit",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 11,
+      "symbol": "NGramTokenizer.CharacterClass.whitespace",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 12,
+      "symbol": "NGramTokenizer.CharacterClass.punctuation",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 13,
+      "symbol": "NGramTokenizer.CharacterClass.symbol",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 18,
+      "symbol": "NGramTokenizer.minGram",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 19,
+      "symbol": "NGramTokenizer.maxGram",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 20,
+      "symbol": "NGramTokenizer.tokenChars",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/NGramTokenizer.swift",
+      "line": 28,
+      "symbol": "NGramTokenizer.init(minGram:maxGram:tokenChars:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PathHierarchyTokenizer.swift",
+      "line": 4,
+      "symbol": "PathHierarchyTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PathHierarchyTokenizer.swift",
+      "line": 10,
+      "symbol": "PathHierarchyTokenizer.delimiter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PathHierarchyTokenizer.swift",
+      "line": 11,
+      "symbol": "PathHierarchyTokenizer.replacement",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PathHierarchyTokenizer.swift",
+      "line": 12,
+      "symbol": "PathHierarchyTokenizer.bufferSize",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PathHierarchyTokenizer.swift",
+      "line": 13,
+      "symbol": "PathHierarchyTokenizer.reverse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PathHierarchyTokenizer.swift",
+      "line": 14,
+      "symbol": "PathHierarchyTokenizer.skip",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PathHierarchyTokenizer.swift",
+      "line": 24,
+      "symbol": "PathHierarchyTokenizer.init(delimiter:replacement:bufferSize:reverse:skip:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PatternTokenizer.swift",
+      "line": 4,
+      "symbol": "PatternTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PatternTokenizer.swift",
+      "line": 10,
+      "symbol": "PatternTokenizer.pattern",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PatternTokenizer.swift",
+      "line": 11,
+      "symbol": "PatternTokenizer.flags",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PatternTokenizer.swift",
+      "line": 12,
+      "symbol": "PatternTokenizer.group",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/PatternTokenizer.swift",
+      "line": 20,
+      "symbol": "PatternTokenizer.init(pattern:flags:group:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/SimplePatternSplitTokenizer.swift",
+      "line": 4,
+      "symbol": "SimplePatternSplitTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/SimplePatternSplitTokenizer.swift",
+      "line": 10,
+      "symbol": "SimplePatternSplitTokenizer.pattern",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/SimplePatternSplitTokenizer.swift",
+      "line": 16,
+      "symbol": "SimplePatternSplitTokenizer.init(pattern:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/SimplePatternTokenizer.swift",
+      "line": 4,
+      "symbol": "SimplePatternTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/SimplePatternTokenizer.swift",
+      "line": 10,
+      "symbol": "SimplePatternTokenizer.pattern",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/SimplePatternTokenizer.swift",
+      "line": 16,
+      "symbol": "SimplePatternTokenizer.init(pattern:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/StandardTokenizer.swift",
+      "line": 4,
+      "symbol": "StandardTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/StandardTokenizer.swift",
+      "line": 10,
+      "symbol": "StandardTokenizer.maxTokenLength",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/StandardTokenizer.swift",
+      "line": 16,
+      "symbol": "StandardTokenizer.init(maxTokenLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/ThaiTokenizer.swift",
+      "line": 4,
+      "symbol": "ThaiTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/ThaiTokenizer.swift",
+      "line": 10,
+      "symbol": "ThaiTokenizer.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/UAXURLEmailTokenizer.swift",
+      "line": 4,
+      "symbol": "UAXURLEmailTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/UAXURLEmailTokenizer.swift",
+      "line": 10,
+      "symbol": "UAXURLEmailTokenizer.maxTokenLength",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/UAXURLEmailTokenizer.swift",
+      "line": 16,
+      "symbol": "UAXURLEmailTokenizer.init(maxTokenLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/WhitespaceTokenizer.swift",
+      "line": 4,
+      "symbol": "WhitespaceTokenizer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/WhitespaceTokenizer.swift",
+      "line": 10,
+      "symbol": "WhitespaceTokenizer.maxTokenLength",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Index/Tokenizers/WhitespaceTokenizer.swift",
+      "line": 16,
+      "symbol": "WhitespaceTokenizer.init(maxTokenLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -1514,28 +3621,28 @@
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Match.swift",
-      "line": 27,
-      "symbol": "Match.init(field:value:operator:fuzziness:)",
+      "line": 28,
+      "symbol": "Match.init(field:value:operator:fuzziness:boost:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Match.swift",
-      "line": 73,
+      "line": 79,
       "symbol": "Operator",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Match.swift",
-      "line": 74,
+      "line": 80,
       "symbol": "Operator.and",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/Match.swift",
-      "line": 75,
+      "line": 81,
       "symbol": "Operator.or",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
@@ -1556,15 +3663,15 @@
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchPhrase.swift",
-      "line": 16,
-      "symbol": "MatchPhrase.init(field:query:analyzer:)",
+      "line": 17,
+      "symbol": "MatchPhrase.init(field:query:analyzer:boost:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/grimm/projects/vapor/Elasticsearch/Sources/Elasticsearch/Search/Query/MatchPhrasePrefix.swift",
-      "line": 17,
-      "symbol": "MatchPhrasePrefix.init(field:query:analyzer:maxExpansions:)",
+      "line": 18,
+      "symbol": "MatchPhrasePrefix.init(field:query:analyzer:maxExpansions:boost:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },

@@ -1,3 +1,4 @@
+/// :nodoc:
 public enum MapType: String, Codable {
     case text
     case keyword
@@ -87,6 +88,7 @@ public enum MapType: String, Codable {
     }
 }
 
+/// :nodoc:
 public struct AnyMap : Codable {
     var base: Mappable
     

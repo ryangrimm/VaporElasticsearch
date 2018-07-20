@@ -5,6 +5,7 @@ public protocol Analyzer: Codable {
     static var typeKey: AnalyzerType { get }
 }
 
+/// :nodoc:
 public enum AnalyzerType: String, Codable {
     case standard
     case simple

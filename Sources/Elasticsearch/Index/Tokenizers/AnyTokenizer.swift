@@ -5,6 +5,7 @@ public protocol Tokenizer: Codable {
     static var typeKey: TokenizerType { get }
 }
 
+/// :nodoc:
 public enum TokenizerType: String, Codable {
     case standard
     case letter
@@ -55,6 +56,7 @@ public enum TokenizerType: String, Codable {
     }
 }
 
+/// :nodoc:
 public struct AnyTokenizer : Codable {
     var base: Tokenizer
     
