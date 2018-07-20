@@ -119,6 +119,12 @@ let index = client.createIndex(name: "documents")
 try index.create()
 ```
 
+### Deleting an index
+```swift
+
+//let client: ElasticsearchClient = ...
+try client.deleteIndex(name: "documents")
+```
 
 ### Use `bulk`to insert documents
 ```swift
@@ -141,6 +147,7 @@ try bulk.send()
 ## TODO
 
 * Support copy_to
+
 * Implement the KeyedCacheSupporting protocol
 * Implement the DatabaseQueryable protocol
 * Create a chainable query builder
