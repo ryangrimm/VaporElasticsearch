@@ -12,7 +12,10 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
     
     /// See `DatabaseConnection`.
     public var isClosed: Bool
-    
+
+    /// If non-nil, will log requests/reponses.
+    public var logger: DatabaseLogger?
+
     /// See `Extendable`.
     public var extend: Extend
     
@@ -116,8 +119,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
             }
         }
 
-        // TODO should be debug logged
-        print(request.description)
+        logger?.log(query: request.description)
         
         return self.esConnection.send(request).map(to: Data.self) { response in
             if response.body.data == nil {
@@ -135,7 +137,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
             
             // TODO should be debug logged
             let bodyString = String(data: response.body.data!, encoding: String.Encoding.utf8) as String?
-            print(bodyString!)
+            self.logger?.log(query: bodyString ?? "")
             
             return response.body.data!
         }

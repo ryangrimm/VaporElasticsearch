@@ -63,6 +63,13 @@ databases.add(database: es, as: .elasticsearch)
 services.register(databases)
 ```
 
+#### Enable Logging
+```swift
+var databases = DatabasesConfig()
+databases.enableLogging(on: .elasticsearch)
+services.register(databases)
+```
+
 ### Simple search example
 ```swift
 struct Document: Codable {

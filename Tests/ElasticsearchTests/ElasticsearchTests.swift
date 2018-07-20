@@ -45,7 +45,7 @@ final class ElasticsearchTests: XCTestCase {
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
-            .settings(index: IndexSettings(shards: 3, replicas: 2))
+            .indexSettings(index: IndexSettings(shards: 3, replicas: 2))
             .add(metaKey: "Foo", metaValue: "Bar")
             .create().wait()
         
@@ -75,7 +75,7 @@ final class ElasticsearchTests: XCTestCase {
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
-            .settings(index: IndexSettings(shards: 3, replicas: 2))
+            .indexSettings(index: IndexSettings(shards: 3, replicas: 2))
             .create().wait()
         
         var indexDoc: TestModel = TestModel(name: "bar", number: 26)
@@ -122,7 +122,7 @@ final class ElasticsearchTests: XCTestCase {
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
-            .settings(index: IndexSettings(shards: 3, replicas: 2))
+            .indexSettings(index: IndexSettings(shards: 3, replicas: 2))
             .create().wait()
         
         var doc0: TestModel = TestModel(name: "foo", number: 26)
