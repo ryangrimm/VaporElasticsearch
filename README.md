@@ -159,7 +159,6 @@ These are the remaining query DSL constructors that are left to be
 implemented. They are not all of equal value. But pick off those that seem
 useful/easy first.
 
-```
 * [Query string](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html)
 * [Simple query string](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html)
 * [Terms set](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-terms-set-query.html)
@@ -177,7 +176,6 @@ useful/easy first.
 * [Geo distance](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-query.html)
 * [More like this query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html)
 * [Percolate query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html)
-```
 
 * Documentation
 * More unit tests
