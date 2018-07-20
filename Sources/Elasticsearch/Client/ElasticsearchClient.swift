@@ -119,7 +119,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
             }
         }
 
-        logger?.log(query: request.description)
+        logger?.record(query: request.description)
         
         return self.esConnection.send(request).map(to: Data.self) { response in
             if response.body.data == nil {
@@ -135,9 +135,8 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
                 throw ElasticsearchError(identifier: "elasticsearch_error", reason: error.description, source: .capture(), statusCode: response.status.code)
             }
             
-            // TODO should be debug logged
             let bodyString = String(data: response.body.data!, encoding: String.Encoding.utf8) as String?
-            self.logger?.log(query: bodyString ?? "")
+            self.logger?.record(query: bodyString ?? "")
             
             return response.body.data!
         }

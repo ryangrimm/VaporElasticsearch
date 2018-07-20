@@ -27,4 +27,17 @@ public struct MapDateRange: Mappable {
         case index
         case store
     }
+    
+    public init(format: String,
+                index: Bool? = true,
+                store: Bool? = false,
+                boost: Float? = nil,
+                coerce: Bool? = nil) {
+        
+        self.format = format
+        self.coerce = coerce
+        self.boost = boost
+        self.index = index
+        self.store = store
+    }
 }

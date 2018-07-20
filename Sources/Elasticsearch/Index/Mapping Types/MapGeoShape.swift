@@ -70,6 +70,25 @@ public struct MapGeoShape: Mappable {
         case pointsOnly = "points_only"
         case ignoreMalformed = "ignore_malformed"
     }
+    
+    public init(tree: GeoShapePrefixTree? = .geohash,
+                precision: GeoShapePrecision? = .meters,
+                treeLevels: String? = nil,
+                strategy: GeoShapeStrategy? = .recursive,
+                distanceErrorPct: Float? = 0.025,
+                orientation: GeoShapeOrientation? = .ccw,
+                pointsOnly: Bool? = false,
+                ignoreMalformed: Bool? = false) {
+        
+        self.tree = tree
+        self.precision = precision
+        self.treeLevels = treeLevels
+        self.strategy = strategy
+        self.distanceErrorPct = distanceErrorPct
+        self.orientation = orientation
+        self.pointsOnly = pointsOnly
+        self.ignoreMalformed = ignoreMalformed
+    }
 }
 
 

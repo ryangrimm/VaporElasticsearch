@@ -16,4 +16,10 @@ public struct PatternTokenizer: Tokenizer {
         case flags
         case group
     }
+    
+    public init(pattern: String? = nil, flags: String? = nil, group: Int? = nil) {
+        self.pattern = pattern
+        self.flags = flags
+        self.group = group
+    }
 }

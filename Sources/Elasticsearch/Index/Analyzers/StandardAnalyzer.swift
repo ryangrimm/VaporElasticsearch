@@ -7,9 +7,22 @@ public struct StandardAnalyzer: Analyzer {
     
     let analyzer = typeKey.rawValue
     
-    public var stopwords: String
+    public var maxTokenLength: Int? = nil
+    public var stopwords: [String]? = nil
+    public var stopwordsPath: String? = nil
     
-    public init(stopwords: String) {
+    enum CodingKeys: String, CodingKey {
+        case maxTokenLength = "max_token_length"
+        case stopwords
+        case stopwordsPath = "stopwords_path"
+    }
+    
+    public init(stopwords: [String]? = nil,
+                stopwordsPath: String? = nil,
+                maxTokenLength: Int? = nil) {
+        
         self.stopwords = stopwords
+        self.stopwordsPath = stopwordsPath
+        self.maxTokenLength = maxTokenLength
     }
 }

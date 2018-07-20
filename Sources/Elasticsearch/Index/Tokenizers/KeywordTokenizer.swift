@@ -12,4 +12,8 @@ public struct KeywordTokenizer: Tokenizer {
     enum CodingKeys: String, CodingKey {
         case bufferSize = "buffer_size"
     }
+    
+    public init(bufferSize: Int? = nil) {
+        self.bufferSize = bufferSize
+    }
 }

@@ -6,4 +6,6 @@ public struct ThaiTokenizer: Tokenizer {
     public static var typeKey = TokenizerType.thai
     
     let tokenizer = typeKey.rawValue
+    
+    public init() {}
 }

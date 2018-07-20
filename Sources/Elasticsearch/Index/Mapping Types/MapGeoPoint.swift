@@ -22,4 +22,8 @@ public struct MapGeoPoint: Mappable {
         case type
         case ignoreMalformed = "ignore_malformed"
     }
+    
+    public init(ignoreMalformed: Bool? = nil) {
+        self.ignoreMalformed = ignoreMalformed
+    }
 }

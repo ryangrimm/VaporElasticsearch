@@ -12,4 +12,8 @@ public struct SimplePatternSplitTokenizer: Tokenizer {
     enum CodingKeys: String, CodingKey {
         case pattern
     }
+    
+    public init(pattern: String? = nil) {
+        self.pattern = pattern
+    }
 }

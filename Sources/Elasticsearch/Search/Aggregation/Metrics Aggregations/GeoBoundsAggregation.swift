@@ -30,11 +30,7 @@ public struct GeoBoundsAggregation: Aggregation {
     ///   - name: The aggregation name
     ///   - field: The field to perform the aggregation over
     ///   - wrapLongitude: Specifies whether the bounding box should be allowed to overlap the international date line
-    public init(
-        name: String,
-        field: String? = nil,
-        wrapLongitude: Bool? = nil
-        ) {
+    public init(name: String, field: String? = nil, wrapLongitude: Bool? = nil) {
         self.name = name
         self.field = field
         self.wrapLongitude = wrapLongitude

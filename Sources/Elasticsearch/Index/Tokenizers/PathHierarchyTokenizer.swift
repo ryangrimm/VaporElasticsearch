@@ -20,4 +20,12 @@ public struct PathHierarchyTokenizer: Tokenizer {
         case reverse
         case skip
     }
+    
+    public init(delimiter: String? = nil, replacement: String? = nil, bufferSize: Int? = nil, reverse: Bool? = nil, skip: Int? = nil) {
+        self.delimiter = delimiter
+        self.replacement = replacement
+        self.bufferSize = bufferSize
+        self.reverse = reverse
+        self.skip = skip
+    }
 }

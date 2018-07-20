@@ -42,5 +42,4 @@ public struct TextField: Codable {
 
 public protocol Mappable: Codable {
     static var typeKey: MapType { get }
-
 }

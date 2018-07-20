@@ -51,6 +51,7 @@
 		C293BC35210068F700C31D94 /* SimplePatternTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC34210068F700C31D94 /* SimplePatternTokenizer.swift */; };
 		C293BC372100695F00C31D94 /* SimplePatternSplitTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC362100695F00C31D94 /* SimplePatternSplitTokenizer.swift */; };
 		C293BC39210069BB00C31D94 /* PathHierarchyTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC38210069BB00C31D94 /* PathHierarchyTokenizer.swift */; };
+		C293BC3B210071B800C31D94 /* Normalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC3A210071B800C31D94 /* Normalizer.swift */; };
 		OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ElasticsearchAggregationCodableTests.swift */; };
 		OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* ElasticsearchQueryCodableTests.swift */; };
 		OBJ_1003 /* ElasticsearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ElasticsearchTests.swift */; };
@@ -1960,6 +1961,7 @@
 		C293BC34210068F700C31D94 /* SimplePatternTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePatternTokenizer.swift; sourceTree = "<group>"; };
 		C293BC362100695F00C31D94 /* SimplePatternSplitTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePatternSplitTokenizer.swift; sourceTree = "<group>"; };
 		C293BC38210069BB00C31D94 /* PathHierarchyTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathHierarchyTokenizer.swift; sourceTree = "<group>"; };
+		C293BC3A210071B800C31D94 /* Normalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Normalizer.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3059,6 +3061,7 @@
 				C293BC1B2100614100C31D94 /* Tokenizers */,
 				C293BC0821004FCC00C31D94 /* Analyzers */,
 				C293BC032100114D00C31D94 /* Mapping Types */,
+				C293BC3A210071B800C31D94 /* Normalizer.swift */,
 			);
 			path = Index;
 			sourceTree = "<group>";
@@ -5357,6 +5360,7 @@
 				OBJ_894 /* ValueCountAggregation.swift in Sources */,
 				OBJ_895 /* Decoder+AggregationUserInfo.swift in Sources */,
 				C293BC1D210061A100C31D94 /* AnyTokenizer.swift in Sources */,
+				C293BC3B210071B800C31D94 /* Normalizer.swift in Sources */,
 				OBJ_896 /* AnyQuery.swift in Sources */,
 				OBJ_897 /* BoolQuery.swift in Sources */,
 				OBJ_898 /* CommonTerms.swift in Sources */,

@@ -25,4 +25,15 @@ public struct MapFloatRange: Mappable {
         case index
         case store
     }
+    
+    public init(index: Bool? = true,
+                store: Bool? = false,
+                boost: Float? = 1.0,
+                coerce: Bool? = nil) {
+        
+        self.index = index
+        self.store = store
+        self.boost = boost
+        self.coerce = coerce
+    }
 }

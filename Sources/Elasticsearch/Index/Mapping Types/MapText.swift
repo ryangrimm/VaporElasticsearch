@@ -48,5 +48,36 @@ public struct MapText: Mappable {
         case termVector = "term_vector"
     }
 
-    public init() {}
+    public init(index: Bool? = true,
+                store: Bool? = false,
+                fields: [String: TextField]? = nil,
+                analyzer: String? = nil,
+                searchAnalyzer: String? = nil,
+                searchQuoteAnalyzer: String? = nil,
+                fielddata: Bool? = false,
+                termVector: TermVector? = .no,
+                boost: Float? = 1.0,
+                eagerGlobalOrdinals: Bool? = false,
+                indexOptions: TextIndexOptions? = nil,
+                norms: Bool? = true,
+                similarity: SimilarityType? = .bm25,
+                ignoreAbove: Int? = 2147483647,
+                nullValue: String? = nil,
+                normalizer: String? = nil) {
+        
+        self.index = index
+        self.store = store
+        self.fields = fields
+        self.boost = boost
+        self.eagerGlobalOrdinals = eagerGlobalOrdinals
+        self.indexOptions = indexOptions
+        self.norms = norms
+        self.similarity = similarity
+        
+        self.analyzer = analyzer
+        self.searchAnalyzer = searchAnalyzer
+        self.searchQuoteAnalyzer = searchQuoteAnalyzer
+        self.fielddata = fielddata
+        self.termVector = termVector
+    }
 }

@@ -23,7 +23,6 @@ public struct MapKeyword: Mappable {
     public var norms: Bool? = true
     public var store: Bool? = false
     public var similarity: SimilarityType? = .bm25
-    
     public var docValues: Bool? = true
     public var ignoreAbove: Int? = 2147483647
     public var nullValue: String?
@@ -45,5 +44,30 @@ public struct MapKeyword: Mappable {
         case normalizer
     }
 
-    public init() {}
+    public init(docValues: Bool? = true,
+                index: Bool? = true,
+                store: Bool? = false,
+                fields: [String: TextField]?,
+                boost: Float? = 1.0,
+                eagerGlobalOrdinals: Bool? = false,
+                indexOptions: TextIndexOptions?,
+                norms: Bool? = true,
+                similarity: SimilarityType? = .bm25,
+                ignoreAbove: Int? = 2147483647,
+                nullValue: String? = nil,
+                normalizer: String? = nil) {
+        
+        self.docValues = docValues
+        self.index = index
+        self.store = store
+        self.fields = fields
+        self.boost = boost
+        self.eagerGlobalOrdinals = eagerGlobalOrdinals
+        self.indexOptions = indexOptions
+        self.norms = norms
+        self.similarity = similarity
+        self.ignoreAbove = ignoreAbove
+        self.nullValue = nullValue
+        self.normalizer = normalizer
+    }
 }

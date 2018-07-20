@@ -6,4 +6,6 @@ public struct KeywordAnalyzer: Analyzer {
     public static var typeKey = AnalyzerType.keyword
     
     let analyzer = typeKey.rawValue
+    
+    public init() {}
 }

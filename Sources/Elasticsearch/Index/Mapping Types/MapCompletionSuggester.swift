@@ -27,4 +27,17 @@ public struct MapCompletionSuggester: Mappable {
         case preservePositionIncrements = "preserve_position_increments"
         case maxInputLength = "max_input_length"
     }
+    
+    public init(analyzer: String? = nil,
+                searchAnalyzer: String? = nil,
+                preserveSeparators: Bool? = nil,
+                preservePositionIncrements: Bool? = nil,
+                maxInputLength: Int? = nil) {
+    
+        self.analyzer = analyzer
+        self.searchAnalyzer = searchAnalyzer
+        self.preserveSeparators = preserveSeparators
+        self.preservePositionIncrements = preservePositionIncrements
+        self.maxInputLength = maxInputLength
+    }
 }

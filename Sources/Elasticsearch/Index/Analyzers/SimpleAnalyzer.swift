@@ -6,4 +6,6 @@ public struct SimpleAnalyzer: Analyzer {
     public static var typeKey = AnalyzerType.simple
     
     let analyzer = typeKey.rawValue
+    
+    public init() {}
 }

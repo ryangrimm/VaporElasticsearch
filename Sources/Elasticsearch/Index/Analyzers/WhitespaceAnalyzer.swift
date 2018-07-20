@@ -6,4 +6,6 @@ public struct WhitespaceAnalyzer: Analyzer {
     public static var typeKey = AnalyzerType.whitespace
     
     let analyzer = typeKey.rawValue
+    
+    public init() {}
 }

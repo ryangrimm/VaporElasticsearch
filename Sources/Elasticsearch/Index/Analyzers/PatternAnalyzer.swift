@@ -20,4 +20,17 @@ public struct PatternAnalyzer: Analyzer {
         case stopwords
         case stopwordsPath = "stopwords_path"
     }
+    
+    public init(pattern: String? = nil,
+                flags: String? = nil,
+                lowercase: Bool? = nil,
+                stopwords: [String]? = nil,
+                stopwordsPath: String? = nil) {
+        
+        self.pattern = pattern
+        self.flags = flags
+        self.lowercase = lowercase
+        self.stopwords = stopwords
+        self.stopwordsPath = stopwordsPath
+    }
 }

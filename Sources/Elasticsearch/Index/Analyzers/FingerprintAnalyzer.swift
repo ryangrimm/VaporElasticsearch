@@ -19,7 +19,11 @@ public struct FingerprintAnalyzer: Analyzer {
         case stopwordsPath = "stopwords_path"
     }
     
-    public init(separator: String? = nil, maxOutputSize: Int? = nil, stopwords: String? = nil, stopwordsPath: String? = nil) {
+    public init(separator: String? = nil,
+                maxOutputSize: Int? = nil,
+                stopwords: String? = nil,
+                stopwordsPath: String? = nil) {
+        
         self.separator = separator
         self.maxOutputSize = maxOutputSize
         self.stopwords = stopwords

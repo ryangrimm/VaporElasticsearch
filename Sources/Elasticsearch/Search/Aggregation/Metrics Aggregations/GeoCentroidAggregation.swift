@@ -26,10 +26,7 @@ public struct GeoCentroidAggregation: Aggregation {
     /// - Parameters:
     ///   - name: The aggregation name
     ///   - field: The field to perform the aggregation over
-    public init(
-        name: String,
-        field: String
-        ) {
+    public init(name: String, field: String) {
         self.name = name
         self.field = field
     }

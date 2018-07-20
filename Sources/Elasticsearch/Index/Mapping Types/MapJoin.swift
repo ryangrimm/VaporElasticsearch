@@ -19,4 +19,8 @@ public struct MapJoin: Mappable {
         case type
         case relations
     }
+    
+    public init(relations: [String: String]) {
+        self.relations = relations
+    }
 }

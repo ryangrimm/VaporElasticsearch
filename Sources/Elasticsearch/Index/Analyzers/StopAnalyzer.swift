@@ -14,4 +14,9 @@ public struct StopAnalyzer: Analyzer {
         case stopwords
         case stopwordsPath = "stopwords_path"
     }
+    
+    public init(stopwords: [String]? = nil, stopwordsPath: String? = nil) {
+        self.stopwords = stopwords
+        self.stopwordsPath = stopwordsPath
+    }
 }

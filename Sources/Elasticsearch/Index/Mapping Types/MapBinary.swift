@@ -21,4 +21,9 @@ public struct MapBinary: Mappable {
         case docValues = "doc_values"
         case store
     }
+    
+    public init(docValues: Bool? = true, store: Bool? = false) {
+        self.docValues = docValues
+        self.store = store
+    }
 }

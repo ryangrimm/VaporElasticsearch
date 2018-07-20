@@ -16,4 +16,6 @@ public struct MapPercolator: Mappable {
     enum CodingKeys: String, CodingKey {
         case type
     }
+    
+    public init() {}
 }

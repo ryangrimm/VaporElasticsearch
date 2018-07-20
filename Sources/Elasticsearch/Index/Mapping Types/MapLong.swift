@@ -31,4 +31,21 @@ public struct MapLong: Mappable {
         case nullValue = "null_value"
         case store
     }
+    
+    public init(docValues: Bool? = true,
+                index: Bool? = true,
+                store: Bool? = false,
+                boost: Float? = 1.0,
+                coerce: Bool? = nil,
+                ignoreMalformed: Bool? = nil,
+                nullValue: Int64? = nil) {
+        
+        self.coerce = coerce
+        self.boost = boost
+        self.docValues = docValues
+        self.ignoreMalformed = ignoreMalformed
+        self.index = index
+        self.nullValue = nullValue
+        self.store = store
+    }
 }

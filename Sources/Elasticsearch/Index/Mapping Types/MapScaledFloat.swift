@@ -34,4 +34,23 @@ public struct MapScaledFloat: Mappable {
         case store
         case scalingFactor = "scaling_factor"
     }
+    
+    public init(scalingFactor: Int? = 0,
+                docValues: Bool? = true,
+                index: Bool? = true,
+                store: Bool? = false,
+                boost: Float? = 1.0,
+                coerce: Bool? = nil,
+                ignoreMalformed: Bool? = nil,
+                nullValue: Float? = nil) {
+        
+        self.scalingFactor = scalingFactor
+        self.coerce = coerce
+        self.boost = boost
+        self.docValues = docValues
+        self.ignoreMalformed = ignoreMalformed
+        self.index = index
+        self.nullValue = nullValue
+        self.store = store
+    }
 }

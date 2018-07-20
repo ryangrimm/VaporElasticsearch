@@ -38,12 +38,11 @@ public struct AvgAggregation: Aggregation {
     ///   - field: The field to perform the aggregation over
     ///   - script: A script used to calculate the values
     ///   - missing: Defines how documents that are missing a value should be treated
-    public init(
-        name: String,
-        field: String? = nil,
-        script: Script? = nil,
-        missing: Int? = nil
-        ) {
+    public init(name: String,
+                field: String? = nil,
+                script: Script? = nil,
+                missing: Int? = nil) {
+        
         self.name = name
         self.field = field
         self.script = script

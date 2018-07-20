@@ -27,4 +27,17 @@ public struct MapBoolean: Mappable {
         case nullValue = "null_value"
         case store
     }
+    
+    public init(docValues: Bool? = true,
+                index: Bool? = true,
+                store: Bool? = false,
+                boost: Float? = 1.0,
+                nullValue: Bool? = nil) {
+        
+        self.boost = boost
+        self.docValues = docValues
+        self.index = index
+        self.nullValue = nullValue
+        self.store = store
+    }
 }

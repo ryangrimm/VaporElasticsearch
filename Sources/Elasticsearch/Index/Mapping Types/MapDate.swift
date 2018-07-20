@@ -33,4 +33,23 @@ public struct MapDate: Mappable {
         case nullValue = "null_value"
         case store
     }
+    
+    public init(format: String? = nil,
+                docValues: Bool? = true,
+                index: Bool? = true,
+                store: Bool? = false,
+                boost: Float? = 1.0,
+                locale: String? = nil,
+                ignoreMalformed: Bool? = nil,
+                nullValue: Bool? = nil) {
+        
+        self.boost = boost
+        self.docValues = docValues
+        self.format = format
+        self.locale = locale
+        self.ignoreMalformed = ignoreMalformed
+        self.index = index
+        self.nullValue = nullValue
+        self.store = store
+    }
 }

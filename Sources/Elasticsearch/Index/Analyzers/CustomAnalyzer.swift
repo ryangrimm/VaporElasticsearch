@@ -14,6 +14,13 @@ public struct CustomAnalyzer: Analyzer {
     public var filter: [String]?
     public var positionIncrementGap: Int? = nil
 
+    enum CodingKeys: String, CodingKey {
+        case tokenizer
+        case charFilter = "char_filter"
+        case filter
+        case positionIncrementGap = "position_increment_gap"
+    }
+    
     public init(tokenizer: String,
                 charFilter: [String]? = nil,
                 filter: [String]? = nil,
@@ -23,12 +30,5 @@ public struct CustomAnalyzer: Analyzer {
         self.charFilter = charFilter
         self.filter = filter
         self.positionIncrementGap = positionIncrementGap
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case tokenizer
-        case charFilter = "char_filter"
-        case filter
-        case positionIncrementGap = "position_increment_gap"
     }
 }

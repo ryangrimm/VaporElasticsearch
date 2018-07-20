@@ -6,4 +6,6 @@ public struct LetterTokenizer: Tokenizer {
     public static var typeKey = TokenizerType.letter
     
     let tokenizer = typeKey.rawValue
+    
+    public init() {}
 }

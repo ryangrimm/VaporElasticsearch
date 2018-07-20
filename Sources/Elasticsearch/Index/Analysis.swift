@@ -15,14 +15,6 @@ public struct Analysis: Codable {
         }
     }
     
-    public struct Normalizer: Codable {
-        public var filter: [String]?
-        
-        public init(filter: [String]? = []) {
-            self.filter = filter
-        }
-    }
-    
     public var filter: [String: Filter]?
     public var analyzer: [String: AnyAnalyzer]?
     public var normalizer: [String: Normalizer]?

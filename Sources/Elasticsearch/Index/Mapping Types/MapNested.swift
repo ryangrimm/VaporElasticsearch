@@ -21,4 +21,9 @@ public struct MapNested: Mappable {
         case properties
         case dynamic
     }
+    
+    public init(properties: [String: AnyMap]?, dynamic: Bool? = false) {
+        self.properties = properties
+        self.dynamic = dynamic
+    }
 }

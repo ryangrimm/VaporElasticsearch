@@ -23,4 +23,10 @@ public struct MapObject: Mappable {
         case dynamic
         case enabled
     }
+    
+    public init(properties: [String: AnyMap]?, dynamic: Bool? = false, enabled: Bool? = true) {
+        self.properties = properties
+        self.dynamic = dynamic
+        self.enabled = enabled
+    }
 }

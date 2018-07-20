@@ -6,4 +6,6 @@ public struct LowercaseTokenizer: Tokenizer {
     public static var typeKey = TokenizerType.lowercase
     
     let tokenizer = typeKey.rawValue
+    
+    public init() {}
 }

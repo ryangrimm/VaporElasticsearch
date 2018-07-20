@@ -7,9 +7,13 @@ public struct ClassicTokenizer: Tokenizer {
     
     let tokenizer = typeKey.rawValue
     
-    public var maxTokenLength: Int
+    public var maxTokenLength: Int?
     
     enum CodingKeys: String, CodingKey {
         case maxTokenLength = "max_token_length"
+    }
+    
+    public init(maxTokenLength: Int? = nil) {
+        self.maxTokenLength = maxTokenLength
     }
 }

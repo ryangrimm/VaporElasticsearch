@@ -30,4 +30,21 @@ public struct MapTokenCount: Mappable {
         case nullValue = "null_value"
         case store
     }
+    
+    public init(docValues: Bool? = true,
+                index: Bool? = true,
+                store: Bool? = false,
+                analyzer: String? = nil,
+                enablePositionIncrements: Bool? = nil,
+                boost: Float? = 1.0,
+                nullValue: Bool? = nil) {
+        
+        self.docValues = docValues
+        self.index = index
+        self.store = store
+        self.analyzer = analyzer
+        self.enablePositionIncrements = enablePositionIncrements
+        self.boost = boost
+        self.nullValue = nullValue
+    }
 }
