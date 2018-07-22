@@ -37,7 +37,7 @@ public class ElasticsearchIndex: Codable {
     var indexName: String? = nil
     var mappings = DefaultType(doc: DocumentTypeSettings())
     var aliases = [String: Alias]()
-    var settings: Settings? = nil
+    var settings: Settings
 
     enum CodingKeys: String, CodingKey {
         case mappings
@@ -45,10 +45,36 @@ public class ElasticsearchIndex: Codable {
         case settings
     }
     
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.mappings = try container.decode(DefaultType.self, forKey: .mappings)
+        self.aliases = try container.decode([String: Alias].self, forKey: .aliases)
+        self.settings = try container.decode(Settings.self, forKey: .settings)
+        print(self.settings)
+    }
+    
+    
     internal static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex> {
         return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex.self) { response in
             let wrapper = try JSONDecoder().decode(FetchWrapper.self, from: response)
             wrapper.indexMappingValue.indexName = wrapper.indexName
+            
+            for (_, tokenizer) in wrapper.indexMappingValue.settings.analysis.tokenizers {
+                if tokenizer.base is ModifiesIndex {
+                    var modify = tokenizer.base as! IndexModifies
+                    modify.modifyAfterReceiving(index: wrapper.indexMappingValue)
+                }
+            }
+            
+            // TODO add in filters once they are implemented
+            
+            for (_, property) in wrapper.indexMappingValue.mappings.doc.properties {
+                if property.base is ModifiesIndex {
+                    var modify = property.base as! IndexModifies
+                    modify.modifyAfterReceiving(index: wrapper.indexMappingValue)
+                }
+            }
+            
             return wrapper.indexMappingValue
         }
     }
@@ -58,23 +84,11 @@ public class ElasticsearchIndex: Codable {
         self.client = client
         self.mappings.doc.enabled = enableQuerying
         self.mappings.doc.dynamic = dynamicMapping
+        self.settings = Settings()
     }
     
-    public func indexSettings(index: IndexSettings) -> Self {
-        if self.settings == nil {
-            self.settings = Settings()
-        }
-        
-        self.settings!.index = index
-        return self
-    }
-    
-    public func analysisSettings(analysis: Analysis) -> Self {
-        if self.settings == nil {
-            self.settings = Settings()
-        }
-        
-        self.settings!.analysis = analysis
+    public func indexSettings(_ index: IndexSettings) -> Self {
+        self.settings.index = index
         return self
     }
     
@@ -86,6 +100,11 @@ public class ElasticsearchIndex: Codable {
     
     public func property(key: String, type: Mappable) -> Self {
         mappings.doc.properties[key] = AnyMap(type)
+        
+        if type is ModifiesIndex {
+            let modify = type as! ModifiesIndex
+            modify.modifyBeforeSending(index: self)
+        }
         return self
     }
     
@@ -116,6 +135,34 @@ public class ElasticsearchIndex: Codable {
         }
     }
     
+    public func tokenizer(named: String) -> Tokenizer? {
+        if let tokenizer = self.settings.analysis.tokenizers[named] {
+            return tokenizer.base
+        }
+        return nil
+    }
+    
+    public func characterFilter(named: String) -> CharacterFilter? {
+        if let charFilter = self.settings.analysis.characterFilters[named] {
+            return charFilter.base
+        }
+        return nil
+    }
+    
+    public func analyzer(named: String) -> Analyzer? {
+        if let analyzer = self.settings.analysis.analyzers[named] {
+            return analyzer.base
+        }
+        return nil
+    }
+    
+    public func normalizer(named: String) -> Normalizer? {
+        if let normalizer = self.settings.analysis.normalizers[named] {
+            return normalizer.base
+        }
+        return nil
+    }
+    
     // TODO - should add an option to ignore if index isn't present
     internal static func delete(indexName: String, client: ElasticsearchClient) throws -> Future<Void> {
         return try client.send(HTTPMethod.DELETE, to: "/\(indexName)").map(to: Void.self) { response in
@@ -123,7 +170,27 @@ public class ElasticsearchIndex: Codable {
     }
     
     public struct Settings: Codable {
-        var index: IndexSettings? = nil
-        var analysis: Analysis? = nil
+        public var index: IndexSettings? = nil
+        public var analysis = Analysis()
+        
+        init(index: IndexSettings? = nil) {
+            self.index = index
+        }
+        
+        enum CodingKeys: String, CodingKey {
+            case index
+            case analysis
+        }
+        
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.index = try container.decodeIfPresent(IndexSettings.self, forKey: .index)
+            if let analysis = try container.decodeIfPresent(Analysis.self, forKey: .analysis) {
+                self.analysis = analysis
+            }
+            else {
+                self.analysis = Analysis()
+            }
+        }
     }
 }

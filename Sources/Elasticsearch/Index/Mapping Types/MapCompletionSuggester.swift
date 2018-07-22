@@ -7,14 +7,14 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct MapCompletionSuggester: Mappable {
+public struct MapCompletionSuggester: Mappable, ModifiesIndex, IndexModifies {
     /// :nodoc:
     public static var typeKey = MapType.completionSuggester
     
     let type = typeKey.rawValue
     
-    public var analyzer: String?
-    public var searchAnalyzer: String?
+    public var analyzer: Analyzer?
+    public var searchAnalyzer: Analyzer?
     public var preserveSeparators: Bool?
     public var preservePositionIncrements: Bool?
     public var maxInputLength: Int?
@@ -28,8 +28,8 @@ public struct MapCompletionSuggester: Mappable {
         case maxInputLength = "max_input_length"
     }
     
-    public init(analyzer: String? = nil,
-                searchAnalyzer: String? = nil,
+    public init(analyzer: Analyzer? = nil,
+                searchAnalyzer: Analyzer? = nil,
                 preserveSeparators: Bool? = nil,
                 preservePositionIncrements: Bool? = nil,
                 maxInputLength: Int? = nil) {
@@ -39,5 +39,57 @@ public struct MapCompletionSuggester: Mappable {
         self.preserveSeparators = preserveSeparators
         self.preservePositionIncrements = preservePositionIncrements
         self.maxInputLength = maxInputLength
+    }
+    
+    public func modifyBeforeSending(index: ElasticsearchIndex) {
+        if let analyzer = self.analyzer {
+            index.settings.analysis.add(analyzer: AnyAnalyzer(analyzer))
+        }
+        if let searchAnalyzer = self.searchAnalyzer {
+            index.settings.analysis.add(analyzer: AnyAnalyzer(searchAnalyzer))
+        }
+    }
+    
+    public mutating func modifyAfterReceiving(index: ElasticsearchIndex) {
+        if let analyzer = self.analyzer {
+            self.analyzer = index.analyzer(named: analyzer.name)
+        }
+        if let searchAnalyzer = self.searchAnalyzer {
+            self.searchAnalyzer = index.analyzer(named: searchAnalyzer.name)
+        }
+    }
+    
+    /// :nodoc:
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        if let analyzer = self.analyzer {
+            try container.encode(analyzer.name, forKey: .analyzer)
+        }
+        if let searchAnalyzer = self.searchAnalyzer {
+            try container.encode(searchAnalyzer.name, forKey: .searchAnalyzer)
+        }
+        try container.encodeIfPresent(preserveSeparators, forKey: .preserveSeparators)
+        try container.encodeIfPresent(preservePositionIncrements, forKey: .preservePositionIncrements)
+        try container.encodeIfPresent(maxInputLength, forKey: .maxInputLength)
+    }
+    
+    /// :nodoc:
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer)
+        if let analyzer = analyzer {
+            self.analyzer = TempAnalyzer(name: analyzer)
+        }
+        
+        let searchAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchAnalyzer)
+        if let searchAnalyzer = searchAnalyzer {
+            self.searchAnalyzer = TempAnalyzer(name: searchAnalyzer)
+        }
+        
+        self.preserveSeparators = try container.decodeIfPresent(Bool.self, forKey: .preserveSeparators)
+        self.preservePositionIncrements = try container.decodeIfPresent(Bool.self, forKey: .preservePositionIncrements)
+        self.maxInputLength = try container.decodeIfPresent(Int.self, forKey: .maxInputLength)
     }
 }

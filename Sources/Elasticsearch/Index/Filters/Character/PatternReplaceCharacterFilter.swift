@@ -1,29 +1,28 @@
 
 import Foundation
 
-public struct PatternTokenizer: Tokenizer {
+public struct PatternReplaceCharacterFilter: CharacterFilter {
     /// :nodoc:
-    public static var typeKey = TokenizerType.pattern
+    public static var typeKey = CharacterFilterType.mapping
     
-    let tokenizer = typeKey.rawValue
+    let type = typeKey.rawValue
     
     public let name: String
-    
-    public var pattern: String? = nil
+    public var pattern: String
+    public var replacement: String
     public var flags: String? = nil
-    public var group: Int? = nil
-
+    
     enum CodingKeys: String, CodingKey {
         case pattern
+        case replacement
         case flags
-        case group
     }
     
-    public init(name: String, pattern: String? = nil, flags: String? = nil, group: Int? = nil) {
+    public init(name: String, pattern: String, replacement: String, flags: String? = nil) {
         self.name = name
         self.pattern = pattern
+        self.replacement = replacement
         self.flags = flags
-        self.group = group
     }
     
     /// :nodoc:
@@ -31,8 +30,8 @@ public struct PatternTokenizer: Tokenizer {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.name = (decoder.codingPath.last?.stringValue)!
         
-        self.pattern = try container.decodeIfPresent(String.self, forKey: .pattern)
+        self.pattern = try container.decode(String.self, forKey: .pattern)
+        self.replacement = try container.decode(String.self, forKey: .replacement)
         self.flags = try container.decodeIfPresent(String.self, forKey: .flags)
-        self.group = try container.decodeIfPresent(Int.self, forKey: .group)
     }
 }

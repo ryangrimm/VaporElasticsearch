@@ -15,6 +15,8 @@ public struct EdgeNGramTokenizer: Tokenizer {
     
     let tokenizer = typeKey.rawValue
     
+    public let name: String
+
     public var minGram: Int? = nil
     public var maxGram: Int? = nil
     public var tokenChars: [CharacterClass]? = nil
@@ -25,9 +27,20 @@ public struct EdgeNGramTokenizer: Tokenizer {
         case tokenChars = "token_chars"
     }
     
-    public init(minGram: Int? = nil, maxGram: Int? = nil, tokenChars: [CharacterClass]? = nil) {
+    public init(name: String, minGram: Int? = nil, maxGram: Int? = nil, tokenChars: [CharacterClass]? = nil) {
+        self.name = name
         self.minGram = minGram
         self.maxGram = maxGram
         self.tokenChars = tokenChars
+    }
+    
+    /// :nodoc:
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.name = (decoder.codingPath.last?.stringValue)!
+        
+        self.minGram = try container.decodeIfPresent(Int.self, forKey: .minGram)
+        self.maxGram = try container.decodeIfPresent(Int.self, forKey: .maxGram)
+        self.tokenChars = try container.decodeIfPresent([CharacterClass].self, forKey: .tokenChars)
     }
 }

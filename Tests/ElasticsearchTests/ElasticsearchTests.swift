@@ -41,19 +41,19 @@ final class ElasticsearchTests: XCTestCase {
         
         try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
         
-        try es.createIndex(name: "test")
+        try es.configureIndex(name: "test")
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
-            .indexSettings(index: IndexSettings(shards: 3, replicas: 2))
+            .indexSettings(IndexSettings(shards: 3, replicas: 2))
             .add(metaKey: "Foo", metaValue: "Bar")
             .create().wait()
         
         let index = try ElasticsearchIndex.fetch(indexName: "test", client: es).wait()
         XCTAssertEqual(index.aliases.count, 1, "Incorrect number of aliases")
         XCTAssertNotNil(index.aliases["testalias"], "testalias does not exist")
-        XCTAssertEqual(index.settings?.index?.numberOfShards, 3, "Incorrect number of shards")
-        XCTAssertEqual(index.settings?.index?.numberOfReplicas, 2, "Incorrect number of replicas")
+        XCTAssertEqual(index.settings.index?.numberOfShards, 3, "Incorrect number of shards")
+        XCTAssertEqual(index.settings.index?.numberOfReplicas, 2, "Incorrect number of replicas")
         XCTAssertEqual(index.mappings.doc.meta?.userDefined!["Foo"], "Bar", "User metadata")
 
         // TODO: Should test for more than just the existance of the properties
@@ -71,11 +71,11 @@ final class ElasticsearchTests: XCTestCase {
         
         try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
 
-        try es.createIndex(name: "test")
+        try es.configureIndex(name: "test")
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
-            .indexSettings(index: IndexSettings(shards: 3, replicas: 2))
+            .indexSettings(IndexSettings(shards: 3, replicas: 2))
             .create().wait()
         
         var indexDoc: TestModel = TestModel(name: "bar", number: 26)
@@ -118,11 +118,11 @@ final class ElasticsearchTests: XCTestCase {
         
         try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
         
-        try es.createIndex(name: "test")
+        try es.configureIndex(name: "test")
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
-            .indexSettings(index: IndexSettings(shards: 3, replicas: 2))
+            .indexSettings(IndexSettings(shards: 3, replicas: 2))
             .create().wait()
         
         var doc0: TestModel = TestModel(name: "foo", number: 26)

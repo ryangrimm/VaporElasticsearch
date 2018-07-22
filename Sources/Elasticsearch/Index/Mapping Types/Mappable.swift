@@ -26,17 +26,47 @@ public enum TextFieldType: String, Codable {
 
 public struct TextField: Codable {
     var type: TextFieldType
-    var analyzer: String?
-    var normalizer: String?
+    var analyzer: Analyzer?
+    var normalizer: Normalizer?
 
+    enum CodingKeys: String, CodingKey {
+        case type
+        case analyzer
+        case normalizer
+    }
+    
     public init(
         type: TextFieldType,
-        analyzer: String? = nil,
-        normalizer: String? = nil) {
+        analyzer: Analyzer? = nil,
+        normalizer: Normalizer? = nil) {
 
         self.type = type
         self.analyzer = analyzer
         self.normalizer = normalizer
+    }
+    
+    /// :nodoc:
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(type, forKey: .type)
+        if let analyzer = self.analyzer {
+            try container.encodeIfPresent(analyzer.name, forKey: .analyzer)
+        }
+        if let normalizer = self.normalizer {
+            try container.encodeIfPresent(normalizer.name, forKey: .normalizer)
+        }
+    }
+    
+    /// :nodoc:
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.type = try container.decode(TextFieldType.self, forKey: .type)
+        let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer)
+        if let analyzer = analyzer {
+            self.analyzer = TempAnalyzer(name: analyzer)
+        }
     }
 }
 

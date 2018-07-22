@@ -27,7 +27,7 @@
 		C293BC0221000F8A00C31D94 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC0121000F8A00C31D94 /* Analysis.swift */; };
 		C293BC052100147E00C31D94 /* IndexMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC042100147E00C31D94 /* IndexMeta.swift */; };
 		C293BC07210014F500C31D94 /* DocumentTypeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC06210014F500C31D94 /* DocumentTypeSettings.swift */; };
-		C293BC0A21004FFB00C31D94 /* AnyAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC0921004FFB00C31D94 /* AnyAnalyzer.swift */; };
+		C293BC0A21004FFB00C31D94 /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC0921004FFB00C31D94 /* Analyzer.swift */; };
 		C293BC0C210050E600C31D94 /* StandardAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC0B210050E600C31D94 /* StandardAnalyzer.swift */; };
 		C293BC0E210051F200C31D94 /* FingerprintAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC0D210051F200C31D94 /* FingerprintAnalyzer.swift */; };
 		C293BC102100534600C31D94 /* CustomAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC0F2100534600C31D94 /* CustomAnalyzer.swift */; };
@@ -36,7 +36,7 @@
 		C293BC162100577B00C31D94 /* PatternAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC152100577B00C31D94 /* PatternAnalyzer.swift */; };
 		C293BC18210058FC00C31D94 /* SimpleAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC17210058FC00C31D94 /* SimpleAnalyzer.swift */; };
 		C293BC1A2100592600C31D94 /* WhitespaceAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC192100592600C31D94 /* WhitespaceAnalyzer.swift */; };
-		C293BC1D210061A100C31D94 /* AnyTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC1C210061A100C31D94 /* AnyTokenizer.swift */; };
+		C293BC1D210061A100C31D94 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC1C210061A100C31D94 /* Tokenizer.swift */; };
 		C293BC1F2100622B00C31D94 /* StandardTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC1E2100622B00C31D94 /* StandardTokenizer.swift */; };
 		C293BC21210062BB00C31D94 /* LetterTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC20210062BB00C31D94 /* LetterTokenizer.swift */; };
 		C293BC232100631D00C31D94 /* LowercaseTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC222100631D00C31D94 /* LowercaseTokenizer.swift */; };
@@ -52,6 +52,13 @@
 		C293BC372100695F00C31D94 /* SimplePatternSplitTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC362100695F00C31D94 /* SimplePatternSplitTokenizer.swift */; };
 		C293BC39210069BB00C31D94 /* PathHierarchyTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC38210069BB00C31D94 /* PathHierarchyTokenizer.swift */; };
 		C293BC3B210071B800C31D94 /* Normalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC3A210071B800C31D94 /* Normalizer.swift */; };
+		C293BC402103D47200C31D94 /* CharacterFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC3F2103D47200C31D94 /* CharacterFilter.swift */; };
+		C293BC422103D5A600C31D94 /* HTMLStripCharacterFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC412103D5A600C31D94 /* HTMLStripCharacterFilter.swift */; };
+		C293BC442103D61400C31D94 /* MappingCharacterFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC432103D61400C31D94 /* MappingCharacterFilter.swift */; };
+		C293BC462103D70400C31D94 /* PatternReplaceCharacterFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC452103D70400C31D94 /* PatternReplaceCharacterFilter.swift */; };
+		C293BC482103E1F400C31D94 /* ModifiesIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC472103E1F400C31D94 /* ModifiesIndex.swift */; };
+		C293BC4B2104419F00C31D94 /* CustomNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC4A2104419F00C31D94 /* CustomNormalizer.swift */; };
+		C293BC4D210445F600C31D94 /* IndexModifies.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC4C210445F600C31D94 /* IndexModifies.swift */; };
 		OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ElasticsearchAggregationCodableTests.swift */; };
 		OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* ElasticsearchQueryCodableTests.swift */; };
 		OBJ_1003 /* ElasticsearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ElasticsearchTests.swift */; };
@@ -1937,7 +1944,7 @@
 		C293BC0121000F8A00C31D94 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
 		C293BC042100147E00C31D94 /* IndexMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexMeta.swift; sourceTree = "<group>"; };
 		C293BC06210014F500C31D94 /* DocumentTypeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypeSettings.swift; sourceTree = "<group>"; };
-		C293BC0921004FFB00C31D94 /* AnyAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAnalyzer.swift; sourceTree = "<group>"; };
+		C293BC0921004FFB00C31D94 /* Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analyzer.swift; sourceTree = "<group>"; };
 		C293BC0B210050E600C31D94 /* StandardAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardAnalyzer.swift; sourceTree = "<group>"; };
 		C293BC0D210051F200C31D94 /* FingerprintAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintAnalyzer.swift; sourceTree = "<group>"; };
 		C293BC0F2100534600C31D94 /* CustomAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnalyzer.swift; sourceTree = "<group>"; };
@@ -1946,7 +1953,7 @@
 		C293BC152100577B00C31D94 /* PatternAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternAnalyzer.swift; sourceTree = "<group>"; };
 		C293BC17210058FC00C31D94 /* SimpleAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAnalyzer.swift; sourceTree = "<group>"; };
 		C293BC192100592600C31D94 /* WhitespaceAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitespaceAnalyzer.swift; sourceTree = "<group>"; };
-		C293BC1C210061A100C31D94 /* AnyTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTokenizer.swift; sourceTree = "<group>"; };
+		C293BC1C210061A100C31D94 /* Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		C293BC1E2100622B00C31D94 /* StandardTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardTokenizer.swift; sourceTree = "<group>"; };
 		C293BC20210062BB00C31D94 /* LetterTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterTokenizer.swift; sourceTree = "<group>"; };
 		C293BC222100631D00C31D94 /* LowercaseTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowercaseTokenizer.swift; sourceTree = "<group>"; };
@@ -1962,6 +1969,13 @@
 		C293BC362100695F00C31D94 /* SimplePatternSplitTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePatternSplitTokenizer.swift; sourceTree = "<group>"; };
 		C293BC38210069BB00C31D94 /* PathHierarchyTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathHierarchyTokenizer.swift; sourceTree = "<group>"; };
 		C293BC3A210071B800C31D94 /* Normalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Normalizer.swift; sourceTree = "<group>"; };
+		C293BC3F2103D47200C31D94 /* CharacterFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFilter.swift; sourceTree = "<group>"; };
+		C293BC412103D5A600C31D94 /* HTMLStripCharacterFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStripCharacterFilter.swift; sourceTree = "<group>"; };
+		C293BC432103D61400C31D94 /* MappingCharacterFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingCharacterFilter.swift; sourceTree = "<group>"; };
+		C293BC452103D70400C31D94 /* PatternReplaceCharacterFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternReplaceCharacterFilter.swift; sourceTree = "<group>"; };
+		C293BC472103E1F400C31D94 /* ModifiesIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiesIndex.swift; sourceTree = "<group>"; };
+		C293BC4A2104419F00C31D94 /* CustomNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNormalizer.swift; sourceTree = "<group>"; };
+		C293BC4C210445F600C31D94 /* IndexModifies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexModifies.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2776,7 +2790,7 @@
 		C293BC0821004FCC00C31D94 /* Analyzers */ = {
 			isa = PBXGroup;
 			children = (
-				C293BC0921004FFB00C31D94 /* AnyAnalyzer.swift */,
+				C293BC0921004FFB00C31D94 /* Analyzer.swift */,
 				C293BC0B210050E600C31D94 /* StandardAnalyzer.swift */,
 				C293BC0D210051F200C31D94 /* FingerprintAnalyzer.swift */,
 				C293BC0F2100534600C31D94 /* CustomAnalyzer.swift */,
@@ -2792,7 +2806,7 @@
 		C293BC1B2100614100C31D94 /* Tokenizers */ = {
 			isa = PBXGroup;
 			children = (
-				C293BC1C210061A100C31D94 /* AnyTokenizer.swift */,
+				C293BC1C210061A100C31D94 /* Tokenizer.swift */,
 				C293BC1E2100622B00C31D94 /* StandardTokenizer.swift */,
 				C293BC20210062BB00C31D94 /* LetterTokenizer.swift */,
 				C293BC222100631D00C31D94 /* LowercaseTokenizer.swift */,
@@ -2809,6 +2823,42 @@
 				C293BC38210069BB00C31D94 /* PathHierarchyTokenizer.swift */,
 			);
 			path = Tokenizers;
+			sourceTree = "<group>";
+		};
+		C293BC3C2103D3FC00C31D94 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				C293BC3E2103D42300C31D94 /* Character */,
+				C293BC3D2103D41200C31D94 /* Token */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		C293BC3D2103D41200C31D94 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
+		C293BC3E2103D42300C31D94 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				C293BC3F2103D47200C31D94 /* CharacterFilter.swift */,
+				C293BC412103D5A600C31D94 /* HTMLStripCharacterFilter.swift */,
+				C293BC432103D61400C31D94 /* MappingCharacterFilter.swift */,
+				C293BC452103D70400C31D94 /* PatternReplaceCharacterFilter.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		C293BC492104415800C31D94 /* Normalizers */ = {
+			isa = PBXGroup;
+			children = (
+				C293BC3A210071B800C31D94 /* Normalizer.swift */,
+				C293BC4A2104419F00C31D94 /* CustomNormalizer.swift */,
+			);
+			path = Normalizers;
 			sourceTree = "<group>";
 		};
 		OBJ_104 /* Span Queries */ = {
@@ -3058,10 +3108,13 @@
 				C293BC0121000F8A00C31D94 /* Analysis.swift */,
 				C293BC06210014F500C31D94 /* DocumentTypeSettings.swift */,
 				C293BC042100147E00C31D94 /* IndexMeta.swift */,
+				C293BC472103E1F400C31D94 /* ModifiesIndex.swift */,
+				C293BC4C210445F600C31D94 /* IndexModifies.swift */,
+				C293BC3C2103D3FC00C31D94 /* Filters */,
 				C293BC1B2100614100C31D94 /* Tokenizers */,
 				C293BC0821004FCC00C31D94 /* Analyzers */,
+				C293BC492104415800C31D94 /* Normalizers */,
 				C293BC032100114D00C31D94 /* Mapping Types */,
-				C293BC3A210071B800C31D94 /* Normalizer.swift */,
 			);
 			path = Index;
 			sourceTree = "<group>";
@@ -5285,6 +5338,7 @@
 				OBJ_835 /* ElasticsearchClient.swift in Sources */,
 				OBJ_836 /* ElasticsearchClientConfig.swift in Sources */,
 				OBJ_837 /* ElasticsearchDatabase.swift in Sources */,
+				C293BC4D210445F600C31D94 /* IndexModifies.swift in Sources */,
 				OBJ_838 /* ElasticsearchProvider.swift in Sources */,
 				C293BC0021000F2900C31D94 /* IndexSettings.swift in Sources */,
 				OBJ_839 /* AnyMap.swift in Sources */,
@@ -5301,6 +5355,7 @@
 				OBJ_848 /* MapDoubleRange.swift in Sources */,
 				OBJ_849 /* MapFloat.swift in Sources */,
 				OBJ_850 /* MapFloatRange.swift in Sources */,
+				C293BC4B2104419F00C31D94 /* CustomNormalizer.swift in Sources */,
 				OBJ_851 /* MapGeoPoint.swift in Sources */,
 				OBJ_852 /* MapGeoShape.swift in Sources */,
 				C2261A9820F9EA0900B82E77 /* BulkResponse.swift in Sources */,
@@ -5329,6 +5384,7 @@
 				C293BC39210069BB00C31D94 /* PathHierarchyTokenizer.swift in Sources */,
 				C293BC292100641B00C31D94 /* ClassicTokenizer.swift in Sources */,
 				OBJ_870 /* AggregationGeoBoundsResponse.swift in Sources */,
+				C293BC462103D70400C31D94 /* PatternReplaceCharacterFilter.swift in Sources */,
 				OBJ_871 /* AggregationGeoCentroidResponse.swift in Sources */,
 				OBJ_872 /* AggregationResponse.swift in Sources */,
 				OBJ_873 /* AggregationSingleValueResponse.swift in Sources */,
@@ -5355,11 +5411,12 @@
 				C293BC07210014F500C31D94 /* DocumentTypeSettings.swift in Sources */,
 				OBJ_891 /* StatsAggregation.swift in Sources */,
 				OBJ_892 /* SumAggregation.swift in Sources */,
+				C293BC442103D61400C31D94 /* MappingCharacterFilter.swift in Sources */,
 				C293BC1F2100622B00C31D94 /* StandardTokenizer.swift in Sources */,
 				OBJ_893 /* TopHitsAggregation.swift in Sources */,
 				OBJ_894 /* ValueCountAggregation.swift in Sources */,
 				OBJ_895 /* Decoder+AggregationUserInfo.swift in Sources */,
-				C293BC1D210061A100C31D94 /* AnyTokenizer.swift in Sources */,
+				C293BC1D210061A100C31D94 /* Tokenizer.swift in Sources */,
 				C293BC3B210071B800C31D94 /* Normalizer.swift in Sources */,
 				OBJ_896 /* AnyQuery.swift in Sources */,
 				OBJ_897 /* BoolQuery.swift in Sources */,
@@ -5371,6 +5428,7 @@
 				C2261A9620F9DED300B82E77 /* ElasticsearchBulk.swift in Sources */,
 				OBJ_902 /* GeoPolygon.swift in Sources */,
 				OBJ_903 /* IDs.swift in Sources */,
+				C293BC402103D47200C31D94 /* CharacterFilter.swift in Sources */,
 				C293BC18210058FC00C31D94 /* SimpleAnalyzer.swift in Sources */,
 				OBJ_904 /* Match.swift in Sources */,
 				OBJ_905 /* MatchAll.swift in Sources */,
@@ -5379,6 +5437,7 @@
 				OBJ_908 /* MatchPhrasePrefix.swift in Sources */,
 				OBJ_909 /* MultiMatch.swift in Sources */,
 				OBJ_910 /* Prefix.swift in Sources */,
+				C293BC482103E1F400C31D94 /* ModifiesIndex.swift in Sources */,
 				C293BC2B2100645D00C31D94 /* ThaiTokenizer.swift in Sources */,
 				C293BC2D210064F900C31D94 /* NGramTokenizer.swift in Sources */,
 				OBJ_911 /* Query.swift in Sources */,
@@ -5390,6 +5449,7 @@
 				OBJ_915 /* AnySpanQuery.swift in Sources */,
 				C293BC0E210051F200C31D94 /* FingerprintAnalyzer.swift in Sources */,
 				OBJ_916 /* Span.swift in Sources */,
+				C293BC422103D5A600C31D94 /* HTMLStripCharacterFilter.swift in Sources */,
 				OBJ_917 /* SpanContaining.swift in Sources */,
 				OBJ_918 /* SpanFirst.swift in Sources */,
 				OBJ_919 /* SpanNear.swift in Sources */,
@@ -5402,7 +5462,7 @@
 				C293BC27210063A100C31D94 /* UAXURLEmailTokenizer.swift in Sources */,
 				OBJ_925 /* Terms.swift in Sources */,
 				OBJ_926 /* Wildcard.swift in Sources */,
-				C293BC0A21004FFB00C31D94 /* AnyAnalyzer.swift in Sources */,
+				C293BC0A21004FFB00C31D94 /* Analyzer.swift in Sources */,
 				OBJ_927 /* Script.swift in Sources */,
 				OBJ_928 /* SearchContainer.swift in Sources */,
 				C293BC21210062BB00C31D94 /* LetterTokenizer.swift in Sources */,

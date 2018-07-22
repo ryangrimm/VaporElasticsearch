@@ -6,6 +6,15 @@ public struct WhitespaceAnalyzer: Analyzer {
     public static var typeKey = AnalyzerType.whitespace
     
     let analyzer = typeKey.rawValue
+
+    public let name: String
+
+    public init(name: String) {
+        self.name = name
+    }
     
-    public init() {}
+    /// :nodoc:
+    public init(from decoder: Decoder) throws {
+        self.name = (decoder.codingPath.last?.stringValue)!
+    }
 }

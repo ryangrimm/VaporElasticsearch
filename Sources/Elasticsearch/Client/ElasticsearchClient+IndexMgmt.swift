@@ -5,7 +5,7 @@ extension ElasticsearchClient {
         return try ElasticsearchIndex.fetch(indexName: name, client: self)
     }
     
-    public func createIndex(name: String) -> ElasticsearchIndex {
+    public func configureIndex(name: String) -> ElasticsearchIndex {
         return ElasticsearchIndex(indexName: name, client: self)
     }
     

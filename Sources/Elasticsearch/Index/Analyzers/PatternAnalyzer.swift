@@ -6,7 +6,9 @@ public struct PatternAnalyzer: Analyzer {
     public static var typeKey = AnalyzerType.pattern
     
     let analyzer = typeKey.rawValue
-    
+
+    public let name: String
+
     public var pattern: String? = nil
     public var flags: String? = nil
     public var lowercase: Bool? = nil
@@ -21,16 +23,30 @@ public struct PatternAnalyzer: Analyzer {
         case stopwordsPath = "stopwords_path"
     }
     
-    public init(pattern: String? = nil,
+    public init(name: String,
+                pattern: String? = nil,
                 flags: String? = nil,
                 lowercase: Bool? = nil,
                 stopwords: [String]? = nil,
                 stopwordsPath: String? = nil) {
         
+        self.name = name
         self.pattern = pattern
         self.flags = flags
         self.lowercase = lowercase
         self.stopwords = stopwords
         self.stopwordsPath = stopwordsPath
+    }
+    
+    /// :nodoc:
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.name = (decoder.codingPath.last?.stringValue)!
+        
+        self.pattern = try container.decodeIfPresent(String.self, forKey: .pattern)
+        self.flags = try container.decodeIfPresent(String.self, forKey: .flags)
+        self.lowercase = try container.decodeIfPresent(Bool.self, forKey: .lowercase)
+        self.stopwords = try container.decodeIfPresent([String].self, forKey: .stopwords)
+        self.stopwordsPath = try container.decodeIfPresent(String.self, forKey: .stopwordsPath)
     }
 }
