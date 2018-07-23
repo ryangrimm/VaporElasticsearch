@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct UppercaseFilter: BasicTokenFilter {
+public struct UppercaseFilter: BasicTokenFilter, BuiltinTokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.uppercase
     

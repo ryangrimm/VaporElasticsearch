@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct LowercaseTokenizer: Tokenizer {
+public struct LowercaseTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.lowercase
     

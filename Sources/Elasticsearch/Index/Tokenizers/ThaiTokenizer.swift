@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct ThaiTokenizer: Tokenizer {
+public struct ThaiTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.thai
     

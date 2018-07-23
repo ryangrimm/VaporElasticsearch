@@ -6,6 +6,10 @@ public protocol Tokenizer: Codable {
     var name: String { get }
 }
 
+public protocol BultinTokenizer {
+    init()
+}
+
 /// :nodoc:
 public enum TokenizerType: String, Codable {
     case none
@@ -56,6 +60,38 @@ public enum TokenizerType: String, Codable {
             return SimplePatternSplitTokenizer.self
         case .pathHierarchy:
             return PathHierarchyTokenizer.self
+        }
+    }
+    
+    enum Builtins: String, CodingKey {
+        case standard
+        case letter
+        case lowercase
+        case whitespace
+        case UAXURLEmail = "uax_url_email"
+        case classic
+        case thai
+        case keyword
+        
+        var metatype: BultinTokenizer.Type {
+            switch self {
+            case .standard:
+                return StandardTokenizer.self
+            case .letter:
+                return LetterTokenizer.self
+            case .lowercase:
+                return LowercaseTokenizer.self
+            case .whitespace:
+                return WhitespaceTokenizer.self
+            case .UAXURLEmail:
+                return UAXURLEmailTokenizer.self
+            case .classic:
+                return ClassicTokenizer.self
+            case .thai:
+                return ThaiTokenizer.self
+            case .keyword:
+                return KeywordTokenizer.self
+            }
         }
     }
 }

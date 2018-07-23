@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct UAXURLEmailTokenizer: Tokenizer {
+public struct UAXURLEmailTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.UAXURLEmail
     

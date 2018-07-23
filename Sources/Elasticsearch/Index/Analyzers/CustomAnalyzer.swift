@@ -10,8 +10,7 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
     public let name: String
     public var tokenizer: Tokenizer
     public var charFilter: [CharacterFilter]?
-    // Note: Should create a Filter struct/protocol
-    public var filter: [String]?
+    public var filter: [TokenFilter]?
     public var positionIncrementGap: Int? = nil
 
     enum CodingKeys: String, CodingKey {
@@ -23,7 +22,7 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
     
     public init(name: String,
                 tokenizer: Tokenizer,
-                filter: [String]? = nil,
+                filter: [TokenFilter]? = nil,
                 characterFilter: [CharacterFilter]? = nil,
                 positionIncrementGap: Int? = nil) throws {
 
@@ -51,7 +50,13 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
             }
         }
         
-        try container.encodeIfPresent(filter, forKey: .filter)
+        var tokenFilterContainer = container.nestedUnkeyedContainer(forKey: .charFilter)
+        if let tokenFilter = self.filter {
+            for filter in tokenFilter {
+                try tokenFilterContainer.encode(filter.name)
+            }
+        }
+        
         try container.encodeIfPresent(positionIncrementGap, forKey: .positionIncrementGap)
     }
     
@@ -65,12 +70,13 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
         let tokenizer = try container.decode(String.self, forKey: .tokenizer)
         self.tokenizer = TempTokenizer(name: tokenizer)
         
-        let charFilters = try container.decodeIfPresent([String].self, forKey: .charFilter)
-        if let charFilters = charFilters {
+        if let charFilters = try container.decodeIfPresent([String].self, forKey: .charFilter) {
             self.charFilter = charFilters.map { TempCharacterFilter(name: $0) }
         }
         
-        self.filter = try container.decodeIfPresent([String].self, forKey: .filter)
+        if let tokenFilters = try container.decodeIfPresent([String].self, forKey: .filter) {
+            self.filter = tokenFilters.map { TempTokenFilter(name: $0) }
+        }
     }
     
     public func modifyBeforeSending(index: ElasticsearchIndex) {
@@ -80,18 +86,34 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
             }
         }
         
+        if let tokenFilters = self.filter {
+            for filter in tokenFilters {
+                index.settings.analysis.add(tokenFilter: AnyTokenFilter(filter))
+            }
+        }
+        
         index.settings.analysis.add(tokenizer: AnyTokenizer(self.tokenizer))
     }
     
     public mutating func modifyAfterReceiving(index: ElasticsearchIndex) {
-        var newFilters = [CharacterFilter]()
+        var newCharFilters = [CharacterFilter]()
         if let charFilters = self.charFilter {
             for filter in charFilters {
-                if let newTokenizer = index.characterFilter(named: filter.name) {
-                    newFilters.append(newTokenizer)
+                if let newFilter = index.characterFilter(named: filter.name) {
+                    newCharFilters.append(newFilter)
                 }
             }
-            self.charFilter = newFilters
+            self.charFilter = newCharFilters
+        }
+        
+        var newFilters = [TokenFilter]()
+        if let tokenFilters = self.filter {
+            for filter in tokenFilters {
+                if let newFilter = index.tokenFilter(named: filter.name) {
+                    newFilters.append(newFilter)
+                }
+            }
+            self.filter = newFilters
         }
         
         if let newTokenizer = index.tokenizer(named: self.tokenizer.name) {

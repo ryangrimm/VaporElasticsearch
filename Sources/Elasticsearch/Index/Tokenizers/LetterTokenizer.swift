@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct LetterTokenizer: Tokenizer {
+public struct LetterTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.letter
     

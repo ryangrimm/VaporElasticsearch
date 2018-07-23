@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct ASCIIFoldingFilter: BasicTokenFilter {
+public struct ASCIIFoldingFilter: BasicTokenFilter, BuiltinTokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.asciiFolding
     

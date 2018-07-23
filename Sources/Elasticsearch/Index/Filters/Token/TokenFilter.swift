@@ -7,6 +7,10 @@ public protocol TokenFilter: Codable {
     var name: String { get }
 }
 
+public protocol BuiltinTokenFilter {
+    init()
+}
+
 public protocol BasicTokenFilter: TokenFilter {
     init()
     func encode(to encoder: Encoder) throws
@@ -72,6 +76,47 @@ public enum TokenFilterType: String, Codable {
             return ApostropheFilter.self
         case .decimalDigit:
             return DecimalDigitFilter.self
+        }
+    }
+    
+    enum Builtins: String, CodingKey {
+        case standard
+        case asciiFolding = "ascii_folding"
+        case uppercase
+        case lowercase
+        case porterStem = "porter_stem"
+        case kStem = "kstem"
+        case reverse
+        case trim
+        case classic
+        case apostrophe
+        case decimalDigit = "decimal_digit"
+        
+        var metatype: BuiltinTokenFilter.Type {
+            switch self {
+            case .standard:
+                return StandardFilter.self
+            case .asciiFolding:
+                return ASCIIFoldingFilter.self
+            case .uppercase:
+                return UppercaseFilter.self
+            case .lowercase:
+                return LowercaseFilter.self
+            case .porterStem:
+                return PorterStemFilter.self
+            case .kStem:
+                return KStemFilter.self
+            case .reverse:
+                return ReverseFilter.self
+            case .trim:
+                return TrimFilter.self
+            case .classic:
+                return ClassicFilter.self
+            case .apostrophe:
+                return ApostropheFilter.self
+            case .decimalDigit:
+                return DecimalDigitFilter.self
+            }
         }
     }
 }

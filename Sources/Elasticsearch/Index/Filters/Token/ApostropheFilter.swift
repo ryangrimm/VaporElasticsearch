@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct ApostropheFilter: BasicTokenFilter {
+public struct ApostropheFilter: BasicTokenFilter, BuiltinTokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.apostrophe
     

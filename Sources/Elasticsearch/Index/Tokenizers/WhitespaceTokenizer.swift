@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct WhitespaceTokenizer: Tokenizer {
+public struct WhitespaceTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.whitespace
     

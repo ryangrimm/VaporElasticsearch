@@ -2876,6 +2876,7 @@
 				C293BC58210585C600C31D94 /* UppercaseFilter.swift */,
 				C293BC6E210589D400C31D94 /* LowercaseFilter.swift */,
 				C293BC6A210588FE00C31D94 /* NGramFilter.swift */,
+				C293BC6C2105896F00C31D94 /* EdgeNGram.swift */,
 				C293BC5A2105864300C31D94 /* PorterStemFilter.swift */,
 				C293BC5C2105866F00C31D94 /* KStemFilter.swift */,
 				C293BC5E210586D100C31D94 /* ReverseFilter.swift */,
@@ -2884,7 +2885,6 @@
 				C293BC622105874300C31D94 /* ClassicFilter.swift */,
 				C293BC642105877F00C31D94 /* ApostropheFilter.swift */,
 				C293BC66210587F400C31D94 /* DecimalDigitFilter.swift */,
-				C293BC6C2105896F00C31D94 /* EdgeNGram.swift */,
 			);
 			path = Token;
 			sourceTree = "<group>";

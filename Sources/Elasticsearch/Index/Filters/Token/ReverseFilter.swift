@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct ReverseFilter: BasicTokenFilter {
+public struct ReverseFilter: BasicTokenFilter, BuiltinTokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.reverse
     

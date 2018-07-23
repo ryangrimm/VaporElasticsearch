@@ -66,8 +66,6 @@ public class ElasticsearchIndex: Codable {
                 }
             }
             
-            // TODO add in filters once they are implemented
-            
             for (_, property) in wrapper.indexMappingValue.mappings.doc.properties {
                 if property.base is ModifiesIndex {
                     var modify = property.base as! IndexModifies
@@ -136,8 +134,25 @@ public class ElasticsearchIndex: Codable {
     }
     
     public func tokenizer(named: String) -> Tokenizer? {
+        let builtin = TokenizerType.Builtins(rawValue: named)
+        if let builtin = builtin {
+            return builtin.metatype.init() as? Tokenizer
+        }
+        
         if let tokenizer = self.settings.analysis.tokenizers[named] {
             return tokenizer.base
+        }
+        return nil
+    }
+    
+    public func tokenFilter(named: String) -> TokenFilter? {
+        let builtin = TokenFilterType.Builtins(rawValue: named)
+        if let builtin = builtin {
+            return builtin.metatype.init() as? TokenFilter
+        }
+        
+        if let filter = self.settings.analysis.filters[named] {
+            return filter.base
         }
         return nil
     }

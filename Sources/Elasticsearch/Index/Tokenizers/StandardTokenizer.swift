@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct StandardTokenizer: Tokenizer {
+public struct StandardTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.standard
     

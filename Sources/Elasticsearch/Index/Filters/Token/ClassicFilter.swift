@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct ClassicFilter: BasicTokenFilter {
+public struct ClassicFilter: BasicTokenFilter, BuiltinTokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.classic
     

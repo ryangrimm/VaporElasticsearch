@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct DecimalDigitFilter: BasicTokenFilter {
+public struct DecimalDigitFilter: BasicTokenFilter, BuiltinTokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.decimalDigit
     
