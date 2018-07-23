@@ -205,7 +205,9 @@ public class ElasticsearchIndex: Codable {
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.index = try container.decodeIfPresent(IndexSettings.self, forKey: .index)
-            if let analysis = try container.decodeIfPresent(Analysis.self, forKey: .analysis) {
+    
+            let analysisContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .index)
+            if let analysis = try analysisContainer.decodeIfPresent(Analysis.self, forKey: DynamicKey(stringValue: "analysis")!) {
                 self.analysis = analysis
             }
             else {

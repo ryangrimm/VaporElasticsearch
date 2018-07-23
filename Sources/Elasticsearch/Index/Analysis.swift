@@ -18,11 +18,31 @@ public struct Analysis: Codable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.filters = try container.decode([String: AnyTokenFilter].self, forKey: .filters)
-        self.characterFilters = try container.decode([String: AnyCharacterFilter].self, forKey: .characterFilters)
-        self.analyzers = try container.decode([String: AnyAnalyzer].self, forKey: .analyzers)
-        self.normalizers = try container.decode([String: AnyNormalizer].self, forKey: .normalizers)
-        self.tokenizers = try container.decode([String: AnyTokenizer].self, forKey: .tokenizers)
+        if let filters = try container.decodeIfPresent([String: AnyTokenFilter].self, forKey: .filters) {
+            self.filters = filters
+        } else {
+            self.filters = [:]
+        }
+        if let characterFilters = try container.decodeIfPresent([String: AnyCharacterFilter].self, forKey: .characterFilters) {
+            self.characterFilters = characterFilters
+        } else {
+            self.characterFilters = [:]
+        }
+        if let analyzers = try container.decodeIfPresent([String: AnyAnalyzer].self, forKey: .analyzers) {
+            self.analyzers = analyzers
+        } else {
+            self.analyzers = [:]
+        }
+        if let normalizers = try container.decodeIfPresent([String: AnyNormalizer].self, forKey: .normalizers) {
+            self.normalizers = normalizers
+        } else {
+            self.normalizers = [:]
+        }
+        if let tokenizers = try container.decodeIfPresent([String: AnyTokenizer].self, forKey: .tokenizers) {
+            self.tokenizers = tokenizers
+        } else {
+            self.tokenizers = [:]
+        }
     }
     
     public init() {
