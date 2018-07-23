@@ -42,7 +42,6 @@ public struct Analysis: Codable {
     }
     
     internal mutating func add(characterFilter: AnyCharacterFilter) {
-        // TODO - Should check to see if the character filter already exists and print a warning if it does exist and is different from what's being set
         self.characterFilters[characterFilter.base.name] = characterFilter
     }
     
@@ -55,6 +54,10 @@ public struct Analysis: Codable {
     }
     
     internal mutating func add(analyzer: AnyAnalyzer) {
+        // If it's a builtin analyzer, don't add
+        if AnalyzerType.Builtins(rawValue: analyzer.base.name) != nil {
+            return
+        }
         self.analyzers[analyzer.base.name] = analyzer
     }
     

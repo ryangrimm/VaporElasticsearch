@@ -5,10 +5,8 @@ public struct PatternAnalyzer: Analyzer {
     /// :nodoc:
     public static var typeKey = AnalyzerType.pattern
     
-    let analyzer = typeKey.rawValue
-
+    public let type = typeKey.rawValue
     public let name: String
-
     public var pattern: String? = nil
     public var flags: String? = nil
     public var lowercase: Bool? = nil
@@ -16,6 +14,7 @@ public struct PatternAnalyzer: Analyzer {
     public var stopwordsPath: String? = nil
     
     enum CodingKeys: String, CodingKey {
+        case type
         case pattern
         case flags
         case lowercase

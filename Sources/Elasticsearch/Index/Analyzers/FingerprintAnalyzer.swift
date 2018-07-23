@@ -5,8 +5,7 @@ public struct FingerprintAnalyzer: Analyzer {
     /// :nodoc:
     public static var typeKey = AnalyzerType.custom
     
-    let analyzer = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
     public var separator: String? = nil
     public var maxOutputSize: Int? = nil
@@ -14,6 +13,7 @@ public struct FingerprintAnalyzer: Analyzer {
     public var stopwordsPath: String? = nil
     
     enum CodingKeys: String, CodingKey {
+        case type
         case separator
         case maxOutputSize = "max_output_size"
         case stopwords

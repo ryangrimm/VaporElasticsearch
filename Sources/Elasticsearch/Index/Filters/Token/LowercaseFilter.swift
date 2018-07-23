@@ -9,7 +9,7 @@ public struct LowercaseFilter: TokenFilter, BuiltinTokenFilter {
     public let name: String
     public var language: Language?
     
-    var isCustom = false
+    let isCustom: Bool
     
     public enum Language: String, Codable {
         case greek
@@ -52,5 +52,6 @@ public struct LowercaseFilter: TokenFilter, BuiltinTokenFilter {
         self.name = (decoder.codingPath.last?.stringValue)!
         
         self.language = try container.decode(Language.self, forKey: .language)
+        self.isCustom = true
     }
 }

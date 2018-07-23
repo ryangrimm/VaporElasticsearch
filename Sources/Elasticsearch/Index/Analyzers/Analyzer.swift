@@ -6,6 +6,10 @@ public protocol Analyzer: Codable {
     var name: String { get }
 }
 
+public protocol BuiltinAnalyzer {
+    init()
+}
+
 /// :nodoc:
 public enum AnalyzerType: String, Codable {
     case none
@@ -38,6 +42,26 @@ public enum AnalyzerType: String, Codable {
             return FingerprintAnalyzer.self
         case .custom:
             return CustomAnalyzer.self
+        }
+    }
+    
+    enum Builtins: String, CodingKey {
+        case standard
+        case simple
+        case whitespace
+        case keyword
+        
+        var metatype: BuiltinAnalyzer.Type {
+            switch self {
+            case .standard:
+                return StandardAnalyzer.self
+            case .simple:
+                return SimpleAnalyzer.self
+            case .whitespace:
+                return WhitespaceAnalyzer.self
+            case .keyword:
+                return KeywordAnalyzer.self
+            }
         }
     }
 }

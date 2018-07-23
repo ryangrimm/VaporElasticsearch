@@ -5,8 +5,7 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
     /// :nodoc:
     public static var typeKey = AnalyzerType.fingerprint
     
-    let analyzer = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
     public var tokenizer: Tokenizer
     public var charFilter: [CharacterFilter]?
@@ -14,6 +13,7 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
     public var positionIncrementGap: Int? = nil
 
     enum CodingKeys: String, CodingKey {
+        case type
         case tokenizer
         case charFilter = "char_filter"
         case filter

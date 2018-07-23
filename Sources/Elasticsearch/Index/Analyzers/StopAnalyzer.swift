@@ -5,13 +5,13 @@ public struct StopAnalyzer: Analyzer {
     /// :nodoc:
     public static var typeKey = AnalyzerType.stop
     
-    let analyzer = typeKey.rawValue
-
+    public let type = typeKey.rawValue
     public let name: String
     public var stopwords: [String]? = nil
     public var stopwordsPath: String? = nil
     
     enum CodingKeys: String, CodingKey {
+        case type
         case stopwords
         case stopwordsPath = "stopwords_path"
     }

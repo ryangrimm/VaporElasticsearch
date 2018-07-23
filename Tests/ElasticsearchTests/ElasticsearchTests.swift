@@ -41,13 +41,16 @@ final class ElasticsearchTests: XCTestCase {
         
         try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
         
-        try es.configureIndex(name: "test")
-            .property(key: "name", type: MapText())
+        let analyzer = StandardAnalyzer(name: "std_english", stopwords: ["_english_"])
+        
+        let indexConfig = es.configureIndex(name: "test")
+            .property(key: "name", type: MapText(analyzer: analyzer))
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
             .indexSettings(IndexSettings(shards: 3, replicas: 2))
             .add(metaKey: "Foo", metaValue: "Bar")
-            .create().wait()
+        
+        try indexConfig.create().wait()
         
         let index = try ElasticsearchIndex.fetch(indexName: "test", client: es).wait()
         XCTAssertEqual(index.aliases.count, 1, "Incorrect number of aliases")

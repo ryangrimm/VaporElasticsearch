@@ -165,6 +165,11 @@ public class ElasticsearchIndex: Codable {
     }
     
     public func analyzer(named: String) -> Analyzer? {
+        let builtin = AnalyzerType.Builtins(rawValue: named)
+        if let builtin = builtin {
+            return builtin.metatype.init() as? Analyzer
+        }
+        
         if let analyzer = self.settings.analysis.analyzers[named] {
             return analyzer.base
         }

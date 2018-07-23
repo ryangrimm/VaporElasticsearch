@@ -10,7 +10,7 @@ public struct KeywordTokenizer: Tokenizer, BultinTokenizer {
     public let name: String
     public var bufferSize: Int? = nil
     
-    var isCustom = false
+    let isCustom: Bool
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -47,5 +47,6 @@ public struct KeywordTokenizer: Tokenizer, BultinTokenizer {
         self.name = (decoder.codingPath.last?.stringValue)!
         
         self.bufferSize = try container.decodeIfPresent(Int.self, forKey: .bufferSize)
+        self.isCustom = true
     }
 }

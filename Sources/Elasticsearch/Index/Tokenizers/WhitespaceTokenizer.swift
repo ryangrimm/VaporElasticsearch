@@ -10,7 +10,7 @@ public struct WhitespaceTokenizer: Tokenizer, BultinTokenizer {
     public let name: String
     public var maxTokenLength: Int? = nil
     
-    var isCustom = false
+    let isCustom: Bool
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -47,5 +47,6 @@ public struct WhitespaceTokenizer: Tokenizer, BultinTokenizer {
         self.name = (decoder.codingPath.last?.stringValue)!
         
         self.maxTokenLength = try container.decodeIfPresent(Int.self, forKey: .maxTokenLength)
+        self.isCustom = true
     }
 }
