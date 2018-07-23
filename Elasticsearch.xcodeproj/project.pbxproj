@@ -59,6 +59,22 @@
 		C293BC482103E1F400C31D94 /* ModifiesIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC472103E1F400C31D94 /* ModifiesIndex.swift */; };
 		C293BC4B2104419F00C31D94 /* CustomNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC4A2104419F00C31D94 /* CustomNormalizer.swift */; };
 		C293BC4D210445F600C31D94 /* IndexModifies.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC4C210445F600C31D94 /* IndexModifies.swift */; };
+		C293BC512104CFCD00C31D94 /* TokenFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC502104CFCD00C31D94 /* TokenFilter.swift */; };
+		C293BC532104D68500C31D94 /* SynonymFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC522104D68500C31D94 /* SynonymFilter.swift */; };
+		C293BC55210582D400C31D94 /* StandardFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC54210582D400C31D94 /* StandardFilter.swift */; };
+		C293BC572105851C00C31D94 /* ASCIIFoldingFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC562105851C00C31D94 /* ASCIIFoldingFilter.swift */; };
+		C293BC59210585C600C31D94 /* UppercaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC58210585C600C31D94 /* UppercaseFilter.swift */; };
+		C293BC5B2105864300C31D94 /* PorterStemFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC5A2105864300C31D94 /* PorterStemFilter.swift */; };
+		C293BC5D2105866F00C31D94 /* KStemFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC5C2105866F00C31D94 /* KStemFilter.swift */; };
+		C293BC5F210586D100C31D94 /* ReverseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC5E210586D100C31D94 /* ReverseFilter.swift */; };
+		C293BC61210586F300C31D94 /* TrimFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC60210586F300C31D94 /* TrimFilter.swift */; };
+		C293BC632105874300C31D94 /* ClassicFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC622105874300C31D94 /* ClassicFilter.swift */; };
+		C293BC652105877F00C31D94 /* ApostropheFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC642105877F00C31D94 /* ApostropheFilter.swift */; };
+		C293BC67210587F400C31D94 /* DecimalDigitFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC66210587F400C31D94 /* DecimalDigitFilter.swift */; };
+		C293BC692105886900C31D94 /* LengthFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC682105886900C31D94 /* LengthFilter.swift */; };
+		C293BC6B210588FE00C31D94 /* NGramFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC6A210588FE00C31D94 /* NGramFilter.swift */; };
+		C293BC6D2105896F00C31D94 /* EdgeNGram.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC6C2105896F00C31D94 /* EdgeNGram.swift */; };
+		C293BC6F210589D500C31D94 /* LowercaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC6E210589D400C31D94 /* LowercaseFilter.swift */; };
 		OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ElasticsearchAggregationCodableTests.swift */; };
 		OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* ElasticsearchQueryCodableTests.swift */; };
 		OBJ_1003 /* ElasticsearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ElasticsearchTests.swift */; };
@@ -1976,6 +1992,22 @@
 		C293BC472103E1F400C31D94 /* ModifiesIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiesIndex.swift; sourceTree = "<group>"; };
 		C293BC4A2104419F00C31D94 /* CustomNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNormalizer.swift; sourceTree = "<group>"; };
 		C293BC4C210445F600C31D94 /* IndexModifies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexModifies.swift; sourceTree = "<group>"; };
+		C293BC502104CFCD00C31D94 /* TokenFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFilter.swift; sourceTree = "<group>"; };
+		C293BC522104D68500C31D94 /* SynonymFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynonymFilter.swift; sourceTree = "<group>"; };
+		C293BC54210582D400C31D94 /* StandardFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardFilter.swift; sourceTree = "<group>"; };
+		C293BC562105851C00C31D94 /* ASCIIFoldingFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIFoldingFilter.swift; sourceTree = "<group>"; };
+		C293BC58210585C600C31D94 /* UppercaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UppercaseFilter.swift; sourceTree = "<group>"; };
+		C293BC5A2105864300C31D94 /* PorterStemFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorterStemFilter.swift; sourceTree = "<group>"; };
+		C293BC5C2105866F00C31D94 /* KStemFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KStemFilter.swift; sourceTree = "<group>"; };
+		C293BC5E210586D100C31D94 /* ReverseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseFilter.swift; sourceTree = "<group>"; };
+		C293BC60210586F300C31D94 /* TrimFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimFilter.swift; sourceTree = "<group>"; };
+		C293BC622105874300C31D94 /* ClassicFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicFilter.swift; sourceTree = "<group>"; };
+		C293BC642105877F00C31D94 /* ApostropheFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApostropheFilter.swift; sourceTree = "<group>"; };
+		C293BC66210587F400C31D94 /* DecimalDigitFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalDigitFilter.swift; sourceTree = "<group>"; };
+		C293BC682105886900C31D94 /* LengthFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthFilter.swift; sourceTree = "<group>"; };
+		C293BC6A210588FE00C31D94 /* NGramFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NGramFilter.swift; sourceTree = "<group>"; };
+		C293BC6C2105896F00C31D94 /* EdgeNGram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeNGram.swift; sourceTree = "<group>"; };
+		C293BC6E210589D400C31D94 /* LowercaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowercaseFilter.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2837,6 +2869,22 @@
 		C293BC3D2103D41200C31D94 /* Token */ = {
 			isa = PBXGroup;
 			children = (
+				C293BC502104CFCD00C31D94 /* TokenFilter.swift */,
+				C293BC54210582D400C31D94 /* StandardFilter.swift */,
+				C293BC562105851C00C31D94 /* ASCIIFoldingFilter.swift */,
+				C293BC682105886900C31D94 /* LengthFilter.swift */,
+				C293BC58210585C600C31D94 /* UppercaseFilter.swift */,
+				C293BC6E210589D400C31D94 /* LowercaseFilter.swift */,
+				C293BC6A210588FE00C31D94 /* NGramFilter.swift */,
+				C293BC5A2105864300C31D94 /* PorterStemFilter.swift */,
+				C293BC5C2105866F00C31D94 /* KStemFilter.swift */,
+				C293BC5E210586D100C31D94 /* ReverseFilter.swift */,
+				C293BC522104D68500C31D94 /* SynonymFilter.swift */,
+				C293BC60210586F300C31D94 /* TrimFilter.swift */,
+				C293BC622105874300C31D94 /* ClassicFilter.swift */,
+				C293BC642105877F00C31D94 /* ApostropheFilter.swift */,
+				C293BC66210587F400C31D94 /* DecimalDigitFilter.swift */,
+				C293BC6C2105896F00C31D94 /* EdgeNGram.swift */,
 			);
 			path = Token;
 			sourceTree = "<group>";
@@ -5336,6 +5384,8 @@
 				OBJ_833 /* ElasticsearchClient+Search.swift in Sources */,
 				OBJ_834 /* ElasticsearchClient+connect.swift in Sources */,
 				OBJ_835 /* ElasticsearchClient.swift in Sources */,
+				C293BC532104D68500C31D94 /* SynonymFilter.swift in Sources */,
+				C293BC512104CFCD00C31D94 /* TokenFilter.swift in Sources */,
 				OBJ_836 /* ElasticsearchClientConfig.swift in Sources */,
 				OBJ_837 /* ElasticsearchDatabase.swift in Sources */,
 				C293BC4D210445F600C31D94 /* IndexModifies.swift in Sources */,
@@ -5366,6 +5416,7 @@
 				OBJ_857 /* MapJoin.swift in Sources */,
 				C293BC2F2100675E00C31D94 /* EdgeNGramTokenizer.swift in Sources */,
 				OBJ_858 /* MapKeyword.swift in Sources */,
+				C293BC632105874300C31D94 /* ClassicFilter.swift in Sources */,
 				OBJ_859 /* MapLong.swift in Sources */,
 				OBJ_860 /* MapLongRange.swift in Sources */,
 				OBJ_861 /* MapNested.swift in Sources */,
@@ -5383,14 +5434,17 @@
 				OBJ_869 /* AggregationExtendedStatsResponse.swift in Sources */,
 				C293BC39210069BB00C31D94 /* PathHierarchyTokenizer.swift in Sources */,
 				C293BC292100641B00C31D94 /* ClassicTokenizer.swift in Sources */,
+				C293BC5F210586D100C31D94 /* ReverseFilter.swift in Sources */,
 				OBJ_870 /* AggregationGeoBoundsResponse.swift in Sources */,
 				C293BC462103D70400C31D94 /* PatternReplaceCharacterFilter.swift in Sources */,
 				OBJ_871 /* AggregationGeoCentroidResponse.swift in Sources */,
 				OBJ_872 /* AggregationResponse.swift in Sources */,
+				C293BC5D2105866F00C31D94 /* KStemFilter.swift in Sources */,
 				OBJ_873 /* AggregationSingleValueResponse.swift in Sources */,
 				OBJ_874 /* AggregationStatsResponse.swift in Sources */,
 				OBJ_875 /* AggregationTermsResponse.swift in Sources */,
 				OBJ_876 /* AnyAggregationResponse.swift in Sources */,
+				C293BC59210585C600C31D94 /* UppercaseFilter.swift in Sources */,
 				OBJ_877 /* DocResponse.swift in Sources */,
 				OBJ_878 /* IndexResponse.swift in Sources */,
 				OBJ_879 /* SearchResponse.swift in Sources */,
@@ -5403,6 +5457,8 @@
 				C293BC122100563500C31D94 /* StopAnalyzer.swift in Sources */,
 				OBJ_884 /* AvgAggregation.swift in Sources */,
 				OBJ_885 /* CardinalityAggregation.swift in Sources */,
+				C293BC61210586F300C31D94 /* TrimFilter.swift in Sources */,
+				C293BC6F210589D500C31D94 /* LowercaseFilter.swift in Sources */,
 				OBJ_886 /* ExtendedStatsAggregation.swift in Sources */,
 				OBJ_887 /* GeoBoundsAggregation.swift in Sources */,
 				OBJ_888 /* GeoCentroidAggregation.swift in Sources */,
@@ -5412,15 +5468,19 @@
 				OBJ_891 /* StatsAggregation.swift in Sources */,
 				OBJ_892 /* SumAggregation.swift in Sources */,
 				C293BC442103D61400C31D94 /* MappingCharacterFilter.swift in Sources */,
+				C293BC6D2105896F00C31D94 /* EdgeNGram.swift in Sources */,
 				C293BC1F2100622B00C31D94 /* StandardTokenizer.swift in Sources */,
 				OBJ_893 /* TopHitsAggregation.swift in Sources */,
+				C293BC572105851C00C31D94 /* ASCIIFoldingFilter.swift in Sources */,
 				OBJ_894 /* ValueCountAggregation.swift in Sources */,
 				OBJ_895 /* Decoder+AggregationUserInfo.swift in Sources */,
 				C293BC1D210061A100C31D94 /* Tokenizer.swift in Sources */,
 				C293BC3B210071B800C31D94 /* Normalizer.swift in Sources */,
 				OBJ_896 /* AnyQuery.swift in Sources */,
+				C293BC55210582D400C31D94 /* StandardFilter.swift in Sources */,
 				OBJ_897 /* BoolQuery.swift in Sources */,
 				OBJ_898 /* CommonTerms.swift in Sources */,
+				C293BC5B2105864300C31D94 /* PorterStemFilter.swift in Sources */,
 				C293BC0221000F8A00C31D94 /* Analysis.swift in Sources */,
 				OBJ_899 /* Exists.swift in Sources */,
 				OBJ_900 /* Fuzzy.swift in Sources */,
@@ -5432,6 +5492,7 @@
 				C293BC18210058FC00C31D94 /* SimpleAnalyzer.swift in Sources */,
 				OBJ_904 /* Match.swift in Sources */,
 				OBJ_905 /* MatchAll.swift in Sources */,
+				C293BC67210587F400C31D94 /* DecimalDigitFilter.swift in Sources */,
 				OBJ_906 /* MatchNone.swift in Sources */,
 				OBJ_907 /* MatchPhrase.swift in Sources */,
 				OBJ_908 /* MatchPhrasePrefix.swift in Sources */,
@@ -5441,9 +5502,11 @@
 				C293BC2B2100645D00C31D94 /* ThaiTokenizer.swift in Sources */,
 				C293BC2D210064F900C31D94 /* NGramTokenizer.swift in Sources */,
 				OBJ_911 /* Query.swift in Sources */,
+				C293BC652105877F00C31D94 /* ApostropheFilter.swift in Sources */,
 				C293BC31210067BD00C31D94 /* KeywordTokenizer.swift in Sources */,
 				C293BC052100147E00C31D94 /* IndexMeta.swift in Sources */,
 				OBJ_912 /* Range.swift in Sources */,
+				C293BC692105886900C31D94 /* LengthFilter.swift in Sources */,
 				OBJ_913 /* Regexp.swift in Sources */,
 				OBJ_914 /* ScriptQuery.swift in Sources */,
 				OBJ_915 /* AnySpanQuery.swift in Sources */,
@@ -5460,6 +5523,7 @@
 				C293BC252100634E00C31D94 /* WhitespaceTokenizer.swift in Sources */,
 				OBJ_924 /* Term.swift in Sources */,
 				C293BC27210063A100C31D94 /* UAXURLEmailTokenizer.swift in Sources */,
+				C293BC6B210588FE00C31D94 /* NGramFilter.swift in Sources */,
 				OBJ_925 /* Terms.swift in Sources */,
 				OBJ_926 /* Wildcard.swift in Sources */,
 				C293BC0A21004FFB00C31D94 /* Analyzer.swift in Sources */,
