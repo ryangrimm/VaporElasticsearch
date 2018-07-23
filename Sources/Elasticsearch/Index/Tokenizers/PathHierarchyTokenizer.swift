@@ -5,7 +5,7 @@ public struct PathHierarchyTokenizer: Tokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.pathHierarchy
     
-    let tokenizer = typeKey.rawValue
+    let type = typeKey.rawValue
     
     public let name: String
 
@@ -16,6 +16,7 @@ public struct PathHierarchyTokenizer: Tokenizer {
     public var skip: Int? = nil
     
     enum CodingKeys: String, CodingKey {
+        case type
         case delimiter
         case replacement
         case bufferSize = "buffer_size"

@@ -5,16 +5,17 @@ public struct LetterTokenizer: Tokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.letter
     
-    let tokenizer = typeKey.rawValue
+    let type = typeKey.rawValue
     
     public let name: String
     
-    public init(name: String) {
-        self.name = name
+    public init() {
+        self.name = type
     }
     
     /// :nodoc:
-    public init(from decoder: Decoder) throws {
-        self.name = (decoder.codingPath.last?.stringValue)!
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(type)
     }
 }

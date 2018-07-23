@@ -13,7 +13,7 @@ public struct NGramTokenizer: Tokenizer {
         case symbol
     }
     
-    let tokenizer = typeKey.rawValue
+    let type = typeKey.rawValue
     
     public let name: String
 
@@ -22,6 +22,7 @@ public struct NGramTokenizer: Tokenizer {
     public var tokenChars: [CharacterClass]? = nil
     
     enum CodingKeys: String, CodingKey {
+        case type
         case minGram = "min_gram"
         case maxGram = "max_gram"
         case tokenChars = "token_chars"

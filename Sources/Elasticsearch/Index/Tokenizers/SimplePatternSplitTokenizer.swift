@@ -5,13 +5,14 @@ public struct SimplePatternSplitTokenizer: Tokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.simplePatternSplit
     
-    let tokenizer = typeKey.rawValue
+    let type = typeKey.rawValue
     
     public let name: String
 
     public var pattern: String? = nil
     
     enum CodingKeys: String, CodingKey {
+        case type
         case pattern
     }
     
