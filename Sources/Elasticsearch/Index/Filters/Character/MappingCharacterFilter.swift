@@ -12,6 +12,7 @@ public struct MappingCharacterFilter: CharacterFilter {
     public var mappingsPath: String? = nil
     
     enum CodingKeys: String, CodingKey {
+        case type
         case mappings
         case mappingsPath = "mappings_path"
     }

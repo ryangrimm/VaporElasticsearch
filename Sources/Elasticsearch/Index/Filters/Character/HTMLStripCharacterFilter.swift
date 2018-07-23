@@ -11,6 +11,7 @@ public struct HTMLStripCharacterFilter: CharacterFilter {
     public var escapedTags: [String]? = nil
     
     enum CodingKeys: String, CodingKey {
+        case type
         case escapedTags = "escaped_tags"
     }
     

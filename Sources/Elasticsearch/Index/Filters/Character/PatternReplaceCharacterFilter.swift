@@ -13,6 +13,7 @@ public struct PatternReplaceCharacterFilter: CharacterFilter {
     public var flags: String? = nil
     
     enum CodingKeys: String, CodingKey {
+        case type
         case pattern
         case replacement
         case flags
