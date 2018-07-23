@@ -7,7 +7,7 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct MapCompletionSuggester: Mappable, ModifiesIndex, IndexModifies {
+public struct MapCompletionSuggester: Mappable, ModifiesIndex {
     /// :nodoc:
     public static var typeKey = MapType.completionSuggester
     
@@ -50,15 +50,6 @@ public struct MapCompletionSuggester: Mappable, ModifiesIndex, IndexModifies {
         }
     }
     
-    public mutating func modifyAfterReceiving(index: ElasticsearchIndex) {
-        if let analyzer = self.analyzer {
-            self.analyzer = index.analyzer(named: analyzer.name)
-        }
-        if let searchAnalyzer = self.searchAnalyzer {
-            self.searchAnalyzer = index.analyzer(named: searchAnalyzer.name)
-        }
-    }
-    
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -78,18 +69,20 @@ public struct MapCompletionSuggester: Mappable, ModifiesIndex, IndexModifies {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer)
-        if let analyzer = analyzer {
-            self.analyzer = TempAnalyzer(name: analyzer)
+        if let analysis = decoder.getAnalysis() {
+            let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer)
+            if let analyzer = analyzer {
+                self.analyzer = analysis.analyzer(named: analyzer)
+            }
+            
+            let searchAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchAnalyzer)
+            if let searchAnalyzer = searchAnalyzer {
+                self.searchAnalyzer = analysis.analyzer(named: searchAnalyzer)
+            }
+            
+            self.preserveSeparators = try container.decodeIfPresent(Bool.self, forKey: .preserveSeparators)
+            self.preservePositionIncrements = try container.decodeIfPresent(Bool.self, forKey: .preservePositionIncrements)
+            self.maxInputLength = try container.decodeIfPresent(Int.self, forKey: .maxInputLength)
         }
-        
-        let searchAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchAnalyzer)
-        if let searchAnalyzer = searchAnalyzer {
-            self.searchAnalyzer = TempAnalyzer(name: searchAnalyzer)
-        }
-        
-        self.preserveSeparators = try container.decodeIfPresent(Bool.self, forKey: .preserveSeparators)
-        self.preservePositionIncrements = try container.decodeIfPresent(Bool.self, forKey: .preservePositionIncrements)
-        self.maxInputLength = try container.decodeIfPresent(Int.self, forKey: .maxInputLength)
     }
 }

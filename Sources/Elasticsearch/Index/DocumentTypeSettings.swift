@@ -19,6 +19,11 @@ struct DocumentTypeSettings: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if decoder.getAnalysis() == nil {
+            return
+        }
+        
         self.properties = try container.decode([String: AnyMap].self, forKey: .properties)
         self.meta = try? container.decode(IndexMeta.self, forKey: .meta)
         

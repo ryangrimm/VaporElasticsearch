@@ -12,7 +12,6 @@ public protocol BuiltinAnalyzer {
 
 /// :nodoc:
 public enum AnalyzerType: String, Codable {
-    case none
     case standard
     case simple
     case whitespace
@@ -24,8 +23,6 @@ public enum AnalyzerType: String, Codable {
     
     var metatype: Analyzer.Type {
         switch self {
-        case .none:
-            return TempAnalyzer.self
         case .standard:
             return StandardAnalyzer.self
         case .simple:
@@ -84,19 +81,5 @@ public struct AnyAnalyzer : Codable {
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         try base.encode(to: encoder)
-    }
-}
-
-/// :nodoc:
-internal struct TempAnalyzer: Analyzer {
-    /// :nodoc:
-    public static var typeKey = AnalyzerType.none
-    
-    let type = typeKey.rawValue
-    /// :nodoc:
-    public let name: String
-    
-    internal init(name: String) {
-        self.name = name
     }
 }

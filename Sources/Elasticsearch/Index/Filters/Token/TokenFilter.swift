@@ -25,7 +25,6 @@ extension BasicTokenFilter {
 
 /// :nodoc:
 public enum TokenFilterType: String, Codable {
-    case none
     case standard
     case asciiFolding = "ascii_folding"
     case length
@@ -44,8 +43,6 @@ public enum TokenFilterType: String, Codable {
     
     var metatype: TokenFilter.Type {
         switch self {
-        case .none:
-            return TempTokenFilter.self
         case .standard:
             return StandardFilter.self
         case .asciiFolding:
@@ -141,18 +138,3 @@ public struct AnyTokenFilter : Codable {
         try base.encode(to: encoder)
     }
 }
-
-/// :nodoc:
-internal struct TempTokenFilter: TokenFilter {
-    /// :nodoc:
-    public static var typeKey = TokenFilterType.none
-    
-    let type = typeKey.rawValue
-    /// :nodoc:
-    public let name: String
-    
-    internal init(name: String) {
-        self.name = name
-    }
-}
-

@@ -9,7 +9,7 @@
 
 import Foundation
 
-public struct MapKeyword: Mappable, ModifiesIndex, IndexModifies {
+public struct MapKeyword: Mappable, ModifiesIndex {
     /// :nodoc:
     public static var typeKey = MapType.keyword
 
@@ -90,24 +90,6 @@ public struct MapKeyword: Mappable, ModifiesIndex, IndexModifies {
     }
     
     /// :nodoc:
-    public mutating func modifyAfterReceiving(index: ElasticsearchIndex) {
-        if let name = self.normalizer?.name {
-            self.normalizer = index.normalizer(named: name)
-        }
-        
-        if let fields = self.fields {
-            for (_, var field) in fields {
-                if let analyzer = field.analyzer {
-                    field.analyzer = index.analyzer(named: analyzer.name)
-                }
-                if let normalizer = field.normalizer {
-                    field.normalizer = index.normalizer(named: normalizer.name)
-                }
-            }
-        }
-    }
-    
-    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
@@ -131,21 +113,23 @@ public struct MapKeyword: Mappable, ModifiesIndex, IndexModifies {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.boost = try container.decodeIfPresent(Float.self, forKey: .boost)
-        self.eagerGlobalOrdinals = try container.decodeIfPresent(Bool.self, forKey: .eagerGlobalOrdinals)
-        self.fields = try container.decodeIfPresent([String: TextField].self, forKey: .fields)
-        self.index = try container.decodeIfPresent(Bool.self, forKey: .index)
-        self.indexOptions = try container.decodeIfPresent(TextIndexOptions.self, forKey: .indexOptions)
-        self.norms = try container.decodeIfPresent(Bool.self, forKey: .norms)
-        self.store = try container.decodeIfPresent(Bool.self, forKey: .store)
-        self.similarity = try container.decodeIfPresent(SimilarityType.self, forKey: .similarity)
-        self.docValues = try container.decodeIfPresent(Bool.self, forKey: .docValues)
-        self.ignoreAbove = try container.decodeIfPresent(Int.self, forKey: .ignoreAbove)
-        self.nullValue = try container.decodeIfPresent(String.self, forKey: .nullValue)
-        
-        let normalizer = try container.decodeIfPresent(String.self, forKey: .normalizer)
-        if let normalizer = normalizer {
-            self.normalizer = TempNormalizer(name: normalizer)
+        if let analysis = decoder.getAnalysis() {
+            self.boost = try container.decodeIfPresent(Float.self, forKey: .boost)
+            self.eagerGlobalOrdinals = try container.decodeIfPresent(Bool.self, forKey: .eagerGlobalOrdinals)
+            self.fields = try container.decodeIfPresent([String: TextField].self, forKey: .fields)
+            self.index = try container.decodeIfPresent(Bool.self, forKey: .index)
+            self.indexOptions = try container.decodeIfPresent(TextIndexOptions.self, forKey: .indexOptions)
+            self.norms = try container.decodeIfPresent(Bool.self, forKey: .norms)
+            self.store = try container.decodeIfPresent(Bool.self, forKey: .store)
+            self.similarity = try container.decodeIfPresent(SimilarityType.self, forKey: .similarity)
+            self.docValues = try container.decodeIfPresent(Bool.self, forKey: .docValues)
+            self.ignoreAbove = try container.decodeIfPresent(Int.self, forKey: .ignoreAbove)
+            self.nullValue = try container.decodeIfPresent(String.self, forKey: .nullValue)
+            
+            let normalizer = try container.decodeIfPresent(String.self, forKey: .normalizer)
+            if let normalizer = normalizer {
+                self.normalizer = analysis.normalizer(named: normalizer)
+            }
         }
     }
 }

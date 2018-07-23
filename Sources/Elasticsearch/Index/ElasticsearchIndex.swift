@@ -1,6 +1,41 @@
 import HTTP
 import Crypto
 
+internal struct ExtractFiltersAnalyzers: Decodable {
+    public var filters: [String: AnyTokenFilter]
+    public var characterFilters: [String: AnyCharacterFilter]
+    public var analyzers: [String: AnyAnalyzer]
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DynamicKey.self)
+        
+        let key = container.allKeys.first!
+        let indexContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: key)
+        let settingsContainer = try indexContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "settings")!)
+        let settingsIndexContainer = try settingsContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "index")!)
+        let analysisContainer = try settingsIndexContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "analysis")!)
+        
+        if let analyzers = (try analysisContainer.decodeIfPresent([String: AnyAnalyzer].self, forKey: DynamicKey(stringValue: "analyzer")!)) {
+            self.analyzers = analyzers
+        }
+        else {
+            self.analyzers = [:]
+        }
+        if let filters = (try analysisContainer.decodeIfPresent([String: AnyTokenFilter].self, forKey: DynamicKey(stringValue: "filter")!)) {
+            self.filters = filters
+        }
+        else {
+            self.filters = [:]
+        }
+        if let characterFilters = (try analysisContainer.decodeIfPresent([String: AnyCharacterFilter].self, forKey: DynamicKey(stringValue: "char_filter")!)) {
+            self.characterFilters = characterFilters
+        }
+        else {
+            self.characterFilters = [:]
+        }
+    }
+}
+
 public class ElasticsearchIndex: Codable {
     
     struct FetchWrapper: Codable {
@@ -20,6 +55,8 @@ public class ElasticsearchIndex: Codable {
             indexMappingValue = try container.decode(ElasticsearchIndex.self, forKey: key)
         }
     }
+    
+    
     
     struct DefaultType: Codable {
         var doc: DocumentTypeSettings
@@ -56,22 +93,25 @@ public class ElasticsearchIndex: Codable {
     
     internal static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex> {
         return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex.self) { response in
-            let wrapper = try JSONDecoder().decode(FetchWrapper.self, from: response)
-            wrapper.indexMappingValue.indexName = wrapper.indexName
+            // This is being done in three passes because the filters, analyzers and tokenizers
+            // need to be populated before the properties. This needs to be done so they can
+            // fetch their analyzers at the time of decoding. It's a little unfortunate but
+            // but overall not a big deal as it's a very rare function to be called.
             
-            for (_, tokenizer) in wrapper.indexMappingValue.settings.analysis.tokenizers {
-                if tokenizer.base is ModifiesIndex {
-                    var modify = tokenizer.base as! IndexModifies
-                    modify.modifyAfterReceiving(index: wrapper.indexMappingValue)
-                }
-            }
+            // First pass gets filters and analyzers
+            let filtersAnalyzers = try JSONDecoder().decode(ExtractFiltersAnalyzers.self, from: response)
+            var analysis = Analysis()
+            analysis.filters = filtersAnalyzers.filters
+            analysis.characterFilters = filtersAnalyzers.characterFilters
+            analysis.analyzers = filtersAnalyzers.analyzers
             
-            for (_, property) in wrapper.indexMappingValue.mappings.doc.properties {
-                if property.base is ModifiesIndex {
-                    var modify = property.base as! IndexModifies
-                    modify.modifyAfterReceiving(index: wrapper.indexMappingValue)
-                }
-            }
+            let analysisPass = JSONDecoder()
+            analysisPass.setUserInfo(analysis: analysis)
+            let fullAnalysis = try analysisPass.decode(FetchWrapper.self, from: response)
+
+            let fullPass = JSONDecoder()
+            fullPass.setUserInfo(analysis: fullAnalysis.indexMappingValue.settings.analysis)
+            let wrapper = try fullPass.decode(FetchWrapper.self, from: response)
             
             return wrapper.indexMappingValue
         }
@@ -131,56 +171,6 @@ public class ElasticsearchIndex: Codable {
         let body = try JSONEncoder().encode(self)
         return try self.client!.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
         }
-    }
-    
-    public func tokenizer(named: String) -> Tokenizer? {
-        let builtin = TokenizerType.Builtins(rawValue: named)
-        if let builtin = builtin {
-            return builtin.metatype.init() as? Tokenizer
-        }
-        
-        if let tokenizer = self.settings.analysis.tokenizers[named] {
-            return tokenizer.base
-        }
-        return nil
-    }
-    
-    public func tokenFilter(named: String) -> TokenFilter? {
-        let builtin = TokenFilterType.Builtins(rawValue: named)
-        if let builtin = builtin {
-            return builtin.metatype.init() as? TokenFilter
-        }
-        
-        if let filter = self.settings.analysis.filters[named] {
-            return filter.base
-        }
-        return nil
-    }
-    
-    public func characterFilter(named: String) -> CharacterFilter? {
-        if let charFilter = self.settings.analysis.characterFilters[named] {
-            return charFilter.base
-        }
-        return nil
-    }
-    
-    public func analyzer(named: String) -> Analyzer? {
-        let builtin = AnalyzerType.Builtins(rawValue: named)
-        if let builtin = builtin {
-            return builtin.metatype.init() as? Analyzer
-        }
-        
-        if let analyzer = self.settings.analysis.analyzers[named] {
-            return analyzer.base
-        }
-        return nil
-    }
-    
-    public func normalizer(named: String) -> Normalizer? {
-        if let normalizer = self.settings.analysis.normalizers[named] {
-            return normalizer.base
-        }
-        return nil
     }
     
     // TODO - should add an option to ignore if index isn't present

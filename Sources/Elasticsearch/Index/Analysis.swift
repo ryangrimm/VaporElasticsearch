@@ -53,6 +53,57 @@ public struct Analysis: Codable {
         self.tokenizers = [:]
     }
     
+    
+    public func tokenizer(named: String) -> Tokenizer? {
+        let builtin = TokenizerType.Builtins(rawValue: named)
+        if let builtin = builtin {
+            return builtin.metatype.init() as? Tokenizer
+        }
+        
+        if let tokenizer = self.tokenizers[named] {
+            return tokenizer.base
+        }
+        return nil
+    }
+    
+    public func tokenFilter(named: String) -> TokenFilter? {
+        let builtin = TokenFilterType.Builtins(rawValue: named)
+        if let builtin = builtin {
+            return builtin.metatype.init() as? TokenFilter
+        }
+        
+        if let filter = self.filters[named] {
+            return filter.base
+        }
+        return nil
+    }
+    
+    public func characterFilter(named: String) -> CharacterFilter? {
+        if let charFilter = self.characterFilters[named] {
+            return charFilter.base
+        }
+        return nil
+    }
+    
+    public func analyzer(named: String) -> Analyzer? {
+        let builtin = AnalyzerType.Builtins(rawValue: named)
+        if let builtin = builtin {
+            return builtin.metatype.init() as? Analyzer
+        }
+        
+        if let analyzer = self.analyzers[named] {
+            return analyzer.base
+        }
+        return nil
+    }
+    
+    public func normalizer(named: String) -> Normalizer? {
+        if let normalizer = self.normalizers[named] {
+            return normalizer.base
+        }
+        return nil
+    }
+    
     internal mutating func add(tokenFilter: AnyTokenFilter) {
         // If it's a builtin filter, don't add
         if TokenFilterType.Builtins(rawValue: tokenFilter.base.name) != nil {

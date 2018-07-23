@@ -12,7 +12,6 @@ public protocol BultinTokenizer {
 
 /// :nodoc:
 public enum TokenizerType: String, Codable {
-    case none
     case standard
     case letter
     case lowercase
@@ -30,8 +29,6 @@ public enum TokenizerType: String, Codable {
     
     var metatype: Tokenizer.Type {
         switch self {
-        case .none:
-            return TempTokenizer.self
         case .standard:
             return StandardTokenizer.self
         case .letter:
@@ -117,18 +114,3 @@ public struct AnyTokenizer : Codable {
         try base.encode(to: encoder)
     }
 }
-
-/// :nodoc:
-internal struct TempTokenizer: Tokenizer {
-    /// :nodoc:
-    public static var typeKey = TokenizerType.none
-    
-    let type = typeKey.rawValue
-    /// :nodoc:
-    public let name: String
-    
-    internal init(name: String) {
-        self.name = name
-    }
-}
-

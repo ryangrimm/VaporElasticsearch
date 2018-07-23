@@ -10,7 +10,7 @@
 
 import Foundation
 
-public struct MapText: Mappable, ModifiesIndex, IndexModifies {
+public struct MapText: Mappable, ModifiesIndex {
     /// :nodoc:
     public static var typeKey = MapType.text
 
@@ -103,28 +103,6 @@ public struct MapText: Mappable, ModifiesIndex, IndexModifies {
             index.settings.analysis.add(analyzer: AnyAnalyzer(searchQuoteAnalyzer))
         }
     }
-
-    public mutating func modifyAfterReceiving(index: ElasticsearchIndex) {
-        if let name = self.analyzer?.name {
-            self.analyzer = index.analyzer(named: name)
-        }
-        if let name = self.searchAnalyzer?.name {
-            self.searchAnalyzer = index.analyzer(named: name)
-        }
-        if let name = self.searchQuoteAnalyzer?.name {
-            self.searchQuoteAnalyzer = index.analyzer(named: name)
-        }
-        if let fields = self.fields {
-            for (_, var field) in fields {
-                if let analyzer = field.analyzer {
-                    field.analyzer = index.analyzer(named: analyzer.name)
-                }
-                if let normalizer = field.normalizer {
-                    field.normalizer = index.normalizer(named: normalizer.name)
-                }
-             }
-        }
-    }
     
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
@@ -168,17 +146,16 @@ public struct MapText: Mappable, ModifiesIndex, IndexModifies {
         self.fielddata = try container.decodeIfPresent(Bool.self, forKey: .fielddata)
         self.termVector = try container.decodeIfPresent(TermVector.self, forKey: .termVector)
         
-        let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer)
-        if let analyzer = analyzer {
-            self.analyzer = TempAnalyzer(name: analyzer)
-        }
-        let searchAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchAnalyzer)
-        if let searchAnalyzer = searchAnalyzer {
-            self.searchAnalyzer = TempAnalyzer(name: searchAnalyzer)
-        }
-        let searchQuoteAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchQuoteAnalyzer)
-        if let searchQuoteAnalyzer = searchQuoteAnalyzer {
-            self.searchQuoteAnalyzer = TempAnalyzer(name: searchQuoteAnalyzer)
+        if let analysis = decoder.getAnalysis() {
+            if let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer) {
+                self.analyzer = analysis.analyzer(named: analyzer)
+            }
+            if let searchAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchAnalyzer) {
+                self.searchAnalyzer = analysis.analyzer(named: searchAnalyzer)
+            }
+            if let searchQuoteAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchQuoteAnalyzer) {
+                self.searchQuoteAnalyzer = analysis.analyzer(named: searchQuoteAnalyzer)
+            }
         }
     }
 }

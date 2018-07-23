@@ -10,7 +10,7 @@
 
 import Foundation
 
-public struct MapNested: Mappable, ModifiesIndex, IndexModifies {
+public struct MapNested: Mappable, ModifiesIndex {
     /// :nodoc:
     public static var typeKey = MapType.nested
 
@@ -33,17 +33,6 @@ public struct MapNested: Mappable, ModifiesIndex, IndexModifies {
                 if property.self is ModifiesIndex {
                     let modify = property as! ModifiesIndex
                     modify.modifyBeforeSending(index: index)
-                }
-            }
-        }
-    }
-    
-    public mutating func modifyAfterReceiving(index: ElasticsearchIndex) {
-        if let properties = self.properties {
-            for (_, property) in properties {
-                if property.self is IndexModifies {
-                    var modify = property as! IndexModifies
-                    modify.modifyAfterReceiving(index: index)
                 }
             }
         }

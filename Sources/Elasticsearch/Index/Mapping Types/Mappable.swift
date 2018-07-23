@@ -61,11 +61,16 @@ public struct TextField: Codable {
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
+
         self.type = try container.decode(TextFieldType.self, forKey: .type)
-        let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer)
-        if let analyzer = analyzer {
-            self.analyzer = TempAnalyzer(name: analyzer)
+
+        if let analysis = decoder.getAnalysis() {
+            if let normalizer = try container.decodeIfPresent(String.self, forKey: .normalizer) {
+                self.normalizer = analysis.normalizer(named: normalizer)
+            }
+            if let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer) {
+                self.analyzer = analysis.analyzer(named: analyzer)
+            }
         }
     }
 }

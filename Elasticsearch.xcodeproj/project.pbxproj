@@ -58,7 +58,6 @@
 		C293BC462103D70400C31D94 /* PatternReplaceCharacterFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC452103D70400C31D94 /* PatternReplaceCharacterFilter.swift */; };
 		C293BC482103E1F400C31D94 /* ModifiesIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC472103E1F400C31D94 /* ModifiesIndex.swift */; };
 		C293BC4B2104419F00C31D94 /* CustomNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC4A2104419F00C31D94 /* CustomNormalizer.swift */; };
-		C293BC4D210445F600C31D94 /* IndexModifies.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC4C210445F600C31D94 /* IndexModifies.swift */; };
 		C293BC512104CFCD00C31D94 /* TokenFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC502104CFCD00C31D94 /* TokenFilter.swift */; };
 		C293BC532104D68500C31D94 /* SynonymFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC522104D68500C31D94 /* SynonymFilter.swift */; };
 		C293BC55210582D400C31D94 /* StandardFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC54210582D400C31D94 /* StandardFilter.swift */; };
@@ -1991,7 +1990,6 @@
 		C293BC452103D70400C31D94 /* PatternReplaceCharacterFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternReplaceCharacterFilter.swift; sourceTree = "<group>"; };
 		C293BC472103E1F400C31D94 /* ModifiesIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiesIndex.swift; sourceTree = "<group>"; };
 		C293BC4A2104419F00C31D94 /* CustomNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNormalizer.swift; sourceTree = "<group>"; };
-		C293BC4C210445F600C31D94 /* IndexModifies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexModifies.swift; sourceTree = "<group>"; };
 		C293BC502104CFCD00C31D94 /* TokenFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFilter.swift; sourceTree = "<group>"; };
 		C293BC522104D68500C31D94 /* SynonymFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynonymFilter.swift; sourceTree = "<group>"; };
 		C293BC54210582D400C31D94 /* StandardFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardFilter.swift; sourceTree = "<group>"; };
@@ -3157,7 +3155,6 @@
 				C293BC06210014F500C31D94 /* DocumentTypeSettings.swift */,
 				C293BC042100147E00C31D94 /* IndexMeta.swift */,
 				C293BC472103E1F400C31D94 /* ModifiesIndex.swift */,
-				C293BC4C210445F600C31D94 /* IndexModifies.swift */,
 				C293BC3C2103D3FC00C31D94 /* Filters */,
 				C293BC1B2100614100C31D94 /* Tokenizers */,
 				C293BC0821004FCC00C31D94 /* Analyzers */,
@@ -5388,7 +5385,6 @@
 				C293BC512104CFCD00C31D94 /* TokenFilter.swift in Sources */,
 				OBJ_836 /* ElasticsearchClientConfig.swift in Sources */,
 				OBJ_837 /* ElasticsearchDatabase.swift in Sources */,
-				C293BC4D210445F600C31D94 /* IndexModifies.swift in Sources */,
 				OBJ_838 /* ElasticsearchProvider.swift in Sources */,
 				C293BC0021000F2900C31D94 /* IndexSettings.swift in Sources */,
 				OBJ_839 /* AnyMap.swift in Sources */,

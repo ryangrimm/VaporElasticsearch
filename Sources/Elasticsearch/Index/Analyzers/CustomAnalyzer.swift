@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
+public struct CustomAnalyzer: Analyzer, ModifiesIndex {
     /// :nodoc:
     public static var typeKey = AnalyzerType.fingerprint
     
@@ -67,15 +67,20 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
         
         self.positionIncrementGap = try container.decodeIfPresent(Int.self, forKey: .positionIncrementGap)
         
-        let tokenizer = try container.decode(String.self, forKey: .tokenizer)
-        self.tokenizer = TempTokenizer(name: tokenizer)
-        
-        if let charFilters = try container.decodeIfPresent([String].self, forKey: .charFilter) {
-            self.charFilter = charFilters.map { TempCharacterFilter(name: $0) }
+        if let analysis = decoder.getAnalysis() {
+            let tokenizer = try container.decode(String.self, forKey: .tokenizer)
+            self.tokenizer = analysis.tokenizer(named: tokenizer)!
+            
+            if let charFilters = try container.decodeIfPresent([String].self, forKey: .charFilter) {
+                self.charFilter = charFilters.map { analysis.characterFilter(named: $0)! }
+            }
+            if let tokenFilters = try container.decodeIfPresent([String].self, forKey: .filter) {
+                self.filter = tokenFilters.map { analysis.tokenFilter(named: $0)! }
+            }
         }
-        
-        if let tokenFilters = try container.decodeIfPresent([String].self, forKey: .filter) {
-            self.filter = tokenFilters.map { TempTokenFilter(name: $0) }
+        else {
+            // This should never be called
+            self.tokenizer = StandardTokenizer()
         }
     }
     
@@ -93,31 +98,5 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex, IndexModifies {
         }
         
         index.settings.analysis.add(tokenizer: AnyTokenizer(self.tokenizer))
-    }
-    
-    public mutating func modifyAfterReceiving(index: ElasticsearchIndex) {
-        var newCharFilters = [CharacterFilter]()
-        if let charFilters = self.charFilter {
-            for filter in charFilters {
-                if let newFilter = index.characterFilter(named: filter.name) {
-                    newCharFilters.append(newFilter)
-                }
-            }
-            self.charFilter = newCharFilters
-        }
-        
-        var newFilters = [TokenFilter]()
-        if let tokenFilters = self.filter {
-            for filter in tokenFilters {
-                if let newFilter = index.tokenFilter(named: filter.name) {
-                    newFilters.append(newFilter)
-                }
-            }
-            self.filter = newFilters
-        }
-        
-        if let newTokenizer = index.tokenizer(named: self.tokenizer.name) {
-            self.tokenizer = newTokenizer
-        }
     }
 }

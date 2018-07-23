@@ -12,6 +12,10 @@ extension JSONDecoder {
         }
         self.userInfo = [JSONDecoder.elasticUserInfoKey: aggNameMap]
     }
+    
+    internal func setUserInfo(analysis: Analysis) {
+        self.userInfo = [JSONDecoder.elasticUserInfoKey: analysis]
+    }
 }
 
 extension Decoder {
@@ -24,5 +28,9 @@ extension Decoder {
         }
         
         return nil
+    }
+    
+    internal func getAnalysis() -> Analysis? {
+        return self.userInfo[JSONDecoder.elasticUserInfoKey] as? Analysis
     }
 }

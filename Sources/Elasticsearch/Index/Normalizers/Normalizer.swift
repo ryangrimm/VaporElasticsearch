@@ -7,13 +7,10 @@ public protocol Normalizer: Codable {
 
 /// :nodoc:
 public enum NormalizerType: String, Codable {
-    case none
     case custom
     
     var metatype: Normalizer.Type {
         switch self {
-        case .none:
-            return TempNormalizer.self
         case .custom:
             return CustomNormalizer.self
         }
@@ -38,19 +35,5 @@ public struct AnyNormalizer : Codable {
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         try base.encode(to: encoder)
-    }
-}
-
-/// :nodoc:
-internal struct TempNormalizer: Normalizer {
-    /// :nodoc:
-    public static var typeKey = NormalizerType.none
-    
-    let type = typeKey.rawValue
-    /// :nodoc:
-    public let name: String
-    
-    internal init(name: String) {
-        self.name = name
     }
 }
