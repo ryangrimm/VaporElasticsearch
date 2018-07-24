@@ -1,19 +1,6 @@
 import XCTest
 @testable import Elasticsearch
 
-
-extension ElasticsearchClient {
-    /// Creates a test event loop and Elasticsearch client.
-    static func makeTest() throws -> ElasticsearchClient {
-        let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-        let config = ElasticsearchClientConfig()
-        let client = try ElasticsearchClient.connect(config: config, on: group) { error in
-            XCTFail("\(error)")
-        }.wait()
-        return client
-    }
-}
-
 struct TestModel: Codable, SettableID {
     init(name: String, number: Int) {
         self.name = name

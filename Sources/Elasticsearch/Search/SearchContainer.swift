@@ -17,7 +17,7 @@ public struct SearchContainer: Encodable {
         self.aggs = aggs
     }
     
-    public init(_ query: Query? = nil, aggs: [Aggregation]? = nil) {
+    public init(_ query: Query, aggs: [Aggregation]? = nil) {
         self.query = query
         self.aggs = aggs
     }

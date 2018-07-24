@@ -2058,7 +2058,6 @@
 		OBJ_128 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		OBJ_129 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* ElasticsearchClient+connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElasticsearchClient+connect.swift"; sourceTree = "<group>"; };
-		OBJ_130 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = SOURCE_ROOT; };
 		OBJ_136 /* HTTPBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPBody.swift; sourceTree = "<group>"; };
 		OBJ_137 /* HTTPBodyRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPBodyRepresentable.swift; sourceTree = "<group>"; };
 		OBJ_138 /* HTTPBodyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPBodyStorage.swift; sourceTree = "<group>"; };
@@ -3966,7 +3965,6 @@
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_123 /* Tests */,
-				OBJ_130 /* docs */,
 				OBJ_131 /* Dependencies */,
 				OBJ_465 /* Products */,
 			);

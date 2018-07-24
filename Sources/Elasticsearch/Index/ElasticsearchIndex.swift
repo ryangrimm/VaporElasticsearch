@@ -93,7 +93,7 @@ public class ElasticsearchIndex: Codable {
         try container.encode(self.mappings, forKey: .mappings)
         try container.encode(self.settings, forKey: .settings)
         if (aliases.count > 0) {
-            try container.encode(self.mappings, forKey: .mappings)
+            try container.encode(self.aliases, forKey: .aliases)
         }
     }
     
