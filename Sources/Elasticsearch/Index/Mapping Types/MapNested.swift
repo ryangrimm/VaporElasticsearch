@@ -27,6 +27,7 @@ public struct MapNested: Mappable, DefinesNormalizers, DefinesAnalyzers {
         self.dynamic = dynamic
     }
     
+    /// :nodoc:
     public func definedNormalizers() -> [Normalizer] {
         var normalizers = [Normalizer]()
         if let properties = self.properties {
@@ -40,6 +41,7 @@ public struct MapNested: Mappable, DefinesNormalizers, DefinesAnalyzers {
         return normalizers
     }
     
+    /// :nodoc:
     public func definedAnalyzers() -> [Analyzer] {
         var analyzers = [Analyzer]()
         if let properties = self.properties {

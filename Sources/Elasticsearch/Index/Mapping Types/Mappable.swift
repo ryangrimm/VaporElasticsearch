@@ -74,6 +74,7 @@ public struct TextField: Codable, DefinesNormalizers, DefinesAnalyzers {
         }
     }
     
+    /// :nodoc:
     public func definedNormalizers() -> [Normalizer] {
         if let normalizer = self.normalizer {
             return [normalizer]
@@ -81,6 +82,7 @@ public struct TextField: Codable, DefinesNormalizers, DefinesAnalyzers {
         return [Normalizer]()
     }
     
+    /// :nodoc:
     public func definedAnalyzers() -> [Analyzer] {
         if let analyzer = self.analyzer {
             return [analyzer]

@@ -30,6 +30,7 @@ public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
         self.enabled = enabled
     }
     
+    /// :nodoc:
     public func definedNormalizers() -> [Normalizer] {
         var normalizers = [Normalizer]()
         if let properties = self.properties {
@@ -43,6 +44,7 @@ public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
         return normalizers
     }
     
+    /// :nodoc:
     public func definedAnalyzers() -> [Analyzer] {
         var analyzers = [Analyzer]()
         if let properties = self.properties {

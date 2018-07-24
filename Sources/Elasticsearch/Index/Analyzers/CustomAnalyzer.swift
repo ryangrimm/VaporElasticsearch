@@ -85,10 +85,12 @@ public struct CustomAnalyzer: Analyzer, DefinesTokenizers, DefinesTokenFilters, 
         }
     }
     
+    /// :nodoc:
     public func definedTokenizers() -> [Tokenizer] {
         return [self.tokenizer]
     }
     
+    /// :nodoc:
     public func definedTokenFilters() -> [TokenFilter] {
         var filters = [TokenFilter]()
         if let tokenFilters = self.filter {
@@ -99,6 +101,7 @@ public struct CustomAnalyzer: Analyzer, DefinesTokenizers, DefinesTokenFilters, 
         return filters
     }
     
+    /// :nodoc:
     public func definedCharacterFilters() -> [CharacterFilter] {
         var filters = [CharacterFilter]()
         if let charFilters = self.charFilter {

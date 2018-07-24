@@ -101,6 +101,7 @@ public struct AnyMap : Codable {
         case base
     }
     
+    /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -108,6 +109,7 @@ public struct AnyMap : Codable {
         self.base = try type.metatype.init(from: decoder)
     }
     
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         

@@ -72,6 +72,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
         self.normalizer = normalizer
     }
     
+    /// :nodoc:
     public func definedNormalizers() -> [Normalizer] {
         var normalizers = [Normalizer]()
         if let fields = self.fields {
@@ -86,6 +87,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
 
     }
     
+    /// :nodoc:
     public func definedAnalyzers() -> [Analyzer] {
         var analyzers = [Analyzer]()
         if let fields = self.fields {
