@@ -106,8 +106,13 @@ func list(_ req: Request) throws -> Future<[Document]> {
 
 //let client: ElasticsearchClient = ...
 
-let synonymFilter = SynonymFilter(name: "synonym_filter", synonyms: ["file, document", "nice, awesome, great"])
-let synonymAnalyzer = CustomAnalyzer(name: "synonym_analyzer", tokenizer: StandardTokenizer(), filter: [synonymFilter]))
+let synonymFilter = SynonymFilter(name: "synonym_filter",
+	synonyms: ["file, document", "nice, awesome, great"])
+
+let synonymAnalyzer = CustomAnalyzer(
+	name: "synonym_analyzer",
+	tokenizer: StandardTokenizer(),
+	filter: [synonymFilter]))
 
 let index = client.configureIndex(name: "documents")
 	.indexSettings(index: IndexSettings(shards: 5, replicas: 1))
