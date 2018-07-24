@@ -9,23 +9,36 @@ public struct SynonymFilter: TokenFilter {
     public let name: String
     public var synonyms: [String]?
     public var synonymsPath: String?
+    public var format: Format
+    public var expand: Bool?
+    
+    public enum Format: String, Codable {
+        case solr
+        case wordnet
+    }
     
     enum CodingKeys: String, CodingKey {
         case type
         case synonyms
         case synonymsPath = "synonyms_path"
+        case format
+        case expand
     }
     
-    public init(name: String, synonyms: [String]) {
+    public init(name: String, synonyms: [String], format: Format = .solr, expand: Bool? = nil) {
         self.name = name
         self.synonyms = synonyms
         self.synonymsPath = nil
+        self.format = format
+        self.expand = expand
     }
     
-    public init(name: String, synonymsPath: String) {
+    public init(name: String, synonymsPath: String, format: Format = .solr, expand: Bool? = nil) {
         self.name = name
         self.synonyms = nil
         self.synonymsPath = synonymsPath
+        self.format = format
+        self.expand = expand
     }
     
     /// :nodoc:
@@ -35,5 +48,12 @@ public struct SynonymFilter: TokenFilter {
         
         self.synonyms = try container.decodeIfPresent([String].self, forKey: .synonyms)
         self.synonymsPath = try container.decodeIfPresent(String.self, forKey: .synonymsPath)
+        if let format = try container.decodeIfPresent(Format.self, forKey: .format) {
+            self.format = format
+        }
+        else {
+            self.format = .solr
+        }
+        self.expand = try container.decodeIfPresent(Bool.self, forKey: .expand)
     }
 }

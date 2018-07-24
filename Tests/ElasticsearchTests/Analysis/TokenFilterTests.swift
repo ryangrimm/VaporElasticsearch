@@ -181,13 +181,14 @@ final class TokenFilterTests: XCTestCase {
         defer { es.close() }
         
         let json = """
-        {"settings":{"analysis":{"filter":{"fil":{"type":"synonym","synonyms":["foo","bar"]}},"analyzer":{"test_analyzer":{"type":"custom","filter":["fil"],"tokenizer":"standard"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
+        {"settings":{"analysis":{"filter":{"fil":{"type":"synonym","format":"solr","synonyms":["foo","bar"]}},"analyzer":{"test_analyzer":{"type":"custom","filter":["fil"],"tokenizer":"standard"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
         let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(), filter: [SynonymFilter(name: "fil", synonyms: ["foo", "bar"])]))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
+        print(encoded)
         XCTAssertEqual(json, encoded)
     }
     
