@@ -227,6 +227,14 @@ public class ElasticsearchIndex: Codable {
             case analysis
         }
         
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encodeIfPresent(index, forKey: .index)
+            if analysis.isEmpty() == false {
+                try container.encode(analysis, forKey: .analysis)
+            }
+        }
+        
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.index = try container.decodeIfPresent(IndexSettings.self, forKey: .index)

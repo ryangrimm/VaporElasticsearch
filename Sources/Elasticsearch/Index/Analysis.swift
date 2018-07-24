@@ -155,4 +155,8 @@ public struct Analysis: Codable {
     internal mutating func add(normalizer: Normalizer) {
         self.normalizers[normalizer.name] = normalizer
     }
+    
+    internal func isEmpty() -> Bool {  
+        return filters.count == 0 && characterFilters.count == 0 && analyzers.count == 0 && normalizers.count == 0 && tokenizers.count == 0
+    }
 }

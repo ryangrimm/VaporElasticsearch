@@ -3,13 +3,13 @@ import Foundation
 
 public struct FingerprintAnalyzer: Analyzer {
     /// :nodoc:
-    public static var typeKey = AnalyzerType.custom
+    public static var typeKey = AnalyzerType.fingerprint
     
     public let type = typeKey.rawValue
     public let name: String
     public var separator: String? = nil
     public var maxOutputSize: Int? = nil
-    public var stopwords: String? = nil
+    public var stopwords: [String]? = nil
     public var stopwordsPath: String? = nil
     
     enum CodingKeys: String, CodingKey {
@@ -23,7 +23,7 @@ public struct FingerprintAnalyzer: Analyzer {
     public init(name: String,
                 separator: String? = nil,
                 maxOutputSize: Int? = nil,
-                stopwords: String? = nil,
+                stopwords: [String]? = nil,
                 stopwordsPath: String? = nil) {
         
         self.name = name
@@ -40,7 +40,7 @@ public struct FingerprintAnalyzer: Analyzer {
         
         self.separator = try container.decodeIfPresent(String.self, forKey: .separator)
         self.maxOutputSize = try container.decodeIfPresent(Int.self, forKey: .maxOutputSize)
-        self.stopwords = try container.decodeIfPresent(String.self, forKey: .stopwords)
+        self.stopwords = try container.decodeIfPresent([String].self, forKey: .stopwords)
         self.stopwordsPath = try container.decodeIfPresent(String.self, forKey: .stopwordsPath)
     }
 }
