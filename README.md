@@ -26,6 +26,15 @@ fairly minor as long as you're diligent with pulling the latest code every week.
 * Ability to specify the mapping for index creation
 * Support for bulk operations
 
+## Elasticsearch Version
+
+All development and testing is being done using the Elasticsearch 6.x series.
+This has implications around document types as they have been depricated in
+Elasticsearch 6.0 and will be removed in 7.0. Given that multiple types per
+index is a thing of the past and this client is a thing of the future, supporting
+multiple types per index didn't seem like a good fit. If using an older version
+of Elasticsearch, keep this limitation in mind.
+
 ## 📦 Installation
 
 ### Package.swift
