@@ -25,13 +25,17 @@ public struct StandardAnalyzer: Analyzer, BuiltinAnalyzer {
         self.isCustom = false
     }
     
-    public init(name: String,
-                stopwords: [String]? = nil,
-                stopwordsPath: String? = nil,
-                maxTokenLength: Int? = nil) {
-        
+    public init(name: String, stopwords: [String]? = nil, maxTokenLength: Int? = nil) {
         self.name = name
         self.stopwords = stopwords
+        self.stopwordsPath = nil
+        self.maxTokenLength = maxTokenLength
+        self.isCustom = true
+    }
+    
+    public init(name: String, stopwordsPath: String? = nil, maxTokenLength: Int? = nil) {
+        self.name = name
+        self.stopwords = nil
         self.stopwordsPath = stopwordsPath
         self.maxTokenLength = maxTokenLength
         self.isCustom = true

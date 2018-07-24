@@ -28,7 +28,7 @@ public struct NGramTokenizer: Tokenizer {
         case tokenChars = "token_chars"
     }
     
-    public init(name: String, minGram: Int? = nil, maxGram: Int? = nil, tokenChars: [CharacterClass]? = nil) {
+    public init(name: String, minGram: Int, maxGram: Int, tokenChars: [CharacterClass]? = nil) {
         self.name = name
         self.minGram = minGram
         self.maxGram = maxGram

@@ -24,7 +24,7 @@ public struct PathHierarchyTokenizer: Tokenizer {
         case skip
     }
     
-    public init(name: String, delimiter: String? = nil, replacement: String? = nil, bufferSize: Int? = nil, reverse: Bool? = nil, skip: Int? = nil) {
+    public init(name: String, delimiter: String, replacement: String? = nil, bufferSize: Int? = nil, reverse: Bool? = nil, skip: Int? = nil) {
         self.name = name
         self.delimiter = delimiter
         self.replacement = replacement

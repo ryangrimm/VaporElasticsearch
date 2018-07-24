@@ -23,13 +23,24 @@ public struct FingerprintAnalyzer: Analyzer {
     public init(name: String,
                 separator: String? = nil,
                 maxOutputSize: Int? = nil,
-                stopwords: [String]? = nil,
-                stopwordsPath: String? = nil) {
+                stopwords: [String]) {
         
         self.name = name
         self.separator = separator
         self.maxOutputSize = maxOutputSize
         self.stopwords = stopwords
+        self.stopwordsPath = nil
+    }
+    
+    public init(name: String,
+                separator: String? = nil,
+                maxOutputSize: Int? = nil,
+                stopwordsPath: String) {
+        
+        self.name = name
+        self.separator = separator
+        self.maxOutputSize = maxOutputSize
+        self.stopwords = nil
         self.stopwordsPath = stopwordsPath
     }
     

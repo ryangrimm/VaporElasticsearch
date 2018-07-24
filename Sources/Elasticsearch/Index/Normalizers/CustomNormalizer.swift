@@ -16,10 +16,10 @@ public struct CustomNormalizer: Normalizer {
         case filter
     }
     
-    public init(name: String, charFilter:[String]? = nil, filter: [String]? = nil) {
+    public init(name: String, filter: [String]? = nil, charFilter:[String]? = nil) {
         self.name = name
-        self.charFilter = charFilter
         self.filter = filter
+        self.charFilter = charFilter
     }
     
     /// :nodoc:

@@ -26,14 +26,27 @@ public struct PatternAnalyzer: Analyzer {
                 pattern: String? = nil,
                 flags: String? = nil,
                 lowercase: Bool? = nil,
-                stopwords: [String]? = nil,
-                stopwordsPath: String? = nil) {
+                stopwords: [String]) {
         
         self.name = name
         self.pattern = pattern
         self.flags = flags
         self.lowercase = lowercase
         self.stopwords = stopwords
+        self.stopwordsPath = nil
+    }
+    
+    public init(name: String,
+                pattern: String? = nil,
+                flags: String? = nil,
+                lowercase: Bool? = nil,
+                stopwordsPath: String) {
+        
+        self.name = name
+        self.pattern = pattern
+        self.flags = flags
+        self.lowercase = lowercase
+        self.stopwords = nil
         self.stopwordsPath = stopwordsPath
     }
     
