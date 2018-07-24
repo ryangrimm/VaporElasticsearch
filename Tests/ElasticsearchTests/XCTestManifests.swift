@@ -6,8 +6,10 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(ElasticsearchTests.allTests),
         testCase(ElasticsearchQueryCodingTests.allTests),
         testCase(ElasticsearchAggregationCodingTests.allTests),
-        testCase(ElasticsearchAnalysisNormalizerTests.allTests),
-        testCase(ElasticsearchAnalysisTokenizerTests.allTests)
+        testCase(NormalizerTests.allTests),
+        testCase(TokenizerTests.allTests),
+        testCase(CharacterFilterTests.allTests),
+        testCase(AnalyzerTests.allTests)
     ]
 }
 #endif

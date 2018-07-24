@@ -1,7 +1,7 @@
 import XCTest
 @testable import Elasticsearch
 
-final class ElasticsearchAnalysisNormalizerTests: XCTestCase {
+final class NormalizerTests: XCTestCase {
     var encoder: JSONEncoder!
     var decoder: JSONDecoder!
     

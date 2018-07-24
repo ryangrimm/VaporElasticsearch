@@ -74,9 +74,10 @@
 		C293BC6B210588FE00C31D94 /* NGramFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC6A210588FE00C31D94 /* NGramFilter.swift */; };
 		C293BC6D2105896F00C31D94 /* EdgeNGram.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC6C2105896F00C31D94 /* EdgeNGram.swift */; };
 		C293BC6F210589D500C31D94 /* LowercaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC6E210589D400C31D94 /* LowercaseFilter.swift */; };
-		C293BC722106238D00C31D94 /* ElasticsearchAnalysisNormalizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC702106230800C31D94 /* ElasticsearchAnalysisNormalizerTests.swift */; };
-		C293BC75210659C700C31D94 /* ElasticsearchAnalysisTokenizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC732106596400C31D94 /* ElasticsearchAnalysisTokenizerTests.swift */; };
-		C293BC772106E57C00C31D94 /* ElasticsearchAnalysisAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC762106E57C00C31D94 /* ElasticsearchAnalysisAnalyzerTests.swift */; };
+		C293BC722106238D00C31D94 /* NormalizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC702106230800C31D94 /* NormalizerTests.swift */; };
+		C293BC75210659C700C31D94 /* TokenizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC732106596400C31D94 /* TokenizerTests.swift */; };
+		C293BC772106E57C00C31D94 /* AnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC762106E57C00C31D94 /* AnalyzerTests.swift */; };
+		C293BC792106EBF600C31D94 /* CharacterFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC782106EBF600C31D94 /* CharacterFilterTests.swift */; };
 		OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ElasticsearchAggregationCodableTests.swift */; };
 		OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* ElasticsearchQueryCodableTests.swift */; };
 		OBJ_1003 /* ElasticsearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ElasticsearchTests.swift */; };
@@ -2009,9 +2010,10 @@
 		C293BC6A210588FE00C31D94 /* NGramFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NGramFilter.swift; sourceTree = "<group>"; };
 		C293BC6C2105896F00C31D94 /* EdgeNGram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeNGram.swift; sourceTree = "<group>"; };
 		C293BC6E210589D400C31D94 /* LowercaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowercaseFilter.swift; sourceTree = "<group>"; };
-		C293BC702106230800C31D94 /* ElasticsearchAnalysisNormalizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchAnalysisNormalizerTests.swift; sourceTree = "<group>"; };
-		C293BC732106596400C31D94 /* ElasticsearchAnalysisTokenizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchAnalysisTokenizerTests.swift; sourceTree = "<group>"; };
-		C293BC762106E57C00C31D94 /* ElasticsearchAnalysisAnalyzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchAnalysisAnalyzerTests.swift; sourceTree = "<group>"; };
+		C293BC702106230800C31D94 /* NormalizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalizerTests.swift; sourceTree = "<group>"; };
+		C293BC732106596400C31D94 /* TokenizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizerTests.swift; sourceTree = "<group>"; };
+		C293BC762106E57C00C31D94 /* AnalyzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerTests.swift; sourceTree = "<group>"; };
+		C293BC782106EBF600C31D94 /* CharacterFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFilterTests.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2913,6 +2915,17 @@
 			path = Normalizers;
 			sourceTree = "<group>";
 		};
+		C293BC7A2106EBFB00C31D94 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				C293BC782106EBF600C31D94 /* CharacterFilterTests.swift */,
+				C293BC762106E57C00C31D94 /* AnalyzerTests.swift */,
+				C293BC732106596400C31D94 /* TokenizerTests.swift */,
+				C293BC702106230800C31D94 /* NormalizerTests.swift */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
 		OBJ_104 /* Span Queries */ = {
 			isa = PBXGroup;
 			children = (
@@ -2950,11 +2963,9 @@
 		OBJ_124 /* ElasticsearchTests */ = {
 			isa = PBXGroup;
 			children = (
+				C293BC7A2106EBFB00C31D94 /* Analysis */,
 				OBJ_125 /* ElasticsearchAggregationCodableTests.swift */,
 				OBJ_126 /* ElasticsearchQueryCodableTests.swift */,
-				C293BC702106230800C31D94 /* ElasticsearchAnalysisNormalizerTests.swift */,
-				C293BC732106596400C31D94 /* ElasticsearchAnalysisTokenizerTests.swift */,
-				C293BC762106E57C00C31D94 /* ElasticsearchAnalysisAnalyzerTests.swift */,
 				OBJ_127 /* ElasticsearchTests.swift */,
 				OBJ_128 /* TestHelpers.swift */,
 				OBJ_129 /* XCTestManifests.swift */,
@@ -4910,11 +4921,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				C293BC722106238D00C31D94 /* ElasticsearchAnalysisNormalizerTests.swift in Sources */,
+				C293BC722106238D00C31D94 /* NormalizerTests.swift in Sources */,
 				OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */,
-				C293BC75210659C700C31D94 /* ElasticsearchAnalysisTokenizerTests.swift in Sources */,
-				C293BC772106E57C00C31D94 /* ElasticsearchAnalysisAnalyzerTests.swift in Sources */,
+				C293BC75210659C700C31D94 /* TokenizerTests.swift in Sources */,
+				C293BC772106E57C00C31D94 /* AnalyzerTests.swift in Sources */,
 				OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */,
+				C293BC792106EBF600C31D94 /* CharacterFilterTests.swift in Sources */,
 				OBJ_1003 /* ElasticsearchTests.swift in Sources */,
 				OBJ_1004 /* TestHelpers.swift in Sources */,
 				OBJ_1005 /* XCTestManifests.swift in Sources */,

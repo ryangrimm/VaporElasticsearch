@@ -17,9 +17,15 @@ public struct MappingCharacterFilter: CharacterFilter {
         case mappingsPath = "mappings_path"
     }
     
-    public init(name: String, mappings: [String: String]? = nil, mappingsPath: String? = nil) {
+    public init(name: String, mappings: [String: String]) {
         self.name = name
         self.mappings = mappings
+        self.mappingsPath = nil
+    }
+    
+    public init(name: String, mappingsPath: String) {
+        self.name = name
+        self.mappings = nil
         self.mappingsPath = mappingsPath
     }
     

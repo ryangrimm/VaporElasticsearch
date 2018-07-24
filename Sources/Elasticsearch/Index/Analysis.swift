@@ -133,6 +133,10 @@ public struct Analysis: Codable {
     }
     
     internal mutating func add(characterFilter: CharacterFilter) {
+        // If it's a builtin filter, don't add
+        if CharacterFilterType.Builtins(rawValue: characterFilter.name) != nil {
+            return
+        }
         self.characterFilters[characterFilter.name] = characterFilter
     }
     
@@ -156,7 +160,7 @@ public struct Analysis: Codable {
         self.normalizers[normalizer.name] = normalizer
     }
     
-    internal func isEmpty() -> Bool {  
+    internal func isEmpty() -> Bool {
         return filters.count == 0 && characterFilters.count == 0 && analyzers.count == 0 && normalizers.count == 0 && tokenizers.count == 0
     }
 }

@@ -3,7 +3,7 @@ import Foundation
 
 public struct PatternReplaceCharacterFilter: CharacterFilter {
     /// :nodoc:
-    public static var typeKey = CharacterFilterType.mapping
+    public static var typeKey = CharacterFilterType.patternReplace
     
     let type = typeKey.rawValue
     

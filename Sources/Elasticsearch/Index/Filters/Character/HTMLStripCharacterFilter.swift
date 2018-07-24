@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct HTMLStripCharacterFilter: CharacterFilter {
+public struct HTMLStripCharacterFilter: CharacterFilter, BuiltinCharacterTokenFilter {
     /// :nodoc:
     public static var typeKey = CharacterFilterType.htmlStrip
     
@@ -10,14 +10,35 @@ public struct HTMLStripCharacterFilter: CharacterFilter {
     public let name: String
     public var escapedTags: [String]? = nil
     
+    let isCustom: Bool
+
     enum CodingKeys: String, CodingKey {
         case type
         case escapedTags = "escaped_tags"
     }
     
-    public init(name: String, escapedTags: [String]? = nil) {
+    public init() {
+        self.name = type
+        self.isCustom = false
+    }
+    
+    public init(name: String, escapedTags: [String]) {
         self.name = name
         self.escapedTags = escapedTags
+        self.isCustom = true
+    }
+    
+    /// :nodoc:
+    public func encode(to encoder: Encoder) throws {
+        if self.isCustom {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(type, forKey: .type)
+            try container.encode(escapedTags, forKey: .escapedTags)
+        }
+        else {
+            var container = encoder.singleValueContainer()
+            try container.encode(type)
+        }
     }
     
     /// :nodoc:
@@ -26,5 +47,6 @@ public struct HTMLStripCharacterFilter: CharacterFilter {
         self.name = (decoder.codingPath.last?.stringValue)!
         
         self.escapedTags = try container.decodeIfPresent([String].self, forKey: .escapedTags)
+        self.isCustom = true
     }
 }

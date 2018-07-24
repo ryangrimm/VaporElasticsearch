@@ -6,6 +6,10 @@ public protocol CharacterFilter: Codable {
     var name: String { get }
 }
 
+public protocol BuiltinCharacterTokenFilter {
+    init()
+}
+
 /// :nodoc:
 public enum CharacterFilterType: String, Codable {
     case htmlStrip = "html_strip"
@@ -20,6 +24,17 @@ public enum CharacterFilterType: String, Codable {
             return MappingCharacterFilter.self
         case .patternReplace:
             return PatternReplaceCharacterFilter.self
+        }
+    }
+    
+    enum Builtins: String, CodingKey {
+        case htmlStrip = "html_strip"
+        
+        var metatype: BuiltinCharacterTokenFilter.Type {
+            switch self {
+            case .htmlStrip:
+                return HTMLStripCharacterFilter.self
+            }
         }
     }
 }
