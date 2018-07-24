@@ -38,7 +38,6 @@ final class CharacterFilterTests: XCTestCase {
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
-        print(encoded)
         XCTAssertEqual(json, encoded)
     }
     
@@ -54,7 +53,6 @@ final class CharacterFilterTests: XCTestCase {
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
-        print(encoded)
         XCTAssertEqual(json, encoded)
     }
     
@@ -70,7 +68,6 @@ final class CharacterFilterTests: XCTestCase {
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
-        print(encoded)
         XCTAssertEqual(json, encoded)
     }
     

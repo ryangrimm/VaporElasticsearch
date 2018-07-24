@@ -16,9 +16,15 @@ public struct SynonymFilter: TokenFilter {
         case synonymsPath = "synonyms_path"
     }
     
-    public init(name: String, synonyms: [String]? = nil, synonymsPath: String? = nil) {
+    public init(name: String, synonyms: [String]) {
         self.name = name
         self.synonyms = synonyms
+        self.synonymsPath = nil
+    }
+    
+    public init(name: String, synonymsPath: String) {
+        self.name = name
+        self.synonyms = nil
         self.synonymsPath = synonymsPath
     }
     

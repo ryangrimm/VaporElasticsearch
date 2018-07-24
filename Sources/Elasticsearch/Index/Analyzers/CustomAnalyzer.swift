@@ -50,7 +50,7 @@ public struct CustomAnalyzer: Analyzer, DefinesTokenizers, DefinesTokenFilters, 
         }
         
         if self.filter?.count ?? 0 > 0 {
-            var tokenFilterContainer = container.nestedUnkeyedContainer(forKey: .charFilter)
+            var tokenFilterContainer = container.nestedUnkeyedContainer(forKey: .filter)
             if let tokenFilter = self.filter {
                 for filter in tokenFilter {
                     try tokenFilterContainer.encode(filter.name)
