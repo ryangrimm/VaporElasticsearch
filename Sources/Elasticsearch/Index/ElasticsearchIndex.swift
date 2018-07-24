@@ -2,9 +2,9 @@ import HTTP
 import Crypto
 
 internal struct ExtractFiltersAnalyzers: Decodable {
-    public var filters: [String: AnyTokenFilter]
-    public var characterFilters: [String: AnyCharacterFilter]
-    public var analyzers: [String: AnyAnalyzer]
+    public var filters: [String: TokenFilter]
+    public var characterFilters: [String: CharacterFilter]
+    public var analyzers: [String: Analyzer]
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicKey.self)
@@ -16,19 +16,19 @@ internal struct ExtractFiltersAnalyzers: Decodable {
         let analysisContainer = try settingsIndexContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "analysis")!)
         
         if let analyzers = (try analysisContainer.decodeIfPresent([String: AnyAnalyzer].self, forKey: DynamicKey(stringValue: "analyzer")!)) {
-            self.analyzers = analyzers
+            self.analyzers = analyzers.mapValues { $0.base }
         }
         else {
             self.analyzers = [:]
         }
         if let filters = (try analysisContainer.decodeIfPresent([String: AnyTokenFilter].self, forKey: DynamicKey(stringValue: "filter")!)) {
-            self.filters = filters
+            self.filters = filters.mapValues { $0.base }
         }
         else {
             self.filters = [:]
         }
         if let characterFilters = (try analysisContainer.decodeIfPresent([String: AnyCharacterFilter].self, forKey: DynamicKey(stringValue: "char_filter")!)) {
-            self.characterFilters = characterFilters
+            self.characterFilters = characterFilters.mapValues { $0.base }
         }
         else {
             self.characterFilters = [:]
@@ -56,9 +56,7 @@ public class ElasticsearchIndex: Codable {
         }
     }
     
-    
-    
-    struct DefaultType: Codable {
+    public struct DefaultType: Codable {
         var doc: DocumentTypeSettings
         
         enum CodingKeys: String, CodingKey {
@@ -66,15 +64,15 @@ public class ElasticsearchIndex: Codable {
         }
     }
     
-    struct Alias: Codable {
+    public struct Alias: Codable {
         var routing: String?
     }
     
-    var client: ElasticsearchClient? = nil
-    var indexName: String? = nil
-    var mappings = DefaultType(doc: DocumentTypeSettings())
-    var aliases = [String: Alias]()
-    var settings: Settings
+    public var client: ElasticsearchClient? = nil
+    public var indexName: String? = nil
+    public var mappings = DefaultType(doc: DocumentTypeSettings())
+    public var aliases = [String: Alias]()
+    public var settings: Settings
 
     enum CodingKeys: String, CodingKey {
         case mappings
@@ -90,6 +88,14 @@ public class ElasticsearchIndex: Codable {
         print(self.settings)
     }
     
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.mappings, forKey: .mappings)
+        try container.encode(self.settings, forKey: .settings)
+        if (aliases.count > 0) {
+            try container.encode(self.mappings, forKey: .mappings)
+        }
+    }
     
     internal static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex> {
         return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex.self) { response in
@@ -139,10 +145,39 @@ public class ElasticsearchIndex: Codable {
     public func property(key: String, type: Mappable) -> Self {
         mappings.doc.properties[key] = AnyMap(type)
         
-        if type is ModifiesIndex {
-            let modify = type as! ModifiesIndex
-            modify.modifyBeforeSending(index: self)
+        if type is DefinesNormalizers {
+            let type = type as! DefinesNormalizers
+            for normalizer in type.definedNormalizers() {
+                self.settings.analysis.add(normalizer: normalizer)
+            }
         }
+        
+        if type is DefinesAnalyzers {
+            let type = type as! DefinesAnalyzers
+            for analyzer in type.definedAnalyzers() {
+                self.settings.analysis.add(analyzer: analyzer)
+                
+                if analyzer is DefinesTokenizers {
+                    let analyzer = analyzer as! DefinesTokenizers
+                    for tokenizer in analyzer.definedTokenizers() {
+                        self.settings.analysis.add(tokenizer: tokenizer)
+                    }
+                }
+                if analyzer is DefinesTokenFilters {
+                    let analyzer = analyzer as! DefinesTokenFilters
+                    for tokenFilter in analyzer.definedTokenFilters() {
+                        self.settings.analysis.add(tokenFilter: tokenFilter)
+                    }
+                }
+                if analyzer is DefinesCharacterFilters {
+                    let analyzer = analyzer as! DefinesCharacterFilters
+                    for characterFilter in analyzer.definedCharacterFilters() {
+                        self.settings.analysis.add(characterFilter: characterFilter)
+                    }
+                }
+            }
+        }
+        
         return self
     }
     

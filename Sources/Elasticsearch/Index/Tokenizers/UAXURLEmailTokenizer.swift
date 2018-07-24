@@ -22,7 +22,7 @@ public struct UAXURLEmailTokenizer: Tokenizer, BultinTokenizer {
         self.isCustom = false
     }
     
-    public init(name: String, maxTokenLength: Int? = nil) {
+    public init(name: String, maxTokenLength: Int) {
         self.name = name
         self.maxTokenLength = maxTokenLength
         self.isCustom = true

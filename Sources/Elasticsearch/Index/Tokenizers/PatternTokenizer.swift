@@ -20,7 +20,7 @@ public struct PatternTokenizer: Tokenizer {
         case group
     }
     
-    public init(name: String, pattern: String? = nil, flags: String? = nil, group: Int? = nil) {
+    public init(name: String, pattern: String, flags: String? = nil, group: Int? = nil) {
         self.name = name
         self.pattern = pattern
         self.flags = flags

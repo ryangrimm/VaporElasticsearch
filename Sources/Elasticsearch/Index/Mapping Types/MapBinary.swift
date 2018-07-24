@@ -13,8 +13,8 @@ public struct MapBinary: Mappable {
 
     let type = typeKey.rawValue
     
-    public var docValues: Bool? = true
-    public var store: Bool? = false
+    public var docValues: Bool?
+    public var store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -22,7 +22,7 @@ public struct MapBinary: Mappable {
         case store
     }
     
-    public init(docValues: Bool? = true, store: Bool? = false) {
+    public init(docValues: Bool? = nil, store: Bool? = nil) {
         self.docValues = docValues
         self.store = store
     }

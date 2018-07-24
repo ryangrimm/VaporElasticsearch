@@ -2,11 +2,11 @@
 import Foundation
 
 public struct Analysis: Codable {
-    public var filters: [String: AnyTokenFilter]
-    public var characterFilters: [String: AnyCharacterFilter]
-    public var analyzers: [String: AnyAnalyzer]
-    public var normalizers: [String: AnyNormalizer]
-    public var tokenizers: [String: AnyTokenizer]
+    public var filters: [String: TokenFilter]
+    public var characterFilters: [String: CharacterFilter]
+    public var analyzers: [String: Analyzer]
+    public var normalizers: [String: Normalizer]
+    public var tokenizers: [String: Tokenizer]
     
     enum CodingKeys: String, CodingKey {
         case filters = "filter"
@@ -19,29 +19,49 @@ public struct Analysis: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let filters = try container.decodeIfPresent([String: AnyTokenFilter].self, forKey: .filters) {
-            self.filters = filters
+            self.filters = filters.mapValues { $0.base }
         } else {
             self.filters = [:]
         }
         if let characterFilters = try container.decodeIfPresent([String: AnyCharacterFilter].self, forKey: .characterFilters) {
-            self.characterFilters = characterFilters
+            self.characterFilters = characterFilters.mapValues { $0.base }
         } else {
             self.characterFilters = [:]
         }
         if let analyzers = try container.decodeIfPresent([String: AnyAnalyzer].self, forKey: .analyzers) {
-            self.analyzers = analyzers
+            self.analyzers = analyzers.mapValues { $0.base }
         } else {
             self.analyzers = [:]
         }
         if let normalizers = try container.decodeIfPresent([String: AnyNormalizer].self, forKey: .normalizers) {
-            self.normalizers = normalizers
+            self.normalizers = normalizers.mapValues { $0.base }
         } else {
             self.normalizers = [:]
         }
         if let tokenizers = try container.decodeIfPresent([String: AnyTokenizer].self, forKey: .tokenizers) {
-            self.tokenizers = tokenizers
+            self.tokenizers = tokenizers.mapValues { $0.base }
         } else {
             self.tokenizers = [:]
+        }
+    }
+    
+    /// :nodoc:
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        if self.filters.count > 0 {
+            try container.encode(self.filters.mapValues { AnyTokenFilter($0) }, forKey: .filters)
+        }
+        if self.characterFilters.count > 0 {
+            try container.encode(self.characterFilters.mapValues { AnyCharacterFilter($0) }, forKey: .characterFilters)
+        }
+        if self.analyzers.count > 0 {
+            try container.encode(self.analyzers.mapValues { AnyAnalyzer($0) }, forKey: .analyzers)
+        }
+        if self.normalizers.count > 0 {
+            try container.encode(self.normalizers.mapValues { AnyNormalizer($0) }, forKey: .normalizers)
+        }
+        if self.tokenizers.count > 0 {
+            try container.encode(self.tokenizers.mapValues { AnyTokenizer($0) }, forKey: .tokenizers)
         }
     }
     
@@ -61,7 +81,7 @@ public struct Analysis: Codable {
         }
         
         if let tokenizer = self.tokenizers[named] {
-            return tokenizer.base
+            return tokenizer
         }
         return nil
     }
@@ -73,14 +93,14 @@ public struct Analysis: Codable {
         }
         
         if let filter = self.filters[named] {
-            return filter.base
+            return filter
         }
         return nil
     }
     
     public func characterFilter(named: String) -> CharacterFilter? {
         if let charFilter = self.characterFilters[named] {
-            return charFilter.base
+            return charFilter
         }
         return nil
     }
@@ -92,47 +112,47 @@ public struct Analysis: Codable {
         }
         
         if let analyzer = self.analyzers[named] {
-            return analyzer.base
+            return analyzer
         }
         return nil
     }
     
     public func normalizer(named: String) -> Normalizer? {
         if let normalizer = self.normalizers[named] {
-            return normalizer.base
+            return normalizer
         }
         return nil
     }
     
-    internal mutating func add(tokenFilter: AnyTokenFilter) {
+    internal mutating func add(tokenFilter: TokenFilter) {
         // If it's a builtin filter, don't add
-        if TokenFilterType.Builtins(rawValue: tokenFilter.base.name) != nil {
+        if TokenFilterType.Builtins(rawValue: tokenFilter.name) != nil {
             return
         }
-        self.filters[tokenFilter.base.name] = tokenFilter
+        self.filters[tokenFilter.name] = tokenFilter
     }
     
-    internal mutating func add(characterFilter: AnyCharacterFilter) {
-        self.characterFilters[characterFilter.base.name] = characterFilter
+    internal mutating func add(characterFilter: CharacterFilter) {
+        self.characterFilters[characterFilter.name] = characterFilter
     }
     
-    internal mutating func add(tokenizer: AnyTokenizer) {
+    internal mutating func add(tokenizer: Tokenizer) {
         // If it's a builtin tokenizer, don't add
-        if TokenizerType.Builtins(rawValue: tokenizer.base.name) != nil {
+        if TokenizerType.Builtins(rawValue: tokenizer.name) != nil {
             return
         }
-        self.tokenizers[tokenizer.base.name] = tokenizer
+        self.tokenizers[tokenizer.name] = tokenizer
     }
     
-    internal mutating func add(analyzer: AnyAnalyzer) {
+    internal mutating func add(analyzer: Analyzer) {
         // If it's a builtin analyzer, don't add
-        if AnalyzerType.Builtins(rawValue: analyzer.base.name) != nil {
+        if AnalyzerType.Builtins(rawValue: analyzer.name) != nil {
             return
         }
-        self.analyzers[analyzer.base.name] = analyzer
+        self.analyzers[analyzer.name] = analyzer
     }
     
-    internal mutating func add(normalizer: AnyNormalizer) {
-        self.normalizers[normalizer.base.name] = normalizer
+    internal mutating func add(normalizer: Normalizer) {
+        self.normalizers[normalizer.name] = normalizer
     }
 }

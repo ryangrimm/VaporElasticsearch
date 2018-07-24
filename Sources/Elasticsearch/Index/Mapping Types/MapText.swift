@@ -10,26 +10,26 @@
 
 import Foundation
 
-public struct MapText: Mappable, ModifiesIndex {
+public struct MapText: Mappable, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.text
 
     let type = typeKey.rawValue
     
-    public var boost: Float? = 1.0
-    public var eagerGlobalOrdinals: Bool? = false
+    public var boost: Float?
+    public var eagerGlobalOrdinals: Bool?
     public var fields: [String: TextField]?
-    public var index: Bool? = true
-    public var indexOptions: TextIndexOptions? = .positions
-    public var norms: Bool? = true
-    public var store: Bool? = false
-    public var similarity: SimilarityType? = .bm25
+    public var index: Bool?
+    public var indexOptions: TextIndexOptions?
+    public var norms: Bool?
+    public var store: Bool?
+    public var similarity: SimilarityType?
     
     public var analyzer: Analyzer?
     public var searchAnalyzer: Analyzer?
     public var searchQuoteAnalyzer: Analyzer?
-    public var fielddata: Bool? = false
-    public var termVector: TermVector? = .no
+    public var fielddata: Bool?
+    public var termVector: TermVector?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -48,19 +48,19 @@ public struct MapText: Mappable, ModifiesIndex {
         case termVector = "term_vector"
     }
 
-    public init(index: Bool? = true,
-                store: Bool? = false,
+    public init(index: Bool? = nil,
+                store: Bool? = nil,
                 fields: [String: TextField]? = nil,
                 analyzer: Analyzer? = nil,
                 searchAnalyzer: Analyzer? = nil,
                 searchQuoteAnalyzer: Analyzer? = nil,
-                fielddata: Bool? = false,
-                termVector: TermVector? = .no,
-                boost: Float? = 1.0,
-                eagerGlobalOrdinals: Bool? = false,
+                fielddata: Bool? = nil,
+                termVector: TermVector? = nil,
+                boost: Float? = nil,
+                eagerGlobalOrdinals: Bool? = nil,
                 indexOptions: TextIndexOptions? = nil,
-                norms: Bool? = true,
-                similarity: SimilarityType? = .bm25,
+                norms: Bool? = nil,
+                similarity: SimilarityType? = nil,
                 ignoreAbove: Int? = 2147483647,
                 nullValue: String? = nil) {
         
@@ -81,27 +81,35 @@ public struct MapText: Mappable, ModifiesIndex {
         self.termVector = termVector
     }
     
-    public func modifyBeforeSending(index: ElasticsearchIndex) {
+    /// :nodoc:
+    public func definedNormalizers() -> [Normalizer] {
+        var normalizers = [Normalizer]()
         if let fields = self.fields {
             for (_, field) in fields {
-                if let analyzer = field.analyzer {
-                    index.settings.analysis.add(analyzer: AnyAnalyzer(analyzer))
-                }
-                if let normalizer = field.normalizer {
-                    index.settings.analysis.add(normalizer: AnyNormalizer(normalizer))
-                }
+                normalizers += field.definedNormalizers()
             }
         }
-        
+        return normalizers
+    }
+    
+    /// :nodoc:
+    public func definedAnalyzers() -> [Analyzer] {
+        var analyzers = [Analyzer]()
+        if let fields = self.fields {
+            for (_, field) in fields {
+                analyzers += field.definedAnalyzers()
+            }
+        }
         if let analyzer = analyzer {
-            index.settings.analysis.add(analyzer: AnyAnalyzer(analyzer))
+            analyzers.append(analyzer)
         }
         if let searchAnalyzer = searchAnalyzer {
-            index.settings.analysis.add(analyzer: AnyAnalyzer(searchAnalyzer))
+            analyzers.append(searchAnalyzer)
         }
         if let searchQuoteAnalyzer = searchQuoteAnalyzer {
-            index.settings.analysis.add(analyzer: AnyAnalyzer(searchQuoteAnalyzer))
+            analyzers.append(searchQuoteAnalyzer)
         }
+        return analyzers
     }
     
     /// :nodoc:

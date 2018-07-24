@@ -22,7 +22,7 @@ public struct KeywordTokenizer: Tokenizer, BultinTokenizer {
         self.isCustom = false
     }
     
-    public init(name: String, bufferSize: Int? = nil) {
+    public init(name: String, bufferSize: Int) {
         self.name = name
         self.bufferSize = bufferSize
         self.isCustom = true

@@ -9,22 +9,23 @@
 
 import Foundation
 
-public struct MapKeyword: Mappable, ModifiesIndex {
+public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
+
     /// :nodoc:
     public static var typeKey = MapType.keyword
 
     let type = typeKey.rawValue
     
-    public var boost: Float? = 1.0
-    public var eagerGlobalOrdinals: Bool? = false
+    public var boost: Float?
+    public var eagerGlobalOrdinals: Bool?
     public var fields: [String: TextField]?
-    public var index: Bool? = true
+    public var index: Bool?
     public var indexOptions: TextIndexOptions?
-    public var norms: Bool? = true
-    public var store: Bool? = false
-    public var similarity: SimilarityType? = .bm25
-    public var docValues: Bool? = true
-    public var ignoreAbove: Int? = 2147483647
+    public var norms: Bool?
+    public var store: Bool?
+    public var similarity: SimilarityType?
+    public var docValues: Bool?
+    public var ignoreAbove: Int?
     public var nullValue: String?
     public var normalizer: Normalizer?
     
@@ -44,16 +45,16 @@ public struct MapKeyword: Mappable, ModifiesIndex {
         case normalizer
     }
 
-    public init(docValues: Bool? = true,
-                index: Bool? = true,
-                store: Bool? = false,
+    public init(docValues: Bool? = nil,
+                index: Bool? = nil,
+                store: Bool? = nil,
                 fields: [String: TextField]? = nil,
-                boost: Float? = 1.0,
-                eagerGlobalOrdinals: Bool? = false,
+                boost: Float? = nil,
+                eagerGlobalOrdinals: Bool? = nil,
                 indexOptions: TextIndexOptions? = nil,
-                norms: Bool? = true,
-                similarity: SimilarityType? = .bm25,
-                ignoreAbove: Int? = 2147483647,
+                norms: Bool? = nil,
+                similarity: SimilarityType? = nil,
+                ignoreAbove: Int? = nil,
                 nullValue: String? = nil,
                 normalizer: Normalizer? = nil) {
         
@@ -71,22 +72,28 @@ public struct MapKeyword: Mappable, ModifiesIndex {
         self.normalizer = normalizer
     }
     
-    /// :nodoc:
-    public func modifyBeforeSending(index: ElasticsearchIndex) {
+    public func definedNormalizers() -> [Normalizer] {
+        var normalizers = [Normalizer]()
         if let fields = self.fields {
             for (_, field) in fields {
-                if let analyzer = field.analyzer {
-                    index.settings.analysis.add(analyzer: AnyAnalyzer(analyzer))
-                }
-                if let normalizer = field.normalizer {
-                    index.settings.analysis.add(normalizer: AnyNormalizer(normalizer))
-                }
+                normalizers += field.definedNormalizers()
             }
         }
-        
         if let normalizer = self.normalizer {
-            index.settings.analysis.add(normalizer: AnyNormalizer(normalizer))
+            normalizers.append(normalizer)
         }
+        return normalizers
+
+    }
+    
+    public func definedAnalyzers() -> [Analyzer] {
+        var analyzers = [Analyzer]()
+        if let fields = self.fields {
+            for (_, field) in fields {
+                analyzers += field.definedAnalyzers()
+            }
+        }
+        return analyzers
     }
     
     /// :nodoc:

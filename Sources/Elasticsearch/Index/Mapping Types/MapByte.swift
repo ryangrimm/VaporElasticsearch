@@ -13,13 +13,13 @@ public struct MapByte: Mappable {
 
     let type = typeKey.rawValue
     
-    public var coerce: Bool? = true
-    public var boost: Float? = 1.0
-    public var docValues: Bool? = true
-    public var ignoreMalformed: Bool? = false
-    public var index: Bool? = true
-    public var nullValue: Int8? = nil
-    public var store: Bool? = false
+    public var coerce: Bool?
+    public var boost: Float?
+    public var docValues: Bool?
+    public var ignoreMalformed: Bool?
+    public var index: Bool?
+    public var nullValue: Int8?
+    public var store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -32,12 +32,12 @@ public struct MapByte: Mappable {
         case store
     }
     
-    public init(docValues: Bool? = true,
-                index: Bool? = true,
-                store: Bool? = false,
-                boost: Float? = 1.0,
-                coerce: Bool? = true,
-                ignoreMalformed: Bool? = false,
+    public init(docValues: Bool? = nil,
+                index: Bool? = nil,
+                store: Bool? = nil,
+                boost: Float? = nil,
+                coerce: Bool? = nil,
+                ignoreMalformed: Bool? = nil,
                 nullValue: Int8? = nil) {
         
         self.coerce = coerce

@@ -56,7 +56,7 @@
 		C293BC422103D5A600C31D94 /* HTMLStripCharacterFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC412103D5A600C31D94 /* HTMLStripCharacterFilter.swift */; };
 		C293BC442103D61400C31D94 /* MappingCharacterFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC432103D61400C31D94 /* MappingCharacterFilter.swift */; };
 		C293BC462103D70400C31D94 /* PatternReplaceCharacterFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC452103D70400C31D94 /* PatternReplaceCharacterFilter.swift */; };
-		C293BC482103E1F400C31D94 /* ModifiesIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC472103E1F400C31D94 /* ModifiesIndex.swift */; };
+		C293BC482103E1F400C31D94 /* DefinesAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC472103E1F400C31D94 /* DefinesAnalysis.swift */; };
 		C293BC4B2104419F00C31D94 /* CustomNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC4A2104419F00C31D94 /* CustomNormalizer.swift */; };
 		C293BC512104CFCD00C31D94 /* TokenFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC502104CFCD00C31D94 /* TokenFilter.swift */; };
 		C293BC532104D68500C31D94 /* SynonymFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC522104D68500C31D94 /* SynonymFilter.swift */; };
@@ -74,6 +74,8 @@
 		C293BC6B210588FE00C31D94 /* NGramFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC6A210588FE00C31D94 /* NGramFilter.swift */; };
 		C293BC6D2105896F00C31D94 /* EdgeNGram.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC6C2105896F00C31D94 /* EdgeNGram.swift */; };
 		C293BC6F210589D500C31D94 /* LowercaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC6E210589D400C31D94 /* LowercaseFilter.swift */; };
+		C293BC722106238D00C31D94 /* ElasticsearchAnalysisNormalizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC702106230800C31D94 /* ElasticsearchAnalysisNormalizerTests.swift */; };
+		C293BC75210659C700C31D94 /* ElasticsearchAnalysisTokenizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC732106596400C31D94 /* ElasticsearchAnalysisTokenizerTests.swift */; };
 		OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ElasticsearchAggregationCodableTests.swift */; };
 		OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* ElasticsearchQueryCodableTests.swift */; };
 		OBJ_1003 /* ElasticsearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ElasticsearchTests.swift */; };
@@ -1988,7 +1990,7 @@
 		C293BC412103D5A600C31D94 /* HTMLStripCharacterFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStripCharacterFilter.swift; sourceTree = "<group>"; };
 		C293BC432103D61400C31D94 /* MappingCharacterFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingCharacterFilter.swift; sourceTree = "<group>"; };
 		C293BC452103D70400C31D94 /* PatternReplaceCharacterFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternReplaceCharacterFilter.swift; sourceTree = "<group>"; };
-		C293BC472103E1F400C31D94 /* ModifiesIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiesIndex.swift; sourceTree = "<group>"; };
+		C293BC472103E1F400C31D94 /* DefinesAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinesAnalysis.swift; sourceTree = "<group>"; };
 		C293BC4A2104419F00C31D94 /* CustomNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNormalizer.swift; sourceTree = "<group>"; };
 		C293BC502104CFCD00C31D94 /* TokenFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFilter.swift; sourceTree = "<group>"; };
 		C293BC522104D68500C31D94 /* SynonymFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynonymFilter.swift; sourceTree = "<group>"; };
@@ -2006,6 +2008,8 @@
 		C293BC6A210588FE00C31D94 /* NGramFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NGramFilter.swift; sourceTree = "<group>"; };
 		C293BC6C2105896F00C31D94 /* EdgeNGram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeNGram.swift; sourceTree = "<group>"; };
 		C293BC6E210589D400C31D94 /* LowercaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowercaseFilter.swift; sourceTree = "<group>"; };
+		C293BC702106230800C31D94 /* ElasticsearchAnalysisNormalizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchAnalysisNormalizerTests.swift; sourceTree = "<group>"; };
+		C293BC732106596400C31D94 /* ElasticsearchAnalysisTokenizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchAnalysisTokenizerTests.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2946,6 +2950,8 @@
 			children = (
 				OBJ_125 /* ElasticsearchAggregationCodableTests.swift */,
 				OBJ_126 /* ElasticsearchQueryCodableTests.swift */,
+				C293BC702106230800C31D94 /* ElasticsearchAnalysisNormalizerTests.swift */,
+				C293BC732106596400C31D94 /* ElasticsearchAnalysisTokenizerTests.swift */,
 				OBJ_127 /* ElasticsearchTests.swift */,
 				OBJ_128 /* TestHelpers.swift */,
 				OBJ_129 /* XCTestManifests.swift */,
@@ -3154,7 +3160,7 @@
 				C293BC0121000F8A00C31D94 /* Analysis.swift */,
 				C293BC06210014F500C31D94 /* DocumentTypeSettings.swift */,
 				C293BC042100147E00C31D94 /* IndexMeta.swift */,
-				C293BC472103E1F400C31D94 /* ModifiesIndex.swift */,
+				C293BC472103E1F400C31D94 /* DefinesAnalysis.swift */,
 				C293BC3C2103D3FC00C31D94 /* Filters */,
 				C293BC1B2100614100C31D94 /* Tokenizers */,
 				C293BC0821004FCC00C31D94 /* Analyzers */,
@@ -4901,7 +4907,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				C293BC722106238D00C31D94 /* ElasticsearchAnalysisNormalizerTests.swift in Sources */,
 				OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */,
+				C293BC75210659C700C31D94 /* ElasticsearchAnalysisTokenizerTests.swift in Sources */,
 				OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */,
 				OBJ_1003 /* ElasticsearchTests.swift in Sources */,
 				OBJ_1004 /* TestHelpers.swift in Sources */,
@@ -5494,7 +5502,7 @@
 				OBJ_908 /* MatchPhrasePrefix.swift in Sources */,
 				OBJ_909 /* MultiMatch.swift in Sources */,
 				OBJ_910 /* Prefix.swift in Sources */,
-				C293BC482103E1F400C31D94 /* ModifiesIndex.swift in Sources */,
+				C293BC482103E1F400C31D94 /* DefinesAnalysis.swift in Sources */,
 				C293BC2B2100645D00C31D94 /* ThaiTokenizer.swift in Sources */,
 				C293BC2D210064F900C31D94 /* NGramTokenizer.swift in Sources */,
 				OBJ_911 /* Query.swift in Sources */,

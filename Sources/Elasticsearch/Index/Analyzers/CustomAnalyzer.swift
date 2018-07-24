@@ -1,9 +1,9 @@
 
 import Foundation
 
-public struct CustomAnalyzer: Analyzer, ModifiesIndex {
+public struct CustomAnalyzer: Analyzer, DefinesTokenizers, DefinesTokenFilters, DefinesCharacterFilters {
     /// :nodoc:
-    public static var typeKey = AnalyzerType.fingerprint
+    public static var typeKey = AnalyzerType.custom
     
     public let type = typeKey.rawValue
     public let name: String
@@ -24,12 +24,8 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex {
                 tokenizer: Tokenizer,
                 filter: [TokenFilter]? = nil,
                 characterFilter: [CharacterFilter]? = nil,
-                positionIncrementGap: Int? = nil) throws {
+                positionIncrementGap: Int? = nil) {
 
-        if name != "analyzer" {
-            throw ElasticsearchError(identifier: "invalid_name", reason: "'analyzer' cannot be used as a name", source: .capture())
-        }
-        
         self.name = name
         self.tokenizer = tokenizer
         self.filter = filter
@@ -41,19 +37,24 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
+        try container.encode(type, forKey: .type)
         try container.encode(tokenizer.name, forKey: .tokenizer)
         
-        var charFilterContainer = container.nestedUnkeyedContainer(forKey: .charFilter)
-        if let charFilter = self.charFilter {
-            for filter in charFilter {
-                try charFilterContainer.encode(filter.name)
+        if self.charFilter?.count ?? 0 > 0 {
+            var charFilterContainer = container.nestedUnkeyedContainer(forKey: .charFilter)
+            if let charFilter = self.charFilter {
+                for filter in charFilter {
+                    try charFilterContainer.encode(filter.name)
+                }
             }
         }
         
-        var tokenFilterContainer = container.nestedUnkeyedContainer(forKey: .charFilter)
-        if let tokenFilter = self.filter {
-            for filter in tokenFilter {
-                try tokenFilterContainer.encode(filter.name)
+        if self.filter?.count ?? 0 > 0 {
+            var tokenFilterContainer = container.nestedUnkeyedContainer(forKey: .charFilter)
+            if let tokenFilter = self.filter {
+                for filter in tokenFilter {
+                    try tokenFilterContainer.encode(filter.name)
+                }
             }
         }
         
@@ -84,19 +85,27 @@ public struct CustomAnalyzer: Analyzer, ModifiesIndex {
         }
     }
     
-    public func modifyBeforeSending(index: ElasticsearchIndex) {
-        if let charFilters = self.charFilter {
-            for filter in charFilters {
-                index.settings.analysis.add(characterFilter: AnyCharacterFilter(filter))
-            }
-        }
-        
+    public func definedTokenizers() -> [Tokenizer] {
+        return [self.tokenizer]
+    }
+    
+    public func definedTokenFilters() -> [TokenFilter] {
+        var filters = [TokenFilter]()
         if let tokenFilters = self.filter {
             for filter in tokenFilters {
-                index.settings.analysis.add(tokenFilter: AnyTokenFilter(filter))
+                filters.append(filter)
             }
         }
-        
-        index.settings.analysis.add(tokenizer: AnyTokenizer(self.tokenizer))
+        return filters
+    }
+    
+    public func definedCharacterFilters() -> [CharacterFilter] {
+        var filters = [CharacterFilter]()
+        if let charFilters = self.charFilter {
+            for filter in charFilters {
+                filters.append(filter)
+            }
+        }
+        return filters
     }
 }

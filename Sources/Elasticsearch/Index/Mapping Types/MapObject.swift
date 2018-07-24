@@ -10,7 +10,7 @@
 
 import Foundation
 
-public struct MapObject: Mappable, ModifiesIndex {
+public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.object
 
@@ -30,14 +30,29 @@ public struct MapObject: Mappable, ModifiesIndex {
         self.enabled = enabled
     }
     
-    public func modifyBeforeSending(index: ElasticsearchIndex) {
+    public func definedNormalizers() -> [Normalizer] {
+        var normalizers = [Normalizer]()
         if let properties = self.properties {
             for (_, property) in properties {
-                if property.self is ModifiesIndex {
-                    let modify = property as! ModifiesIndex
-                    modify.modifyBeforeSending(index: index)
+                if property.self is DefinesNormalizers {
+                    let property = property as! DefinesNormalizers
+                    normalizers += property.definedNormalizers()
                 }
             }
         }
+        return normalizers
+    }
+    
+    public func definedAnalyzers() -> [Analyzer] {
+        var analyzers = [Analyzer]()
+        if let properties = self.properties {
+            for (_, property) in properties {
+                if property.self is DefinesAnalyzers {
+                    let property = property as! DefinesAnalyzers
+                    analyzers += property.definedAnalyzers()
+                }
+            }
+        }
+        return analyzers
     }
 }

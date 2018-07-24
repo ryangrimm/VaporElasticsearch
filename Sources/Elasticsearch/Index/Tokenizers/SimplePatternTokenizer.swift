@@ -16,7 +16,7 @@ public struct SimplePatternTokenizer: Tokenizer {
         case pattern
     }
     
-    public init(name: String, pattern: String? = nil) {
+    public init(name: String, pattern: String) {
         self.name = name
         self.pattern = pattern
     }

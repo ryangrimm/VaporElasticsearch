@@ -24,7 +24,7 @@ public enum TextFieldType: String, Codable {
     case keyword = "keyword"
 }
 
-public struct TextField: Codable {
+public struct TextField: Codable, DefinesNormalizers, DefinesAnalyzers {
     var type: TextFieldType
     var analyzer: Analyzer?
     var normalizer: Normalizer?
@@ -72,6 +72,20 @@ public struct TextField: Codable {
                 self.analyzer = analysis.analyzer(named: analyzer)
             }
         }
+    }
+    
+    public func definedNormalizers() -> [Normalizer] {
+        if let normalizer = self.normalizer {
+            return [normalizer]
+        }
+        return [Normalizer]()
+    }
+    
+    public func definedAnalyzers() -> [Analyzer] {
+        if let analyzer = self.analyzer {
+            return [analyzer]
+        }
+        return [Analyzer]()
     }
 }
 

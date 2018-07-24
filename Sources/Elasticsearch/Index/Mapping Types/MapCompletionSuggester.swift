@@ -7,7 +7,7 @@
  https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
  */
 
-public struct MapCompletionSuggester: Mappable, ModifiesIndex {
+public struct MapCompletionSuggester: Mappable, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.completionSuggester
     
@@ -41,13 +41,15 @@ public struct MapCompletionSuggester: Mappable, ModifiesIndex {
         self.maxInputLength = maxInputLength
     }
     
-    public func modifyBeforeSending(index: ElasticsearchIndex) {
+    public func definedAnalyzers() -> [Analyzer] {
+        var analyzers = [Analyzer]()
         if let analyzer = self.analyzer {
-            index.settings.analysis.add(analyzer: AnyAnalyzer(analyzer))
+            analyzers.append(analyzer)
         }
         if let searchAnalyzer = self.searchAnalyzer {
-            index.settings.analysis.add(analyzer: AnyAnalyzer(searchAnalyzer))
+            analyzers.append(searchAnalyzer)
         }
+        return analyzers
     }
     
     /// :nodoc:
