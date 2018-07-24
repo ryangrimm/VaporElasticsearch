@@ -106,22 +106,13 @@ func list(_ req: Request) throws -> Future<[Document]> {
 
 //let client: ElasticsearchClient = ...
 
-let synonymFilter = Analysis.Filter(
-	type: "synonym",
-	name: "synonym_filter",
-	synonyms: ["file, document",
-		       "nice, awesome, great"]
-)
+let synonymFilter = SynonymFilter(name: "synonym_filter", synonyms: ["file, document", "nice, awesome, great"])
+let synonymAnalyzer = CustomAnalyzer(name: "synonym_analyzer", tokenizer: StandardTokenizer(), filter: [synonymFilter]))
 
-let analysis = Analysis(
-	filter: ["synonym" : synonymFilter]
-)
-
-let index = client.createIndex(name: "documents")
+let index = client.configureIndex(name: "documents")
 	.indexSettings(index: IndexSettings(shards: 5, replicas: 1))
-	.analysisSettings(analysis: analysis)
 	.property(key: "id", type: MapKeyword())
-	.property(key: "title", type: MapText())
+	.property(key: "title", type: MapText(analyzer: synonymAnalyzer))
 
 try index.create()
 ```
@@ -157,7 +148,6 @@ try bulk.send()
 * Implement the KeyedCacheSupporting protocol
 * Implement the DatabaseQueryable protocol
 * Create a chainable query builder
-* Support configuration of tokenizers and analyzers
 * Implement the remaining aggregation types
 * Implement the decoding for the above aggregation types
 * Implement remaining query DSL constructors
@@ -186,5 +176,3 @@ try bulk.send()
 * Documentation
 * More unit tests
 	* Need tests for encoding/decoding round trips of the Map types
-* Resolve existing XXX's
-* Lots more can be done
