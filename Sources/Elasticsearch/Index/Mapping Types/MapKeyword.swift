@@ -18,6 +18,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
     public let boost: Float?
     public let eagerGlobalOrdinals: Bool?
     public let fields: [String: TextField]?
+    public let copyTo: [String]?
     public let index: Bool?
     public let indexOptions: TextIndexOptions?
     public let norms: Bool?
@@ -33,6 +34,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
         case boost
         case eagerGlobalOrdinals = "eager_global_ordinals"
         case fields
+        case copyTo = "copy_to"
         case index
         case indexOptions = "index_options"
         case norms
@@ -48,6 +50,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
                 index: Bool? = nil,
                 store: Bool? = nil,
                 fields: [String: TextField]? = nil,
+                copyTo: [String]?,
                 boost: Float? = nil,
                 eagerGlobalOrdinals: Bool? = nil,
                 indexOptions: TextIndexOptions? = nil,
@@ -61,6 +64,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
         self.index = index
         self.store = store
         self.fields = fields
+        self.copyTo = copyTo
         self.boost = boost
         self.eagerGlobalOrdinals = eagerGlobalOrdinals
         self.indexOptions = indexOptions
@@ -105,6 +109,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
         try container.encodeIfPresent(index, forKey: .index)
         try container.encodeIfPresent(store, forKey: .store)
         try container.encodeIfPresent(fields, forKey: .fields)
+        try container.encodeIfPresent(copyTo, forKey: .copyTo)
         try container.encodeIfPresent(boost, forKey: .boost)
         try container.encodeIfPresent(eagerGlobalOrdinals, forKey: .eagerGlobalOrdinals)
         try container.encodeIfPresent(indexOptions, forKey: .indexOptions)
@@ -124,6 +129,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
         self.boost = try container.decodeIfPresent(Float.self, forKey: .boost)
         self.eagerGlobalOrdinals = try container.decodeIfPresent(Bool.self, forKey: .eagerGlobalOrdinals)
         self.fields = try container.decodeIfPresent([String: TextField].self, forKey: .fields)
+        self.copyTo = try container.decodeIfPresent([String].self, forKey: .copyTo)
         self.index = try container.decodeIfPresent(Bool.self, forKey: .index)
         self.indexOptions = try container.decodeIfPresent(TextIndexOptions.self, forKey: .indexOptions)
         self.norms = try container.decodeIfPresent(Bool.self, forKey: .norms)

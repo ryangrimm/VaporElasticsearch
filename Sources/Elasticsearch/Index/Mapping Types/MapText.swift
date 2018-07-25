@@ -18,6 +18,7 @@ public struct MapText: Mappable, DefinesAnalyzers {
     public let boost: Float?
     public let eagerGlobalOrdinals: Bool?
     public let fields: [String: TextField]?
+    public let copyTo: [String]?
     public let index: Bool?
     public let indexOptions: TextIndexOptions?
     public let norms: Bool?
@@ -35,6 +36,7 @@ public struct MapText: Mappable, DefinesAnalyzers {
         case boost
         case eagerGlobalOrdinals = "eager_global_ordinals"
         case fields
+        case copyTo = "copy_to"
         case index
         case indexOptions = "index_options"
         case norms
@@ -50,6 +52,7 @@ public struct MapText: Mappable, DefinesAnalyzers {
     public init(index: Bool? = nil,
                 store: Bool? = nil,
                 fields: [String: TextField]? = nil,
+                copyTo: [String]?,
                 analyzer: Analyzer? = nil,
                 searchAnalyzer: Analyzer? = nil,
                 searchQuoteAnalyzer: Analyzer? = nil,
@@ -66,16 +69,15 @@ public struct MapText: Mappable, DefinesAnalyzers {
         self.index = index
         self.store = store
         self.fields = fields
+        self.copyTo = copyTo
         self.boost = boost
         self.eagerGlobalOrdinals = eagerGlobalOrdinals
         self.indexOptions = indexOptions
         self.norms = norms
         self.similarity = similarity
-        
         self.analyzer = analyzer
         self.searchAnalyzer = searchAnalyzer
         self.searchQuoteAnalyzer = searchQuoteAnalyzer
-        
         self.fielddata = fielddata
         self.termVector = termVector
     }
@@ -118,6 +120,7 @@ public struct MapText: Mappable, DefinesAnalyzers {
         try container.encodeIfPresent(boost, forKey: .boost)
         try container.encodeIfPresent(eagerGlobalOrdinals, forKey: .eagerGlobalOrdinals)
         try container.encodeIfPresent(fields, forKey: .fields)
+        try container.encodeIfPresent(copyTo, forKey: .copyTo)
         try container.encodeIfPresent(index, forKey: .index)
         try container.encodeIfPresent(indexOptions, forKey: .indexOptions)
         try container.encodeIfPresent(norms, forKey: .norms)
@@ -146,6 +149,7 @@ public struct MapText: Mappable, DefinesAnalyzers {
         self.eagerGlobalOrdinals = try container.decodeIfPresent(Bool.self, forKey: .eagerGlobalOrdinals)
         self.fields = try container.decodeIfPresent([String: TextField].self, forKey: .fields)
         self.index = try container.decodeIfPresent(Bool.self, forKey: .index)
+        self.copyTo = try container.decodeIfPresent([String].self, forKey: .copyTo)
         self.indexOptions = try container.decodeIfPresent(TextIndexOptions.self, forKey: .indexOptions)
         self.norms = try container.decodeIfPresent(Bool.self, forKey: .norms)
         self.store = try container.decodeIfPresent(Bool.self, forKey: .store)
