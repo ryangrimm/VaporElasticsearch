@@ -14,8 +14,7 @@ public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.object
 
-    // TODO don't use AnyMap
-    public let properties: [String: AnyMap]?
+    public let properties: [String: Mappable]?
     public let dynamic: Bool?
     public let enabled: Bool?
     
@@ -25,10 +24,34 @@ public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
         case enabled
     }
     
-    public init(properties: [String: AnyMap]?, dynamic: Bool? = false, enabled: Bool? = true) {
+    public init(properties: [String: Mappable]?, dynamic: Bool? = false, enabled: Bool? = true) {
         self.properties = properties
         self.dynamic = dynamic
         self.enabled = enabled
+    }
+    
+    /// :nodoc:
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        if let properties = properties {
+            try container.encodeIfPresent(properties.mapValues { AnyMap($0) }, forKey: .properties)
+        }
+        try container.encodeIfPresent(dynamic, forKey: .dynamic)
+        try container.encodeIfPresent(enabled, forKey: .enabled)
+    }
+    
+    /// :nodoc:
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if container.contains(.properties) {
+            self.properties = try container.decode([String: AnyMap].self, forKey: CodingKeys.properties).mapValues { $0.base }
+        } else {
+            self.properties = nil
+        }
+        self.dynamic = try container.decodeIfPresent(Bool.self, forKey: .dynamic)
+        self.enabled = try container.decodeIfPresent(Bool.self, forKey: .enabled)
     }
     
     /// :nodoc:

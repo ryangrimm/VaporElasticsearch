@@ -123,7 +123,7 @@ public enum TokenFilterType: String, Codable {
 }
 
 /// :nodoc:
-public struct AnyTokenFilter : Codable {
+internal struct AnyTokenFilter : Codable {
     var base: TokenFilter
     
     init(_ base: TokenFilter) {

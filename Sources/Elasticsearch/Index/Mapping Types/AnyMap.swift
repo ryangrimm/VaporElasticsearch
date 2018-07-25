@@ -89,7 +89,7 @@ public enum MapType: String, Codable {
 }
 
 /// :nodoc:
-public struct AnyMap : Codable {
+internal struct AnyMap : Codable {
     var base: Mappable
     
     init(_ base: Mappable) {

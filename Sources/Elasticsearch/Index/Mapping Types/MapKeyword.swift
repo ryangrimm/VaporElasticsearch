@@ -50,7 +50,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
                 index: Bool? = nil,
                 store: Bool? = nil,
                 fields: [String: TextField]? = nil,
-                copyTo: [String]?,
+                copyTo: [String]? = nil,
                 boost: Float? = nil,
                 eagerGlobalOrdinals: Bool? = nil,
                 indexOptions: TextIndexOptions? = nil,

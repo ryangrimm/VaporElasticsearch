@@ -143,7 +143,7 @@ public class ElasticsearchIndex: Codable {
     }
     
     public func property(key: String, type: Mappable) -> Self {
-        mappings.doc.properties[key] = AnyMap(type)
+        mappings.doc.properties[key] = type
         
         if type is DefinesNormalizers {
             let type = type as! DefinesNormalizers
@@ -197,7 +197,7 @@ public class ElasticsearchIndex: Codable {
             throw ElasticsearchError(identifier: "missing_client", reason: "Missing client for index creation", source: .capture())
         }
         
-        let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties)
+        let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties.mapValues { AnyMap($0) })
         let digest = try SHA1.hash(propertiesJSON)
         if let _ = self.mappings.doc.meta {
             self.mappings.doc.meta!.private.propertiesHash = digest.hexEncodedString()

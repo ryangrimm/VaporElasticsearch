@@ -95,7 +95,7 @@ public enum TokenizerType: String, Codable {
 }
 
 /// :nodoc:
-public struct AnyTokenizer : Codable {
+internal struct AnyTokenizer : Codable {
     var base: Tokenizer
     
     init(_ base: Tokenizer) {

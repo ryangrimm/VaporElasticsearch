@@ -52,7 +52,7 @@ public struct MapText: Mappable, DefinesAnalyzers {
     public init(index: Bool? = nil,
                 store: Bool? = nil,
                 fields: [String: TextField]? = nil,
-                copyTo: [String]?,
+                copyTo: [String]? = nil,
                 analyzer: Analyzer? = nil,
                 searchAnalyzer: Analyzer? = nil,
                 searchQuoteAnalyzer: Analyzer? = nil,

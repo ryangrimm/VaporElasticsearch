@@ -19,7 +19,7 @@ public enum NormalizerType: String, Codable {
 }
 
 /// :nodoc:
-public struct AnyNormalizer : Codable {
+internal struct AnyNormalizer : Codable {
     var base: Normalizer
     
     init(_ base: Normalizer) {

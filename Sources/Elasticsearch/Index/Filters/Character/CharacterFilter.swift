@@ -42,7 +42,7 @@ public enum CharacterFilterType: String, Codable {
 }
 
 /// :nodoc:
-public struct AnyCharacterFilter : Codable {
+internal struct AnyCharacterFilter : Codable {
     var base: CharacterFilter
     
     init(_ base: CharacterFilter) {

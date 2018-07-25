@@ -14,8 +14,7 @@ public struct MapNested: Mappable, DefinesNormalizers, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.nested
 
-    // TODO don't use AnyMap
-    public let properties: [String: AnyMap]?
+    public let properties: [String: Mappable]?
     public let dynamic: Bool?
     
     enum CodingKeys: String, CodingKey {
@@ -23,9 +22,31 @@ public struct MapNested: Mappable, DefinesNormalizers, DefinesAnalyzers {
         case dynamic
     }
     
-    public init(properties: [String: AnyMap]?, dynamic: Bool? = false) {
+    public init(properties: [String: Mappable]?, dynamic: Bool? = false) {
         self.properties = properties
         self.dynamic = dynamic
+    }
+    
+    /// :nodoc:
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        if let properties = properties {
+            try container.encodeIfPresent(properties.mapValues { AnyMap($0) }, forKey: .properties)
+        }
+        try container.encodeIfPresent(dynamic, forKey: .dynamic)
+    }
+    
+    /// :nodoc:
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if container.contains(.properties) {
+            self.properties = try container.decode([String: AnyMap].self, forKey: CodingKeys.properties).mapValues { $0.base }
+        } else {
+            self.properties = nil
+        }
+        self.dynamic = try container.decodeIfPresent(Bool.self, forKey: .dynamic)
     }
     
     /// :nodoc:

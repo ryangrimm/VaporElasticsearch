@@ -65,7 +65,7 @@ public enum AnalyzerType: String, Codable {
 }
 
 /// :nodoc:
-public struct AnyAnalyzer : Codable {
+internal struct AnyAnalyzer : Codable {
     var base: Analyzer
     
     init(_ base: Analyzer) {

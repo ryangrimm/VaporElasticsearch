@@ -1,7 +1,7 @@
 import Foundation
 
 struct DocumentTypeSettings: Codable {
-    var properties = [String: AnyMap]()
+    var properties = [String: Mappable]()
     var enabled = true
     var dynamic = false
     var meta: IndexMeta?
@@ -24,7 +24,7 @@ struct DocumentTypeSettings: Codable {
             return
         }
         
-        self.properties = try container.decode([String: AnyMap].self, forKey: .properties)
+        self.properties = try container.decode([String: AnyMap].self, forKey: .properties).mapValues { $0.base }
         self.meta = try? container.decode(IndexMeta.self, forKey: .meta)
         
         if container.contains(.enabled) {
@@ -43,5 +43,15 @@ struct DocumentTypeSettings: Codable {
                 self.dynamic = try container.decode(String.self, forKey: .dynamic) == "true"
             }
         }
+    }
+    
+    /// :nodoc:
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+                
+        try container.encode(properties.mapValues { AnyMap($0) }, forKey: .properties)
+        try container.encodeIfPresent(dynamic, forKey: .dynamic)
+        try container.encodeIfPresent(enabled, forKey: .enabled)
+        try container.encodeIfPresent(meta, forKey: .meta)
     }
 }
