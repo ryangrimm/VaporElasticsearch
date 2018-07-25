@@ -66,6 +66,7 @@ custom_categories:
   - AggregationSingleValueResponse
   - AggregationStatsResponse
   - AggregationTermsResponse
+  - AggregationBucket
   - DocResponse
   - IndexResponse
   - SearchResponse
@@ -111,6 +112,9 @@ custom_categories:
   - PatternAnalyzer
   - SimpleAnalyzer
   - StopAnalyzer
+- name: Normalizers
+  children:
+  - CustomNormalizer
 - name: Tokenizers
   children:
   - ClassicTokenizer
@@ -127,6 +131,28 @@ custom_categories:
   - ThaiTokenizer
   - UAXURLEmailTokenizer
   - WhitespaceTokenizer
+- name: Character Filters
+  children:
+  - HTMLStripCharacterFilter
+  - PatternReplaceCharacterFilter
+  - MappingCharacterFilter
+- name: Token Filters
+  children:
+  - ASCIIFoldingFilter
+  - ApostropheFilter
+  - ClassicFilter
+  - DecimalDigitFilter
+  - EdgeNGramFilter
+  - KStemFilter
+  - LengthFilter
+  - LowercaseFilter
+  - NGramFilter
+  - PorterStemFilter
+  - ReverseFilter
+  - StandardFilter
+  - SynonymFilter
+  - TrimFilter
+  - UppercaseFilter
 - name: Supporting Structures
   children:
   - Operator

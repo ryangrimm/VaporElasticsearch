@@ -4,7 +4,6 @@
 * Date parsing in aggregation responses
 * Implement more aggregation types, especially bucketed
 * Ability to get back raw results
-* Support copy_to
 * Implement the KeyedCacheSupporting protocol
 * Implement the DatabaseQueryable protocol
 * Create a chainable query builder

@@ -14,7 +14,7 @@
     <a title="Terms Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Elasticsearch Docs</a> (18% documented)</p>
+        <p><a href="../index.html">Elasticsearch Docs</a> (12% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -37,7 +37,13 @@
                 <a href="../Classes/ElasticsearchIndex.html">ElasticsearchIndex</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/ElasticsearchIndex.html#/s:13Elasticsearch0A5IndexC8SettingsV">– Settings</a>
+                <a href="../Classes/ElasticsearchIndex.html#/s:13Elasticsearch0A5IndexC11DefaultTypeV">– DefaultType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchIndex.html#/s:13Elasticsearch0A5IndexC5AliasV">– Alias</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ElasticsearchIndex/Settings.html">– Settings</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/ElasticsearchDatabase.html">ElasticsearchDatabase</a>
@@ -103,6 +109,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Range.html">Range</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Range.html#/s:13Elasticsearch5RangeV0B4PairV">– RangePair</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Regexp.html">Regexp</a>
@@ -250,7 +259,7 @@
                 <a href="../Structs/SearchResponse/HitsContainer.html">– HitsContainer</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Response Structures.html#/s:13Elasticsearch12BulkResponseV">BulkResponse</a>
+                <a href="../Structs/BulkResponse.html">BulkResponse</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/BulkItemResponse.html">BulkItemResponse</a>
@@ -450,6 +459,76 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Character Filters.html">Character Filters</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/HTMLStripCharacterFilter.html">HTMLStripCharacterFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PatternReplaceCharacterFilter.html">PatternReplaceCharacterFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MappingCharacterFilter.html">MappingCharacterFilter</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Token Filters.html">Token Filters</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ASCIIFoldingFilter.html">ASCIIFoldingFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ApostropheFilter.html">ApostropheFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ClassicFilter.html">ClassicFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DecimalDigitFilter.html">DecimalDigitFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EdgeNGramFilter.html">EdgeNGramFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/KStemFilter.html">KStemFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LengthFilter.html">LengthFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LowercaseFilter.html">LowercaseFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LowercaseFilter/Language.html">– Language</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NGramFilter.html">NGramFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PorterStemFilter.html">PorterStemFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ReverseFilter.html">ReverseFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StandardFilter.html">StandardFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SynonymFilter.html">SynonymFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SynonymFilter/Format.html">– Format</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TrimFilter.html">TrimFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UppercaseFilter.html">UppercaseFilter</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Supporting Structures.html">Supporting Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -494,16 +573,25 @@
               <li class="nav-group-task">
                 <a href="../Structs/Analysis.html">Analysis</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Structs/Analysis/Filter.html">– Filter</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="../Other Protocols.html">Other Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/Analyzer.html">Analyzer</a>
+                <a href="../Protocols/DefinesAnalyzers.html">DefinesAnalyzers</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DefinesCharacterFilters.html">DefinesCharacterFilters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DefinesNormalizers.html">DefinesNormalizers</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DefinesTokenFilters.html">DefinesTokenFilters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DefinesTokenizers.html">DefinesTokenizers</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Mappable.html">Mappable</a>
@@ -511,22 +599,16 @@
               <li class="nav-group-task">
                 <a href="../Protocols/SettableID.html">SettableID</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/Tokenizer.html">Tokenizer</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="../Other Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Structs/AnyAnalyzer.html">AnyAnalyzer</a>
+                <a href="../Structs/CustomNormalizer.html">CustomNormalizer</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ElasticsearchError.html">ElasticsearchError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/Normalizer.html">Normalizer</a>
               </li>
             </ul>
           </li>
@@ -564,6 +646,60 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:13Elasticsearch5TermsV5fieldSSvp"></a>
+                    <a name="//apple_ref/swift/Property/field" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch5TermsV5fieldSSvp">field</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">field</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch5TermsV6valuesSaySSGvp"></a>
+                    <a name="//apple_ref/swift/Property/values" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch5TermsV6valuesSaySSGvp">values</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">values</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:13Elasticsearch5TermsVACSS5field_SaySSG6valuestcfc"></a>
                     <a name="//apple_ref/swift/Method/init(field:values:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:13Elasticsearch5TermsVACSS5field_SaySSG6valuestcfc">init(field:values:)</a>
@@ -593,7 +729,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-07-20)</p>
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Ryan Grimm</a>. All rights reserved. (Last updated: 2018-07-25)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
