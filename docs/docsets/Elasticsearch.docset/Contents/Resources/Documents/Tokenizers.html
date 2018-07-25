@@ -14,7 +14,7 @@
     <a title="Tokenizers  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Elasticsearch Docs</a> (12% documented)</p>
+        <p><a href="index.html">Elasticsearch Docs</a> (16% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -238,6 +238,9 @@
                 <a href="Structs/AggregationTermsResponse.html">AggregationTermsResponse</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/AggregationBucket.html">AggregationBucket</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/DocResponse.html">DocResponse</a>
               </li>
               <li class="nav-group-task">
@@ -406,6 +409,14 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="Normalizers.html">Normalizers</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/CustomNormalizer.html">CustomNormalizer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="Tokenizers.html">Tokenizers</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -562,9 +573,6 @@
                 <a href="Structs/Script.html">Script</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/AggregationBucket.html">AggregationBucket</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Structs/BulkHeader.html">BulkHeader</a>
               </li>
               <li class="nav-group-task">
@@ -605,9 +613,6 @@
             <a href="Other Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/CustomNormalizer.html">CustomNormalizer</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Structs/ElasticsearchError.html">ElasticsearchError</a>
               </li>
             </ul>
@@ -647,7 +652,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The classic tokenizer is a grammar based tokenizer that is good for English language documents. This tokenizer has heuristics for special treatment of acronyms, company names, email addresses, and internet host names. However, these rules don’t always work, and the tokenizer doesn’t work well for most languages other than English:</p>
+
+<ul>
+<li>It splits words at most punctuation characters, removing punctuation. However, a dot that’s not followed by whitespace is considered part of a token.</li>
+<li>It splits words at hyphens, unless there’s a number in the token, in which case the whole token is interpreted as a product number and is not split.</li>
+<li>It recognizes email addresses and internet hostnames as one token.</li>
+</ul>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-classic-tokenizer.html">More information</a></p>
 
                         <a href="Structs/ClassicTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -679,7 +692,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The edge_ngram tokenizer first breaks text down into words whenever it encounters one of a list of specified characters, then it emits N-grams of each word where the start of the N-gram is anchored to the beginning of the word.</p>
+
+<p>Edge N-Grams are useful for search-as-you-type queries.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-edgengram-tokenizer.html">More information</a></p>
 
                         <a href="Structs/EdgeNGramTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -711,7 +728,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The keyword tokenizer is a “noop” tokenizer that accepts whatever text it is given and outputs the exact same text as a single term. It can be combined with token filters to normalise output, e.g. lower-casing email addresses.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-keyword-tokenizer.html">More information</a></p>
 
                         <a href="Structs/KeywordTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -743,7 +762,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The letter tokenizer breaks text into terms whenever it encounters a character which is not a letter. It does a reasonable job for most European languages, but does a terrible job for some Asian languages, where words are not separated by spaces.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-standard-tokenizer.html">More information</a></p>
 
                         <a href="Structs/LetterTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -775,7 +796,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The lowercase tokenizer, like the letter tokenizer breaks text into terms whenever it encounters a character which is not a letter, but it also lowercases all terms. It is functionally equivalent to the letter tokenizer combined with the lowercase token filter, but is more efficient as it performs both steps in a single pass.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lowercase-tokenizer.html">More information</a></p>
 
                         <a href="Structs/LowercaseTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -807,7 +830,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The ngram tokenizer first breaks text down into words whenever it encounters one of a list of specified characters, then it emits N-grams of each word of the specified length.</p>
+
+<p>N-grams are like a sliding window that moves across the word - a continuous sequence of characters of the specified length. They are useful for querying languages that don’t use spaces or that have long compound words, like German.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html">More information</a></p>
 
                         <a href="Structs/NGramTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -839,7 +866,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The path hierarchy tokenizer takes a hierarchical value like a filesystem path, splits on the path separator, and emits a term for each component in the tree.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pathhierarchy-tokenizer.html">More information</a></p>
 
                         <a href="Structs/PathHierarchyTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -871,7 +900,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The pattern tokenizer uses a regular expression to either split text into terms whenever it matches a word separator, or to capture matching text as terms.</p>
+
+<p>The default pattern is \W+, which splits text whenever it encounters non-word characters.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pattern-tokenizer.html">More information</a></p>
 
                         <a href="Structs/PatternTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -903,7 +936,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The simple pattern split tokenizer uses a regular expression to split the input into terms at pattern matches. The set of regular expression features it supports is more limited than the pattern tokenizer, but the tokenization is generally faster.</p>
+
+<p>This tokenizer does not produce terms from the matches themselves. To produce terms from matches using patterns in the same restricted regular expression subset, see the simple_pattern tokenizer.</p>
+
+<p>This tokenizer uses Lucene regular expressions. For an explanation of the supported features and syntax, see Regular Expression Syntax.</p>
+
+<p>The default pattern is the empty string, which produces one term containing the full input. This tokenizer should always be configured with a non-default pattern.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-simplepatternsplit-tokenizer.html">More information</a></p>
 
                         <a href="Structs/SimplePatternSplitTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -935,7 +976,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The simple pattern tokenizer uses a regular expression to capture matching text as terms. The set of regular expression features it supports is more limited than the pattern tokenizer, but the tokenization is generally faster.</p>
+
+<p>This tokenizer does not support splitting the input on a pattern match, unlike the pattern tokenizer. To split on pattern matches using the same restricted regular expression subset, see the simple_pattern_split tokenizer.</p>
+
+<p>This tokenizer uses Lucene regular expressions. For an explanation of the supported features and syntax, see Regular Expression Syntax.</p>
+
+<p>The default pattern is the empty string, which produces no terms. This tokenizer should always be configured with a non-default pattern.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-simplepattern-tokenizer.html">More information</a></p>
 
                         <a href="Structs/SimplePatternTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -967,7 +1016,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The standard tokenizer provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-standard-tokenizer.html">More information</a></p>
 
                         <a href="Structs/StandardTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -999,7 +1050,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The thai tokenizer segments Thai text into words, using the Thai segmentation algorithm included with Java. Text in other languages in general will be treated the same as the standard tokenizer.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-thai-tokenizer.html">More information</a></p>
 
                         <a href="Structs/ThaiTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -1031,7 +1084,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The uax url email tokenizer is like the standard tokenizer except that it recognises URLs and email addresses as single tokens.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-uaxurlemail-tokenizer.html">More information</a></p>
 
                         <a href="Structs/UAXURLEmailTokenizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -1063,7 +1118,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The whitespace tokenizer breaks text into terms whenever it encounters a whitespace character.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-whitespace-tokenizer.html">More information</a></p>
 
                         <a href="Structs/WhitespaceTokenizer.html" class="slightly-smaller">See more</a>
                       </div>

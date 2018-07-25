@@ -14,7 +14,7 @@
     <a title="ClassicTokenizer Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Elasticsearch Docs</a> (12% documented)</p>
+        <p><a href="../index.html">Elasticsearch Docs</a> (16% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -238,6 +238,9 @@
                 <a href="../Structs/AggregationTermsResponse.html">AggregationTermsResponse</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/AggregationBucket.html">AggregationBucket</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/DocResponse.html">DocResponse</a>
               </li>
               <li class="nav-group-task">
@@ -406,6 +409,14 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Normalizers.html">Normalizers</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CustomNormalizer.html">CustomNormalizer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Tokenizers.html">Tokenizers</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -562,9 +573,6 @@
                 <a href="../Structs/Script.html">Script</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/AggregationBucket.html">AggregationBucket</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/BulkHeader.html">BulkHeader</a>
               </li>
               <li class="nav-group-task">
@@ -605,9 +613,6 @@
             <a href="../Other Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Structs/CustomNormalizer.html">CustomNormalizer</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/ElasticsearchError.html">ElasticsearchError</a>
               </li>
             </ul>
@@ -635,7 +640,15 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>The classic tokenizer is a grammar based tokenizer that is good for English language documents. This tokenizer has heuristics for special treatment of acronyms, company names, email addresses, and internet host names. However, these rules don’t always work, and the tokenizer doesn’t work well for most languages other than English:</p>
+
+<ul>
+<li>It splits words at most punctuation characters, removing punctuation. However, a dot that’s not followed by whitespace is considered part of a token.</li>
+<li>It splits words at hyphens, unless there’s a number in the token, in which case the whole token is interpreted as a product number and is not split.</li>
+<li>It recognizes email addresses and internet hostnames as one token.</li>
+</ul>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-classic-tokenizer.html">More information</a></p>
 
           </section>
           <section class="section task-group-section">
