@@ -1,6 +1,13 @@
 
 import Foundation
 
+/**
+ The edge_ngram tokenizer first breaks text down into words whenever it encounters one of a list of specified characters, then it emits N-grams of each word where the start of the N-gram is anchored to the beginning of the word.
+ 
+ Edge N-Grams are useful for search-as-you-type queries.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-edgengram-tokenizer.html)
+ */
 public struct EdgeNGramTokenizer: Tokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.edgengram

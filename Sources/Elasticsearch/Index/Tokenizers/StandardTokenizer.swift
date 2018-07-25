@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+The standard tokenizer provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-standard-tokenizer.html)
+ */
 public struct StandardTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.standard

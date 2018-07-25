@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+ A token filter of type nGram.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenfilter.html)
+ */
 public struct NGramFilter: TokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.nGram

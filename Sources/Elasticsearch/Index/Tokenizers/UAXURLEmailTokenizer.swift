@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+ The uax url email tokenizer is like the standard tokenizer except that it recognises URLs and email addresses as single tokens.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-uaxurlemail-tokenizer.html)
+ */
 public struct UAXURLEmailTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.UAXURLEmail

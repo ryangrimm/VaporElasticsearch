@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+ A token filter of type length that removes words that are too long or too short for the stream.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-length-tokenfilter.html)
+ */
 public struct LengthFilter: TokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.length

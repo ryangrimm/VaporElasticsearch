@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+ The synonym token filter allows to easily handle synonyms during the analysis process. Synonyms are configured using a configuration file.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html)
+ */
 public struct SynonymFilter: TokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.synonym

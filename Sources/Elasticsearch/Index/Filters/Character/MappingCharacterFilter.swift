@@ -1,6 +1,13 @@
 
 import Foundation
 
+/**
+ The mapping character filter accepts a map of keys and values. Whenever it encounters a string of characters that is the same as a key, it replaces them with the value associated with that key.
+ 
+ Matching is greedy; the longest pattern matching at a given point wins. Replacements are allowed to be the empty string.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-mapping-charfilter.html)
+ */
 public struct MappingCharacterFilter: CharacterFilter {
     /// :nodoc:
     public static var typeKey = CharacterFilterType.mapping

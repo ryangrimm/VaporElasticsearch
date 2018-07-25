@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+ The HTML strip character filter strips HTML elements from the text and replaces HTML entities with their decoded value (e.g. replacing &amp; with &).
+ 
+ [More Information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-htmlstrip-charfilter.html)
+ */
 public struct HTMLStripCharacterFilter: CharacterFilter, BuiltinCharacterTokenFilter {
     /// :nodoc:
     public static var typeKey = CharacterFilterType.htmlStrip

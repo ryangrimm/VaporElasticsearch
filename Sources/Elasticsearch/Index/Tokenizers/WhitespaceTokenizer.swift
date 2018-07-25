@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+ The whitespace tokenizer breaks text into terms whenever it encounters a whitespace character.
+
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-whitespace-tokenizer.html)
+ */
 public struct WhitespaceTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.whitespace

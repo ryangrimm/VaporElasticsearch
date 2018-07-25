@@ -1,6 +1,13 @@
 
 import Foundation
 
+/**
+ A token filter of type lowercase that normalizes token text to lower case.
+ 
+ Lowercase token filter supports Greek, Irish, and Turkish lowercase token filters through the language parameter.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lowercase-tokenfilter.html)
+ */
 public struct LowercaseFilter: TokenFilter, BuiltinTokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.lowercase

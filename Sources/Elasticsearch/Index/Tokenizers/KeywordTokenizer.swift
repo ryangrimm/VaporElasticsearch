@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+ The keyword tokenizer is a “noop” tokenizer that accepts whatever text it is given and outputs the exact same text as a single term. It can be combined with token filters to normalise output, e.g. lower-casing email addresses.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-keyword-tokenizer.html)
+ */
 public struct KeywordTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.keyword

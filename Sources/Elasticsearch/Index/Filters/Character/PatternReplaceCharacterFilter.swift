@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+ The pattern replace character filter uses a regular expression to match characters which should be replaced with the specified replacement string. The replacement string can refer to capture groups in the regular expression.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pattern-replace-charfilter.html)
+ */
 public struct PatternReplaceCharacterFilter: CharacterFilter {
     /// :nodoc:
     public static var typeKey = CharacterFilterType.patternReplace

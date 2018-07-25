@@ -1,6 +1,13 @@
 
 import Foundation
 
+/**
+ The ngram tokenizer first breaks text down into words whenever it encounters one of a list of specified characters, then it emits N-grams of each word of the specified length.
+ 
+ N-grams are like a sliding window that moves across the word - a continuous sequence of characters of the specified length. They are useful for querying languages that don’t use spaces or that have long compound words, like German.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html)
+ */
 public struct NGramTokenizer: Tokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.ngram

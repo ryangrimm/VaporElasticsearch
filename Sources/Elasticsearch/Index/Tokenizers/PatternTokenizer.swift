@@ -1,6 +1,13 @@
 
 import Foundation
 
+/**
+ The pattern tokenizer uses a regular expression to either split text into terms whenever it matches a word separator, or to capture matching text as terms.
+ 
+ The default pattern is \W+, which splits text whenever it encounters non-word characters.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pattern-tokenizer.html)
+ */
 public struct PatternTokenizer: Tokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.pattern

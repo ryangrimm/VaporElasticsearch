@@ -1,6 +1,11 @@
 
 import Foundation
 
+/**
+ The path hierarchy tokenizer takes a hierarchical value like a filesystem path, splits on the path separator, and emits a term for each component in the tree.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pathhierarchy-tokenizer.html)
+ */
 public struct PathHierarchyTokenizer: Tokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.pathHierarchy
