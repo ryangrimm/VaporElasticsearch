@@ -7,10 +7,10 @@ public struct FingerprintAnalyzer: Analyzer {
     
     public let type = typeKey.rawValue
     public let name: String
-    public var separator: String? = nil
-    public var maxOutputSize: Int? = nil
-    public var stopwords: [String]? = nil
-    public var stopwordsPath: String? = nil
+    public let separator: String?
+    public let maxOutputSize: Int?
+    public let stopwords: [String]?
+    public let stopwordsPath: String?
     
     enum CodingKeys: String, CodingKey {
         case type

@@ -5,10 +5,9 @@ public struct ClassicTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.classic
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
-    public var maxTokenLength: Int? = nil
+    public let maxTokenLength: Int?
     
     let isCustom: Bool
     
@@ -19,6 +18,7 @@ public struct ClassicTokenizer: Tokenizer, BultinTokenizer {
     
     public init() {
         self.name = type
+        self.maxTokenLength = nil
         self.isCustom = false
     }
     

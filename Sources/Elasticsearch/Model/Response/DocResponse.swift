@@ -1,11 +1,11 @@
 
 public struct DocResponse<T: Codable>: Codable {
-    let index :String
-    let type :String
-    let id :String
-    let version :Int
-    var source :T
-    var routing :String? = nil
+    public let index :String
+    public let type :String
+    public let id :String
+    public let version :Int
+    public var source :T
+    public var routing :String? = nil
     
     enum CodingKeys: String, CodingKey {
         case index = "_index"

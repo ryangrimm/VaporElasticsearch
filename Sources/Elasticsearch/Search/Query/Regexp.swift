@@ -19,9 +19,9 @@ public struct Regexp: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.regexp
 
-    let field: String
-    let value: String
-    let boost: Decimal?
+    public let field: String
+    public let value: String
+    public let boost: Decimal?
 
     public init(field: String, value: String, boost: Decimal?) {
         self.field = field

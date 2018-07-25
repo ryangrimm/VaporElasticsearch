@@ -5,13 +5,11 @@ public struct PatternTokenizer: Tokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.pattern
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
-    
-    public var pattern: String? = nil
-    public var flags: String? = nil
-    public var group: Int? = nil
+    public let pattern: String?
+    public let flags: String?
+    public let group: Int?
 
     enum CodingKeys: String, CodingKey {
         case type

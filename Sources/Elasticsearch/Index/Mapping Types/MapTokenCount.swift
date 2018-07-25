@@ -11,15 +11,14 @@ public struct MapTokenCount: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.tokenCount
     
-    let type = typeKey.rawValue
-    
-    public var analyzer: String?
-    public var enablePositionIncrements: Bool?
-    public var boost: Float? = 1.0
-    public var docValues: Bool? = true
-    public var index: Bool? = true
-    public var nullValue: Bool? = nil
-    public var store: Bool? = false
+    public let type = typeKey.rawValue
+    public let analyzer: String?
+    public let enablePositionIncrements: Bool?
+    public let boost: Float?
+    public let docValues: Bool?
+    public let index: Bool?
+    public let nullValue: Bool?
+    public let store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -27,16 +26,17 @@ public struct MapTokenCount: Mappable {
         case enablePositionIncrements = "enable_position_increments"
         case boost
         case docValues = "doc_values"
+        case index
         case nullValue = "null_value"
         case store
     }
     
-    public init(docValues: Bool? = true,
-                index: Bool? = true,
-                store: Bool? = false,
+    public init(docValues: Bool? = nil,
+                index: Bool? = nil,
+                store: Bool? = nil,
                 analyzer: String? = nil,
                 enablePositionIncrements: Bool? = nil,
-                boost: Float? = 1.0,
+                boost: Float? = nil,
                 nullValue: Bool? = nil) {
         
         self.docValues = docValues

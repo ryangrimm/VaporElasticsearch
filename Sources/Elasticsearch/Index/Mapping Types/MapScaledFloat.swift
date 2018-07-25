@@ -11,15 +11,14 @@ public struct MapScaledFloat: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.scaledFloat
 
-    let type = typeKey.rawValue
-    
-    public var coerce: Bool? = true
-    public var boost: Float? = 1.0
-    public var docValues: Bool? = true
-    public var ignoreMalformed: Bool? = false
-    public var index: Bool? = true
-    public var nullValue: Float? = nil
-    public var store: Bool? = false
+    public let type = typeKey.rawValue
+    public let coerce: Bool?
+    public let boost: Float?
+    public let docValues: Bool?
+    public let ignoreMalformed: Bool?
+    public let index: Bool?
+    public let nullValue: Float?
+    public let store: Bool?
     
     public var scalingFactor: Int? = 0
     
@@ -35,11 +34,11 @@ public struct MapScaledFloat: Mappable {
         case scalingFactor = "scaling_factor"
     }
     
-    public init(scalingFactor: Int? = 0,
-                docValues: Bool? = true,
-                index: Bool? = true,
-                store: Bool? = false,
-                boost: Float? = 1.0,
+    public init(scalingFactor: Int? = nil,
+                docValues: Bool? = nil,
+                index: Bool? = nil,
+                store: Bool? = nil,
+                boost: Float? = nil,
                 coerce: Bool? = nil,
                 ignoreMalformed: Bool? = nil,
                 nullValue: Float? = nil) {

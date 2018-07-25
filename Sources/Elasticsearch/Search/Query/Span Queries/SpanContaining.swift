@@ -4,8 +4,8 @@ public struct SpanContaining: QueryElement, SpanQuery {
     /// :nodoc:
     public static var typeKey = QueryElementMap.spanContaining
     
-    let little: SpanQueryElement
-    let big: SpanQueryElement
+    public let little: SpanQueryElement
+    public let big: SpanQueryElement
     
     enum CodingKeys: String, CodingKey {
         case little

@@ -5,8 +5,7 @@ public struct ThaiTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.thai
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
     
     public init() {

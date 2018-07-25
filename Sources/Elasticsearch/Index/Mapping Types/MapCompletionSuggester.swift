@@ -11,13 +11,12 @@ public struct MapCompletionSuggester: Mappable, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.completionSuggester
     
-    let type = typeKey.rawValue
-    
-    public var analyzer: Analyzer?
-    public var searchAnalyzer: Analyzer?
-    public var preserveSeparators: Bool?
-    public var preservePositionIncrements: Bool?
-    public var maxInputLength: Int?
+    public let type = typeKey.rawValue
+    public let analyzer: Analyzer?
+    public let searchAnalyzer: Analyzer?
+    public let preserveSeparators: Bool?
+    public let preservePositionIncrements: Bool?
+    public let maxInputLength: Int?
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -71,20 +70,28 @@ public struct MapCompletionSuggester: Mappable, DefinesAnalyzers {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
+        self.preserveSeparators = try container.decodeIfPresent(Bool.self, forKey: .preserveSeparators)
+        self.preservePositionIncrements = try container.decodeIfPresent(Bool.self, forKey: .preservePositionIncrements)
+        self.maxInputLength = try container.decodeIfPresent(Int.self, forKey: .maxInputLength)
+        
         if let analysis = decoder.getAnalysis() {
             let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer)
             if let analyzer = analyzer {
                 self.analyzer = analysis.analyzer(named: analyzer)
+            } else {
+                self.analyzer = nil
             }
             
             let searchAnalyzer = try container.decodeIfPresent(String.self, forKey: .searchAnalyzer)
             if let searchAnalyzer = searchAnalyzer {
                 self.searchAnalyzer = analysis.analyzer(named: searchAnalyzer)
+            } else {
+                self.searchAnalyzer = nil
             }
-            
-            self.preserveSeparators = try container.decodeIfPresent(Bool.self, forKey: .preserveSeparators)
-            self.preservePositionIncrements = try container.decodeIfPresent(Bool.self, forKey: .preservePositionIncrements)
-            self.maxInputLength = try container.decodeIfPresent(Int.self, forKey: .maxInputLength)
+        }
+        else {
+            self.analyzer = nil
+            self.searchAnalyzer = nil
         }
     }
 }

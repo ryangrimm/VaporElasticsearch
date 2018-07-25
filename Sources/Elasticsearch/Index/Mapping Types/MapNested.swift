@@ -14,8 +14,9 @@ public struct MapNested: Mappable, DefinesNormalizers, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.nested
 
-    public var properties: [String: AnyMap]?
-    public var dynamic: Bool? = false
+    // TODO don't use AnyMap
+    public let properties: [String: AnyMap]?
+    public let dynamic: Bool?
     
     enum CodingKeys: String, CodingKey {
         case properties

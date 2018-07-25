@@ -9,7 +9,7 @@ public struct ScriptQuery: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.script
     
-    let script: Script
+    public let script: Script
     
     enum CodingKeys: String, CodingKey {
         case script

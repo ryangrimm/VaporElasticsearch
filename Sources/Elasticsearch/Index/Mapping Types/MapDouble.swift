@@ -11,15 +11,14 @@ public struct MapDouble: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.double
 
-    let type = typeKey.rawValue
-    
-    public var coerce: Bool? = true
-    public var boost: Float? = 1.0
-    public var docValues: Bool? = true
-    public var ignoreMalformed: Bool? = false
-    public var index: Bool? = true
-    public var nullValue: Double? = nil
-    public var store: Bool? = false
+    public let type = typeKey.rawValue
+    public let coerce: Bool?
+    public let boost: Float?
+    public let docValues: Bool?
+    public let ignoreMalformed: Bool?
+    public let index: Bool?
+    public let nullValue: Double?
+    public let store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -32,10 +31,10 @@ public struct MapDouble: Mappable {
         case store
     }
     
-    public init(docValues: Bool? = true,
-                index: Bool? = true,
-                store: Bool? = false,
-                boost: Float? = 1.0,
+    public init(docValues: Bool? = nil,
+                index: Bool? = nil,
+                store: Bool? = nil,
+                boost: Float? = nil,
                 coerce: Bool? = nil,
                 ignoreMalformed: Bool? = nil,
                 nullValue: Double? = nil) {

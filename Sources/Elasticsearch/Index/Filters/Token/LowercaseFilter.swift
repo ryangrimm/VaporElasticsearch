@@ -7,7 +7,7 @@ public struct LowercaseFilter: TokenFilter, BuiltinTokenFilter {
     
     public let type = typeKey.rawValue
     public let name: String
-    public var language: Language?
+    public let language: Language?
     
     let isCustom: Bool
     
@@ -24,6 +24,7 @@ public struct LowercaseFilter: TokenFilter, BuiltinTokenFilter {
     
     public init() {
         self.name = type
+        self.language = nil
         self.isCustom = false
     }
     

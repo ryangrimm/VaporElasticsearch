@@ -1,11 +1,12 @@
 import Foundation
 
-
+/// :nodoc:
 public protocol Analyzer: Codable {
     static var typeKey: AnalyzerType { get }
     var name: String { get }
 }
 
+/// :nodoc:
 public protocol BuiltinAnalyzer {
     init()
 }
@@ -63,6 +64,7 @@ public enum AnalyzerType: String, Codable {
     }
 }
 
+/// :nodoc:
 public struct AnyAnalyzer : Codable {
     var base: Analyzer
     

@@ -1,13 +1,13 @@
 public struct IndexResponse: Codable {
-    let shards :Shards
-    let index :String
-    let type :String
-    let id :String
-    let version :Int
-    let result :ResultType
-    let seqNo: Int
-    let primaryTerm: Int
-    var routing :String?
+    public let shards :Shards
+    public let index :String
+    public let type :String
+    public let id :String
+    public let version :Int
+    public let result :ResultType
+    public let seqNo: Int
+    public let primaryTerm: Int
+//    public let routing :String?
     
     public struct Shards: Codable {
         public let total: Int

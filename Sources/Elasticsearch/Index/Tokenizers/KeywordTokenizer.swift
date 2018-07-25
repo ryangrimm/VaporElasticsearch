@@ -5,10 +5,9 @@ public struct KeywordTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.keyword
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
-    public var bufferSize: Int? = nil
+    public var bufferSize: Int?
     
     let isCustom: Bool
     
@@ -19,6 +18,7 @@ public struct KeywordTokenizer: Tokenizer, BultinTokenizer {
     
     public init() {
         self.name = self.type
+        self.bufferSize = nil
         self.isCustom = false
     }
     

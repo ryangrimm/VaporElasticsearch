@@ -7,8 +7,8 @@ public struct StopAnalyzer: Analyzer {
     
     public let type = typeKey.rawValue
     public let name: String
-    public var stopwords: [String]? = nil
-    public var stopwordsPath: String? = nil
+    public let stopwords: [String]?
+    public let stopwordsPath: String?
     
     enum CodingKeys: String, CodingKey {
         case type

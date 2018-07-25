@@ -7,11 +7,11 @@ public struct PatternAnalyzer: Analyzer {
     
     public let type = typeKey.rawValue
     public let name: String
-    public var pattern: String? = nil
-    public var flags: String? = nil
-    public var lowercase: Bool? = nil
-    public var stopwords: [String]? = nil
-    public var stopwordsPath: String? = nil
+    public let pattern: String?
+    public let flags: String?
+    public let lowercase: Bool?
+    public let stopwords: [String]?
+    public let stopwordsPath: String?
     
     enum CodingKeys: String, CodingKey {
         case type

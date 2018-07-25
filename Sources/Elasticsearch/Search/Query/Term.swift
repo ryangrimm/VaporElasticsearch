@@ -9,9 +9,9 @@ public struct Term: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.term
 
-    let field: String
-    let value: String
-    let boost: Decimal?
+    public let field: String
+    public let value: String
+    public let boost: Decimal?
 
     public init(field: String, value: String, boost: Decimal? = nil) {
         self.field = field

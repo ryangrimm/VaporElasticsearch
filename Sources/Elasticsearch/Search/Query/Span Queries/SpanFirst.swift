@@ -4,8 +4,8 @@ public struct SpanFirst: QueryElement, SpanQuery {
     /// :nodoc:
     public static var typeKey = QueryElementMap.spanFirst
     
-    let match: SpanQueryElement
-    let end: Int
+    public let match: SpanQueryElement
+    public let end: Int
     
     enum CodingKeys: String, CodingKey {
         case match

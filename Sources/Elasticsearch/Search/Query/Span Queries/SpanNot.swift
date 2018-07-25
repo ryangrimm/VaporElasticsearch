@@ -4,12 +4,12 @@ public struct SpanNot: QueryElement, SpanQuery {
     /// :nodoc:
     public static var typeKey = QueryElementMap.spanNot
     
-    let include: SpanQueryElement
-    let exclude: SpanQueryElement
+    public let include: SpanQueryElement
+    public let exclude: SpanQueryElement
 
-    let pre: Int?
-    let post: Int?
-    let dist: Int?
+    public let pre: Int?
+    public let post: Int?
+    public let dist: Int?
 
     enum CodingKeys: String, CodingKey {
         case include

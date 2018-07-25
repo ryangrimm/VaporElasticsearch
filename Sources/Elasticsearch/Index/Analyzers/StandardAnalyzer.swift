@@ -7,9 +7,9 @@ public struct StandardAnalyzer: Analyzer, BuiltinAnalyzer {
     
     public let type = typeKey.rawValue
     public let name: String
-    public var maxTokenLength: Int? = nil
-    public var stopwords: [String]? = nil
-    public var stopwordsPath: String? = nil
+    public let maxTokenLength: Int?
+    public let stopwords: [String]?
+    public let stopwordsPath: String?
     
     let isCustom: Bool
     
@@ -22,6 +22,9 @@ public struct StandardAnalyzer: Analyzer, BuiltinAnalyzer {
     
     public init() {
         self.name = type
+        self.maxTokenLength = nil
+        self.stopwords = nil
+        self.stopwordsPath = nil
         self.isCustom = false
     }
     

@@ -14,9 +14,10 @@ public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.object
 
-    public var properties: [String: AnyMap]?
-    public var dynamic: Bool? = false
-    public var enabled: Bool? = true
+    // TODO don't use AnyMap
+    public let properties: [String: AnyMap]?
+    public let dynamic: Bool?
+    public let enabled: Bool?
     
     enum CodingKeys: String, CodingKey {
         case properties

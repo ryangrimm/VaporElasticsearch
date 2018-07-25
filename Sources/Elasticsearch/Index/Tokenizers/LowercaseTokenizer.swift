@@ -5,8 +5,7 @@ public struct LowercaseTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.lowercase
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
     
     public init() {

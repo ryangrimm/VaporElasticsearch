@@ -9,11 +9,11 @@ public struct MatchPhrasePrefix: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.matchPhrasePrefix
 
-    let field: String
-    let query: String
-    let analyzer: String?
-    let maxExpansions: Int?
-    let boost: Decimal?
+    public let field: String
+    public let query: String
+    public let analyzer: String?
+    public let maxExpansions: Int?
+    public let boost: Decimal?
     
     public init(field: String, query: String, analyzer: String? = nil, maxExpansions: Int? = nil, boost: Decimal? = nil) {
         self.field = field

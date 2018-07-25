@@ -9,10 +9,10 @@ public struct GeoPolygon: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.geoPolygon
     
-    let field: String
-    let points: [GeoPoint]
-    let name: String?
-    let validationMethod: GeoValidationMethod?
+    public let field: String
+    public let points: [GeoPoint]
+    public let name: String?
+    public let validationMethod: GeoValidationMethod?
     
     enum CodingKeys: String, CodingKey {
         case points

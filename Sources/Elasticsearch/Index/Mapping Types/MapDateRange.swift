@@ -11,13 +11,12 @@ public struct MapDateRange: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.dateRange
     
-    let type = typeKey.rawValue
-    
-    public var format: String
-    public var coerce: Bool? = true
-    public var boost: Float? = 1.0
-    public var index: Bool? = true
-    public var store: Bool? = false
+    public let type = typeKey.rawValue
+    public let format: String
+    public let coerce: Bool?
+    public let boost: Float?
+    public let index: Bool?
+    public let store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -29,8 +28,8 @@ public struct MapDateRange: Mappable {
     }
     
     public init(format: String,
-                index: Bool? = true,
-                store: Bool? = false,
+                index: Bool? = nil,
+                store: Bool? = nil,
                 boost: Float? = nil,
                 coerce: Bool? = nil) {
         

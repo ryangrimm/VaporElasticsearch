@@ -1,5 +1,6 @@
 import Foundation
 
+/// :nodoc:
 public protocol Normalizer: Codable {
     static var typeKey: NormalizerType { get }
     var name: String { get }
@@ -17,6 +18,7 @@ public enum NormalizerType: String, Codable {
     }
 }
 
+/// :nodoc:
 public struct AnyNormalizer : Codable {
     var base: Normalizer
     

@@ -5,10 +5,10 @@
  server and referenced via the id parameter.
  */
 public struct Script: Codable {
-    let lang: String?
-    let source: String?
-    let id: String?
-    let params: [String: Any]?
+    public let lang: String?
+    public let source: String?
+    public let id: String?
+    public let params: [String: Any]?
     
     enum CodingKeys: String, CodingKey {
         case lang

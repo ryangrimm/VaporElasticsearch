@@ -11,12 +11,12 @@ public struct BoolQuery: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.boolQuery
 
-    public var must: [QueryElement]?
-    public var should: [QueryElement]?
-    public var mustNot: [QueryElement]?
-    public var filter: [QueryElement]?
-    var minimumShouldMatch: Int?
-    var boost: Decimal?
+    public let must: [QueryElement]?
+    public let should: [QueryElement]?
+    public let mustNot: [QueryElement]?
+    public let filter: [QueryElement]?
+    public var minimumShouldMatch: Int?
+    public var boost: Decimal?
 
     public init(
         must: [QueryElement]? = nil,
@@ -81,6 +81,10 @@ public struct BoolQuery: QueryElement {
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
+        var must: [QueryElement]? = nil
+        var should: [QueryElement]? = nil
+        var mustNot: [QueryElement]? = nil
+        var filter: [QueryElement]? = nil
         
         let container = try decoder.container(keyedBy: DynamicKey.self)
         for key in container.allKeys {
@@ -93,7 +97,7 @@ public struct BoolQuery: QueryElement {
                     let query = try AnyQueryElement(from: queryDecoder)
                     queries.append(query.base)
                 }
-                self.must = queries
+                must = queries
             case "should":
                 var queries = [QueryElement]()
                 var rawQueries = try container.nestedUnkeyedContainer(forKey: key)
@@ -102,7 +106,7 @@ public struct BoolQuery: QueryElement {
                     let query = try AnyQueryElement(from: queryDecoder)
                     queries.append(query.base)
                 }
-                self.should = queries
+                should = queries
             case "must_not":
                 var queries = [QueryElement]()
                 var rawQueries = try container.nestedUnkeyedContainer(forKey: key)
@@ -111,7 +115,7 @@ public struct BoolQuery: QueryElement {
                     let query = try AnyQueryElement(from: queryDecoder)
                     queries.append(query.base)
                 }
-                self.mustNot = queries
+                mustNot = queries
             case "filter":
                 var queries = [QueryElement]()
                 var rawQueries = try container.nestedUnkeyedContainer(forKey: key)
@@ -120,7 +124,7 @@ public struct BoolQuery: QueryElement {
                     let query = try AnyQueryElement(from: queryDecoder)
                     queries.append(query.base)
                 }
-                self.filter = queries
+                filter = queries
             case "minimum_should_match":
                 self.minimumShouldMatch = try container.decode(Int.self, forKey: key)
             case "boost":
@@ -129,5 +133,10 @@ public struct BoolQuery: QueryElement {
                 continue
             }
         }
+        
+        self.must = must
+        self.should = should
+        self.mustNot = mustNot
+        self.filter = filter
     }
 }

@@ -1,22 +1,26 @@
 import Foundation
 
-
+/// :nodoc:
 public protocol TokenFilter: Codable {
     static var typeKey: TokenFilterType { get }
     var type: String { get }
     var name: String { get }
 }
 
+/// :nodoc:
 public protocol BuiltinTokenFilter {
     init()
 }
 
+/// :nodoc:
 public protocol BasicTokenFilter: TokenFilter {
     init()
     func encode(to encoder: Encoder) throws
 }
 
+/// :nodoc:
 extension BasicTokenFilter {
+    /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(self.type)
@@ -118,6 +122,7 @@ public enum TokenFilterType: String, Codable {
     }
 }
 
+/// :nodoc:
 public struct AnyTokenFilter : Codable {
     var base: TokenFilter
     

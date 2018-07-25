@@ -7,8 +7,8 @@ public struct LengthFilter: TokenFilter {
     
     public let type = typeKey.rawValue
     public let name: String
-    public var min: Int
-    public var max: Int
+    public let min: Int
+    public let max: Int
     
     enum CodingKeys: String, CodingKey {
         case type

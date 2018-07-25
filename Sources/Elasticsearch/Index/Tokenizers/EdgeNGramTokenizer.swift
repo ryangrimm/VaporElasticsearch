@@ -13,13 +13,11 @@ public struct EdgeNGramTokenizer: Tokenizer {
         case symbol
     }
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
-
-    public var minGram: Int? = nil
-    public var maxGram: Int? = nil
-    public var tokenChars: [CharacterClass]? = nil
+    public let minGram: Int?
+    public let maxGram: Int?
+    public let tokenChars: [CharacterClass]?
     
     enum CodingKeys: String, CodingKey {
         case type

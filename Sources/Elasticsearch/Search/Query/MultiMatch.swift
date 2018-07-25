@@ -9,10 +9,10 @@ public struct MultiMatch: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.multiMatch
 
-    let value: String
-    let fields: [String]
-    let type: Kind?
-    let tieBreaker: Decimal?
+    public let value: String
+    public let fields: [String]
+    public let type: Kind?
+    public let tieBreaker: Decimal?
 
     public init(
         value: String,

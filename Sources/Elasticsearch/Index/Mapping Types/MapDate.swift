@@ -11,16 +11,15 @@ public struct MapDate: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.date
 
-    let type = typeKey.rawValue
-    
-    public var boost: Float? = 1.0
-    public var docValues: Bool? = true
-    public var format: String?
-    public var locale: String?
-    public var ignoreMalformed: Bool? = false
-    public var index: Bool? = true
-    public var nullValue: Bool? = nil
-    public var store: Bool? = false
+    public let type = typeKey.rawValue
+    public let boost: Float?
+    public let docValues: Bool?
+    public let format: String?
+    public let locale: String?
+    public let ignoreMalformed: Bool?
+    public let index: Bool?
+    public let nullValue: Bool?
+    public let store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -35,10 +34,10 @@ public struct MapDate: Mappable {
     }
     
     public init(format: String? = nil,
-                docValues: Bool? = true,
-                index: Bool? = true,
-                store: Bool? = false,
-                boost: Float? = 1.0,
+                docValues: Bool? = nil,
+                index: Bool? = nil,
+                store: Bool? = nil,
+                boost: Float? = nil,
                 locale: String? = nil,
                 ignoreMalformed: Bool? = nil,
                 nullValue: Bool? = nil) {

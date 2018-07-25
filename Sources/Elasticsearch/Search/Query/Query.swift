@@ -7,7 +7,7 @@ public protocol QueryElement: Codable {
 
 /// A `Query` starts the query portion of a search to be executed (as opposed to an `Aggregation`).
 public struct Query: Codable {
-    let query: QueryElement
+    public let query: QueryElement
 
     enum CodingKeys: String, CodingKey {
         case query

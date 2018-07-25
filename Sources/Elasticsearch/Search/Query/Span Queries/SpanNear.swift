@@ -4,9 +4,9 @@ public struct SpanNear: QueryElement, SpanQuery {
     /// :nodoc:
     public static var typeKey = QueryElementMap.spanNear
     
-    let clauses: [SpanQueryElement]
-    let slop: Int?
-    let inOrder: Bool?
+    public let clauses: [SpanQueryElement]
+    public let slop: Int?
+    public let inOrder: Bool?
     
     enum CodingKeys: String, CodingKey {
         case clauses

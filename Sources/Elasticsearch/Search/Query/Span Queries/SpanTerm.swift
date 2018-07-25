@@ -4,9 +4,9 @@ public struct SpanTerm: SpanQuery, QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.spanTerm
     
-    let field: String
-    let term: String
-    let boost: Decimal?
+    public let field: String
+    public let term: String
+    public let boost: Decimal?
 
     public init(field: String, term: String, boost: Decimal? = nil) {
         self.field = field

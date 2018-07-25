@@ -5,8 +5,7 @@ public struct LetterTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.letter
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
     
     public init() {

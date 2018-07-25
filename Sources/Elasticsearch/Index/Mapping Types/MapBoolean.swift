@@ -11,13 +11,12 @@ public struct MapBoolean: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.boolean
     
-    let type = typeKey.rawValue
-    
-    public var boost: Float?
-    public var docValues: Bool?
-    public var index: Bool?
-    public var nullValue: Bool?
-    public var store: Bool?
+    public let type = typeKey.rawValue
+    public let boost: Float?
+    public let docValues: Bool?
+    public let index: Bool?
+    public let nullValue: Bool?
+    public let store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type

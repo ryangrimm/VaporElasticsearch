@@ -19,11 +19,11 @@ public struct Match: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.match
 
-    let field: String
-    let value: String
-    let `operator`: Operator?
-    let fuzziness: Int?
-    let boost: Decimal?
+    public let field: String
+    public let value: String
+    public let `operator`: Operator?
+    public let fuzziness: Int?
+    public let boost: Decimal?
 
     public init(
         field: String,

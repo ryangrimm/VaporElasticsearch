@@ -7,16 +7,16 @@ public enum OperationType: String, Codable {
 }
 
 public struct BulkItemResponse: Decodable {
-    var operationType: OperationType? = nil
-    let shards: Shards
-    let index: String
-    let type: String
-    let id: String
-    let version: Int
-    let result: ResultType
-    let status: Int
-    let seqNo: Int
-    let primaryTerm: Int
+    public var operationType: OperationType? = nil
+    public let shards: Shards
+    public let index: String
+    public let type: String
+    public let id: String
+    public let version: Int
+    public let result: ResultType
+    public let status: Int
+    public let seqNo: Int
+    public let primaryTerm: Int
     
     public struct Shards: Codable {
         public let total: Int
@@ -47,9 +47,9 @@ public struct BulkItemResponse: Decodable {
 }
 
 public struct BulkResponse: Decodable {
-    let took: Int
-    let errors: Bool
-    let items: [BulkItemResponse]
+    public let took: Int
+    public let errors: Bool
+    public let items: [BulkItemResponse]
     
     enum CodingKeys: String, CodingKey {
         case took

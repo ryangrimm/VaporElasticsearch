@@ -14,9 +14,8 @@ public struct MapGeoPoint: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.geoPoint
 
-    let type = typeKey.rawValue
-
-    public var ignoreMalformed: Bool? = false
+    public let type = typeKey.rawValue
+    public let ignoreMalformed: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type

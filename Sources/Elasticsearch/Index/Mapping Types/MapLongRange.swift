@@ -11,12 +11,11 @@ public struct MapLongRange: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.longRange
     
-    let type = typeKey.rawValue
-    
-    public var coerce: Bool? = true
-    public var boost: Float? = 1.0
-    public var index: Bool? = true
-    public var store: Bool? = false
+    public let type = typeKey.rawValue
+    public var coerce: Bool?
+    public var boost: Float?
+    public var index: Bool?
+    public var store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -26,9 +25,9 @@ public struct MapLongRange: Mappable {
         case store
     }
     
-    public init(index: Bool? = true,
-                store: Bool? = false,
-                boost: Float? = 1.0,
+    public init(index: Bool? = nil,
+                store: Bool? = nil,
+                boost: Float? = nil,
                 coerce: Bool? = nil) {
         
         self.index = index

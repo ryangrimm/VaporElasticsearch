@@ -5,12 +5,11 @@ public struct PatternReplaceCharacterFilter: CharacterFilter {
     /// :nodoc:
     public static var typeKey = CharacterFilterType.patternReplace
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
     public var pattern: String
     public var replacement: String
-    public var flags: String? = nil
+    public var flags: String?
     
     enum CodingKeys: String, CodingKey {
         case type

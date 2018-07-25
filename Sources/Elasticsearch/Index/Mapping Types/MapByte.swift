@@ -11,15 +11,14 @@ public struct MapByte: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.byte
 
-    let type = typeKey.rawValue
-    
-    public var coerce: Bool?
-    public var boost: Float?
-    public var docValues: Bool?
-    public var ignoreMalformed: Bool?
-    public var index: Bool?
-    public var nullValue: Int8?
-    public var store: Bool?
+    public let type = typeKey.rawValue
+    public let coerce: Bool?
+    public let boost: Float?
+    public let docValues: Bool?
+    public let ignoreMalformed: Bool?
+    public let index: Bool?
+    public let nullValue: Int8?
+    public let store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type

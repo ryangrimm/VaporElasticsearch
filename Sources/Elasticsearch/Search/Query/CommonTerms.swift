@@ -11,11 +11,11 @@ public struct CommonTerms: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.commonTerms
     
-    let field: String
-    let query: String
-    let cutoffFrequency: Float
-    let lowFreqOperator: Operator?
-    let minimumShouldMatch: Int?
+    public let field: String
+    public let query: String
+    public let cutoffFrequency: Float
+    public let lowFreqOperator: Operator?
+    public let minimumShouldMatch: Int?
     
     public init(field: String, query: String, cutoffFrequency: Float, lowFreqOperator: Operator?, minimumShouldMatch: Int?) {
         self.field = field

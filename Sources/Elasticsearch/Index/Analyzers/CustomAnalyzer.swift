@@ -7,10 +7,10 @@ public struct CustomAnalyzer: Analyzer, DefinesTokenizers, DefinesTokenFilters, 
     
     public let type = typeKey.rawValue
     public let name: String
-    public var tokenizer: Tokenizer
-    public var charFilter: [CharacterFilter]?
-    public var filter: [TokenFilter]?
-    public var positionIncrementGap: Int? = nil
+    public let tokenizer: Tokenizer
+    public let charFilter: [CharacterFilter]?
+    public let filter: [TokenFilter]?
+    public let positionIncrementGap: Int?
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -74,14 +74,20 @@ public struct CustomAnalyzer: Analyzer, DefinesTokenizers, DefinesTokenFilters, 
             
             if let charFilters = try container.decodeIfPresent([String].self, forKey: .charFilter) {
                 self.charFilter = charFilters.map { analysis.characterFilter(named: $0)! }
+            } else {
+                self.charFilter = nil
             }
             if let tokenFilters = try container.decodeIfPresent([String].self, forKey: .filter) {
                 self.filter = tokenFilters.map { analysis.tokenFilter(named: $0)! }
+            } else {
+                self.filter = nil
             }
         }
         else {
             // This should never be called
             self.tokenizer = StandardTokenizer()
+            self.charFilter = nil
+            self.filter = nil
         }
     }
     

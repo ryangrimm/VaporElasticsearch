@@ -11,7 +11,7 @@ public struct MapPercolator: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.percolator
     
-    let type = typeKey.rawValue
+    public let type = typeKey.rawValue
     
     enum CodingKeys: String, CodingKey {
         case type

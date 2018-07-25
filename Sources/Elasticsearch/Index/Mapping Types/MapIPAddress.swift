@@ -11,13 +11,12 @@ public struct MapIPAddress: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.ipAddress
 
-    let type = typeKey.rawValue
-    
-    public var boost: Float? = 1.0
-    public var docValues: Bool? = true
-    public var index: Bool? = true
-    public var nullValue: Bool? = nil
-    public var store: Bool? = false
+    public let type = typeKey.rawValue
+    public let boost: Float?
+    public let docValues: Bool?
+    public let index: Bool?
+    public let nullValue: Bool?
+    public let store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -28,10 +27,10 @@ public struct MapIPAddress: Mappable {
         case store
     }
     
-    public init(docValues: Bool? = true,
-                index: Bool? = true,
-                store: Bool? = false,
-                boost: Float? = 1.0,
+    public init(docValues: Bool? = nil,
+                index: Bool? = nil,
+                store: Bool? = nil,
+                boost: Float? = nil,
                 nullValue: Bool? = nil) {
         
         self.boost = boost

@@ -12,14 +12,14 @@ public struct Range: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.range
 
-    let field: String
-    let greaterThanOrEqual: RangePair?
-    let greaterThan: RangePair?
-    let lesserThanOrEqual: RangePair?
-    let lesserThan: RangePair?
-    let boost: Decimal?
-    let format: String?
-    let timeZone: String?
+    public let field: String
+    public let greaterThanOrEqual: RangePair?
+    public let greaterThan: RangePair?
+    public let lesserThanOrEqual: RangePair?
+    public let lesserThan: RangePair?
+    public let boost: Decimal?
+    public let format: String?
+    public let timeZone: String?
 
     public init(
         field: String,
@@ -103,7 +103,7 @@ public struct Range: QueryElement {
         }
     }
 
-    struct RangePair: Codable {
+    public struct RangePair: Codable {
         let numeric: Double?
         let textual: String?
         var hasValue: Bool {
@@ -115,7 +115,8 @@ public struct Range: QueryElement {
             self.textual = textual
         }
 
-        func encode(to encoder: Encoder) throws {
+        /// :nodoc:
+        public func encode(to encoder: Encoder) throws {
             var container = encoder.singleValueContainer()
 
             if let numeric = numeric {
@@ -125,6 +126,7 @@ public struct Range: QueryElement {
             }
         }
         
+        /// :nodoc:
         public init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
             do {

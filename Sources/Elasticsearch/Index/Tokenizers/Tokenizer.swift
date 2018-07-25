@@ -1,11 +1,12 @@
 import Foundation
 
-
+/// :nodoc:
 public protocol Tokenizer: Codable {
     static var typeKey: TokenizerType { get }
     var name: String { get }
 }
 
+/// :nodoc:
 public protocol BultinTokenizer {
     init()
 }

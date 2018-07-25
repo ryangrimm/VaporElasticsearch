@@ -48,16 +48,15 @@ public struct MapGeoShape: Mappable {
     }
     
     
-    let type = typeKey.rawValue
-    
-    public var tree: GeoShapePrefixTree? = .geohash
-    public var precision: GeoShapePrecision? = .meters
-    public var treeLevels: String?
-    public var strategy: GeoShapeStrategy? = .recursive
-    public var distanceErrorPct: Float? = 0.025
-    public var orientation: GeoShapeOrientation? = .ccw
-    public var pointsOnly: Bool? = false
-    public var ignoreMalformed: Bool? = false
+    public let type = typeKey.rawValue
+    public let tree: GeoShapePrefixTree?
+    public let precision: GeoShapePrecision?
+    public let treeLevels: String?
+    public let strategy: GeoShapeStrategy?
+    public let distanceErrorPct: Float?
+    public let orientation: GeoShapeOrientation?
+    public let pointsOnly: Bool?
+    public let ignoreMalformed: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -71,14 +70,14 @@ public struct MapGeoShape: Mappable {
         case ignoreMalformed = "ignore_malformed"
     }
     
-    public init(tree: GeoShapePrefixTree? = .geohash,
-                precision: GeoShapePrecision? = .meters,
+    public init(tree: GeoShapePrefixTree? = nil,
+                precision: GeoShapePrecision? = nil,
                 treeLevels: String? = nil,
-                strategy: GeoShapeStrategy? = .recursive,
-                distanceErrorPct: Float? = 0.025,
-                orientation: GeoShapeOrientation? = .ccw,
-                pointsOnly: Bool? = false,
-                ignoreMalformed: Bool? = false) {
+                strategy: GeoShapeStrategy? = nil,
+                distanceErrorPct: Float? = nil,
+                orientation: GeoShapeOrientation? = nil,
+                pointsOnly: Bool? = nil,
+                ignoreMalformed: Bool? = nil) {
         
         self.tree = tree
         self.precision = precision

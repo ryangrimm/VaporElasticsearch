@@ -1,11 +1,13 @@
 import Foundation
 
 
+/// :nodoc:
 public protocol CharacterFilter: Codable {
     static var typeKey: CharacterFilterType { get }
     var name: String { get }
 }
 
+/// :nodoc:
 public protocol BuiltinCharacterTokenFilter {
     init()
 }
@@ -39,6 +41,7 @@ public enum CharacterFilterType: String, Codable {
     }
 }
 
+/// :nodoc:
 public struct AnyCharacterFilter : Codable {
     var base: CharacterFilter
     

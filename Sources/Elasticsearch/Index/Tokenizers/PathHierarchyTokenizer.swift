@@ -5,15 +5,13 @@ public struct PathHierarchyTokenizer: Tokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.pathHierarchy
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
-
-    public var delimiter: String? = nil
-    public var replacement: String? = nil
-    public var bufferSize: Int? = nil
-    public var reverse: Bool? = nil
-    public var skip: Int? = nil
+    public let delimiter: String?
+    public let replacement: String?
+    public let bufferSize: Int?
+    public let reverse: Bool?
+    public let skip: Int?
     
     enum CodingKeys: String, CodingKey {
         case type

@@ -11,10 +11,9 @@ public struct MapBinary: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.binary
 
-    let type = typeKey.rawValue
-    
-    public var docValues: Bool?
-    public var store: Bool?
+    public let type = typeKey.rawValue
+    public let docValues: Bool?
+    public let store: Bool?
     
     enum CodingKeys: String, CodingKey {
         case type

@@ -12,12 +12,12 @@ public struct Fuzzy: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.fuzzy
 
-    let field: String
-    let value: String
-    let fuzziness: Int?
-    let prefixLength: Int?
-    let maxExpansions: Int?
-    let transpositions: Bool?
+    public let field: String
+    public let value: String
+    public let fuzziness: Int?
+    public let prefixLength: Int?
+    public let maxExpansions: Int?
+    public let transpositions: Bool?
 
     public init(
         field: String,

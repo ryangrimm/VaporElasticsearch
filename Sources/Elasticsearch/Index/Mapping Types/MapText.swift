@@ -14,16 +14,15 @@ public struct MapText: Mappable, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.text
 
-    let type = typeKey.rawValue
-    
-    public var boost: Float?
-    public var eagerGlobalOrdinals: Bool?
-    public var fields: [String: TextField]?
-    public var index: Bool?
-    public var indexOptions: TextIndexOptions?
-    public var norms: Bool?
-    public var store: Bool?
-    public var similarity: SimilarityType?
+    public let type = typeKey.rawValue
+    public let boost: Float?
+    public let eagerGlobalOrdinals: Bool?
+    public let fields: [String: TextField]?
+    public let index: Bool?
+    public let indexOptions: TextIndexOptions?
+    public let norms: Bool?
+    public let store: Bool?
+    public let similarity: SimilarityType?
     
     public var analyzer: Analyzer?
     public var searchAnalyzer: Analyzer?

@@ -7,10 +7,10 @@ public struct SynonymFilter: TokenFilter {
     
     public let type = typeKey.rawValue
     public let name: String
-    public var synonyms: [String]?
-    public var synonymsPath: String?
-    public var format: Format
-    public var expand: Bool?
+    public let synonyms: [String]?
+    public let synonymsPath: String?
+    public let format: Format
+    public let expand: Bool?
     
     public enum Format: String, Codable {
         case solr

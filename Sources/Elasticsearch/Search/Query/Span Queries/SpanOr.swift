@@ -4,7 +4,7 @@ public struct SpanOr: QueryElement, SpanQuery {
     /// :nodoc:
     public static var typeKey = QueryElementMap.spanOr
     
-    let clauses: [SpanQueryElement]
+    public let clauses: [SpanQueryElement]
     
     enum CodingKeys: String, CodingKey {
         case clauses

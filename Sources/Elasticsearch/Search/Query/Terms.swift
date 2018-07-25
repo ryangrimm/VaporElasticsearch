@@ -9,8 +9,8 @@ public struct Terms: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.terms
 
-    let field: String
-    let values: [String]
+    public let field: String
+    public let values: [String]
 
     public init(field: String, values: [String]) {
         self.field = field

@@ -7,8 +7,8 @@ public struct EdgeNGramFilter: TokenFilter {
     
     public let type = typeKey.rawValue
     public let name: String
-    public var minGram: Int
-    public var maxGram: Int
+    public let minGram: Int
+    public let maxGram: Int
     
     enum CodingKeys: String, CodingKey {
         case type

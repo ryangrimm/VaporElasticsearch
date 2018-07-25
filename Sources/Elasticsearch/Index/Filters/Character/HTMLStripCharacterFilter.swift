@@ -5,10 +5,9 @@ public struct HTMLStripCharacterFilter: CharacterFilter, BuiltinCharacterTokenFi
     /// :nodoc:
     public static var typeKey = CharacterFilterType.htmlStrip
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
-    public var escapedTags: [String]? = nil
+    public let escapedTags: [String]?
     
     let isCustom: Bool
 
@@ -20,6 +19,7 @@ public struct HTMLStripCharacterFilter: CharacterFilter, BuiltinCharacterTokenFi
     public init() {
         self.name = type
         self.isCustom = false
+        self.escapedTags = nil
     }
     
     public init(name: String, escapedTags: [String]) {

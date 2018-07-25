@@ -9,7 +9,7 @@ public struct IDs: QueryElement {
     /// :nodoc:
     public static var typeKey = QueryElementMap.ids
 
-    let values: [String]
+    public let values: [String]
 
     public init(_ values: [String]) {
         self.values = values

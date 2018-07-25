@@ -5,11 +5,10 @@ public struct MappingCharacterFilter: CharacterFilter {
     /// :nodoc:
     public static var typeKey = CharacterFilterType.mapping
     
-    let type = typeKey.rawValue
-    
+    public let type = typeKey.rawValue
     public let name: String
-    public var mappings: [String: String]? = nil
-    public var mappingsPath: String? = nil
+    public let mappings: [String: String]?
+    public let mappingsPath: String?
     
     enum CodingKeys: String, CodingKey {
         case type

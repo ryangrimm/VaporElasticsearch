@@ -6,9 +6,9 @@ public enum GeoValidationMethod: String, Codable {
 }
 
 public struct GeoPoint: Codable {
-    let lat: Float?
-    let lon: Float?
-    let geoHash: String?
+    public let lat: Float?
+    public let lon: Float?
+    public let geoHash: String?
     
     enum CodingKeys: String, CodingKey {
         case lat

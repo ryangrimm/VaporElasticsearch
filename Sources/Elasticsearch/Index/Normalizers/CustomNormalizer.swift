@@ -7,8 +7,8 @@ public struct CustomNormalizer: Normalizer {
     let type = typeKey.rawValue
     
     public let name: String
-    public var charFilter: [String]?
-    public var filter: [String]?
+    public let charFilter: [String]?
+    public let filter: [String]?
     
     enum CodingKeys: String, CodingKey {
         case type

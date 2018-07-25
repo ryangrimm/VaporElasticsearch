@@ -11,9 +11,8 @@ public struct MapJoin: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.join
     
-    let type = typeKey.rawValue
-    
-    public var relations: [String: String]
+    public let type = typeKey.rawValue
+    public let relations: [String: String]
     
     enum CodingKeys: String, CodingKey {
         case type
