@@ -11,6 +11,7 @@ public struct MapBinary: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.binary
 
+    /// Holds the string that Elasticsearch uses to identify the mapping type
     public let type = typeKey.rawValue
     public let docValues: Bool?
     public let store: Bool?

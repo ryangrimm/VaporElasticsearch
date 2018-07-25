@@ -1,10 +1,20 @@
 
 import Foundation
 
+/**
+ When the built-in analyzers do not fulfill your needs, you can create a custom analyzer which uses the appropriate combination of:
+ 
+ * a tokenizer
+ * zero or more character filters
+ * zero or more token filters.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-custom-analyzer.html)
+ */
 public struct CustomAnalyzer: Analyzer, DefinesTokenizers, DefinesTokenFilters, DefinesCharacterFilters {
     /// :nodoc:
     public static var typeKey = AnalyzerType.custom
     
+    /// Holds the string that Elasticsearch uses to identify the analyzer type
     public let type = typeKey.rawValue
     public let name: String
     public let tokenizer: Tokenizer

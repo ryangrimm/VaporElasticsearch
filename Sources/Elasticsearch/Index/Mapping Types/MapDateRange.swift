@@ -11,6 +11,7 @@ public struct MapDateRange: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.dateRange
     
+    /// Holds the string that Elasticsearch uses to identify the mapping type
     public let type = typeKey.rawValue
     public let format: String
     public let coerce: Bool?

@@ -11,6 +11,7 @@ public struct MapLongRange: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.longRange
     
+    /// Holds the string that Elasticsearch uses to identify the mapping type
     public let type = typeKey.rawValue
     public var coerce: Bool?
     public var boost: Float?

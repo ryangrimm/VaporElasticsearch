@@ -10,6 +10,7 @@ public struct PatternReplaceCharacterFilter: CharacterFilter {
     /// :nodoc:
     public static var typeKey = CharacterFilterType.patternReplace
     
+    /// Holds the string that Elasticsearch uses to identify the filter type
     public let type = typeKey.rawValue
     public let name: String
     public var pattern: String

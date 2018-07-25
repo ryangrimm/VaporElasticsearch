@@ -11,6 +11,7 @@ public struct MapHalfFloat: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.halfFloat
 
+    /// Holds the string that Elasticsearch uses to identify the mapping type
     public let type = typeKey.rawValue
     public let coerce: Bool?
     public let boost: Float?

@@ -11,6 +11,7 @@ public struct MapTokenCount: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.tokenCount
     
+    /// Holds the string that Elasticsearch uses to identify the mapping type
     public let type = typeKey.rawValue
     public let analyzer: String?
     public let enablePositionIncrements: Bool?

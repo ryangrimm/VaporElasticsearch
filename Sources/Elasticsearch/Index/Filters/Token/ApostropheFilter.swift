@@ -10,6 +10,7 @@ public struct ApostropheFilter: BasicTokenFilter, BuiltinTokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.apostrophe
     
+    /// Holds the string that Elasticsearch uses to identify the filter type
     public let type = typeKey.rawValue
     /// :nodoc:
     public let name: String

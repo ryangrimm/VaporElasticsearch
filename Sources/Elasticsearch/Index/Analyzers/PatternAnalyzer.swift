@@ -1,10 +1,16 @@
 
 import Foundation
 
+/**
+ The pattern analyzer uses a regular expression to split the text into terms. The regular expression should match the token separators not the tokens themselves. The regular expression defaults to \W+ (or all non-word characters).
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-pattern-analyzer.html)
+ */
 public struct PatternAnalyzer: Analyzer {
     /// :nodoc:
     public static var typeKey = AnalyzerType.pattern
     
+    /// Holds the string that Elasticsearch uses to identify the analyzer type
     public let type = typeKey.rawValue
     public let name: String
     public let pattern: String?

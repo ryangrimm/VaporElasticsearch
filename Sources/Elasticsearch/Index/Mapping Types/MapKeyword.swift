@@ -14,6 +14,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
     /// :nodoc:
     public static var typeKey = MapType.keyword
 
+    /// Holds the string that Elasticsearch uses to identify the mapping type
     public let type = typeKey.rawValue
     public let boost: Float?
     public let eagerGlobalOrdinals: Bool?

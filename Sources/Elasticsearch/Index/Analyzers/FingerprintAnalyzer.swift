@@ -1,10 +1,18 @@
 
 import Foundation
 
+/**
+ The fingerprint analyzer implements a fingerprinting algorithm which is used by the OpenRefine project to assist in clustering.
+ 
+ Input text is lowercased, normalized to remove extended characters, sorted, deduplicated and concatenated into a single token. If a stopword list is configured, stop words will also be removed.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-fingerprint-analyzer.html)
+ */
 public struct FingerprintAnalyzer: Analyzer {
     /// :nodoc:
     public static var typeKey = AnalyzerType.fingerprint
     
+    /// Holds the string that Elasticsearch uses to identify the analyzer type
     public let type = typeKey.rawValue
     public let name: String
     public let separator: String?

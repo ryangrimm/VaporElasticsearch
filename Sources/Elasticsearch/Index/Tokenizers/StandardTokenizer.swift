@@ -10,6 +10,7 @@ public struct StandardTokenizer: Tokenizer, BultinTokenizer {
     /// :nodoc:
     public static var typeKey = TokenizerType.standard
     
+    /// Holds the string that Elasticsearch uses to identify the tokenizer type
     public let type = typeKey.rawValue
     public let name: String
     public let maxTokenLength: Int?

@@ -1,10 +1,15 @@
 import Foundation
-
+/**
+ Normalizers are similar to analyzers except that they may only emit a single token. As a consequence, they do not have a tokenizer and only accept a subset of the available char filters and token filters. Only the filters that work on a per-character basis are allowed. For instance a lowercasing filter would be allowed, but not a stemming filter, which needs to look at the keyword as a whole. The current list of filters that can be used in a normalizer is following: ArabicNormalizationFilter, ASCIIFolding, BengaliNormalizationFilter, cjk_width, DecimalDigitFilter, ElisionFilter, GermanNormalizationFilter, HindiNormalizationFilter, IndicNormalizationFilter, lowercase, PersianNormalizationFilter, ScandinavianFoldingFilter, SerbianNormalizationFilter, SoraniNormalizationFilter, uppercase.
+ 
+ [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-normalizers.html)
+ */
 public struct CustomNormalizer: Normalizer {
     /// :nodoc:
     public static var typeKey = NormalizerType.custom
 
-    let type = typeKey.rawValue
+    /// Holds the string that Elasticsearch uses to identify the normalizer type
+    public let type = typeKey.rawValue
     
     public let name: String
     public let charFilter: [String]?

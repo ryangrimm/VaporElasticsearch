@@ -20,6 +20,7 @@ public struct NGramTokenizer: Tokenizer {
         case symbol
     }
     
+    /// Holds the string that Elasticsearch uses to identify the tokenizer type
     public let type = typeKey.rawValue
     public let name: String
     public let minGram: Int?

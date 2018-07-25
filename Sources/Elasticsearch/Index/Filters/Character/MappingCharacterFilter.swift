@@ -12,6 +12,7 @@ public struct MappingCharacterFilter: CharacterFilter {
     /// :nodoc:
     public static var typeKey = CharacterFilterType.mapping
     
+    /// Holds the string that Elasticsearch uses to identify the filter type
     public let type = typeKey.rawValue
     public let name: String
     public let mappings: [String: String]?

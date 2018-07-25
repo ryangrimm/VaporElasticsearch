@@ -11,6 +11,7 @@ public struct MapJoin: Mappable {
     /// :nodoc:
     public static var typeKey = MapType.join
     
+    /// Holds the string that Elasticsearch uses to identify the mapping type
     public let type = typeKey.rawValue
     public let relations: [String: String]
     

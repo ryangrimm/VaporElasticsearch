@@ -45,6 +45,16 @@ public enum TokenFilterType: String, Codable {
     case apostrophe
     case decimalDigit = "decimal_digit"
     
+    case arabicNormalization = "arabic_normalization"
+    case germanNormalization = "german_normalization"
+    case hindiNormalization = "hindi_normalization"
+    case indicNormalization = "indic_normalization"
+    case soraniNormalization = "sorani_normalization"
+    case persianNormalization = "persian_normalization"
+    case scandinavianNormalization = "scandinavian_normalization"
+    case scandinavianFolding = "scandinavian_folding"
+    case serbianNormalization = "serbian_normalization"
+    
     var metatype: TokenFilter.Type {
         switch self {
         case .standard:
@@ -77,6 +87,24 @@ public enum TokenFilterType: String, Codable {
             return ApostropheFilter.self
         case .decimalDigit:
             return DecimalDigitFilter.self
+        case .arabicNormalization:
+            return ArabicNormalizationFilter.self
+        case .germanNormalization:
+            return GermanNormalizationFilter.self
+        case .hindiNormalization:
+            return HindiNormalizationFilter.self
+        case .indicNormalization:
+            return IndicNormalizationFilter.self
+        case .soraniNormalization:
+            return SoraniNormalizationFilter.self
+        case .persianNormalization:
+            return PersianNormalizationFilter.self
+        case .scandinavianNormalization:
+            return ScandinavianNormalizationFilter.self
+        case .scandinavianFolding:
+            return ScandinavianFoldingFilter.self
+        case.serbianNormalization:
+            return SerbianNormalizationFilter.self
         }
     }
     

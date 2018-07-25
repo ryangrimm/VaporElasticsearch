@@ -79,6 +79,15 @@
 		C293BC772106E57C00C31D94 /* AnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC762106E57C00C31D94 /* AnalyzerTests.swift */; };
 		C293BC792106EBF600C31D94 /* CharacterFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC782106EBF600C31D94 /* CharacterFilterTests.swift */; };
 		C293BC7C2106F27C00C31D94 /* TokenFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC7B2106F27C00C31D94 /* TokenFilterTests.swift */; };
+		C293BC7F2108A0FC00C31D94 /* ArabicNormalizationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC7D21089CDE00C31D94 /* ArabicNormalizationFilter.swift */; };
+		C293BC912108A2A600C31D94 /* GermanNormalizationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC802108A11B00C31D94 /* GermanNormalizationFilter.swift */; };
+		C293BC922108A2A600C31D94 /* HindiNormalizationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC822108A13300C31D94 /* HindiNormalizationFilter.swift */; };
+		C293BC932108A2A600C31D94 /* IndicNormalizationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC842108A14900C31D94 /* IndicNormalizationFilter.swift */; };
+		C293BC942108A2A600C31D94 /* SoraniNormalizationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC862108A15E00C31D94 /* SoraniNormalizationFilter.swift */; };
+		C293BC952108A2A600C31D94 /* PersianNormalizationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC882108A17100C31D94 /* PersianNormalizationFilter.swift */; };
+		C293BC962108A2A600C31D94 /* ScandinavianNormalizationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC8A2108A18300C31D94 /* ScandinavianNormalizationFilter.swift */; };
+		C293BC972108A2A600C31D94 /* ScandinavianFoldingFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC8C2108A19A00C31D94 /* ScandinavianFoldingFilter.swift */; };
+		C293BC982108A2A600C31D94 /* SerbianNormalizationFIlter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC8E2108A1AD00C31D94 /* SerbianNormalizationFIlter.swift */; };
 		OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ElasticsearchAggregationCodableTests.swift */; };
 		OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* ElasticsearchQueryCodableTests.swift */; };
 		OBJ_1003 /* ElasticsearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ElasticsearchTests.swift */; };
@@ -2016,6 +2025,15 @@
 		C293BC762106E57C00C31D94 /* AnalyzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerTests.swift; sourceTree = "<group>"; };
 		C293BC782106EBF600C31D94 /* CharacterFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFilterTests.swift; sourceTree = "<group>"; };
 		C293BC7B2106F27C00C31D94 /* TokenFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFilterTests.swift; sourceTree = "<group>"; };
+		C293BC7D21089CDE00C31D94 /* ArabicNormalizationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArabicNormalizationFilter.swift; sourceTree = "<group>"; };
+		C293BC802108A11B00C31D94 /* GermanNormalizationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanNormalizationFilter.swift; sourceTree = "<group>"; };
+		C293BC822108A13300C31D94 /* HindiNormalizationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HindiNormalizationFilter.swift; sourceTree = "<group>"; };
+		C293BC842108A14900C31D94 /* IndicNormalizationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicNormalizationFilter.swift; sourceTree = "<group>"; };
+		C293BC862108A15E00C31D94 /* SoraniNormalizationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoraniNormalizationFilter.swift; sourceTree = "<group>"; };
+		C293BC882108A17100C31D94 /* PersianNormalizationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersianNormalizationFilter.swift; sourceTree = "<group>"; };
+		C293BC8A2108A18300C31D94 /* ScandinavianNormalizationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScandinavianNormalizationFilter.swift; sourceTree = "<group>"; };
+		C293BC8C2108A19A00C31D94 /* ScandinavianFoldingFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScandinavianFoldingFilter.swift; sourceTree = "<group>"; };
+		C293BC8E2108A1AD00C31D94 /* SerbianNormalizationFIlter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerbianNormalizationFIlter.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2892,6 +2910,15 @@
 				C293BC622105874300C31D94 /* ClassicFilter.swift */,
 				C293BC642105877F00C31D94 /* ApostropheFilter.swift */,
 				C293BC66210587F400C31D94 /* DecimalDigitFilter.swift */,
+				C293BC7D21089CDE00C31D94 /* ArabicNormalizationFilter.swift */,
+				C293BC802108A11B00C31D94 /* GermanNormalizationFilter.swift */,
+				C293BC822108A13300C31D94 /* HindiNormalizationFilter.swift */,
+				C293BC842108A14900C31D94 /* IndicNormalizationFilter.swift */,
+				C293BC862108A15E00C31D94 /* SoraniNormalizationFilter.swift */,
+				C293BC882108A17100C31D94 /* PersianNormalizationFilter.swift */,
+				C293BC8A2108A18300C31D94 /* ScandinavianNormalizationFilter.swift */,
+				C293BC8C2108A19A00C31D94 /* ScandinavianFoldingFilter.swift */,
+				C293BC8E2108A1AD00C31D94 /* SerbianNormalizationFIlter.swift */,
 			);
 			path = Token;
 			sourceTree = "<group>";
@@ -5403,6 +5430,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_831 /* ElasticsearchClient+CRUD.swift in Sources */,
+				C293BC942108A2A600C31D94 /* SoraniNormalizationFilter.swift in Sources */,
 				OBJ_832 /* ElasticsearchClient+IndexMgmt.swift in Sources */,
 				OBJ_833 /* ElasticsearchClient+Search.swift in Sources */,
 				OBJ_834 /* ElasticsearchClient+connect.swift in Sources */,
@@ -5421,16 +5449,19 @@
 				OBJ_842 /* MapBoolean.swift in Sources */,
 				OBJ_843 /* MapByte.swift in Sources */,
 				OBJ_844 /* MapCompletionSuggester.swift in Sources */,
+				C293BC952108A2A600C31D94 /* PersianNormalizationFilter.swift in Sources */,
 				OBJ_845 /* MapDate.swift in Sources */,
 				OBJ_846 /* MapDateRange.swift in Sources */,
 				OBJ_847 /* MapDouble.swift in Sources */,
 				OBJ_848 /* MapDoubleRange.swift in Sources */,
 				OBJ_849 /* MapFloat.swift in Sources */,
 				OBJ_850 /* MapFloatRange.swift in Sources */,
+				C293BC932108A2A600C31D94 /* IndicNormalizationFilter.swift in Sources */,
 				C293BC4B2104419F00C31D94 /* CustomNormalizer.swift in Sources */,
 				OBJ_851 /* MapGeoPoint.swift in Sources */,
 				OBJ_852 /* MapGeoShape.swift in Sources */,
 				C2261A9820F9EA0900B82E77 /* BulkResponse.swift in Sources */,
+				C293BC912108A2A600C31D94 /* GermanNormalizationFilter.swift in Sources */,
 				OBJ_853 /* MapHalfFloat.swift in Sources */,
 				OBJ_854 /* MapIPAddress.swift in Sources */,
 				OBJ_855 /* MapInteger.swift in Sources */,
@@ -5482,6 +5513,7 @@
 				C293BC61210586F300C31D94 /* TrimFilter.swift in Sources */,
 				C293BC6F210589D500C31D94 /* LowercaseFilter.swift in Sources */,
 				OBJ_886 /* ExtendedStatsAggregation.swift in Sources */,
+				C293BC962108A2A600C31D94 /* ScandinavianNormalizationFilter.swift in Sources */,
 				OBJ_887 /* GeoBoundsAggregation.swift in Sources */,
 				OBJ_888 /* GeoCentroidAggregation.swift in Sources */,
 				OBJ_889 /* MaxAggregation.swift in Sources */,
@@ -5492,6 +5524,7 @@
 				C293BC442103D61400C31D94 /* MappingCharacterFilter.swift in Sources */,
 				C293BC6D2105896F00C31D94 /* EdgeNGram.swift in Sources */,
 				C293BC1F2100622B00C31D94 /* StandardTokenizer.swift in Sources */,
+				C293BC982108A2A600C31D94 /* SerbianNormalizationFIlter.swift in Sources */,
 				OBJ_893 /* TopHitsAggregation.swift in Sources */,
 				C293BC572105851C00C31D94 /* ASCIIFoldingFilter.swift in Sources */,
 				OBJ_894 /* ValueCountAggregation.swift in Sources */,
@@ -5531,6 +5564,8 @@
 				C293BC692105886900C31D94 /* LengthFilter.swift in Sources */,
 				OBJ_913 /* Regexp.swift in Sources */,
 				OBJ_914 /* ScriptQuery.swift in Sources */,
+				C293BC972108A2A600C31D94 /* ScandinavianFoldingFilter.swift in Sources */,
+				C293BC922108A2A600C31D94 /* HindiNormalizationFilter.swift in Sources */,
 				OBJ_915 /* AnySpanQuery.swift in Sources */,
 				C293BC0E210051F200C31D94 /* FingerprintAnalyzer.swift in Sources */,
 				OBJ_916 /* Span.swift in Sources */,
@@ -5542,6 +5577,7 @@
 				OBJ_921 /* SpanOr.swift in Sources */,
 				OBJ_922 /* SpanTerm.swift in Sources */,
 				OBJ_923 /* SpanWithin.swift in Sources */,
+				C293BC7F2108A0FC00C31D94 /* ArabicNormalizationFilter.swift in Sources */,
 				C293BC252100634E00C31D94 /* WhitespaceTokenizer.swift in Sources */,
 				OBJ_924 /* Term.swift in Sources */,
 				C293BC27210063A100C31D94 /* UAXURLEmailTokenizer.swift in Sources */,
