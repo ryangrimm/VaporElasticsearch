@@ -14,7 +14,7 @@
     <a title="Analyzers  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Elasticsearch Docs</a> (16% documented)</p>
+        <p><a href="index.html">Elasticsearch Docs</a> (23% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -537,6 +537,33 @@
               <li class="nav-group-task">
                 <a href="Structs/UppercaseFilter.html">UppercaseFilter</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Structs/ArabicNormalizationFilter.html">ArabicNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/GermanNormalizationFilter.html">GermanNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/HindiNormalizationFilter.html">HindiNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/IndicNormalizationFilter.html">IndicNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/PersianNormalizationFilter.html">PersianNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ScandinavianFoldingFilter.html">ScandinavianFoldingFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ScandinavianNormalizationFilter.html">ScandinavianNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SerbianNormalizationFilter.html">SerbianNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SoraniNormalizationFilter.html">SoraniNormalizationFilter</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -652,7 +679,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The standard analyzer is the default analyzer which is used if none is specified. It provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-standard-analyzer.html">More information</a></p>
 
                         <a href="Structs/StandardAnalyzer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -684,7 +713,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The whitespace analyzer breaks text into terms whenever it encounters a whitespace character.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-whitespace-analyzer.html">More information</a></p>
 
                         <a href="Structs/WhitespaceAnalyzer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -716,7 +747,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>When the built-in analyzers do not fulfill your needs, you can create a custom analyzer which uses the appropriate combination of:</p>
+
+<ul>
+<li>a tokenizer</li>
+<li>zero or more character filters</li>
+<li>zero or more token filters.</li>
+</ul>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-custom-analyzer.html">More information</a></p>
 
                         <a href="Structs/CustomAnalyzer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -748,7 +787,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The keyword analyzer is a “noop” analyzer which returns the entire input string as a single token.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-keyword-analyzer.html">More information</a></p>
 
                         <a href="Structs/KeywordAnalyzer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -780,7 +821,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The fingerprint analyzer implements a fingerprinting algorithm which is used by the OpenRefine project to assist in clustering.</p>
+
+<p>Input text is lowercased, normalized to remove extended characters, sorted, deduplicated and concatenated into a single token. If a stopword list is configured, stop words will also be removed.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-fingerprint-analyzer.html">More information</a></p>
 
                         <a href="Structs/FingerprintAnalyzer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -812,7 +857,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The pattern analyzer uses a regular expression to split the text into terms. The regular expression should match the token separators not the tokens themselves. The regular expression defaults to \W+ (or all non-word characters).</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-pattern-analyzer.html">More information</a></p>
 
                         <a href="Structs/PatternAnalyzer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -844,7 +891,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The simple analyzer breaks text into terms whenever it encounters a character which is not a letter. All terms are lower cased.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-simple-analyzer.html">More information</a></p>
 
                         <a href="Structs/SimpleAnalyzer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -876,7 +925,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The stop analyzer is the same as the simple analyzer but adds support for removing stop words.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/analysis-stop-analyzer.html">More information</a></p>
 
                         <a href="Structs/StopAnalyzer.html" class="slightly-smaller">See more</a>
                       </div>

@@ -14,7 +14,7 @@
     <a title="CustomNormalizer Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Elasticsearch Docs</a> (16% documented)</p>
+        <p><a href="../index.html">Elasticsearch Docs</a> (23% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -537,6 +537,33 @@
               <li class="nav-group-task">
                 <a href="../Structs/UppercaseFilter.html">UppercaseFilter</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ArabicNormalizationFilter.html">ArabicNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/GermanNormalizationFilter.html">GermanNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HindiNormalizationFilter.html">HindiNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndicNormalizationFilter.html">IndicNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PersianNormalizationFilter.html">PersianNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ScandinavianFoldingFilter.html">ScandinavianFoldingFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ScandinavianNormalizationFilter.html">ScandinavianNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SerbianNormalizationFilter.html">SerbianNormalizationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SoraniNormalizationFilter.html">SoraniNormalizationFilter</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -640,12 +667,41 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Normalizers are similar to analyzers except that they may only emit a single token. As a consequence, they do not have a tokenizer and only accept a subset of the available char filters and token filters. Only the filters that work on a per-character basis are allowed. For instance a lowercasing filter would be allowed, but not a stemming filter, which needs to look at the keyword as a whole. The current list of filters that can be used in a normalizer is following: ArabicNormalizationFilter, ASCIIFolding, BengaliNormalizationFilter, cjk_width, DecimalDigitFilter, ElisionFilter, GermanNormalizationFilter, HindiNormalizationFilter, IndicNormalizationFilter, lowercase, PersianNormalizationFilter, ScandinavianFoldingFilter, SerbianNormalizationFilter, SoraniNormalizationFilter, uppercase.</p>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-normalizers.html">More information</a></p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13Elasticsearch16CustomNormalizerV4typeSSvp"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13Elasticsearch16CustomNormalizerV4typeSSvp">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Holds the string that Elasticsearch uses to identify the normalizer type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>

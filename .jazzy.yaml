@@ -153,6 +153,15 @@ custom_categories:
   - SynonymFilter
   - TrimFilter
   - UppercaseFilter
+  - ArabicNormalizationFilter
+  - GermanNormalizationFilter
+  - HindiNormalizationFilter
+  - IndicNormalizationFilter
+  - PersianNormalizationFilter
+  - ScandinavianFoldingFilter
+  - ScandinavianNormalizationFilter
+  - SerbianNormalizationFilter
+  - SoraniNormalizationFilter
 - name: Supporting Structures
   children:
   - Operator
