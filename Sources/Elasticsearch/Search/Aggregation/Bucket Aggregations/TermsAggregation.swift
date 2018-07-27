@@ -12,43 +12,30 @@ public struct TermsAggregation: Aggregation {
     
     /// :nodoc:
     public var name: String
-    
     /// :nodoc:
-    public let field: String?
-    
+    public let field: String
     /// :nodoc:
     public let size: Int?
-    
     /// :nodoc:
     public let showTermDocCountError: Bool?
-    
     /// :nodoc:
     public let order: [String: OrderDirection]?
-    
     /// :nodoc:
     public let minDocCount: Int?
-    
     /// :nodoc:
     public let script: Script?
-    
     /// :nodoc:
     public let include: String?
-    
     /// :nodoc:
     public let exclude: String?
-    
     /// :nodoc:
     public let includeExact: [String]?
-    
     /// :nodoc:
     public let excludeExact: [String]?
-    
     /// :nodoc:
     public let collectMode: CollectMode?
-    
     /// :nodoc:
     public let executionHint: ExecutionHint?
-    
     /// :nodoc:
     public let missing: Int?
     
@@ -85,7 +72,7 @@ public struct TermsAggregation: Aggregation {
     ///   - missing: Defines how documents that are missing a value should be treated
     public init(
         name: String,
-        field: String? = nil,
+        field: String,
         size: Int? = nil,
         showTermDocCountError: Bool? = nil,
         order: [String: OrderDirection]? = nil,
@@ -118,7 +105,7 @@ public struct TermsAggregation: Aggregation {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: type(of: self).typeKey.rawValue)!)
-        try valuesContainer.encodeIfPresent(field, forKey: .field)
+        try valuesContainer.encode(field, forKey: .field)
         try valuesContainer.encodeIfPresent(size, forKey: .size)
         try valuesContainer.encodeIfPresent(showTermDocCountError, forKey: .showTermDocCountError)
         try valuesContainer.encodeIfPresent(minDocCount, forKey: .minDocCount)
@@ -145,7 +132,6 @@ public struct TermsAggregation: Aggregation {
         case depthFirst = "depth_first"
     }
     
-    /// :nodoc:
     public enum ExecutionHint: String, Encodable {
         case map
         case globalOrdinals = "global_ordinals"

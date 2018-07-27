@@ -140,7 +140,7 @@ public struct MapKeyword: Mappable, DefinesNormalizers, DefinesAnalyzers {
         self.ignoreAbove = try container.decodeIfPresent(Int.self, forKey: .ignoreAbove)
         self.nullValue = try container.decodeIfPresent(String.self, forKey: .nullValue)
         
-        if let analysis = decoder.getAnalysis() {
+        if let analysis = decoder.analysis() {
             let normalizer = try container.decodeIfPresent(String.self, forKey: .normalizer)
             if let normalizer = normalizer {
                 self.normalizer = analysis.normalizer(named: normalizer)

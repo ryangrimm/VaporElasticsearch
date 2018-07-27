@@ -14,6 +14,6 @@ internal struct AnyAggregationResponse : Decodable {
     
     public init(from decoder: Decoder) throws {        
         let aggName = (decoder.codingPath.last?.stringValue)!
-        self.base = try decoder.getAggregationResponseType(forAggregationName: aggName)
+        self.base = try decoder.aggregationResponseType(forAggregationName: aggName)
     }
 }

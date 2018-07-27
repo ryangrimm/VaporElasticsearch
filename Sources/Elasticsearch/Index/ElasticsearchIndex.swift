@@ -112,11 +112,11 @@ public class ElasticsearchIndex: Codable {
             analysis.analyzers = filtersAnalyzers.analyzers
             
             let analysisPass = JSONDecoder()
-            analysisPass.setUserInfo(analysis: analysis)
+            analysisPass.userInfo(analysis: analysis)
             let fullAnalysis = try analysisPass.decode(FetchWrapper.self, from: response)
 
             let fullPass = JSONDecoder()
-            fullPass.setUserInfo(analysis: fullAnalysis.indexMappingValue.settings.analysis)
+            fullPass.userInfo(analysis: fullAnalysis.indexMappingValue.settings.analysis)
             let wrapper = try fullPass.decode(FetchWrapper.self, from: response)
             
             return wrapper.indexMappingValue

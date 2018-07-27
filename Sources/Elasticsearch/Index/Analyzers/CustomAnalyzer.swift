@@ -78,7 +78,7 @@ public struct CustomAnalyzer: Analyzer, DefinesTokenizers, DefinesTokenFilters, 
         
         self.positionIncrementGap = try container.decodeIfPresent(Int.self, forKey: .positionIncrementGap)
         
-        if let analysis = decoder.getAnalysis() {
+        if let analysis = decoder.analysis() {
             let tokenizer = try container.decode(String.self, forKey: .tokenizer)
             self.tokenizer = analysis.tokenizer(named: tokenizer)!
             

@@ -88,6 +88,10 @@
 		C293BC962108A2A600C31D94 /* ScandinavianNormalizationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC8A2108A18300C31D94 /* ScandinavianNormalizationFilter.swift */; };
 		C293BC972108A2A600C31D94 /* ScandinavianFoldingFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC8C2108A19A00C31D94 /* ScandinavianFoldingFilter.swift */; };
 		C293BC982108A2A600C31D94 /* SerbianNormalizationFIlter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC8E2108A1AD00C31D94 /* SerbianNormalizationFIlter.swift */; };
+		C293BC9B2109A7CC00C31D94 /* DateHistogramAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC992109A79400C31D94 /* DateHistogramAggregation.swift */; };
+		C293BC9E210ACB5B00C31D94 /* AggregationDateHistogramResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC9C210ACB1F00C31D94 /* AggregationDateHistogramResponse.swift */; };
+		C293BCA0210ACDD200C31D94 /* HistogramAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BC9F210ACDD200C31D94 /* HistogramAggregation.swift */; };
+		C293BCA2210ACF2600C31D94 /* AggregationHistogramResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BCA1210ACF2600C31D94 /* AggregationHistogramResponse.swift */; };
 		OBJ_1001 /* ElasticsearchAggregationCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ElasticsearchAggregationCodableTests.swift */; };
 		OBJ_1002 /* ElasticsearchQueryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* ElasticsearchQueryCodableTests.swift */; };
 		OBJ_1003 /* ElasticsearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ElasticsearchTests.swift */; };
@@ -2034,6 +2038,10 @@
 		C293BC8A2108A18300C31D94 /* ScandinavianNormalizationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScandinavianNormalizationFilter.swift; sourceTree = "<group>"; };
 		C293BC8C2108A19A00C31D94 /* ScandinavianFoldingFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScandinavianFoldingFilter.swift; sourceTree = "<group>"; };
 		C293BC8E2108A1AD00C31D94 /* SerbianNormalizationFIlter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerbianNormalizationFIlter.swift; sourceTree = "<group>"; };
+		C293BC992109A79400C31D94 /* DateHistogramAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHistogramAggregation.swift; sourceTree = "<group>"; };
+		C293BC9C210ACB1F00C31D94 /* AggregationDateHistogramResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregationDateHistogramResponse.swift; sourceTree = "<group>"; };
+		C293BC9F210ACDD200C31D94 /* HistogramAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramAggregation.swift; sourceTree = "<group>"; };
+		C293BCA1210ACF2600C31D94 /* AggregationHistogramResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregationHistogramResponse.swift; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -4017,6 +4025,8 @@
 				OBJ_56 /* AggregationSingleValueResponse.swift */,
 				OBJ_57 /* AggregationStatsResponse.swift */,
 				OBJ_58 /* AggregationTermsResponse.swift */,
+				C293BC9C210ACB1F00C31D94 /* AggregationDateHistogramResponse.swift */,
+				C293BCA1210ACF2600C31D94 /* AggregationHistogramResponse.swift */,
 				OBJ_60 /* DocResponse.swift */,
 				OBJ_61 /* IndexResponse.swift */,
 				OBJ_62 /* SearchResponse.swift */,
@@ -4052,6 +4062,8 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_69 /* TermsAggregation.swift */,
+				C293BC992109A79400C31D94 /* DateHistogramAggregation.swift */,
+				C293BC9F210ACDD200C31D94 /* HistogramAggregation.swift */,
 			);
 			path = "Bucket Aggregations";
 			sourceTree = "<group>";
@@ -5435,6 +5447,7 @@
 				OBJ_833 /* ElasticsearchClient+Search.swift in Sources */,
 				OBJ_834 /* ElasticsearchClient+connect.swift in Sources */,
 				OBJ_835 /* ElasticsearchClient.swift in Sources */,
+				C293BC9E210ACB5B00C31D94 /* AggregationDateHistogramResponse.swift in Sources */,
 				C293BC532104D68500C31D94 /* SynonymFilter.swift in Sources */,
 				C293BC512104CFCD00C31D94 /* TokenFilter.swift in Sources */,
 				OBJ_836 /* ElasticsearchClientConfig.swift in Sources */,
@@ -5474,6 +5487,7 @@
 				OBJ_860 /* MapLongRange.swift in Sources */,
 				OBJ_861 /* MapNested.swift in Sources */,
 				OBJ_862 /* MapObject.swift in Sources */,
+				C293BC9B2109A7CC00C31D94 /* DateHistogramAggregation.swift in Sources */,
 				C293BC232100631D00C31D94 /* LowercaseTokenizer.swift in Sources */,
 				OBJ_863 /* MapPercolator.swift in Sources */,
 				OBJ_864 /* MapScaledFloat.swift in Sources */,
@@ -5483,6 +5497,7 @@
 				C293BC0C210050E600C31D94 /* StandardAnalyzer.swift in Sources */,
 				C293BC35210068F700C31D94 /* SimplePatternTokenizer.swift in Sources */,
 				OBJ_867 /* MapTokenCount.swift in Sources */,
+				C293BCA2210ACF2600C31D94 /* AggregationHistogramResponse.swift in Sources */,
 				OBJ_868 /* Mappable.swift in Sources */,
 				OBJ_869 /* AggregationExtendedStatsResponse.swift in Sources */,
 				C293BC39210069BB00C31D94 /* PathHierarchyTokenizer.swift in Sources */,
@@ -5512,6 +5527,7 @@
 				OBJ_885 /* CardinalityAggregation.swift in Sources */,
 				C293BC61210586F300C31D94 /* TrimFilter.swift in Sources */,
 				C293BC6F210589D500C31D94 /* LowercaseFilter.swift in Sources */,
+				C293BCA0210ACDD200C31D94 /* HistogramAggregation.swift in Sources */,
 				OBJ_886 /* ExtendedStatsAggregation.swift in Sources */,
 				C293BC962108A2A600C31D94 /* ScandinavianNormalizationFilter.swift in Sources */,
 				OBJ_887 /* GeoBoundsAggregation.swift in Sources */,

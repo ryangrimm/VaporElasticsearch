@@ -16,6 +16,8 @@ public enum AggregationResponseMap : String, Encodable {
     case topHits = "top_hits"
     case valueCount = "value_count"
     case terms
+    case dateHistogram
+    case histogram
     
     var metatype: AggregationResponse.Type? {
         switch self {
@@ -43,6 +45,10 @@ public enum AggregationResponseMap : String, Encodable {
             return AggregationSingleValueResponse.self
         case .terms:
             return AggregationTermsResponse.self
+        case .dateHistogram:
+            return AggregationDateHistogramResponse.self
+        case .histogram:
+            return AggregationHistogramResponse.self
         }
     }
 }

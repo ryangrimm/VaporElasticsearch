@@ -20,7 +20,7 @@ struct DocumentTypeSettings: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        if decoder.getAnalysis() == nil {
+        if decoder.analysis() == nil {
             return
         }
         

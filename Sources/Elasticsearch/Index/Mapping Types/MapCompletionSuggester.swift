@@ -75,7 +75,7 @@ public struct MapCompletionSuggester: Mappable, DefinesAnalyzers {
         self.preservePositionIncrements = try container.decodeIfPresent(Bool.self, forKey: .preservePositionIncrements)
         self.maxInputLength = try container.decodeIfPresent(Int.self, forKey: .maxInputLength)
         
-        if let analysis = decoder.getAnalysis() {
+        if let analysis = decoder.analysis() {
             let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer)
             if let analyzer = analyzer {
                 self.analyzer = analysis.analyzer(named: analyzer)

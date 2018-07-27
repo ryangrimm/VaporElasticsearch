@@ -158,7 +158,7 @@ public struct MapText: Mappable, DefinesAnalyzers {
         self.fielddata = try container.decodeIfPresent(Bool.self, forKey: .fielddata)
         self.termVector = try container.decodeIfPresent(TermVector.self, forKey: .termVector)
         
-        if let analysis = decoder.getAnalysis() {
+        if let analysis = decoder.analysis() {
             if let analyzer = try container.decodeIfPresent(String.self, forKey: .analyzer) {
                 self.analyzer = analysis.analyzer(named: analyzer)
             }

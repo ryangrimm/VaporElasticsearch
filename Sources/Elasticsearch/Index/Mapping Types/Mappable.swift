@@ -64,7 +64,7 @@ public struct TextField: Codable, DefinesNormalizers, DefinesAnalyzers {
 
         self.type = try container.decode(TextFieldType.self, forKey: .type)
 
-        if let analysis = decoder.getAnalysis() {
+        if let analysis = decoder.analysis() {
             if let normalizer = try container.decodeIfPresent(String.self, forKey: .normalizer) {
                 self.normalizer = analysis.normalizer(named: normalizer)
             }
