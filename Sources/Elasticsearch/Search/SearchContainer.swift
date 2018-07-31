@@ -4,10 +4,10 @@ import Foundation
  This is the topmost container for specifying a query.
  */
 public struct SearchContainer: Encodable {
-    let query: Query?
-    let aggs: [Aggregation]?
-    let from: Int
-    let size: Int
+    public let query: Query?
+    public let aggs: [Aggregation]?
+    public let from: Int
+    public let size: Int
 
     enum CodingKeys: String, CodingKey {
         case query
