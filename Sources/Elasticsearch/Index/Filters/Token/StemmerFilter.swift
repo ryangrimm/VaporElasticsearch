@@ -14,12 +14,33 @@ public struct StemmerFilter: TokenFilter {
     public let type = typeKey.rawValue
     /// :nodoc:
     public let name: String
+    public let language: Language
     
-    public init<T: StemmerLanguage>(language: T) where T.RawValue == String {
-        self.name = language.rawValue
+    public init(language: Language, name: String? = nil) {
+        self.language = language
+        self.name = name ?? StemmerFilter.defaultStemmerName(language: language)
     }
 
     public init() {
-        self.init(language: StemmerFilter.Language.English.english)
+        self.init(language: Language.english)
+    }
+
+    /// returns stemmer name
+    internal static func defaultStemmerName(language: Language) -> String {
+        return "\(StemmerFilter.typeKey.rawValue)_\(language.rawValue)"
+    }
+
+    // MARK: - Codable
+    enum CodingKeys: String, CodingKey {
+        case type
+        case language = "name"
+    }
+    /// :nodoc:
+    public init(from decoder: Decoder) throws {
+
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.language = try container.decode(Language.self, forKey: CodingKeys.language)
+        self.name = StemmerFilter.defaultStemmerName(language: self.language)
     }
 }
