@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4DAE26032110E5BB00F58362 /* StemmerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE26022110E5BB00F58362 /* StemmerFilter.swift */; };
 		C2261A9620F9DED300B82E77 /* ElasticsearchBulk.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2261A9520F9DED300B82E77 /* ElasticsearchBulk.swift */; };
 		C2261A9820F9EA0900B82E77 /* BulkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2261A9720F9EA0900B82E77 /* BulkResponse.swift */; };
 		C293BC0021000F2900C31D94 /* IndexSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293BBFF21000F2800C31D94 /* IndexSettings.swift */; };
@@ -1971,6 +1972,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4DAE26022110E5BB00F58362 /* StemmerFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StemmerFilter.swift; sourceTree = "<group>"; };
 		C2261A9520F9DED300B82E77 /* ElasticsearchBulk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElasticsearchBulk.swift; sourceTree = "<group>"; };
 		C2261A9720F9EA0900B82E77 /* BulkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkResponse.swift; sourceTree = "<group>"; };
 		C293BBFF21000F2800C31D94 /* IndexSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexSettings.swift; sourceTree = "<group>"; };
@@ -2927,6 +2929,7 @@
 				C293BC8A2108A18300C31D94 /* ScandinavianNormalizationFilter.swift */,
 				C293BC8C2108A19A00C31D94 /* ScandinavianFoldingFilter.swift */,
 				C293BC8E2108A1AD00C31D94 /* SerbianNormalizationFIlter.swift */,
+				4DAE26022110E5BB00F58362 /* StemmerFilter.swift */,
 			);
 			path = Token;
 			sourceTree = "<group>";
@@ -5535,6 +5538,7 @@
 				OBJ_889 /* MaxAggregation.swift in Sources */,
 				OBJ_890 /* MinAggregation.swift in Sources */,
 				C293BC07210014F500C31D94 /* DocumentTypeSettings.swift in Sources */,
+				4DAE26032110E5BB00F58362 /* StemmerFilter.swift in Sources */,
 				OBJ_891 /* StatsAggregation.swift in Sources */,
 				OBJ_892 /* SumAggregation.swift in Sources */,
 				C293BC442103D61400C31D94 /* MappingCharacterFilter.swift in Sources */,
