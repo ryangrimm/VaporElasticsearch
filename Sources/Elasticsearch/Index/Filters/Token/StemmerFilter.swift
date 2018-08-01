@@ -6,7 +6,7 @@ import Foundation
 
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html)
  */
-public struct StemmerFilter: BasicTokenFilter {
+public struct StemmerFilter: TokenFilter {
     /// :nodoc:
     public static var typeKey = TokenFilterType.stemmer
     
