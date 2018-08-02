@@ -54,6 +54,8 @@ public enum TokenFilterType: String, Codable {
     case scandinavianNormalization = "scandinavian_normalization"
     case scandinavianFolding = "scandinavian_folding"
     case serbianNormalization = "serbian_normalization"
+
+    case stemmer = "stemmer"
     
     var metatype: TokenFilter.Type {
         switch self {
@@ -103,8 +105,10 @@ public enum TokenFilterType: String, Codable {
             return ScandinavianNormalizationFilter.self
         case .scandinavianFolding:
             return ScandinavianFoldingFilter.self
-        case.serbianNormalization:
+        case .serbianNormalization:
             return SerbianNormalizationFilter.self
+        case .stemmer:
+            return StemmerFilter.self
         }
     }
     
