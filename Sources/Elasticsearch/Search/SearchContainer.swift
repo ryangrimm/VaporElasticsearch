@@ -19,14 +19,14 @@ public struct SearchContainer: Encodable {
     }
 
     public init(aggs: [Aggregation]) {
-        self.init(nil, aggs: aggs)
+        self.init(query: nil, aggs: aggs)
     }
 
     public init(_ query: Query, aggs: [Aggregation]? = nil, from: Int = 0, size: Int = 10, terminateAfter: Int? = nil) {
-        self.init(query, aggs: aggs, from: from, size: size)
+        self.init(query: query, aggs: aggs, from: from, size: size)
     }
         
-    private init(_ query: Query? = nil, aggs: [Aggregation]? = nil, from: Int = 0, size: Int = 10, terminateAfter: Int? = nil) {
+    private init(query: Query? = nil, aggs: [Aggregation]? = nil, from: Int = 0, size: Int = 10, terminateAfter: Int? = nil) {
         self.query = query
         self.aggs = aggs
         self.from = from

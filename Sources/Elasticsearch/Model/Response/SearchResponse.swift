@@ -76,7 +76,7 @@ public struct SearchResponse<T: Decodable>: Decodable {
         self.timedOut = try container.decode(Bool.self, forKey: .timedOut)
         self.shards = try container.decode(Shards.self, forKey: .shards)
         self.hits = try container.decode(HitsContainer.self, forKey: .hits)
-        self.terminatedEarly = try container.decode(Bool.self, forKey: .terminatedEarly)
+        self.terminatedEarly = try container.decodeIfPresent(Bool.self, forKey: .terminatedEarly)
         
         if container.contains(.aggregations) {
             let aggsContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .aggregations)

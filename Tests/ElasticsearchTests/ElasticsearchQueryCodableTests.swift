@@ -13,7 +13,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testAvgAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"avg":{"field":"bar","missing":5}}}}
+        {"aggs":{"foo":{"avg":{"field":"bar","missing":5}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [AvgAggregation(name: "foo", field: "bar", missing: 5)])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -23,7 +23,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testCardinalityAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"cardinality":{"field":"bar"}}}}
+        {"aggs":{"foo":{"cardinality":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [CardinalityAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -33,7 +33,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testExtendedStatsAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"extended_stats":{"field":"bar"}}}}
+        {"aggs":{"foo":{"extended_stats":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [ExtendedStatsAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -43,7 +43,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testGeoBoundsAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"geo_bounds":{"field":"bar"}}}}
+        {"aggs":{"foo":{"geo_bounds":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [GeoBoundsAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -53,7 +53,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testGeoCentroidAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"geo_centroid":{"field":"bar"}}}}
+        {"aggs":{"foo":{"geo_centroid":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [GeoCentroidAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -63,7 +63,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testMaxAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"max":{"field":"bar"}}}}
+        {"aggs":{"foo":{"max":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [MaxAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -73,7 +73,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testMinAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"min":{"field":"bar"}}}}
+        {"aggs":{"foo":{"min":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [MinAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -83,7 +83,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testTermsAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"terms":{"field":"bar"}}}}
+        {"aggs":{"foo":{"terms":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [TermsAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -94,7 +94,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
     
     func testQueryContainer_encodesCorrectly() throws {
         let json = """
-        {"query":{"match":{"title":{"query":"Recipes with pasta or spaghetti","operator":"and"}}},"aggs":{"foo":{"avg":{"field":"bar","missing":5}}}}
+        {"size":10,"query":{"match":{"title":{"query":"Recipes with pasta or spaghetti","operator":"and"}}},"aggs":{"foo":{"avg":{"field":"bar","missing":5}}},"from":0}
         """
         let match = Match(field: "title", value: "Recipes with pasta or spaghetti", operator: .and)
         let query = Query(match)

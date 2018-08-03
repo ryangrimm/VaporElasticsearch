@@ -15,7 +15,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
         {"foo_avg":{"value": 7}}
         """
         let aggs = [AvgAggregation(name: "foo_avg", field: "bar", missing: 5)]
-        decoder.setUserInfo(fromAggregations: aggs)
+        decoder.userInfo(fromAggregations: aggs)
         let response = try decoder.decode([String: AnyAggregationResponse].self, from: json.data(using: .utf8)!)
         let aggResult = response["foo_avg"]?.base as! AggregationSingleValueResponse
         
@@ -26,7 +26,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     
     func testAvgAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"avg":{"field":"bar","missing":5}}}}
+        {"aggs":{"foo":{"avg":{"field":"bar","missing":5}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [AvgAggregation(name: "foo", field: "bar", missing: 5)])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -36,7 +36,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     
     func testCardinalityAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"cardinality":{"field":"bar"}}}}
+        {"aggs":{"foo":{"cardinality":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [CardinalityAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -46,7 +46,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     
     func testExtendedStatsAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"extended_stats":{"field":"bar"}}}}
+        {"aggs":{"foo":{"extended_stats":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [ExtendedStatsAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -56,7 +56,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     
     func testGeoBoundsAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"geo_bounds":{"field":"bar"}}}}
+        {"aggs":{"foo":{"geo_bounds":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [GeoBoundsAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -66,7 +66,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     
     func testGeoCentroidAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"geo_centroid":{"field":"bar"}}}}
+        {"aggs":{"foo":{"geo_centroid":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [GeoCentroidAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -76,7 +76,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     
     func testMaxAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"max":{"field":"bar"}}}}
+        {"aggs":{"foo":{"max":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [MaxAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -86,7 +86,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     
     func testMinAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"min":{"field":"bar"}}}}
+        {"aggs":{"foo":{"min":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [MinAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
@@ -96,7 +96,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     
     func testTermsAggregation_encodesCorrectly() throws {
         let json = """
-        {"aggs":{"foo":{"terms":{"field":"bar"}}}}
+        {"aggs":{"foo":{"terms":{"field":"bar"}}},"size":0,"from":0}
         """
         let queryContainer = SearchContainer(aggs: [TermsAggregation(name: "foo", field: "bar")])
         let encoded = try encoder.encodeToString(queryContainer)
