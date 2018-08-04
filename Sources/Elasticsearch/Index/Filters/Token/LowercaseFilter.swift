@@ -60,7 +60,7 @@ public struct LowercaseFilter: TokenFilter, BuiltinTokenFilter {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.name = (decoder.codingPath.last?.stringValue)!
         
-        self.language = try container.decode(Language.self, forKey: .language)
+        self.language = try container.decodeIfPresent(Language.self, forKey: .language)
         self.isCustom = true
     }
 }

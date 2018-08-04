@@ -40,9 +40,9 @@ public struct Script: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
-        try container.encode(lang, forKey: .lang)
-        try container.encode(source, forKey: .source)
-        try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(lang, forKey: .lang)
+        try container.encodeIfPresent(source, forKey: .source)
+        try container.encodeIfPresent(id, forKey: .id)
         
         if params != nil && params!.count > 0 {
             var keyedContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: .params)
@@ -77,9 +77,9 @@ public struct Script: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.lang = try container.decode(String.self, forKey: .lang)
-        self.source = try container.decode(String.self, forKey: .source)
-        self.id = try container.decode(String.self, forKey: .id)
+        self.lang = try container.decodeIfPresent(String.self, forKey: .lang)
+        self.source = try container.decodeIfPresent(String.self, forKey: .source)
+        self.id = try container.decodeIfPresent(String.self, forKey: .id)
 
         if container.contains(.params) {
             let paramsContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .params)
