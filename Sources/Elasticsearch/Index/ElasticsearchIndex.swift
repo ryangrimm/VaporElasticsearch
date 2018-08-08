@@ -13,24 +13,28 @@ internal struct ExtractFiltersAnalyzers: Decodable {
         let indexContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: key)
         let settingsContainer = try indexContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "settings")!)
         let settingsIndexContainer = try settingsContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "index")!)
-        let analysisContainer = try settingsIndexContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "analysis")!)
-        
-        if let analyzers = (try analysisContainer.decodeIfPresent([String: AnyAnalyzer].self, forKey: DynamicKey(stringValue: "analyzer")!)) {
-            self.analyzers = analyzers.mapValues { $0.base }
+        if settingsContainer.contains(DynamicKey(stringValue: "analysis")!) {
+            let analysisContainer = try settingsIndexContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "analysis")!)
+            
+            if let analyzers = (try analysisContainer.decodeIfPresent([String: AnyAnalyzer].self, forKey: DynamicKey(stringValue: "analyzer")!)) {
+                self.analyzers = analyzers.mapValues { $0.base }
+            } else {
+                self.analyzers = [:]
+            }
+            if let filters = (try analysisContainer.decodeIfPresent([String: AnyTokenFilter].self, forKey: DynamicKey(stringValue: "filter")!)) {
+                self.filters = filters.mapValues { $0.base }
+            } else {
+                self.filters = [:]
+            }
+            if let characterFilters = (try analysisContainer.decodeIfPresent([String: AnyCharacterFilter].self, forKey: DynamicKey(stringValue: "char_filter")!)) {
+                self.characterFilters = characterFilters.mapValues { $0.base }
+            } else {
+                self.characterFilters = [:]
+            }
         }
         else {
             self.analyzers = [:]
-        }
-        if let filters = (try analysisContainer.decodeIfPresent([String: AnyTokenFilter].self, forKey: DynamicKey(stringValue: "filter")!)) {
-            self.filters = filters.mapValues { $0.base }
-        }
-        else {
             self.filters = [:]
-        }
-        if let characterFilters = (try analysisContainer.decodeIfPresent([String: AnyCharacterFilter].self, forKey: DynamicKey(stringValue: "char_filter")!)) {
-            self.characterFilters = characterFilters.mapValues { $0.base }
-        }
-        else {
             self.characterFilters = [:]
         }
     }
