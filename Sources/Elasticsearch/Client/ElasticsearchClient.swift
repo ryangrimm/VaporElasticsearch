@@ -131,8 +131,14 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
                     throw ElasticsearchError(identifier: "invalid_response", reason: "Cannot parse response body from Elasticsearch", source: .capture())
                 }
                 
-                let error = json["error"] as! Dictionary<String, Any>
-                throw ElasticsearchError(identifier: "elasticsearch_error", reason: error.description, source: .capture(), statusCode: response.status.code)
+                let error: String
+                if response.status.code == 404 {
+                    error = "Document not found"
+                }
+                else {
+                    error = json["error"] != nil ? (json["error"] as! Dictionary<String, Any>).description : ""
+                }
+                throw ElasticsearchError(identifier: "elasticsearch_error", reason: error, source: .capture(), statusCode: response.status.code)
             }
             
             let bodyString = String(data: response.body.data!, encoding: String.Encoding.utf8) as String?
