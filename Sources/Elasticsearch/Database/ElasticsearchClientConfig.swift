@@ -1,7 +1,7 @@
-import Foundation
+import DatabaseKit
 
 /// Config options for an `ElasticsearchClient`.
-public struct ElasticsearchClientConfig: Codable {
+public struct ElasticsearchClientConfig: Service {
     /// The Elasticsearch server's hostname.
     public var hostname: String
 
@@ -25,7 +25,7 @@ public struct ElasticsearchClientConfig: Codable {
     public var enableKeyedCache: Bool = false
     
     /// Name of the index to use for the keyed cache
-    public var keyedCacheIndexName: String = "_vapor_keyed_cache"
+    public var keyedCacheIndexName: String = "vapor_keyed_cache"
 
     /// Create a new `ElasticsearchClientConfig` from a URL
     public init(url: URL) {

@@ -184,7 +184,11 @@ public class ElasticsearchBulk {
         request.headers.add(name: "Content-Type", value: "application/x-ndjson")
 
         return try client.send(request).map(to: BulkResponse.self) {jsonData in
-            return try JSONDecoder().decode(BulkResponse.self, from: jsonData)
+            if let jsonData = jsonData {
+                return try JSONDecoder().decode(BulkResponse.self, from: jsonData)
+            }
+            
+            throw ElasticsearchError(identifier: "bulk_failed", reason: "Unexpected failure", source: .capture(), statusCode: 404)
         }
     }
     

@@ -31,7 +31,11 @@ extension ElasticsearchClient {
                 }
             }
             
-            return try decoder.decode(SearchResponse<U>.self, from: jsonData)
+            if let jsonData = jsonData {
+                return try decoder.decode(SearchResponse<U>.self, from: jsonData)
+            }
+            
+            throw ElasticsearchError(identifier: "search_failed", reason: "Could not execute search", source: .capture(), statusCode: 404)
         }
     }
 }

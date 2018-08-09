@@ -26,7 +26,7 @@ final class ElasticsearchTests: XCTestCase {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         
-        try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
+        try ElasticsearchIndex.delete(indexName: "test", client: es).wait()
         
         let analyzer = StandardAnalyzer(name: "std_english", stopwords: ["_english_"])
         
@@ -40,18 +40,22 @@ final class ElasticsearchTests: XCTestCase {
         try indexConfig.create().wait()
         
         let index = try ElasticsearchIndex.fetch(indexName: "test", client: es).wait()
-        XCTAssertEqual(index.aliases.count, 1, "Incorrect number of aliases")
-        XCTAssertNotNil(index.aliases["testalias"], "testalias does not exist")
-        XCTAssertEqual(index.settings.index?.numberOfShards, 3, "Incorrect number of shards")
-        XCTAssertEqual(index.settings.index?.numberOfReplicas, 2, "Incorrect number of replicas")
-        XCTAssertEqual(index.mappings.doc.meta?.userDefined!["Foo"], "Bar", "User metadata")
+        if let index = index {
+            XCTAssertEqual(index.aliases.count, 1, "Incorrect number of aliases")
+            XCTAssertNotNil(index.aliases["testalias"], "testalias does not exist")
+            XCTAssertEqual(index.settings.index?.numberOfShards, 3, "Incorrect number of shards")
+            XCTAssertEqual(index.settings.index?.numberOfReplicas, 2, "Incorrect number of replicas")
+            XCTAssertEqual(index.mappings.doc.meta?.userDefined!["Foo"], "Bar", "User metadata")
 
-        // TODO: Should test for more than just the existance of the properties
-        let nameProp = index.mappings.doc.properties["name"]
-        let numberProp = index.mappings.doc.properties["number"]
-        XCTAssertNotNil(nameProp, "Could not find name property")
-        XCTAssertNotNil(numberProp, "Could not find number property")
-        
+            // TODO: Should test for more than just the existance of the properties
+            let nameProp = index.mappings.doc.properties["name"]
+            let numberProp = index.mappings.doc.properties["number"]
+            XCTAssertNotNil(nameProp, "Could not find name property")
+            XCTAssertNotNil(numberProp, "Could not find number property")
+        }
+        else {
+            XCTFail("Index not found")
+        }
         try ElasticsearchIndex.delete(indexName: "test", client: es).wait()
     }
     
@@ -73,32 +77,40 @@ final class ElasticsearchTests: XCTestCase {
         indexDoc.id = response.id
 
         
-        var fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: indexDoc.id!).wait()
-        XCTAssertEqual(indexDoc.name, fetchedDoc.source.name, "Saved and fetched names do not match")
-        XCTAssertEqual(indexDoc.number, fetchedDoc.source.number, "Saved and fetched numbers do not match")
+        if var fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: indexDoc.id!).wait() {
+            XCTAssertEqual(indexDoc.name, fetchedDoc.source.name, "Saved and fetched names do not match")
+            XCTAssertEqual(indexDoc.number, fetchedDoc.source.number, "Saved and fetched numbers do not match")
 
-        fetchedDoc.source.name = "baz"
-        response = try es.index(doc: fetchedDoc.source, index: "test", id: fetchedDoc.id).wait()
+            fetchedDoc.source.name = "baz"
+            response = try es.index(doc: fetchedDoc.source, index: "test", id: fetchedDoc.id).wait()
+            
+            sleep(2)
+            
+            if let fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: fetchedDoc.id).wait() {
+                XCTAssertEqual(fetchedDoc.source.name, "baz", "Updated name does not match")
+                
+                sleep(2)
+                
+                let query = SearchContainer(
+                    Query(
+                        MatchAll()
+                    )
+                )
+                
+                let searchResults = try es.search(decodeTo: TestModel.self, index: "test", query: query).wait()
+                XCTAssertEqual(searchResults.hits!.total, 1, "Should have found one result")
+                XCTAssertEqual(searchResults.hits!.hits.first?.source.name, fetchedDoc.source.name, "Did not fetch correct document")
+                
+                let _ = try es.delete(index: "test", id: fetchedDoc.id)
+            }
+            else {
+                XCTFail("Could not fetch document")
+            }
+        }
+        else {
+            XCTFail("Could not fetch document")
+        }
         
-        sleep(2)
-
-        fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: fetchedDoc.id).wait()
-        XCTAssertEqual(fetchedDoc.source.name, "baz", "Updated name does not match")
-
-        sleep(2)
-
-        let query = SearchContainer(
-            Query(
-                MatchAll()
-            )
-        )
-
-        let searchResults = try es.search(decodeTo: TestModel.self, index: "test", query: query).wait()
-        XCTAssertEqual(searchResults.hits!.total, 1, "Should have found one result")
-        XCTAssertEqual(searchResults.hits!.hits.first?.source.name, fetchedDoc.source.name, "Did not fetch correct document")
-        
-        let _ = try es.delete(index: "test", id: fetchedDoc.id)
-    
         try ElasticsearchIndex.delete(indexName: "test", client: es).wait()
     }
     
@@ -132,9 +144,20 @@ final class ElasticsearchTests: XCTestCase {
         XCTAssert(bulkResponse.errors == false, "There were errors in the bulk request")
     }
     
+    func testLinuxTestSuiteIncludesAllTests() {
+        #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+        let thisClass = type(of: self)
+        let linuxCount = thisClass.allTests.count
+        let darwinCount = Int(thisClass.defaultTestSuite.testCaseCount)
+        XCTAssertEqual(linuxCount, darwinCount, "\(darwinCount - linuxCount) tests are missing from allTests")
+        #endif
+    }
+    
     static var allTests = [
         ("testIndexCreation", testIndexCreation),
         ("testCRUD", testCRUD),
-        ("testBulk", testBulk)
+        ("testBulk", testBulk),
+        
+        ("testLinuxTestSuiteIncludesAllTests",      testLinuxTestSuiteIncludesAllTests)
     ]
 }

@@ -17,7 +17,7 @@ extension ElasticsearchClient {
     ///   - realtime: Fetch realtime results
     /// - Returns: A Future DocResponse
     /// - Throws: ElasticsearchError
-    public func get<T: Codable>(
+    public func get<T: Decodable>(
         decodeTo resultType: T.Type,
         index: String,
         id: String,
@@ -26,10 +26,13 @@ extension ElasticsearchClient {
         version: Int? = nil,
         storedFields: [String]? = nil,
         realtime: Bool? = nil
-    ) throws -> Future<DocResponse<T>> {
+    ) throws -> Future<DocResponse<T>?> {
         let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)", routing: routing, version: version, storedFields: storedFields, realtime: realtime)
-        return try send(HTTPMethod.GET, to: url.string!).map(to: DocResponse.self) {jsonData in
-            return try self.decoder.decode(DocResponse<T>.self, from: jsonData)
+        return try send(HTTPMethod.GET, to: url.string!).map(to: DocResponse?.self) {jsonData in
+            if let jsonData = jsonData {
+                return try self.decoder.decode(DocResponse<T>.self, from: jsonData)
+            }
+            return nil
         }
     }
     
@@ -45,8 +48,8 @@ extension ElasticsearchClient {
     ///   - forceCreate: Force creation
     /// - Returns: A Future IndexResponse
     /// - Throws: ElasticsearchError
-    public func index<T :Codable>(
-        doc :T,
+    public func index<T: Encodable>(
+        doc: T,
         index: String,
         id: String? = nil,
         type: String = "_doc",
@@ -58,7 +61,10 @@ extension ElasticsearchClient {
         let method = id != nil ? HTTPMethod.PUT : HTTPMethod.POST
         let body = try self.encoder.encode(doc)
         return try send(method, to: url.string!, with:body).map(to: IndexResponse.self) {jsonData in
-            return try self.decoder.decode(IndexResponse.self, from: jsonData)
+            if let jsonData = jsonData {
+                return try self.decoder.decode(IndexResponse.self, from: jsonData)
+            }
+            throw ElasticsearchError(identifier: "indexing_failed", reason: "Cannot index document", source: .capture(), statusCode: 404)
         }
     }
 
@@ -73,8 +79,8 @@ extension ElasticsearchClient {
     ///   - version: Version information
     /// - Returns: A Future IndexResponse
     /// - Throws: ElasticsearchError
-    public func update<T :Codable>(
-        doc :T,
+    public func update<T: Encodable>(
+        doc: T,
         index: String,
         id: String,
         type: String = "_doc",
@@ -84,7 +90,10 @@ extension ElasticsearchClient {
         let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)", routing: routing, version: version)
         let body = try self.encoder.encode(doc)
         return try send(HTTPMethod.PUT, to: url.string!, with:body).map(to: IndexResponse.self) {jsonData in
-            return try self.decoder.decode(IndexResponse.self, from: jsonData)
+            if let jsonData = jsonData {
+                return try self.decoder.decode(IndexResponse.self, from: jsonData)
+            }
+            throw ElasticsearchError(identifier: "indexing_failed", reason: "Cannot update document", source: .capture(), statusCode: 404)
         }
     }
 
@@ -107,7 +116,10 @@ extension ElasticsearchClient {
     ) throws -> Future<IndexResponse>{
         let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)", routing: routing, version: version)
         return try send(HTTPMethod.DELETE, to: url.string!).map(to: IndexResponse.self) {jsonData in
-            return try self.decoder.decode(IndexResponse.self, from: jsonData)
+            if let jsonData = jsonData {
+                return try self.decoder.decode(IndexResponse.self, from: jsonData)
+            }
+            throw ElasticsearchError(identifier: "indexing_failed", reason: "Cannot delete document", source: .capture(), statusCode: 404)
         }
     }
 }

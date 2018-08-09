@@ -8,7 +8,7 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
     override func setUp() {
         encoder = JSONEncoder()
         decoder = JSONDecoder()
-    }   
+    }
     
     func testSingleValueResponse_response() throws {
         let json = """
@@ -23,7 +23,6 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
         XCTAssertEqual(aggResult.value, 7)
     }
 
-    
     func testAvgAggregation_encodesCorrectly() throws {
         let json = """
         {"aggs":{"foo":{"avg":{"field":"bar","missing":5}}},"size":0,"from":0}

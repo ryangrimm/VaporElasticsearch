@@ -101,29 +101,33 @@ public class ElasticsearchIndex: Codable {
         }
     }
     
-    internal static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex> {
-        return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex.self) { response in
+    internal static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex?> {
+        return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex?.self) { response in
             // This is being done in three passes because the filters, analyzers and tokenizers
             // need to be populated before the properties. This needs to be done so they can
             // fetch their analyzers at the time of decoding. It's a little unfortunate but
-            // but overall not a big deal as it's a very rare function to be called.
+            // but overall not a big deal as it should be a very rare function to be called.
             
-            // First pass gets filters and analyzers
-            let filtersAnalyzers = try JSONDecoder().decode(ExtractFiltersAnalyzers.self, from: response)
-            var analysis = Analysis()
-            analysis.filters = filtersAnalyzers.filters
-            analysis.characterFilters = filtersAnalyzers.characterFilters
-            analysis.analyzers = filtersAnalyzers.analyzers
-            
-            let analysisPass = JSONDecoder()
-            analysisPass.userInfo(analysis: analysis)
-            let fullAnalysis = try analysisPass.decode(FetchWrapper.self, from: response)
+            if let response = response {
+                // First pass gets filters and analyzers
+                let filtersAnalyzers = try JSONDecoder().decode(ExtractFiltersAnalyzers.self, from: response)
+                var analysis = Analysis()
+                analysis.filters = filtersAnalyzers.filters
+                analysis.characterFilters = filtersAnalyzers.characterFilters
+                analysis.analyzers = filtersAnalyzers.analyzers
+                
+                let analysisPass = JSONDecoder()
+                analysisPass.userInfo(analysis: analysis)
+                let fullAnalysis = try analysisPass.decode(FetchWrapper.self, from: response)
 
-            let fullPass = JSONDecoder()
-            fullPass.userInfo(analysis: fullAnalysis.indexMappingValue.settings.analysis)
-            let wrapper = try fullPass.decode(FetchWrapper.self, from: response)
+                let fullPass = JSONDecoder()
+                fullPass.userInfo(analysis: fullAnalysis.indexMappingValue.settings.analysis)
+                let wrapper = try fullPass.decode(FetchWrapper.self, from: response)
+                
+                return wrapper.indexMappingValue
+            }
             
-            return wrapper.indexMappingValue
+            return nil
         }
     }
     

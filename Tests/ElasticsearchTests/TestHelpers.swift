@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import Elasticsearch
+import Elasticsearch
 
 extension JSONEncoder {
     func encodeToString<T>(_ value: T) throws -> String where T : Encodable {
@@ -10,14 +10,18 @@ extension JSONEncoder {
     }
 }
 
+internal extension Environment {
+    static var xcode: Environment {
+        return .init(name: "xcode", isRelease: false, arguments: ["xcode"])
+    }
+}
+
 extension ElasticsearchClient {
     /// Creates a test event loop and Elasticsearch client.
     static func makeTest() throws -> ElasticsearchClient {
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         let config = ElasticsearchClientConfig()
-        let client = try ElasticsearchClient.connect(config: config, on: group) { error in
-            XCTFail("\(error)")
-            }.wait()
+        let client = try ElasticsearchClient.connect(config: config, on: group).wait()
         return client
     }
 }

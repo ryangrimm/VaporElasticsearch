@@ -1,7 +1,7 @@
 import Async
 
 extension ElasticsearchClient {
-    public func fetchIndex(name: String) throws -> Future<ElasticsearchIndex> {
+    public func fetchIndex(name: String) throws -> Future<ElasticsearchIndex?> {
         return try ElasticsearchIndex.fetch(indexName: name, client: self)
     }
     

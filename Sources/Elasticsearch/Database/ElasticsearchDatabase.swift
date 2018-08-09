@@ -18,8 +18,11 @@ public final class ElasticsearchDatabase: Database {
     
     /// See `Database`.
     public func newConnection(on worker: Worker) -> Future<ElasticsearchClient> {
-        return ElasticsearchClient.connect(config: config, on: worker) { error in
-            print("[Elasticsearch] \(error)")
+        do {
+            return try ElasticsearchClient.connect(config: config, on: worker)
+        } catch {
+            print("[Elasticsearch] Error connecting: " + error.localizedDescription)
+            abort()
         }
     }
 }

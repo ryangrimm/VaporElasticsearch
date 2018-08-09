@@ -1,5 +1,5 @@
 
-public struct DocResponse<T: Codable>: Codable {
+public struct DocResponse<T: Decodable>: Decodable {
     public let index :String
     public let type :String
     public let id :String
