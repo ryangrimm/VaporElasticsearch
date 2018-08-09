@@ -39,7 +39,7 @@ public final class ElasticsearchProvider: Provider {
     public func willBoot(_ worker: Container) throws -> Future<Void> {
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         
-        return try ElasticsearchClient.connect(config: self.config, on: group).flatMap(to: Void.self) { client in
+        return ElasticsearchClient.connect(config: self.config, on: group).flatMap(to: Void.self) { client in
             return try ElasticsearchDatabase.setupKeyedCache(client: client, on: worker)
         }
     }

@@ -174,8 +174,7 @@ public class ElasticsearchBulk {
     /// Executes the bulk operation
     ///
     /// - Returns: Returns the response from the bulk operation
-    /// - Throws: Bad stuff
-    public func send() throws -> Future<BulkResponse> {
+    public func send() -> Future<BulkResponse> {
         // Add on a newline at the end to signal the end of the commands
         requestBody.append(10)
 
@@ -183,7 +182,7 @@ public class ElasticsearchBulk {
         var request = HTTPRequest(method: HTTPMethod.POST, url: url.string!, body: HTTPBody(data: requestBody))
         request.headers.add(name: "Content-Type", value: "application/x-ndjson")
 
-        return try client.send(request).map(to: BulkResponse.self) {jsonData in
+        return client.send(request).map(to: BulkResponse.self) {jsonData in
             if let jsonData = jsonData {
                 return try JSONDecoder().decode(BulkResponse.self, from: jsonData)
             }

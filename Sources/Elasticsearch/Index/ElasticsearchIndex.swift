@@ -101,8 +101,8 @@ public class ElasticsearchIndex: Codable {
         }
     }
     
-    internal static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex?> {
-        return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex?.self) { response in
+    internal static func fetch(indexName: String, client: ElasticsearchClient) -> Future<ElasticsearchIndex?> {
+        return client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex?.self) { response in
             // This is being done in three passes because the filters, analyzers and tokenizers
             // need to be populated before the properties. This needs to be done so they can
             // fetch their analyzers at the time of decoding. It's a little unfortunate but
@@ -212,13 +212,12 @@ public class ElasticsearchIndex: Codable {
         }
         
         let body = try JSONEncoder().encode(self)
-        return try self.client!.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
+        return self.client!.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
         }
     }
     
-    // TODO - should add an option to ignore if index isn't present
-    internal static func delete(indexName: String, client: ElasticsearchClient) throws -> Future<Void> {
-        return try client.send(HTTPMethod.DELETE, to: "/\(indexName)").map(to: Void.self) { response in
+    internal static func delete(indexName: String, client: ElasticsearchClient) -> Future<Void> {
+        return client.send(HTTPMethod.DELETE, to: "/\(indexName)").map(to: Void.self) { response in
         }
     }
     

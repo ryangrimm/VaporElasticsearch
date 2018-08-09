@@ -16,7 +16,6 @@ extension ElasticsearchClient {
     ///   - storedFields: Only return the stored fields
     ///   - realtime: Fetch realtime results
     /// - Returns: A Future DocResponse
-    /// - Throws: ElasticsearchError
     public func get<T: Decodable>(
         decodeTo resultType: T.Type,
         index: String,
@@ -26,9 +25,9 @@ extension ElasticsearchClient {
         version: Int? = nil,
         storedFields: [String]? = nil,
         realtime: Bool? = nil
-    ) throws -> Future<DocResponse<T>?> {
+    ) -> Future<DocResponse<T>?> {
         let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)", routing: routing, version: version, storedFields: storedFields, realtime: realtime)
-        return try send(HTTPMethod.GET, to: url.string!).map(to: DocResponse?.self) {jsonData in
+        return send(HTTPMethod.GET, to: url.string!).map(to: DocResponse?.self) {jsonData in
             if let jsonData = jsonData {
                 return try self.decoder.decode(DocResponse<T>.self, from: jsonData)
             }
@@ -47,7 +46,6 @@ extension ElasticsearchClient {
     ///   - version: Version information
     ///   - forceCreate: Force creation
     /// - Returns: A Future IndexResponse
-    /// - Throws: ElasticsearchError
     public func index<T: Encodable>(
         doc: T,
         index: String,
@@ -56,11 +54,16 @@ extension ElasticsearchClient {
         routing: String? = nil,
         version: Int? = nil,
         forceCreate: Bool? = nil
-    ) throws -> Future<IndexResponse> {
+    ) -> Future<IndexResponse> {
         let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id ?? "")", routing: routing, version: version, forceCreate: forceCreate)
         let method = id != nil ? HTTPMethod.PUT : HTTPMethod.POST
-        let body = try self.encoder.encode(doc)
-        return try send(method, to: url.string!, with:body).map(to: IndexResponse.self) {jsonData in
+        let body: Data
+        do {
+            body = try self.encoder.encode(doc)
+        } catch {
+            return worker.future(error: error)
+        }
+        return send(method, to: url.string!, with:body).map(to: IndexResponse.self) {jsonData in
             if let jsonData = jsonData {
                 return try self.decoder.decode(IndexResponse.self, from: jsonData)
             }
@@ -78,7 +81,6 @@ extension ElasticsearchClient {
     ///   - routing: Routing information
     ///   - version: Version information
     /// - Returns: A Future IndexResponse
-    /// - Throws: ElasticsearchError
     public func update<T: Encodable>(
         doc: T,
         index: String,
@@ -86,10 +88,15 @@ extension ElasticsearchClient {
         type: String = "_doc",
         routing: String? = nil,
         version: Int? = nil
-    ) throws -> Future<IndexResponse>{
+    ) -> Future<IndexResponse>{
         let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)", routing: routing, version: version)
-        let body = try self.encoder.encode(doc)
-        return try send(HTTPMethod.PUT, to: url.string!, with:body).map(to: IndexResponse.self) {jsonData in
+        let body: Data
+        do {
+            body = try self.encoder.encode(doc)
+        } catch {
+            return worker.future(error: error)
+        }
+        return send(HTTPMethod.PUT, to: url.string!, with:body).map(to: IndexResponse.self) {jsonData in
             if let jsonData = jsonData {
                 return try self.decoder.decode(IndexResponse.self, from: jsonData)
             }
@@ -106,16 +113,15 @@ extension ElasticsearchClient {
     ///   - routing: Routing information
     ///   - version: Version information
     /// - Returns: A Future IndexResponse
-    /// - Throws: ElasticsearchError
     public func delete(
         index: String,
         id: String,
         type: String = "_doc",
         routing: String? = nil,
         version: Int? = nil
-    ) throws -> Future<IndexResponse>{
+    ) -> Future<IndexResponse>{
         let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)", routing: routing, version: version)
-        return try send(HTTPMethod.DELETE, to: url.string!).map(to: IndexResponse.self) {jsonData in
+        return send(HTTPMethod.DELETE, to: url.string!).map(to: IndexResponse.self) {jsonData in
             if let jsonData = jsonData {
                 return try self.decoder.decode(IndexResponse.self, from: jsonData)
             }

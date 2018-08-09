@@ -82,32 +82,36 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
     public func send(
         _ method: HTTPMethod,
         to path: String
-    ) throws -> Future<Data?> {
+    ) -> Future<Data?> {
         let httpReq = HTTPRequest(method: method, url: path)
-        return try send(httpReq)
+        return send(httpReq)
     }
     
     public func send(
         _ method: HTTPMethod,
         to path: String,
         with body: Dictionary<String, Any>
-    ) throws -> Future<Data?> {
-        let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
-        return try send(method, to: path, with: jsonData)
+    ) -> Future<Data?> {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+            return send(method, to: path, with: jsonData)
+        } catch {
+            return worker.future(error: error)
+        }
     }
     
     public func send(
         _ method: HTTPMethod,
         to path: String,
         with body: Data
-    ) throws -> Future<Data?> {
+    ) -> Future<Data?> {
         let httpReq = HTTPRequest(method: method, url: path, body: HTTPBody(data: body))
-        return try send(httpReq)
+        return send(httpReq)
     }
     
     public func send(
         _ request: HTTPRequest
-    ) throws -> Future<Data?> {
+    ) -> Future<Data?> {
         var request = request
         if request.headers.contains(name: "Content-Type") == false {
             request.headers.add(name: "Content-Type", value: "application/json")

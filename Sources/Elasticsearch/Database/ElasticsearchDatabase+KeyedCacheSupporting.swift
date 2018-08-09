@@ -9,7 +9,7 @@ extension ElasticsearchDatabase: KeyedCacheSupporting {
         
         client.logger?.record(query: "Keyed cached is enabled")
 
-        return try client.fetchIndex(name: client.config.keyedCacheIndexName).flatMap { index -> Future<Void> in
+        return client.fetchIndex(name: client.config.keyedCacheIndexName).flatMap { index -> Future<Void> in
             if index != nil {
                 client.logger?.record(query: "Keyed cache index exists")
                 return .done(on: worker)
@@ -23,7 +23,7 @@ extension ElasticsearchDatabase: KeyedCacheSupporting {
     }
     
     public static func keyedCacheGet<D>(_ key: String, as decodable: D.Type, on conn: ElasticsearchClient) throws -> EventLoopFuture<D?> where D : Decodable {
-        return try conn.get(decodeTo: D.self, index: conn.config.keyedCacheIndexName, id: key).map(to: D?.self) { result in
+        return conn.get(decodeTo: D.self, index: conn.config.keyedCacheIndexName, id: key).map(to: D?.self) { result in
             if let result = result {
                 return result.source
             }
@@ -32,13 +32,13 @@ extension ElasticsearchDatabase: KeyedCacheSupporting {
     }
     
     public static func keyedCacheSet<E>(_ key: String, to encodable: E, on conn: ElasticsearchClient) throws -> EventLoopFuture<Void> where E : Encodable {
-        return try conn.index(doc: encodable, index: conn.config.keyedCacheIndexName, id: key).map(to: Void.self, { _ in
+        return conn.index(doc: encodable, index: conn.config.keyedCacheIndexName, id: key).map(to: Void.self, { _ in
             return
         })
     }
     
     public static func keyedCacheRemove(_ key: String, on conn: ElasticsearchClient) throws -> EventLoopFuture<Void> {
-        return try conn.delete(index: conn.config.keyedCacheIndexName, id: key).map(to: Void.self) { _ in
+        return conn.delete(index: conn.config.keyedCacheIndexName, id: key).map(to: Void.self) { _ in
             return
         }
     }
