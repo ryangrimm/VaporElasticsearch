@@ -8,11 +8,11 @@ public final class ElasticsearchDatabase: Database {
     public let config: ElasticsearchClientConfig
     
     /// Creates a new `ElasticsearchDatabase`.
-    public init(config: ElasticsearchClientConfig) throws { 
+    public init(config: ElasticsearchClientConfig) { 
         self.config = config
     }
     
-    public init(url: URL) throws {
+    public init(url: URL) {
         self.config = ElasticsearchClientConfig(url: url)
     }
     

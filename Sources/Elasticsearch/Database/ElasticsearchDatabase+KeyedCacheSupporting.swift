@@ -2,7 +2,7 @@ import Foundation
 import DatabaseKit
 
 extension ElasticsearchDatabase: KeyedCacheSupporting {
-    static func setupKeyedCache(client: ElasticsearchClient, on worker: Worker) throws -> Future<Void> {
+    static func setupKeyedCache(client: ElasticsearchClient, on worker: Worker) -> Future<Void> {
         if client.config.enableKeyedCache == false {
             return .done(on: worker)
         }
@@ -18,7 +18,7 @@ extension ElasticsearchDatabase: KeyedCacheSupporting {
             let index = client.configureIndex(name: client.config.keyedCacheIndexName)
             index.mappings.doc.enabled = false
             index.mappings.doc.dynamic = true
-            return try index.create()
+            return index.create(client: client)
         }
     }
     

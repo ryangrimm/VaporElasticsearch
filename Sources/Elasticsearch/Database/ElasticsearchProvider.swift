@@ -22,7 +22,7 @@ public final class ElasticsearchProvider: Provider {
         try services.register(DatabaseKitProvider())
         services.register(ElasticsearchDatabase.self)
         services.register { (container) -> DatabasesConfig in
-            let esDb = try ElasticsearchDatabase(config: self.config)
+            let esDb = ElasticsearchDatabase(config: self.config)
             
             var databases = DatabasesConfig()
             databases.add(database: esDb, as: .elasticsearch)
@@ -40,7 +40,7 @@ public final class ElasticsearchProvider: Provider {
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         
         return ElasticsearchClient.connect(config: self.config, on: group).flatMap(to: Void.self) { client in
-            return try ElasticsearchDatabase.setupKeyedCache(client: client, on: worker)
+            return ElasticsearchDatabase.setupKeyedCache(client: client, on: worker)
         }
     }
     

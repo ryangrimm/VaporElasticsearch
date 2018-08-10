@@ -72,7 +72,6 @@ public class ElasticsearchIndex: Codable {
         var routing: String?
     }
     
-    public var client: ElasticsearchClient? = nil
     public var indexName: String? = nil
     public var mappings = DefaultType(doc: DocumentTypeSettings())
     public var aliases = [String: Alias]()
@@ -131,9 +130,8 @@ public class ElasticsearchIndex: Codable {
         }
     }
     
-    internal init(indexName: String, client: ElasticsearchClient, dynamicMapping: Bool = false, enableQuerying: Bool = true) {
+    internal init(indexName: String, dynamicMapping: Bool = false, enableQuerying: Bool = true) {
         self.indexName = indexName
-        self.client = client
         self.mappings.doc.enabled = enableQuerying
         self.mappings.doc.dynamic = dynamicMapping
         self.settings = Settings()
@@ -197,22 +195,23 @@ public class ElasticsearchIndex: Codable {
         return self
     }
     
-    public func create() throws -> Future<Void> {
+    public func create(client: ElasticsearchClient) -> Future<Void> {
         guard let name = indexName else {
-            throw ElasticsearchError(identifier: "missing_indexName", reason: "Missing index name for index creation", source: .capture())
+            return client.worker.future(error: ElasticsearchError(identifier: "missing_indexName", reason: "Missing index name for index creation", source: .capture()))
         }
-        guard let _ = self.client else {
-            throw ElasticsearchError(identifier: "missing_client", reason: "Missing client for index creation", source: .capture())
-        }
-        
-        let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties.mapValues { AnyMap($0) })
-        let digest = try SHA1.hash(propertiesJSON)
-        if let _ = self.mappings.doc.meta {
-            self.mappings.doc.meta!.private.propertiesHash = digest.hexEncodedString()
-        }
-        
-        let body = try JSONEncoder().encode(self)
-        return self.client!.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
+
+        do {
+            let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties.mapValues { AnyMap($0) })
+            let digest = try SHA1.hash(propertiesJSON)
+            if let _ = self.mappings.doc.meta {
+                self.mappings.doc.meta!.private.propertiesHash = digest.hexEncodedString()
+            }
+            
+            let body = try JSONEncoder().encode(self)
+            return client.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
+            }
+        } catch {
+            return client.worker.future(error: error)
         }
     }
     

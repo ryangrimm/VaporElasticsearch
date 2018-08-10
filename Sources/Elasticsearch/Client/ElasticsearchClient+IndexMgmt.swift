@@ -6,7 +6,7 @@ extension ElasticsearchClient {
     }
     
     public func configureIndex(name: String) -> ElasticsearchIndex {
-        return ElasticsearchIndex(indexName: name, client: self)
+        return ElasticsearchIndex(indexName: name)
     }
     
     public func deleteIndex(name: String) -> Future<Void> {
