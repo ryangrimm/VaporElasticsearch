@@ -1,257 +1,249 @@
 import HTTP
-import Crypto
 
-internal struct ExtractFiltersAnalyzers: Decodable {
-    public var filters: [String: TokenFilter]
-    public var characterFilters: [String: CharacterFilter]
-    public var analyzers: [String: Analyzer]
+public struct ElasticsearchIndexSettings: Codable {
+    public var index: IndexSettings? = nil
+    public var analysis = Analysis()
     
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: DynamicKey.self)
-        
-        let key = container.allKeys.first!
-        let indexContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: key)
-        let settingsContainer = try indexContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "settings")!)
-        let settingsIndexContainer = try settingsContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "index")!)
-        if settingsContainer.contains(DynamicKey(stringValue: "analysis")!) {
-            let analysisContainer = try settingsIndexContainer.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "analysis")!)
-            
-            if let analyzers = (try analysisContainer.decodeIfPresent([String: AnyAnalyzer].self, forKey: DynamicKey(stringValue: "analyzer")!)) {
-                self.analyzers = analyzers.mapValues { $0.base }
-            } else {
-                self.analyzers = [:]
-            }
-            if let filters = (try analysisContainer.decodeIfPresent([String: AnyTokenFilter].self, forKey: DynamicKey(stringValue: "filter")!)) {
-                self.filters = filters.mapValues { $0.base }
-            } else {
-                self.filters = [:]
-            }
-            if let characterFilters = (try analysisContainer.decodeIfPresent([String: AnyCharacterFilter].self, forKey: DynamicKey(stringValue: "char_filter")!)) {
-                self.characterFilters = characterFilters.mapValues { $0.base }
-            } else {
-                self.characterFilters = [:]
-            }
-        }
-        else {
-            self.analyzers = [:]
-            self.filters = [:]
-            self.characterFilters = [:]
-        }
-    }
-}
-
-public class ElasticsearchIndex: Codable {
-    
-    struct FetchWrapper: Codable {
-        var indexName: String
-        var indexMappingValue: ElasticsearchIndex
-        
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: DynamicKey.self)
-            try container.encode(indexMappingValue, forKey: DynamicKey(stringValue: indexName)!)
-        }
-        
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: DynamicKey.self)
-
-            let key = container.allKeys.first!
-            indexName = key.stringValue
-            indexMappingValue = try container.decode(ElasticsearchIndex.self, forKey: key)
-        }
+    init(index: IndexSettings? = nil) {
+        self.index = index
     }
     
-    public struct DefaultType: Codable {
-        var doc: DocumentTypeSettings
-        
-        enum CodingKeys: String, CodingKey {
-            case doc = "_doc"
-        }
-    }
-    
-    public struct Alias: Codable {
-        var routing: String?
-    }
-    
-    public var indexName: String? = nil
-    public var mappings = DefaultType(doc: DocumentTypeSettings())
-    public var aliases = [String: Alias]()
-    public var settings: Settings
-
     enum CodingKeys: String, CodingKey {
-        case mappings
-        case aliases
-        case settings
-    }
-    
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.mappings = try container.decode(DefaultType.self, forKey: .mappings)
-        self.aliases = try container.decode([String: Alias].self, forKey: .aliases)
-        self.settings = try container.decode(Settings.self, forKey: .settings)
-        print(self.settings)
+        case index
+        case analysis
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.mappings, forKey: .mappings)
-        try container.encode(self.settings, forKey: .settings)
-        if (aliases.count > 0) {
-            try container.encode(self.aliases, forKey: .aliases)
+        try container.encodeIfPresent(index, forKey: .index)
+        if analysis.isEmpty() == false {
+            try container.encode(analysis, forKey: .analysis)
         }
     }
     
-    internal static func fetch(indexName: String, client: ElasticsearchClient) -> Future<ElasticsearchIndex?> {
-        return client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex?.self) { response in
-            // This is being done in three passes because the filters, analyzers and tokenizers
-            // need to be populated before the properties. This needs to be done so they can
-            // fetch their analyzers at the time of decoding. It's a little unfortunate but
-            // but overall not a big deal as it should be a very rare function to be called.
-            
-            if let response = response {
-                // First pass gets filters and analyzers
-                let filtersAnalyzers = try JSONDecoder().decode(ExtractFiltersAnalyzers.self, from: response)
-                var analysis = Analysis()
-                analysis.filters = filtersAnalyzers.filters
-                analysis.characterFilters = filtersAnalyzers.characterFilters
-                analysis.analyzers = filtersAnalyzers.analyzers
-                
-                let analysisPass = JSONDecoder()
-                analysisPass.userInfo(analysis: analysis)
-                let fullAnalysis = try analysisPass.decode(FetchWrapper.self, from: response)
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.index = try container.decodeIfPresent(IndexSettings.self, forKey: .index)
+        
+        let analysisContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .index)
+        if let analysis = try analysisContainer.decodeIfPresent(Analysis.self, forKey: DynamicKey(stringValue: "analysis")!) {
+            self.analysis = analysis
+        }
+        else {
+            self.analysis = Analysis()
+        }
+    }
+}
 
-                let fullPass = JSONDecoder()
-                fullPass.userInfo(analysis: fullAnalysis.indexMappingValue.settings.analysis)
-                let wrapper = try fullPass.decode(FetchWrapper.self, from: response)
-                
-                return wrapper.indexMappingValue
+public struct ElasticsearchIndexType: Codable {
+    public var doc: DocumentTypeSettings
+    
+    public let type = "_doc"
+    
+    enum CodingKeys: String, CodingKey {
+        case doc = "_doc"
+    }
+}
+
+public struct ElasticsearchIndexAlias: Codable {
+    var routing: String?
+}
+
+public protocol ElasticsearchIndex: Service {
+    var indexName: String { get }
+    var typeName: String { get }
+}
+
+public extension ElasticsearchIndex {
+    /// Gets a document from Elasticsearch
+    ///
+    /// - Parameters:
+    ///   - resultType: The model to decode the document into
+    ///   - index: The index to get the document from
+    ///   - id: The document id
+    ///   - type: The document type
+    ///   - routing: The routing information
+    ///   - version: The version information
+    ///   - storedFields: Only return the stored fields
+    ///   - realtime: Fetch realtime results
+    /// - Returns: A Future DocResponse
+    public func get<T: Decodable>(
+        on conn: DatabaseConnectable,
+        decodeTo resultType: T.Type,
+        id: String,
+        routing: String? = nil,
+        version: Int? = nil,
+        storedFields: [String]? = nil,
+        realtime: Bool? = nil
+        ) -> Future<DocResponse<T>?> {
+        let url = ElasticsearchClient.generateURL(path: "/\(self.indexName)/\(self.typeName)/\(id)", routing: routing, version: version, storedFields: storedFields, realtime: realtime)
+        
+        return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
+            return conn.send(HTTPMethod.GET, to: url.string!).map(to: DocResponse?.self) { jsonData in
+                if let jsonData = jsonData {
+                    return try conn.decoder.decode(DocResponse<T>.self, from: jsonData)
+                }
+                return nil
             }
-            
-            return nil
         }
     }
     
-    internal init(indexName: String, dynamicMapping: Bool = false, enableQuerying: Bool = true) {
+    /// Index (save) a document
+    ///
+    /// - Parameters:
+    ///   - doc: The document to index (save)
+    ///   - index: The index to put the document into
+    ///   - id: The id for the document. If not provided, an id will be automatically generated.
+    ///   - type: The docuemnt type
+    ///   - routing: Routing information for what node the document should be saved on
+    ///   - version: Version information
+    ///   - forceCreate: Force creation
+    /// - Returns: A Future IndexResponse
+    public func index<T: Encodable>(
+        on conn: DatabaseConnectable,
+        doc: T,
+        id: String? = nil,
+        routing: String? = nil,
+        version: Int? = nil,
+        forceCreate: Bool? = nil
+        ) -> Future<IndexResponse> {
+        let url = ElasticsearchClient.generateURL(path: "/\(self.indexName)/\(self.typeName)/\(id ?? "")", routing: routing, version: version, forceCreate: forceCreate)
+        let method = id != nil ? HTTPMethod.PUT : HTTPMethod.POST
+        return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
+            let body: Data
+            do {
+                body = try conn.encoder.encode(doc)
+            } catch {
+                return conn.worker.future(error: error)
+            }
+            return conn.send(method, to: url.string!, with:body).map(to: IndexResponse.self) { jsonData in
+                if let jsonData = jsonData {
+                    return try conn.decoder.decode(IndexResponse.self, from: jsonData)
+                }
+                throw ElasticsearchError(identifier: "indexing_failed", reason: "Cannot index document", source: .capture(), statusCode: 404)
+            }
+        }
+    }
+    
+    /// Updates the document stored at the given id with the given document
+    ///
+    /// - Parameters:
+    ///   - doc: The document to update
+    ///   - index: The document index
+    ///   - id: The document id
+    ///   - type: The document type
+    ///   - routing: Routing information
+    ///   - version: Version information
+    /// - Returns: A Future IndexResponse
+    public func update<T: Encodable>(
+        on conn: DatabaseConnectable,
+        doc: T,
+        id: String,
+        routing: String? = nil,
+        version: Int? = nil
+        ) -> Future<IndexResponse>{
+        let url = ElasticsearchClient.generateURL(path: "/\(self.indexName)/\(self.typeName)/\(id)", routing: routing, version: version)
+        return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
+            let body: Data
+            do {
+                body = try conn.encoder.encode(doc)
+            } catch {
+                return conn.worker.future(error: error)
+            }
+            return conn.send(HTTPMethod.PUT, to: url.string!, with:body).map(to: IndexResponse.self) {jsonData in
+                if let jsonData = jsonData {
+                    return try conn.decoder.decode(IndexResponse.self, from: jsonData)
+                }
+                throw ElasticsearchError(identifier: "indexing_failed", reason: "Cannot update document", source: .capture(), statusCode: 404)
+            }
+        }
+    }
+    
+    /// Delete the document with the given id
+    ///
+    /// - Parameters:
+    ///   - index: The document index
+    ///   - id: The document id
+    ///   - type: The document type
+    ///   - routing: Routing information
+    ///   - version: Version information
+    /// - Returns: A Future IndexResponse
+    public func delete(
+        on conn: DatabaseConnectable,
+        id: String,
+        routing: String? = nil,
+        version: Int? = nil
+        ) -> Future<IndexResponse>{
+        let url = ElasticsearchClient.generateURL(path: "/\(self.indexName)/\(self.typeName)/\(id)", routing: routing, version: version)
+        return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
+            return conn.send(HTTPMethod.DELETE, to: url.string!).map(to: IndexResponse.self) {jsonData in
+                if let jsonData = jsonData {
+                    return try conn.decoder.decode(IndexResponse.self, from: jsonData)
+                }
+                throw ElasticsearchError(identifier: "indexing_failed", reason: "Cannot delete document", source: .capture(), statusCode: 404)
+            }
+        }
+    }
+}
+
+
+public protocol ElasticsearchBuiltIndex: ElasticsearchIndex, Provider {
+    var configuration: ElasticsearchIndexBuilder { get }
+}
+
+extension ElasticsearchBuiltIndex {
+    public var indexName: String {
+        get {
+            return self.configuration.indexName
+        }
+    }
+    public var typeName: String {
+        get {
+            return self.configuration.mapping.type
+        }
+    }
+    
+    func register(_ services: inout Services) throws {
+    }
+    
+    public func willBoot(_ container: Container) throws -> Future<Void> {
+        let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
+
+        let config = try container.make(ElasticsearchClientConfig.self)
+        return ElasticsearchClient.connect(config: config, on: group).flatMap(to: Void.self) { client in
+            return client.fetchIndex(name: self.indexName).flatMap { index -> Future<Void> in
+                if index != nil {
+                    client.logger?.record(query: self.indexName + " index exists")
+                    return .done(on: container)
+                }
+                
+                return self.configuration.create(client: client).map(to: Void.self) { _ in
+                    return
+                }
+            }
+        }
+    }
+    
+    func didBoot(_ container: Container) throws -> EventLoopFuture<Void> {
+        return .done(on: container)
+    }
+}
+
+public struct ElasticsearchFetchedIndex: ElasticsearchIndex {
+    public let indexName: String
+    public var typeName: String {
+        get {
+            return self.mapping.type
+        }
+    }
+    public let mapping: ElasticsearchIndexType
+    public let aliases: [String: ElasticsearchIndexAlias]
+    public let settings: ElasticsearchIndexSettings
+    
+    internal init(indexName: String, mapping: ElasticsearchIndexType, aliases: [String: ElasticsearchIndexAlias], settings: ElasticsearchIndexSettings) {
         self.indexName = indexName
-        self.mappings.doc.enabled = enableQuerying
-        self.mappings.doc.dynamic = dynamicMapping
-        self.settings = Settings()
-    }
-    
-    public func indexSettings(_ index: IndexSettings) -> Self {
-        self.settings.index = index
-        return self
-    }
-    
-    public func alias(name: String, routing: String? = nil) -> Self {
-        let alias = Alias(routing: routing)
-        aliases[name] = alias
-        return self
-    }
-    
-    public func property(key: String, type: Mappable) -> Self {
-        mappings.doc.properties[key] = type
-        
-        if type is DefinesNormalizers {
-            let type = type as! DefinesNormalizers
-            for normalizer in type.definedNormalizers() {
-                self.settings.analysis.add(normalizer: normalizer)
-            }
-        }
-        
-        if type is DefinesAnalyzers {
-            let type = type as! DefinesAnalyzers
-            for analyzer in type.definedAnalyzers() {
-                self.settings.analysis.add(analyzer: analyzer)
-                
-                if analyzer is DefinesTokenizers {
-                    let analyzer = analyzer as! DefinesTokenizers
-                    for tokenizer in analyzer.definedTokenizers() {
-                        self.settings.analysis.add(tokenizer: tokenizer)
-                    }
-                }
-                if analyzer is DefinesTokenFilters {
-                    let analyzer = analyzer as! DefinesTokenFilters
-                    for tokenFilter in analyzer.definedTokenFilters() {
-                        self.settings.analysis.add(tokenFilter: tokenFilter)
-                    }
-                }
-                if analyzer is DefinesCharacterFilters {
-                    let analyzer = analyzer as! DefinesCharacterFilters
-                    for characterFilter in analyzer.definedCharacterFilters() {
-                        self.settings.analysis.add(characterFilter: characterFilter)
-                    }
-                }
-            }
-        }
-        
-        return self
-    }
-    
-    public func add(metaKey: String, metaValue: String) -> Self {
-        if let meta = mappings.doc.meta, meta.userDefined == nil {
-            mappings.doc.meta!.userDefined = [String: String]()
-        }
-        mappings.doc.meta!.userDefined![metaKey] = metaValue
-        return self
-    }
-    
-    public func create(client: ElasticsearchClient) -> Future<Void> {
-        guard let name = indexName else {
-            return client.worker.future(error: ElasticsearchError(identifier: "missing_indexName", reason: "Missing index name for index creation", source: .capture()))
-        }
-
-        do {
-            let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties.mapValues { AnyMap($0) })
-            let digest = try SHA1.hash(propertiesJSON)
-            if let _ = self.mappings.doc.meta {
-                self.mappings.doc.meta!.private.propertiesHash = digest.hexEncodedString()
-            }
-            
-            let body = try JSONEncoder().encode(self)
-            return client.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
-            }
-        } catch {
-            return client.worker.future(error: error)
-        }
-    }
-    
-    internal static func delete(indexName: String, client: ElasticsearchClient) -> Future<Void> {
-        return client.send(HTTPMethod.DELETE, to: "/\(indexName)").map(to: Void.self) { response in
-        }
-    }
-    
-    public struct Settings: Codable {
-        public var index: IndexSettings? = nil
-        public var analysis = Analysis()
-        
-        init(index: IndexSettings? = nil) {
-            self.index = index
-        }
-        
-        enum CodingKeys: String, CodingKey {
-            case index
-            case analysis
-        }
-        
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encodeIfPresent(index, forKey: .index)
-            if analysis.isEmpty() == false {
-                try container.encode(analysis, forKey: .analysis)
-            }
-        }
-        
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.index = try container.decodeIfPresent(IndexSettings.self, forKey: .index)
-    
-            let analysisContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .index)
-            if let analysis = try analysisContainer.decodeIfPresent(Analysis.self, forKey: DynamicKey(stringValue: "analysis")!) {
-                self.analysis = analysis
-            }
-            else {
-                self.analysis = Analysis()
-            }
-        }
+        self.mapping = mapping
+        self.aliases = aliases
+        self.settings = settings
     }
 }

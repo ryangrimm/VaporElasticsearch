@@ -1,8 +1,15 @@
 import XCTest
-import Elasticsearch
+//import Elasticsearch
 import Vapor
+@testable import Elasticsearch
+
+struct MyIndex: ElasticsearchBuiltIndex {
+    let configuration = ElasticsearchIndexBuilder(indexName: "test").version()
+}
+
 
 final class VaporIntegrationTests: XCTestCase {
+    
     func testBootSequence() throws {
         var services = Services.default()
 
@@ -10,8 +17,9 @@ final class VaporIntegrationTests: XCTestCase {
         config.hostname = "localhost"
         config.port = 9200
         config.enableKeyedCache = true
-        config.keyedCacheIndexName = "vapor_keyed_cache_3"
+        config.keyedCacheIndexName = "vapor_keyed_cache_4"
         
+        try services.register(MyIndex())
         try services.register(ElasticsearchProvider(config))
         
         let _ = try Application.asyncBoot(config: .default(), environment: .xcode, services: services).wait()

@@ -2,8 +2,8 @@
 import Foundation
 
 public struct IndexSettings: Codable {
-    let numberOfShards: Int
-    let numberOfReplicas: Int
+    public let numberOfShards: Int
+    public let numberOfReplicas: Int
     var creationDate: String? = nil
     var uuid: String? = nil
     var version: Version? = nil

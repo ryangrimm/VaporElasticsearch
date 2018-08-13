@@ -26,7 +26,7 @@ final class ElasticsearchTests: XCTestCase {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         
-        try ElasticsearchIndex.delete(indexName: "test", client: es).wait()
+        try es.deleteIndex(name: "test").wait()
         
         let analyzer = StandardAnalyzer(name: "std_english", stopwords: ["_english_"])
         
@@ -37,35 +37,35 @@ final class ElasticsearchTests: XCTestCase {
             .indexSettings(IndexSettings(shards: 3, replicas: 2))
             .add(metaKey: "Foo", metaValue: "Bar")
         
-        try indexConfig.create(client: es).wait()
+        let _ = try indexConfig.create(client: es).wait()
         
-        let index = try ElasticsearchIndex.fetch(indexName: "test", client: es).wait()
+        let index = try es.fetchIndex(name: "test").wait()
         if let index = index {
             XCTAssertEqual(index.aliases.count, 1, "Incorrect number of aliases")
             XCTAssertNotNil(index.aliases["testalias"], "testalias does not exist")
             XCTAssertEqual(index.settings.index?.numberOfShards, 3, "Incorrect number of shards")
             XCTAssertEqual(index.settings.index?.numberOfReplicas, 2, "Incorrect number of replicas")
-            XCTAssertEqual(index.mappings.doc.meta?.userDefined!["Foo"], "Bar", "User metadata")
+            XCTAssertEqual(index.mapping.doc.meta?.userDefined!["Foo"], "Bar", "User metadata")
 
             // TODO: Should test for more than just the existance of the properties
-            let nameProp = index.mappings.doc.properties["name"]
-            let numberProp = index.mappings.doc.properties["number"]
+            let nameProp = index.mapping.doc.properties["name"]
+            let numberProp = index.mapping.doc.properties["number"]
             XCTAssertNotNil(nameProp, "Could not find name property")
             XCTAssertNotNil(numberProp, "Could not find number property")
         }
         else {
             XCTFail("Index not found")
         }
-        try ElasticsearchIndex.delete(indexName: "test", client: es).wait()
+        try es.deleteIndex(name: "test").wait()
     }
     
     func testCRUD() throws {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         
-        try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
+        try es.deleteIndex(name: "test").wait()
 
-        try es.configureIndex(name: "test")
+        let _ = try es.configureIndex(name: "test")
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")
@@ -111,16 +111,16 @@ final class ElasticsearchTests: XCTestCase {
             XCTFail("Could not fetch document")
         }
         
-        try ElasticsearchIndex.delete(indexName: "test", client: es).wait()
+        try es.deleteIndex(name: "test").wait()
     }
     
     func testBulk() throws {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
         
-        try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
-        
-        try es.configureIndex(name: "test")
+        try es.deleteIndex(name: "test").wait()
+
+        let _ = try es.configureIndex(name: "test")
             .property(key: "name", type: MapText())
             .property(key: "number", type: MapInteger())
             .alias(name: "testalias")

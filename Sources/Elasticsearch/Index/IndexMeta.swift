@@ -1,9 +1,9 @@
 import Foundation
 
 /// :nodoc:
-internal struct IndexMeta: Codable {
+public struct IndexMeta: Codable {
     var `private`: PrivateIndexMeta
-    var userDefined: [String: String]?
+    public var userDefined: [String: String]?
     
     init() {
         self.private = PrivateIndexMeta(version: 1)
@@ -11,7 +11,7 @@ internal struct IndexMeta: Codable {
 }
 
 /// :nodoc:
-public struct PrivateIndexMeta: Codable {
+internal struct PrivateIndexMeta: Codable {
     let serialVersion: Int
     var propertiesHash: String
     

@@ -20,6 +20,7 @@ public final class ElasticsearchProvider: Provider {
     /// See `Provider.register`
     public func register(_ services: inout Services) throws {
         try services.register(DatabaseKitProvider())
+        services.register(self.config)
         services.register(ElasticsearchDatabase.self)
         services.register { (container) -> DatabasesConfig in
             let esDb = ElasticsearchDatabase(config: self.config)
@@ -29,6 +30,10 @@ public final class ElasticsearchProvider: Provider {
             return databases
         }
         
+        if config.enableKeyedCache {
+            try services.register(KeyedCacheMapping(indexName: config.keyedCacheIndexName))
+        }
+        
         services.register(KeyedCache.self) { container -> ElasticsearchCache in
             let pool = try container.connectionPool(to: .elasticsearch)
             return .init(pool: pool)
@@ -36,16 +41,22 @@ public final class ElasticsearchProvider: Provider {
     }
     
     /// See `Provider.boot`
-    public func willBoot(_ worker: Container) throws -> Future<Void> {
-        let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-        
-        return ElasticsearchClient.connect(config: self.config, on: group).flatMap(to: Void.self) { client in
-            return ElasticsearchDatabase.setupKeyedCache(client: client, on: worker)
+    public func didBoot(_ container: Container) throws -> Future<Void> {
+        return .done(on: container)
+    }
+}
+
+struct KeyedCacheMapping: ElasticsearchBuiltIndex {
+    let indexName: String
+    
+    var configuration: ElasticsearchIndexBuilder {
+        get {
+            return ElasticsearchIndexBuilder(indexName: self.indexName, dynamicMapping: true, enableQuerying: false)
         }
     }
     
-    public func didBoot(_ worker: Container) throws -> Future<Void> {
-        return .done(on: worker)
+    init(indexName: String) {
+        self.indexName = indexName
     }
 }
 

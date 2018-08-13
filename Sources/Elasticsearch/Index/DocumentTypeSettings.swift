@@ -1,10 +1,10 @@
 import Foundation
 
-struct DocumentTypeSettings: Codable {
-    var properties = [String: Mappable]()
-    var enabled = true
-    var dynamic = false
-    var meta: IndexMeta?
+public struct DocumentTypeSettings: Codable {
+    public var properties = [String: Mappable]()
+    public var enabled = true
+    public var dynamic = false
+    public var meta: IndexMeta?
     
     enum CodingKeys: String, CodingKey {
         case properties
@@ -17,7 +17,7 @@ struct DocumentTypeSettings: Codable {
         self.meta = IndexMeta()
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         if decoder.analysis() == nil {

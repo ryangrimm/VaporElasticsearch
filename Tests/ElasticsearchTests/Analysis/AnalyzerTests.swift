@@ -10,6 +10,11 @@ final class AnalyzerTests: XCTestCase {
         decoder = JSONDecoder()
     }
     
+    
+    func encodeBuilder() {
+        
+    }
+    
     func testStandardBuiltin_encodesCorrectly() throws {
         let es = try ElasticsearchClient.makeTest()
         defer { es.close() }
