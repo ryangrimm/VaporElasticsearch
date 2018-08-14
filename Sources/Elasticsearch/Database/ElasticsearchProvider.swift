@@ -47,11 +47,11 @@ public final class ElasticsearchProvider: Provider {
 }
 
 struct KeyedCacheMapping: ElasticsearchIndex {
-    let indexName: String
-    let documentSettings = DocumentSettings(dynamic: true, enabled: false)
+    let _indexName: String
+    let _documentSettings = DocumentSettings(dynamic: true, enabled: false)
     
     init(indexName: String) {
-        self.indexName = indexName
+        self._indexName = indexName
     }
 }
 

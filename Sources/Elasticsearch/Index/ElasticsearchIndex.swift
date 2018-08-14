@@ -2,8 +2,8 @@ import HTTP
 import Crypto
 
 public protocol IndexFoundation: Service {
-    var indexName: String { get }
-    var typeName: String { get }
+    var _indexName: String { get }
+    var _typeName: String { get }
 }
 
 public extension IndexFoundation {
@@ -28,7 +28,7 @@ public extension IndexFoundation {
         storedFields: [String]? = nil,
         realtime: Bool? = nil
         ) -> Future<DocResponse<T>?> {
-        let url = ElasticsearchClient.generateURL(path: "/\(self.indexName)/\(self.typeName)/\(id)", routing: routing, version: version, storedFields: storedFields, realtime: realtime)
+        let url = ElasticsearchClient.generateURL(path: "/\(self._indexName)/\(self._typeName)/\(id)", routing: routing, version: version, storedFields: storedFields, realtime: realtime)
         
         return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
             return conn.send(HTTPMethod.GET, to: url.string!).map(to: DocResponse?.self) { jsonData in
@@ -59,7 +59,7 @@ public extension IndexFoundation {
         version: Int? = nil,
         forceCreate: Bool? = nil
         ) -> Future<IndexResponse> {
-        let url = ElasticsearchClient.generateURL(path: "/\(self.indexName)/\(self.typeName)/\(id ?? "")", routing: routing, version: version, forceCreate: forceCreate)
+        let url = ElasticsearchClient.generateURL(path: "/\(self._indexName)/\(self._typeName)/\(id ?? "")", routing: routing, version: version, forceCreate: forceCreate)
         let method = id != nil ? HTTPMethod.PUT : HTTPMethod.POST
         return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
             let body: Data
@@ -94,7 +94,7 @@ public extension IndexFoundation {
         routing: String? = nil,
         version: Int? = nil
         ) -> Future<IndexResponse>{
-        let url = ElasticsearchClient.generateURL(path: "/\(self.indexName)/\(self.typeName)/\(id)", routing: routing, version: version)
+        let url = ElasticsearchClient.generateURL(path: "/\(self._indexName)/\(self._typeName)/\(id)", routing: routing, version: version)
         return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
             let body: Data
             do {
@@ -126,7 +126,7 @@ public extension IndexFoundation {
         routing: String? = nil,
         version: Int? = nil
         ) -> Future<IndexResponse>{
-        let url = ElasticsearchClient.generateURL(path: "/\(self.indexName)/\(self.typeName)/\(id)", routing: routing, version: version)
+        let url = ElasticsearchClient.generateURL(path: "/\(self._indexName)/\(self._typeName)/\(id)", routing: routing, version: version)
         return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
             return conn.send(HTTPMethod.DELETE, to: url.string!).map(to: IndexResponse.self) {jsonData in
                 if let jsonData = jsonData {
@@ -139,65 +139,65 @@ public extension IndexFoundation {
 }
 
 public protocol ElasticsearchIndex: IndexFoundation, Provider, Encodable {
-    var model: Decodable? { get }
-    var indexName: String { get }
-    var indexSettings: IndexSettings { get }
-    var documentSettings: DocumentSettings { get }
-    var meta: [String: String] { get }
-    var keyMap: [String: String] { get }
+    var _model: Decodable? { get }
+    var _indexName: String { get }
+    var _indexSettings: IndexSettings { get }
+    var _documentSettings: DocumentSettings { get }
+    var _meta: [String: String] { get }
+    var _keyMap: [String: String] { get }
 }
 
 extension ElasticsearchIndex {
-    public var model: Decodable? {
+    public var _model: Decodable? {
         get {
             return nil
         }
     }
     
-    public var typeName: String {
+    public var _typeName: String {
         get {
             return "_doc"
         }
     }
     
-    public var indexSettings: IndexSettings {
+    public var _indexSettings: IndexSettings {
         get {
             return IndexSettings(shards: 5, replicas: 1)
         }
     }
     
-    public var documentSettings: DocumentSettings {
+    public var _documentSettings: DocumentSettings {
         get {
             return DocumentSettings(dynamic: false, enabled: true)
         }
     }
     
-    public var meta: [String: String] {
+    public var _meta: [String: String] {
         get {
             return [String: String]()
         }
     }
     
-    public var keyMap: [String: String] {
+    public var _keyMap: [String: String] {
         get {
             return [String: String]()
         }
     }
 
     public func encode(to encoder: Encoder) throws {
-        let builder = ElasticsearchIndexBuilder(indexName: indexName)
-        self.meta.forEach { (key, value) in
+        let builder = ElasticsearchIndexBuilder(indexName: _indexName)
+        self._meta.forEach { (key, value) in
             builder.add(metaKey: key, metaValue: value)
         }
-        builder.indexSettings(self.indexSettings)
-        builder.mapping.doc.dynamic = self.documentSettings.dynamic
-        builder.mapping.doc.enabled = self.documentSettings.enabled
+        builder.indexSettings(self._indexSettings)
+        builder.mapping.doc.dynamic = self._documentSettings.dynamic
+        builder.mapping.doc.enabled = self._documentSettings.enabled
         
         let mirror = Mirror(reflecting: self)
         for case let (label?, value) in mirror.children {
             if value is Mappable {
                 let mappable = value as! Mappable
-                let keyName = self.keyMap[label] ?? label
+                let keyName = self._keyMap[label] ?? label
                 builder.property(key: keyName, type: mappable)
             }
         }
@@ -219,14 +219,14 @@ extension ElasticsearchIndex {
 
         let config = try container.make(ElasticsearchClientConfig.self)
         return ElasticsearchClient.connect(config: config, on: group).flatMap(to: Void.self) { client in
-            return client.fetchIndex(name: self.indexName).flatMap { index -> Future<Void> in
+            return client.fetchIndex(name: self._indexName).flatMap { index -> Future<Void> in
                 if index != nil {
-                    client.logger?.record(query: self.indexName + " index exists")
+                    client.logger?.record(query: self._indexName + " index exists")
                     return .done(on: container)
                 }
                 
                 let body = try JSONEncoder().encode(self)
-                return client.send(HTTPMethod.PUT, to: "/\(self.indexName)", with: body).map { response -> Void in
+                return client.send(HTTPMethod.PUT, to: "/\(self._indexName)", with: body).map { response -> Void in
                     return
                 }
             }

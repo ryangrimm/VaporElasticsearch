@@ -15,8 +15,8 @@ public struct ElasticsearchFetchedIndex: IndexFoundation, Decodable {
         }
     }
     
-    public let indexName: String
-    public var typeName: String {
+    public let _indexName: String
+    public var _typeName: String {
         get {
             return self.mapping.type
         }
@@ -32,7 +32,7 @@ public struct ElasticsearchFetchedIndex: IndexFoundation, Decodable {
     }
     
     internal init(indexName: String, mapping: ElasticsearchIndexType, aliases: [String: ElasticsearchIndexAlias], settings: ElasticsearchIndexSettings) {
-        self.indexName = indexName
+        self._indexName = indexName
         self.mapping = mapping
         self.aliases = aliases
         self.settings = settings
@@ -74,7 +74,7 @@ public struct ElasticsearchFetchedIndex: IndexFoundation, Decodable {
         guard let lastKey = container.codingPath.last else {
             throw ElasticsearchError(identifier: "index_decode_failed", reason: "Can't find index name", source: .capture())
         }
-        self.indexName = lastKey.stringValue
+        self._indexName = lastKey.stringValue
         self.mapping = try container.decode(ElasticsearchIndexType.self, forKey: .mapping)
         self.aliases = try container.decode([String: ElasticsearchIndexAlias].self, forKey: .aliases)
         self.settings = try container.decode(ElasticsearchIndexSettings.self, forKey: .settings)

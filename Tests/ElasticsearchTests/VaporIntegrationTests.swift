@@ -4,8 +4,8 @@ import Vapor
 //@testable import Elasticsearch
 
 struct MyIndex: ElasticsearchIndex {
-    let indexName = "test_8"
-    let keyMap = ["foo": "foo_d"]
+    let _indexName = "test_9"
+    let _keyMap = ["foo": "foo_d"]
     
     let foo = MapText()
     let bar = MapDouble()
@@ -26,7 +26,7 @@ final class VaporIntegrationTests: XCTestCase {
         config.hostname = "localhost"
         config.port = 9200
         config.enableKeyedCache = true
-        config.keyedCacheIndexName = "vapor_keyed_cache_6"
+        config.keyedCacheIndexName = "vapor_keyed_cache_7"
         
         try services.register(MyIndex())
         try services.register(ElasticsearchProvider(config))
