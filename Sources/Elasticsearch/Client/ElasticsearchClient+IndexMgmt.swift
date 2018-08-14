@@ -3,7 +3,7 @@ import HTTP
 
 extension ElasticsearchClient {
     public func fetchIndex(name: String) -> Future<ElasticsearchFetchedIndex?> {
-        return ElasticsearchIndexFetcher.fetch(indexName: name, client: self)
+        return ElasticsearchFetchedIndex.fetch(indexName: name, client: self)
     }
     
     public func configureIndex(name: String, dynamicMapping: Bool = false, enableQuerying: Bool = true) -> ElasticsearchIndexBuilder {

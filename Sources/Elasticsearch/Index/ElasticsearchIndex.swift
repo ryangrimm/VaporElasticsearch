@@ -1,60 +1,12 @@
 import HTTP
+import Crypto
 
-public struct ElasticsearchIndexSettings: Codable {
-    public var index: IndexSettings? = nil
-    public var analysis = Analysis()
-    
-    init(index: IndexSettings? = nil) {
-        self.index = index
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case index
-        case analysis
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(index, forKey: .index)
-        if analysis.isEmpty() == false {
-            try container.encode(analysis, forKey: .analysis)
-        }
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.index = try container.decodeIfPresent(IndexSettings.self, forKey: .index)
-        
-        let analysisContainer = try container.nestedContainer(keyedBy: DynamicKey.self, forKey: .index)
-        if let analysis = try analysisContainer.decodeIfPresent(Analysis.self, forKey: DynamicKey(stringValue: "analysis")!) {
-            self.analysis = analysis
-        }
-        else {
-            self.analysis = Analysis()
-        }
-    }
-}
-
-public struct ElasticsearchIndexType: Codable {
-    public var doc: DocumentTypeSettings
-    
-    public let type = "_doc"
-    
-    enum CodingKeys: String, CodingKey {
-        case doc = "_doc"
-    }
-}
-
-public struct ElasticsearchIndexAlias: Codable {
-    var routing: String?
-}
-
-public protocol ElasticsearchIndex: Service {
+public protocol IndexFoundation: Service {
     var indexName: String { get }
     var typeName: String { get }
 }
 
-public extension ElasticsearchIndex {
+public extension IndexFoundation {
     /// Gets a document from Elasticsearch
     ///
     /// - Parameters:
@@ -186,24 +138,80 @@ public extension ElasticsearchIndex {
     }
 }
 
-
-public protocol ElasticsearchBuiltIndex: ElasticsearchIndex, Provider {
-    var configuration: ElasticsearchIndexBuilder { get }
+public protocol ElasticsearchIndex: IndexFoundation, Provider, Encodable {
+    var model: Decodable? { get }
+    var indexName: String { get }
+    var indexSettings: IndexSettings { get }
+    var documentSettings: DocumentSettings { get }
+    var meta: [String: String] { get }
+    var keyMap: [String: String] { get }
 }
 
-extension ElasticsearchBuiltIndex {
-    public var indexName: String {
+extension ElasticsearchIndex {
+    public var model: Decodable? {
         get {
-            return self.configuration.indexName
-        }
-    }
-    public var typeName: String {
-        get {
-            return self.configuration.mapping.type
+            return nil
         }
     }
     
-    func register(_ services: inout Services) throws {
+    public var typeName: String {
+        get {
+            return "_doc"
+        }
+    }
+    
+    public var indexSettings: IndexSettings {
+        get {
+            return IndexSettings(shards: 5, replicas: 1)
+        }
+    }
+    
+    public var documentSettings: DocumentSettings {
+        get {
+            return DocumentSettings(dynamic: false, enabled: true)
+        }
+    }
+    
+    public var meta: [String: String] {
+        get {
+            return [String: String]()
+        }
+    }
+    
+    public var keyMap: [String: String] {
+        get {
+            return [String: String]()
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        let builder = ElasticsearchIndexBuilder(indexName: indexName)
+        self.meta.forEach { (key, value) in
+            builder.add(metaKey: key, metaValue: value)
+        }
+        builder.indexSettings(self.indexSettings)
+        builder.mapping.doc.dynamic = self.documentSettings.dynamic
+        builder.mapping.doc.enabled = self.documentSettings.enabled
+        
+        let mirror = Mirror(reflecting: self)
+        for case let (label?, value) in mirror.children {
+            if value is Mappable {
+                let mappable = value as! Mappable
+                let keyName = self.keyMap[label] ?? label
+                builder.property(key: keyName, type: mappable)
+            }
+        }
+        
+        let propertiesJSON = try JSONEncoder().encode(builder.mapping.doc.properties.mapValues { AnyMap($0) })
+        let digest = try SHA1.hash(propertiesJSON)
+        if let _ = builder.mapping.doc.meta {
+            builder.mapping.doc.meta!.private.propertiesHash = digest.hexEncodedString()
+        }
+        
+        try builder.encode(to: encoder)
+    }
+    
+    public func register(_ services: inout Services) throws {
     }
     
     public func willBoot(_ container: Container) throws -> Future<Void> {
@@ -217,33 +225,15 @@ extension ElasticsearchBuiltIndex {
                     return .done(on: container)
                 }
                 
-                return self.configuration.create(client: client).map(to: Void.self) { _ in
+                let body = try JSONEncoder().encode(self)
+                return client.send(HTTPMethod.PUT, to: "/\(self.indexName)", with: body).map { response -> Void in
                     return
                 }
             }
         }
     }
     
-    func didBoot(_ container: Container) throws -> EventLoopFuture<Void> {
+    public func didBoot(_ container: Container) throws -> EventLoopFuture<Void> {
         return .done(on: container)
-    }
-}
-
-public struct ElasticsearchFetchedIndex: ElasticsearchIndex {
-    public let indexName: String
-    public var typeName: String {
-        get {
-            return self.mapping.type
-        }
-    }
-    public let mapping: ElasticsearchIndexType
-    public let aliases: [String: ElasticsearchIndexAlias]
-    public let settings: ElasticsearchIndexSettings
-    
-    internal init(indexName: String, mapping: ElasticsearchIndexType, aliases: [String: ElasticsearchIndexAlias], settings: ElasticsearchIndexSettings) {
-        self.indexName = indexName
-        self.mapping = mapping
-        self.aliases = aliases
-        self.settings = settings
     }
 }

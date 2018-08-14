@@ -1,29 +1,41 @@
 
 import HTTP
 
-internal struct ElasticsearchIndexFetcher: Decodable {
+public struct ElasticsearchFetchedIndex: IndexFoundation, Decodable {
     struct FetchWrapper: Decodable {
         var indexName: String
-        var configuration: ElasticsearchIndexFetcher
+        var configuration: ElasticsearchFetchedIndex
         
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: DynamicKey.self)
             
             let key = container.allKeys.first!
             indexName = key.stringValue
-            configuration = try container.decode(ElasticsearchIndexFetcher.self, forKey: key)
+            configuration = try container.decode(ElasticsearchFetchedIndex.self, forKey: key)
         }
     }
     
-    public var indexName: String? = nil
-    public var mapping = ElasticsearchIndexType(doc: DocumentTypeSettings())
-    public var aliases = [String: ElasticsearchIndexAlias]()
-    public var settings: ElasticsearchIndexSettings
+    public let indexName: String
+    public var typeName: String {
+        get {
+            return self.mapping.type
+        }
+    }
+    public let mapping: ElasticsearchIndexType
+    public let aliases: [String: ElasticsearchIndexAlias]
+    public let settings: ElasticsearchIndexSettings
     
     enum CodingKeys: String, CodingKey {
         case mapping = "mappings"
         case aliases
         case settings
+    }
+    
+    internal init(indexName: String, mapping: ElasticsearchIndexType, aliases: [String: ElasticsearchIndexAlias], settings: ElasticsearchIndexSettings) {
+        self.indexName = indexName
+        self.mapping = mapping
+        self.aliases = aliases
+        self.settings = settings
     }
     
     internal static func fetch(indexName: String, client: ElasticsearchClient) -> Future<ElasticsearchFetchedIndex?> {
@@ -55,7 +67,20 @@ internal struct ElasticsearchIndexFetcher: Decodable {
             return nil
         }
     }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        guard let lastKey = container.codingPath.last else {
+            throw ElasticsearchError(identifier: "index_decode_failed", reason: "Can't find index name", source: .capture())
+        }
+        self.indexName = lastKey.stringValue
+        self.mapping = try container.decode(ElasticsearchIndexType.self, forKey: .mapping)
+        self.aliases = try container.decode([String: ElasticsearchIndexAlias].self, forKey: .aliases)
+        self.settings = try container.decode(ElasticsearchIndexSettings.self, forKey: .settings)
+    }
 }
+
 
 internal struct ExtractFiltersAnalyzers: Decodable {
     public var filters: [String: TokenFilter]

@@ -24,6 +24,14 @@ public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
         case enabled
     }
     
+    public init(dynamic: Bool? = false, enabled: Bool? = true, properties: (inout ChainableNestedProperties) -> Void) {
+        self.dynamic = dynamic
+        self.enabled = enabled
+        var chain = ChainableNestedProperties()
+        properties(&chain)
+        self.properties = chain.properties()
+    }
+    
     public init(properties: [String: Mappable]?, dynamic: Bool? = false, enabled: Bool? = true) {
         self.properties = properties
         self.dynamic = dynamic
@@ -50,8 +58,28 @@ public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
         } else {
             self.properties = nil
         }
-        self.dynamic = try container.decodeIfPresent(Bool.self, forKey: .dynamic)
-        self.enabled = try container.decodeIfPresent(Bool.self, forKey: .enabled)
+        if container.contains(.enabled) {
+            do {
+                self.enabled = (try container.decode(Bool.self, forKey: .enabled))
+            }
+            catch {
+                self.enabled = try container.decode(String.self, forKey: .enabled) == "true"
+            }
+        }
+        else {
+            self.enabled = true
+        }
+        if container.contains(.dynamic) {
+            do {
+                self.dynamic = (try container.decode(Bool.self, forKey: .dynamic))
+            }
+            catch {
+                self.dynamic = try container.decode(String.self, forKey: .dynamic) == "true"
+            }
+        }
+        else {
+            self.dynamic = false
+        }
     }
     
     /// :nodoc:

@@ -46,14 +46,9 @@ public final class ElasticsearchProvider: Provider {
     }
 }
 
-struct KeyedCacheMapping: ElasticsearchBuiltIndex {
+struct KeyedCacheMapping: ElasticsearchIndex {
     let indexName: String
-    
-    var configuration: ElasticsearchIndexBuilder {
-        get {
-            return ElasticsearchIndexBuilder(indexName: self.indexName, dynamicMapping: true, enableQuerying: false)
-        }
-    }
+    let documentSettings = DocumentSettings(dynamic: true, enabled: false)
     
     init(indexName: String) {
         self.indexName = indexName

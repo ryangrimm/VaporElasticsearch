@@ -30,17 +30,20 @@ public class ElasticsearchIndexBuilder: Encodable {
         self.settings = ElasticsearchIndexSettings()
     }
     
+    @discardableResult
     public func indexSettings(_ index: IndexSettings) -> Self {
         self.settings.index = index
         return self
     }
     
+    @discardableResult
     public func alias(name: String, routing: String? = nil) -> Self {
         let alias = ElasticsearchIndexAlias(routing: routing)
         aliases[name] = alias
         return self
     }
     
+    @discardableResult
     public func property(key: String, type: Mappable) -> Self {
         mapping.doc.properties[key] = type
         
@@ -80,15 +83,12 @@ public class ElasticsearchIndexBuilder: Encodable {
         return self
     }
     
+    @discardableResult
     public func add(metaKey: String, metaValue: String) -> Self {
         if let meta = mapping.doc.meta, meta.userDefined == nil {
             mapping.doc.meta!.userDefined = [String: String]()
         }
         mapping.doc.meta!.userDefined![metaKey] = metaValue
-        return self
-    }
-    
-    public func version() -> Self {
         return self
     }
     

@@ -1,4 +1,4 @@
 
 public protocol IndexModifies {
-    mutating func modifyAfterReceiving(index: ElasticsearchIndex)
+    mutating func modifyAfterReceiving(index: IndexFoundation)
 }

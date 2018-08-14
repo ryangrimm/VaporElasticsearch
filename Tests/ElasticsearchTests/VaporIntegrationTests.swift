@@ -1,12 +1,21 @@
 import XCTest
-//import Elasticsearch
+import Elasticsearch
 import Vapor
-@testable import Elasticsearch
+//@testable import Elasticsearch
 
-struct MyIndex: ElasticsearchBuiltIndex {
-    let configuration = ElasticsearchIndexBuilder(indexName: "test").version()
+struct MyIndex: ElasticsearchIndex {
+    let indexName = "test_8"
+    let keyMap = ["foo": "foo_d"]
+    
+    let foo = MapText()
+    let bar = MapDouble()
+    let user = MapObject() { properties in
+        properties.property(key: "id", type: MapInteger())
+    }
+    let comment = MapNested() { properties in
+        properties.property(key: "rant", type: MapText())
+    }
 }
-
 
 final class VaporIntegrationTests: XCTestCase {
     
@@ -17,7 +26,7 @@ final class VaporIntegrationTests: XCTestCase {
         config.hostname = "localhost"
         config.port = 9200
         config.enableKeyedCache = true
-        config.keyedCacheIndexName = "vapor_keyed_cache_4"
+        config.keyedCacheIndexName = "vapor_keyed_cache_6"
         
         try services.register(MyIndex())
         try services.register(ElasticsearchProvider(config))

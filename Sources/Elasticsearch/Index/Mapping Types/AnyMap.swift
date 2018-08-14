@@ -99,14 +99,25 @@ internal struct AnyMap : Codable {
     private enum CodingKeys : CodingKey {
         case type
         case base
+        case properties
     }
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let type = try container.decode(MapType.self, forKey: .type)
-        self.base = try type.metatype.init(from: decoder)
+        let type = try container.decodeIfPresent(MapType.self, forKey: .type)
+        if let type = type {
+            self.base = try type.metatype.init(from: decoder)
+        }
+        else {
+            if container.contains(.properties) {
+                self.base = try MapObject(from: decoder)
+            }
+            else {
+                throw ElasticsearchError(identifier: "index_decode_failed", reason: "Unable to decode index structure", source: .capture())
+            }
+        }
     }
     
     /// :nodoc:

@@ -22,6 +22,13 @@ public struct MapNested: Mappable, DefinesNormalizers, DefinesAnalyzers {
         case dynamic
     }
     
+    public init(dynamic: Bool? = false, properties: (inout ChainableNestedProperties) -> Void) {
+        self.dynamic = dynamic
+        var chain = ChainableNestedProperties()
+        properties(&chain)
+        self.properties = chain.properties()
+    }
+    
     public init(properties: [String: Mappable]?, dynamic: Bool? = false) {
         self.properties = properties
         self.dynamic = dynamic
@@ -46,7 +53,17 @@ public struct MapNested: Mappable, DefinesNormalizers, DefinesAnalyzers {
         } else {
             self.properties = nil
         }
-        self.dynamic = try container.decodeIfPresent(Bool.self, forKey: .dynamic)
+        if container.contains(.dynamic) {
+            do {
+                self.dynamic = (try container.decode(Bool.self, forKey: .dynamic))
+            }
+            catch {
+                self.dynamic = try container.decode(String.self, forKey: .dynamic) == "true"
+            }
+        }
+        else {
+            self.dynamic = false
+        }
     }
     
     /// :nodoc:
