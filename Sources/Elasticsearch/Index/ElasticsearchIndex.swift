@@ -139,7 +139,6 @@ public extension IndexFoundation {
 }
 
 public protocol ElasticsearchIndex: IndexFoundation, Provider, Encodable {
-    var _model: Decodable? { get }
     var _indexName: String { get }
     var _indexSettings: IndexSettings { get }
     var _documentSettings: DocumentSettings { get }
@@ -147,13 +146,7 @@ public protocol ElasticsearchIndex: IndexFoundation, Provider, Encodable {
     var _keyMap: [String: String] { get }
 }
 
-extension ElasticsearchIndex {
-    public var _model: Decodable? {
-        get {
-            return nil
-        }
-    }
-    
+extension ElasticsearchIndex {    
     public var _typeName: String {
         get {
             return "_doc"
