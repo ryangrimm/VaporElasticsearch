@@ -3,7 +3,6 @@
 
 * Implement more aggregation types, especially bucketed
 * Ability to get back raw results
-* Implement the KeyedCacheSupporting protocol
 * Implement the DatabaseQueryable protocol
 * Create a chainable query builder
 * Implement remaining query DSL constructors
