@@ -7,6 +7,12 @@ public protocol IndexFoundation: Service {
 }
 
 public extension IndexFoundation {
+    public var _typeName: String {
+        get {
+            return "_doc"
+        }
+    }
+        
     /// Gets a document from Elasticsearch
     ///
     /// - Parameters:
@@ -138,6 +144,9 @@ public extension IndexFoundation {
     }
 }
 
+public protocol ElasticsearchCompoundIndex: IndexFoundation, Provider {
+}
+
 public protocol ElasticsearchIndex: IndexFoundation, Provider, Encodable {
     var _indexName: String { get }
     var _indexSettings: IndexSettings { get }
@@ -146,13 +155,7 @@ public protocol ElasticsearchIndex: IndexFoundation, Provider, Encodable {
     var _keyMap: [String: String] { get }
 }
 
-extension ElasticsearchIndex {    
-    public var _typeName: String {
-        get {
-            return "_doc"
-        }
-    }
-    
+extension ElasticsearchIndex {
     public var _indexSettings: IndexSettings {
         get {
             return IndexSettings(shards: 5, replicas: 1)
