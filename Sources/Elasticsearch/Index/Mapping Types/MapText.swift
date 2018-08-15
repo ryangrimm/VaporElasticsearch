@@ -64,7 +64,6 @@ public struct MapText: Mappable, DefinesAnalyzers {
                 indexOptions: TextIndexOptions? = nil,
                 norms: Bool? = nil,
                 similarity: SimilarityType? = nil,
-                ignoreAbove: Int? = 2147483647,
                 nullValue: String? = nil) {
         
         self.index = index
