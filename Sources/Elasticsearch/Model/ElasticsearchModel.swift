@@ -1,25 +1,29 @@
-import HTTP
 import Crypto
 
-public protocol ElasticsearchModel: Provider, Codable {
-    static var keyEncodingStratagey: JSONEncoder.KeyEncodingStrategy? { get }
-    static var keyDecodingStratagey: JSONDecoder.KeyDecodingStrategy? { get }
+
+public protocol ElasticsearchModel: Codable, AnyReflectable  {
+//    static var keyEncodingStratagey: JSONEncoder.KeyEncodingStrategy? { get }
+//    static var keyDecodingStratagey: JSONDecoder.KeyDecodingStrategy? { get }
     static var dateEncodingStratagey: JSONEncoder.DateEncodingStrategy? { get }
     static var dateDecodingStratagey: JSONDecoder.DateDecodingStrategy? { get }
     
-    var _indexName: String { get }
-    var _typeName: String { get }
+    static var indexName: String { get }
+    static var typeName: String { get }
+    static var allowDynamicKeys: Bool { get }
+    static var enableSearching: Bool { get }
     
     static func tuneConfiguration(key: String, config: inout Mappable)
 }
 
 extension ElasticsearchModel {
+    /*
     public static var keyEncodingStratagey: JSONEncoder.KeyEncodingStrategy? {
         return nil
     }
     public static var keyDecodingStratagey: JSONDecoder.KeyDecodingStrategy? {
         return nil
     }
+ */
     public static var dateEncodingStratagey: JSONEncoder.DateEncodingStrategy? {
         return .millisecondsSince1970
     }
@@ -27,52 +31,31 @@ extension ElasticsearchModel {
         return .millisecondsSince1970
     }
     
-    public var _typeName: String {
+    public static var typeName: String {
         return "_doc"
     }
     
-    public static func tuneConfiguration(key: String, config: inout Mappable) {
-    }
-
-    public func register(_ services: inout Services) throws {
+    public static var allowDynamicKeys: Bool {
+        return false
     }
     
-    public func willBoot(_ container: Container) throws -> Future<Void> {
-        let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-        
-        let config = try container.make(ElasticsearchClientConfig.self)
-        return ElasticsearchClient.connect(config: config, on: group).flatMap(to: Void.self) { client in
-            return client.fetchIndex(name: self._indexName).flatMap { index -> Future<Void> in
-                if index != nil {
-                    client.logger?.record(query: self._indexName + " index exists")
-                    return .done(on: container)
-                }
-                
-                let body = try self.generateIndexJSON()
-                return client.send(HTTPMethod.PUT, to: "/\(self._indexName)", with: body).map { response -> Void in
-                    return
-                }
-            }
-        }
+    public static var enableSearching: Bool {
+        return true
+    }
+    
+    public static func tuneConfiguration(key: String, config: inout Mappable) {
     }
     
     public func didBoot(_ container: Container) throws -> EventLoopFuture<Void> {
         return .done(on: container)
     }
     
-    func generateIndexJSON() throws -> Data {
-        let builder = ElasticsearchIndexBuilder(indexName: _indexName)
+    static func generateIndexJSON() throws -> Data {
+        let builder = ElasticsearchIndexBuilder(indexName: indexName, dynamicMapping: self.allowDynamicKeys, enableQuerying: self.enableSearching)
         
-        let reserved = ["_indexName", "_typeName"]
-        
-        let mirror = Mirror(reflecting: self)
-        for case let (keyName?, value) in mirror.children {
-            if reserved.contains(keyName) {
-                continue
-            }
-            
+        for property in try self.reflectProperties(depth: 0) {
             var esType: Mappable? = nil
-            switch type(of: value) {
+            switch property.type {
             case is ModelBinary?.Type, is ModelBinary.Type, is [ModelBinary].Type, is [ModelBinary]?.Type:
                 esType = ModelBinary.Mapping()
             case is ModelBool?.Type, is ModelBool.Type, is [ModelBool].Type, is [ModelBool]?.Type:
@@ -124,8 +107,8 @@ extension ElasticsearchModel {
             }
             
             if var esType = esType {
-                type(of: self).tuneConfiguration(key: keyName, config: &esType)
-                builder.property(key: keyName, type: esType)
+                self.tuneConfiguration(key: property.path.first!, config: &esType)
+                builder.property(key: property.path.first!, type: esType)
             }
         }
         
@@ -136,9 +119,11 @@ extension ElasticsearchModel {
         }
         
         let encoder = JSONEncoder()
-        if let strategy = type(of: self).keyEncodingStratagey {
+        /*
+        if let strategy = self.keyEncodingStratagey {
             encoder.keyEncodingStrategy = strategy
         }
+ */
         return try encoder.encode(builder)
     }
 }

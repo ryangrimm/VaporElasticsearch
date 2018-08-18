@@ -17,6 +17,8 @@ public struct ElasticsearchClientConfig: Service {
     /// The Elasticsearch server's optional password.
     public var password: String?
     
+    var registeredModels: [ElasticsearchModel.Type]
+    
     /// If wanting to use Elasticsearch as a key/value store `enableKeyedCache` must be set to `true`.
     /// This will create a new index in Elasticsearch automatically. By default the name of this
     /// index is "_vapor_keyed_cache" but can be controlled via the `keyedCacheIndexName`.
@@ -24,8 +26,8 @@ public struct ElasticsearchClientConfig: Service {
     /// index will be deleted.
     public var enableKeyedCache: Bool = false
     
-    /// Name of the index to use for the keyed cache
-    public var keyedCacheIndexName: String = "vapor_keyed_cache"
+    /// Model to use for the keyed cache index. _Do not set unless you know what you are doing._
+    public var keyedCacheIndexModel: ElasticsearchModel.Type = KeyedCacheMapping.self
 
     /// Create a new `ElasticsearchClientConfig` from a URL
     public init(url: URL) {
@@ -33,11 +35,17 @@ public struct ElasticsearchClientConfig: Service {
         self.port = url.port ?? 9200
         self.username = url.user
         self.password = url.password
+        self.registeredModels = [ElasticsearchModel.Type]()
     }
     
     /// Create a new `ElasticsearchClientConfig`
     public init(hostname: String = "localhost", port: Int = 9200) {
         self.hostname = hostname
         self.port = port
+        self.registeredModels = [ElasticsearchModel.Type]()
+    }
+    
+    public mutating func register(model: ElasticsearchModel.Type) {
+        self.registeredModels.append(model)
     }
 }

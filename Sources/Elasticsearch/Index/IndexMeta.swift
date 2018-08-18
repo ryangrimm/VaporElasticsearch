@@ -13,7 +13,7 @@ public struct IndexMeta: Codable {
 /// :nodoc:
 internal struct PrivateIndexMeta: Codable {
     let serialVersion: Int
-    var propertiesHash: String
+    var propertiesHash: String 
     
     init(version: Int) {
         self.serialVersion = version

@@ -3,20 +3,11 @@ import Elasticsearch
 import Vapor
 //@testable import Elasticsearch
 
-struct MyIndex: ElasticsearchModel {
-    static var keyEncodingStratagey: JSONEncoder.KeyEncodingStrategy? {
-        return JSONEncoder.KeyEncodingStrategy.convertToSnakeCase
-    }
-    static var keyDecodingStratagey: JSONDecoder.KeyDecodingStrategy? {
-        return JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
-    }
-
-    let _indexName = "test_20"
+struct MyIndex: ElasticsearchModel, Reflectable {
+    static let indexName = "test_20"
     
-    let fooD: ModelText = "try"
-    let bar: ModelDouble? = nil
-    
-    init() {}
+    var fooD: ModelText = "try"
+    var bar: ModelDouble? = nil
     
     /*
     let user = MapObject() { properties in
@@ -28,6 +19,13 @@ struct MyIndex: ElasticsearchModel {
  */
 }
 
+struct User: Reflectable, Decodable {
+    let indexName = "test_20"
+
+    var id: UUID?
+    var name: ModelText
+}
+
 final class VaporIntegrationTests: XCTestCase {
     
     func testBootSequence() throws {
@@ -37,9 +35,8 @@ final class VaporIntegrationTests: XCTestCase {
         config.hostname = "localhost"
         config.port = 9200
         config.enableKeyedCache = true
-        config.keyedCacheIndexName = "vapor_keyed_cache_7"
         
-        try services.register(MyIndex())
+        config.register(model: MyIndex.self)
         try services.register(ElasticsearchProvider(config))
         
         let _ = try Application.asyncBoot(config: .default(), environment: .xcode, services: services).wait()
