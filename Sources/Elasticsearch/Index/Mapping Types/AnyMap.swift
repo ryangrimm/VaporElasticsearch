@@ -31,59 +31,59 @@ public enum MapType: String, Codable {
     var metatype: Mappable.Type {
         switch self {
         case .text:
-            return MapText.self
+            return ModelText.Mapping.self
         case .keyword:
-            return MapKeyword.self
+            return ModelKeyword.Mapping.self
         case .long:
-            return MapLong.self
+            return ModelLong.Mapping.self
         case .integer:
-            return MapInteger.self
+            return ModelInteger.Mapping.self
         case .short:
-            return MapShort.self
+            return ModelShort.Mapping.self
         case .byte:
-            return MapByte.self
+            return ModelByte.Mapping.self
         case .double:
-            return MapDouble.self
+            return ModelDouble.Mapping.self
         case .float:
-            return MapFloat.self
+            return ModelFloat.Mapping.self
         case .halfFloat:
-            return MapHalfFloat.self
+            return ModelFloat.Mapping.self
         case .scaledFloat:
-            return MapScaledFloat.self
+            return ModelFloat.Mapping.self
         case .date:
-            return MapDate.self
+            return ModelDate.Mapping.self
         case .boolean:
-            return MapBoolean.self
+            return ModelBool.Mapping.self
         case .binary:
-            return MapBinary.self
+            return ModelBinary.Mapping.self
         case .integerRange:
-            return MapIntegerRange.self
+            return ModelIntegerRange.Mapping.self
         case .floatRange:
-            return MapFloatRange.self
+            return ModelFloatRange.Mapping.self
         case .longRange:
-            return MapLongRange.self
+            return ModelLongRange.Mapping.self
         case .doubleRange:
-            return MapDoubleRange.self
+            return ModelDoubleRange.Mapping.self
         case .dateRange:
-            return MapDateRange.self
+            return ModelDateRange.Mapping.self
         case .object:
             return MapObject.self
         case .nested:
             return MapNested.self
         case .geoPoint:
-            return MapGeoPoint.self
+            return ModelGeoPoint.Mapping.self
         case .geoShape:
-            return MapGeoShape.self
+            return ModelGeoShape.Mapping.self
         case .ipAddress:
-            return MapIPAddress.self
+            return ModelIPAddress.Mapping.self
         case .completionSuggester:
-            return MapCompletionSuggester.self
+            return ModelCompletionSuggester.Mapping.self
         case .tokenCount:
-            return MapTokenCount.self
+            return ModelTokenCount.Mapping.self
         case .percolator:
-            return MapPercolator.self
+            return ModelPercolator.Mapping.self
         case .join:
-            return MapJoin.self
+            return ModelJoin.Mapping.self
         }
     }
 }
@@ -109,6 +109,20 @@ internal struct AnyMap : Codable {
         let type = try container.decodeIfPresent(MapType.self, forKey: .type)
         if let type = type {
             self.base = try type.metatype.init(from: decoder)
+            // Due to the Swift Float type being used for a few of the ES types,
+            // we need to do a bit of extra work here to corretly differentiate
+            // which one we're using as a backing type.
+            if var float = self.base as? ModelFloat.Mapping {
+                switch type {
+                case MapType.halfFloat:
+                    float.type = MapType.halfFloat
+                case MapType.scaledFloat:
+                    float.type = MapType.scaledFloat
+                default:
+                    break
+                }
+                self.base = float
+            }
         }
         else {
             if container.contains(.properties) {
@@ -124,7 +138,7 @@ internal struct AnyMap : Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
-        try container.encode(type(of: base).typeKey, forKey: .type)
+        try container.encode(base.type, forKey: .type)
         try base.encode(to: encoder)
     }
 }

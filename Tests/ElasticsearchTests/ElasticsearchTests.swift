@@ -31,8 +31,8 @@ final class ElasticsearchTests: XCTestCase {
         let analyzer = StandardAnalyzer(name: "std_english", stopwords: ["_english_"])
         
         let indexConfig = es.configureIndex(name: "test")
-            .property(key: "name", type: MapText(analyzer: analyzer))
-            .property(key: "number", type: MapInteger())
+            .property(key: "name", type: ModelText.Mapping(analyzer: analyzer))
+            .property(key: "number", type: ModelInteger.Mapping())
             .alias(name: "testalias")
             .indexSettings(IndexSettings(shards: 3, replicas: 2))
             .add(metaKey: "Foo", metaValue: "Bar")
@@ -66,8 +66,8 @@ final class ElasticsearchTests: XCTestCase {
         try es.deleteIndex(name: "test").wait()
 
         let _ = try es.configureIndex(name: "test")
-            .property(key: "name", type: MapText())
-            .property(key: "number", type: MapInteger())
+            .property(key: "name", type: ModelText.Mapping())
+            .property(key: "number", type: ModelInteger.Mapping())
             .alias(name: "testalias")
             .indexSettings(IndexSettings(shards: 3, replicas: 2))
             .create(client: es).wait()
@@ -121,8 +121,8 @@ final class ElasticsearchTests: XCTestCase {
         try es.deleteIndex(name: "test").wait()
 
         let _ = try es.configureIndex(name: "test")
-            .property(key: "name", type: MapText())
-            .property(key: "number", type: MapInteger())
+            .property(key: "name", type: ModelText.Mapping())
+            .property(key: "number", type: ModelInteger.Mapping())
             .alias(name: "testalias")
             .indexSettings(IndexSettings(shards: 3, replicas: 2))
             .create(client: es).wait()

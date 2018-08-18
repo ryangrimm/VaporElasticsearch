@@ -3,18 +3,29 @@ import Elasticsearch
 import Vapor
 //@testable import Elasticsearch
 
-struct MyIndex: ElasticsearchIndex {
-    let _indexName = "test_9"
-    let _keyMap = ["foo": "foo_d"]
+struct MyIndex: ElasticsearchModel {
+    static var keyEncodingStratagey: JSONEncoder.KeyEncodingStrategy? {
+        return JSONEncoder.KeyEncodingStrategy.convertToSnakeCase
+    }
+    static var keyDecodingStratagey: JSONDecoder.KeyDecodingStrategy? {
+        return JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
+    }
+
+    let _indexName = "test_20"
     
-    let foo = MapText()
-    let bar = MapDouble()
+    let fooD: ModelText = "try"
+    let bar: ModelDouble? = nil
+    
+    init() {}
+    
+    /*
     let user = MapObject() { properties in
-        properties.property(key: "id", type: MapInteger())
+        properties.property(key: "id", type: ModelInteger.Mapping())
     }
     let comment = MapNested() { properties in
-        properties.property(key: "rant", type: MapText())
+        properties.property(key: "rant", type: ModelText.Mapping())
     }
+ */
 }
 
 final class VaporIntegrationTests: XCTestCase {

@@ -23,7 +23,7 @@ final class AnalyzerTests: XCTestCase {
         {"settings":{},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"standard"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: StandardAnalyzer())
+        let map = ModelText.Mapping(analyzer: StandardAnalyzer())
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -38,7 +38,7 @@ final class AnalyzerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"ana":{"type":"standard","stopwords":["foo","bar"],"max_token_length":10}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"ana"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: StandardAnalyzer(name: "ana", stopwords: ["foo", "bar"], maxTokenLength: 10))
+        let map = ModelText.Mapping(analyzer: StandardAnalyzer(name: "ana", stopwords: ["foo", "bar"], maxTokenLength: 10))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -53,7 +53,7 @@ final class AnalyzerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"ana":{"type":"fingerprint","separator":":","stopwords":["foo","bar"]}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"ana"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: FingerprintAnalyzer(name: "ana", separator: ":", stopwords: ["foo", "bar"]))
+        let map = ModelText.Mapping(analyzer: FingerprintAnalyzer(name: "ana", separator: ":", stopwords: ["foo", "bar"]))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -69,7 +69,7 @@ final class AnalyzerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"ana":{"type":"stop","stopwords":["foo","bar"]}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"ana"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: StopAnalyzer(name: "ana", stopwords: ["foo", "bar"]))
+        let map = ModelText.Mapping(analyzer: StopAnalyzer(name: "ana", stopwords: ["foo", "bar"]))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -84,7 +84,7 @@ final class AnalyzerTests: XCTestCase {
         {"settings":{},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"keyword"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: KeywordAnalyzer())
+        let map = ModelText.Mapping(analyzer: KeywordAnalyzer())
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -99,7 +99,7 @@ final class AnalyzerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"ana":{"pattern":"bar","flags":"CASE_INSENSITIVE|COMMENTS","lowercase":true,"stopwords":["_english_"],"type":"pattern"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"ana"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: PatternAnalyzer(name: "ana", pattern: "bar", flags: "CASE_INSENSITIVE|COMMENTS", lowercase: true, stopwords: ["_english_"]))
+        let map = ModelText.Mapping(analyzer: PatternAnalyzer(name: "ana", pattern: "bar", flags: "CASE_INSENSITIVE|COMMENTS", lowercase: true, stopwords: ["_english_"]))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -114,7 +114,7 @@ final class AnalyzerTests: XCTestCase {
         {"settings":{},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"simple"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: SimpleAnalyzer())
+        let map = ModelText.Mapping(analyzer: SimpleAnalyzer())
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -129,7 +129,7 @@ final class AnalyzerTests: XCTestCase {
         {"settings":{},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"whitespace"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: WhitespaceAnalyzer())
+        let map = ModelText.Mapping(analyzer: WhitespaceAnalyzer())
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)

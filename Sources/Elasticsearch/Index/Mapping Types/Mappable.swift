@@ -92,5 +92,6 @@ public struct TextField: Codable, DefinesNormalizers, DefinesAnalyzers {
 }
 
 public protocol Mappable: Codable {
-    static var typeKey: MapType { get }
+    var type: MapType { get }
+    init()
 }

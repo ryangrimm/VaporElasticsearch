@@ -11,16 +11,16 @@
 import Foundation
 
 public struct MapNested: Mappable, DefinesNormalizers, DefinesAnalyzers {
-    /// :nodoc:
-    public static var typeKey = MapType.nested
-
-    public let properties: [String: Mappable]?
-    public let dynamic: Bool?
+    public let type = MapType.nested
+    public var properties: [String: Mappable]?
+    public var dynamic: Bool?
     
     enum CodingKeys: String, CodingKey {
         case properties
         case dynamic
     }
+    
+    public init() { }
     
     public init(dynamic: Bool? = false, properties: (inout ChainableNestedProperties) -> Void) {
         self.dynamic = dynamic

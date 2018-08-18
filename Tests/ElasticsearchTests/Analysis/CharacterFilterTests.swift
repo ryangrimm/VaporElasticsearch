@@ -19,7 +19,7 @@ final class CharacterFilterTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"test_analyzer":{"type":"custom","char_filter":["html_strip"],"tokenizer":"standard"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(), characterFilter: [HTMLStripCharacterFilter()]))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(), characterFilter: [HTMLStripCharacterFilter()]))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -34,7 +34,7 @@ final class CharacterFilterTests: XCTestCase {
         {"settings":{"analysis":{"char_filter":{"char":{"type":"html_strip","escaped_tags":["span"]}},"analyzer":{"test_analyzer":{"type":"custom","char_filter":["char"],"tokenizer":"standard"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(), characterFilter: [HTMLStripCharacterFilter(name: "char", escapedTags: ["span"])]))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(), characterFilter: [HTMLStripCharacterFilter(name: "char", escapedTags: ["span"])]))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -49,7 +49,7 @@ final class CharacterFilterTests: XCTestCase {
         {"settings":{"analysis":{"char_filter":{"char":{"type":"mapping","mappings":{"foo":"bar"}}},"analyzer":{"test_analyzer":{"type":"custom","char_filter":["char"],"tokenizer":"standard"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(), characterFilter: [MappingCharacterFilter(name: "char", mappings: ["foo": "bar"])]))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(), characterFilter: [MappingCharacterFilter(name: "char", mappings: ["foo": "bar"])]))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -64,7 +64,7 @@ final class CharacterFilterTests: XCTestCase {
         {"settings":{"analysis":{"char_filter":{"char":{"type":"pattern_replace","pattern":"foo","replacement":"bar"}},"analyzer":{"test_analyzer":{"type":"custom","char_filter":["char"],"tokenizer":"standard"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(), characterFilter: [PatternReplaceCharacterFilter(name: "char", pattern: "foo", replacement: "bar")]))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(), characterFilter: [PatternReplaceCharacterFilter(name: "char", pattern: "foo", replacement: "bar")]))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)

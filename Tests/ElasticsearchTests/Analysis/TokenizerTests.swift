@@ -18,7 +18,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"standard"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer()))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer()))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -33,7 +33,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"test_std":{"type":"standard","max_token_length":5}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"test_std"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(name: "test_std", maxTokenLength: 5)))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: StandardTokenizer(name: "test_std", maxTokenLength: 5)))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -48,7 +48,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"letter"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: LetterTokenizer()))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: LetterTokenizer()))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -63,7 +63,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"lowercase"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: LowercaseTokenizer()))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: LowercaseTokenizer()))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -78,7 +78,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"whitespace"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: WhitespaceTokenizer()))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: WhitespaceTokenizer()))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -93,7 +93,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"short_ws":{"type":"whitespace","max_token_length":5}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"short_ws"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: WhitespaceTokenizer(name: "short_ws", maxTokenLength: 5)))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: WhitespaceTokenizer(name: "short_ws", maxTokenLength: 5)))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -108,7 +108,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"uax_url_email"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: UAXURLEmailTokenizer()))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: UAXURLEmailTokenizer()))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -123,7 +123,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"short_ws":{"type":"uax_url_email","max_token_length":5}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"short_ws"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: UAXURLEmailTokenizer(name: "short_ws", maxTokenLength: 5)))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: UAXURLEmailTokenizer(name: "short_ws", maxTokenLength: 5)))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -138,7 +138,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"classic"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: ClassicTokenizer()))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: ClassicTokenizer()))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -153,7 +153,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"short_ws":{"type":"classic","max_token_length":5}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"short_ws"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: ClassicTokenizer(name: "short_ws", maxTokenLength: 5)))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: ClassicTokenizer(name: "short_ws", maxTokenLength: 5)))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -168,7 +168,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"thai"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: ThaiTokenizer()))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: ThaiTokenizer()))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -183,7 +183,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"ng":{"min_gram":1,"max_gram":5,"type":"ngram","token_chars":["punctuation"]}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"ng"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: NGramTokenizer(name: "ng", minGram: 1, maxGram: 5, tokenChars: [.punctuation])))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: NGramTokenizer(name: "ng", minGram: 1, maxGram: 5, tokenChars: [.punctuation])))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -198,7 +198,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"ng":{"min_gram":1,"max_gram":5,"type":"edge_ngram","token_chars":["punctuation"]}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"ng"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: EdgeNGramTokenizer(name: "ng", minGram: 1, maxGram: 5, tokenChars: [.punctuation])))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: EdgeNGramTokenizer(name: "ng", minGram: 1, maxGram: 5, tokenChars: [.punctuation])))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -213,7 +213,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"keyword"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: KeywordTokenizer()))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: KeywordTokenizer()))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -228,7 +228,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"short_ws":{"type":"keyword","buffer_size":100}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"short_ws"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: KeywordTokenizer(name: "short_ws", bufferSize: 100)))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: KeywordTokenizer(name: "short_ws", bufferSize: 100)))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -243,7 +243,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"short_ws":{"type":"pattern","pattern":"foo","flags":"CASE_INSENSITIVE|COMMENTS"}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"short_ws"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: PatternTokenizer(name: "short_ws", pattern:"foo", flags:"CASE_INSENSITIVE|COMMENTS")))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: PatternTokenizer(name: "short_ws", pattern:"foo", flags:"CASE_INSENSITIVE|COMMENTS")))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -258,7 +258,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"short_ws":{"type":"simple_pattern","pattern":"foo"}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"short_ws"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: SimplePatternTokenizer(name: "short_ws", pattern:"foo")))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: SimplePatternTokenizer(name: "short_ws", pattern:"foo")))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -273,7 +273,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"short_ws":{"type":"simple_pattern_split","pattern":"foo"}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"short_ws"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: SimplePatternSplitTokenizer(name: "short_ws", pattern:"foo")))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: SimplePatternSplitTokenizer(name: "short_ws", pattern:"foo")))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)
@@ -288,7 +288,7 @@ final class TokenizerTests: XCTestCase {
         {"settings":{"analysis":{"tokenizer":{"short_ws":{"type":"path_hierarchy","delimiter":","}},"analyzer":{"test_analyzer":{"type":"custom","tokenizer":"short_ws"}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"text","analyzer":"test_analyzer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapText(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: PathHierarchyTokenizer(name: "short_ws", delimiter:",")))
+        let map = ModelText.Mapping(analyzer: CustomAnalyzer(name: "test_analyzer", tokenizer: PathHierarchyTokenizer(name: "short_ws", delimiter:",")))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
         
         let encoded = try encoder.encodeToString(index)

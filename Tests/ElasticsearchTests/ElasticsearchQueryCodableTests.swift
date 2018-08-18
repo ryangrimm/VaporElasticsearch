@@ -436,7 +436,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         {"geo_polygon":{"person.location":{"points":[{"lat":40,"lon":-70},{"lat":30,"lon":-80},{"lat":20,"lon":-90}]}}}
         """
         
-        let poly  = GeoPolygon(field: "person.location", points: [GeoPoint(lat: 40, lon: -70), GeoPoint(lat: 30, lon: -80), GeoPoint(lat: 20, lon: -90)])
+        let poly  = GeoPolygon(field: "person.location", points: [GeoPoint.object(lat: 40, lon: -70), GeoPoint.object(lat: 30, lon: -80), GeoPoint.object(lat: 20, lon: -90)])
         let query = Query(poly)
         let encoded = try encoder.encodeToString(query)
         

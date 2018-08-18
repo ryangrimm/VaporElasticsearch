@@ -18,7 +18,7 @@ final class NormalizerTests: XCTestCase {
         {"settings":{"analysis":{"normalizer":{"test_normalizer":{"type":"custom","filter":["foo","bar"]}}}},"mappings":{"_doc":{"properties":{"foo":{"type":"keyword","normalizer":"test_normalizer"}},"enabled":true,"dynamic":false,"_meta":{"private":{"serialVersion":1,"propertiesHash":""}}}}}
         """
         
-        let map = MapKeyword(normalizer: CustomNormalizer(name: "test_normalizer", filter: ["foo", "bar"]))
+        let map = ModelKeyword.Mapping(normalizer: CustomNormalizer(name: "test_normalizer", filter: ["foo", "bar"]))
         let index = es.configureIndex(name: "test").property(key: "foo", type: map)
  
         let encoded = try encoder.encodeToString(index)
