@@ -1,7 +1,6 @@
 import HTTP
 import Crypto
 
-
 public class ElasticsearchIndexBuilder: Encodable {
     public var indexName: String
     public var mapping = ElasticsearchIndexType(doc: DocumentTypeSettings())

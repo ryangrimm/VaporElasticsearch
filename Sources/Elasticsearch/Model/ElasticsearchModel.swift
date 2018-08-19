@@ -1,9 +1,7 @@
 import Crypto
-
+import HTTP
 
 public protocol ElasticsearchModel: Codable, AnyReflectable  {
-//    static var keyEncodingStratagey: JSONEncoder.KeyEncodingStrategy? { get }
-//    static var keyDecodingStratagey: JSONDecoder.KeyDecodingStrategy? { get }
     static var dateEncodingStratagey: JSONEncoder.DateEncodingStrategy? { get }
     static var dateDecodingStratagey: JSONDecoder.DateDecodingStrategy? { get }
     
@@ -16,14 +14,6 @@ public protocol ElasticsearchModel: Codable, AnyReflectable  {
 }
 
 extension ElasticsearchModel {
-    /*
-    public static var keyEncodingStratagey: JSONEncoder.KeyEncodingStrategy? {
-        return nil
-    }
-    public static var keyDecodingStratagey: JSONDecoder.KeyDecodingStrategy? {
-        return nil
-    }
- */
     public static var dateEncodingStratagey: JSONEncoder.DateEncodingStrategy? {
         return .millisecondsSince1970
     }
@@ -48,6 +38,20 @@ extension ElasticsearchModel {
     
     public func didBoot(_ container: Container) throws -> EventLoopFuture<Void> {
         return .done(on: container)
+    }
+    
+    public static func updateIndexMapping(client: ElasticsearchClient) -> Future<Void> {
+        return client.fetchIndex(name: self.indexName).flatMap { index -> Future<Void> in
+            if index != nil {
+                client.logger?.record(query: self.indexName + " index exists")
+                return .done(on: client.worker)
+            }
+            
+            let body = try self.generateIndexJSON()
+            return client.send(HTTPMethod.PUT, to: "/\(self.indexName)", with: body).map { response -> Void in
+                return
+            }
+        }
     }
     
     static func generateIndexJSON() throws -> Data {
@@ -119,11 +123,6 @@ extension ElasticsearchModel {
         }
         
         let encoder = JSONEncoder()
-        /*
-        if let strategy = self.keyEncodingStratagey {
-            encoder.keyEncodingStrategy = strategy
-        }
- */
         return try encoder.encode(builder)
     }
 }

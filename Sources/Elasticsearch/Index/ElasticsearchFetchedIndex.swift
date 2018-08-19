@@ -1,7 +1,7 @@
 
 import HTTP
 
-public struct ElasticsearchFetchedIndex: IndexFoundation, Decodable {
+public struct ElasticsearchFetchedIndex: Decodable {
     struct FetchWrapper: Decodable {
         var indexName: String
         var configuration: ElasticsearchFetchedIndex
@@ -15,25 +15,26 @@ public struct ElasticsearchFetchedIndex: IndexFoundation, Decodable {
         }
     }
     
-    public let _indexName: String
-    public var _typeName: String {
+    public let indexName: String
+    public var typeName: String {
         get {
-            return self.mapping.type
+            return self.mappings.type
         }
     }
-    public let mapping: ElasticsearchIndexType
+    
+    public let mappings: ElasticsearchIndexType
     public let aliases: [String: ElasticsearchIndexAlias]
     public let settings: ElasticsearchIndexSettings
     
     enum CodingKeys: String, CodingKey {
-        case mapping = "mappings"
+        case mappings
         case aliases
         case settings
     }
     
     internal init(indexName: String, mapping: ElasticsearchIndexType, aliases: [String: ElasticsearchIndexAlias], settings: ElasticsearchIndexSettings) {
-        self._indexName = indexName
-        self.mapping = mapping
+        self.indexName = indexName
+        self.mappings = mapping
         self.aliases = aliases
         self.settings = settings
     }
@@ -61,7 +62,7 @@ public struct ElasticsearchFetchedIndex: IndexFoundation, Decodable {
                 fullPass.userInfo(analysis: fullAnalysis.configuration.settings.analysis)
                 let wrapper = try fullPass.decode(FetchWrapper.self, from: response)
                 
-                return ElasticsearchFetchedIndex(indexName: wrapper.indexName, mapping: wrapper.configuration.mapping, aliases: wrapper.configuration.aliases, settings: wrapper.configuration.settings)
+                return ElasticsearchFetchedIndex(indexName: wrapper.indexName, mapping: wrapper.configuration.mappings, aliases: wrapper.configuration.aliases, settings: wrapper.configuration.settings)
             }
             
             return nil
@@ -74,8 +75,8 @@ public struct ElasticsearchFetchedIndex: IndexFoundation, Decodable {
         guard let lastKey = container.codingPath.last else {
             throw ElasticsearchError(identifier: "index_decode_failed", reason: "Can't find index name", source: .capture())
         }
-        self._indexName = lastKey.stringValue
-        self.mapping = try container.decode(ElasticsearchIndexType.self, forKey: .mapping)
+        self.indexName = lastKey.stringValue
+        self.mappings = try container.decode(ElasticsearchIndexType.self, forKey: .mappings)
         self.aliases = try container.decode([String: ElasticsearchIndexAlias].self, forKey: .aliases)
         self.settings = try container.decode(ElasticsearchIndexSettings.self, forKey: .settings)
     }

@@ -45,11 +45,11 @@ final class ElasticsearchTests: XCTestCase {
             XCTAssertNotNil(index.aliases["testalias"], "testalias does not exist")
             XCTAssertEqual(index.settings.index?.numberOfShards, 3, "Incorrect number of shards")
             XCTAssertEqual(index.settings.index?.numberOfReplicas, 2, "Incorrect number of replicas")
-            XCTAssertEqual(index.mapping.doc.meta?.userDefined!["Foo"], "Bar", "User metadata")
+            XCTAssertEqual(index.mappings.doc.meta?.userDefined!["Foo"], "Bar", "User metadata")
 
             // TODO: Should test for more than just the existance of the properties
-            let nameProp = index.mapping.doc.properties["name"]
-            let numberProp = index.mapping.doc.properties["number"]
+            let nameProp = index.mappings.doc.properties["name"]
+            let numberProp = index.mappings.doc.properties["number"]
             XCTAssertNotNil(nameProp, "Could not find name property")
             XCTAssertNotNil(numberProp, "Could not find number property")
         }

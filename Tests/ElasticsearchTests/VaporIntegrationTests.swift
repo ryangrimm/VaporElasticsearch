@@ -4,9 +4,9 @@ import Vapor
 //@testable import Elasticsearch
 
 struct MyIndex: ElasticsearchModel, Reflectable {
-    static let indexName = "test_20"
+    static let indexName = "test_21"
     
-    var fooD: ModelText = "try"
+    var fooD: [ModelText] = ["try"]
     var bar: ModelDouble? = nil
     
     /*

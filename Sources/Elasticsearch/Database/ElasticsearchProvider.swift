@@ -1,6 +1,5 @@
 import DatabaseKit
 import Service
-import HTTP
 
 /// Provides base `Elasticsearch` services such as database and connection.
 public final class ElasticsearchProvider: Provider {
@@ -44,38 +43,13 @@ public final class ElasticsearchProvider: Provider {
         
         let config = try container.make(ElasticsearchClientConfig.self)
         return ElasticsearchClient.connect(config: config, on: group).flatMap(to: Void.self) { client in
-            
             var indexFutures = [Future<Void>]()
             for model in client.config.registeredModels {
-                let future = client.fetchIndex(name: model.indexName).flatMap { index -> Future<Void> in
-                    if index != nil {
-                        client.logger?.record(query: model.indexName + " index exists")
-                        return .done(on: container)
-                    }
-                    
-                    let body = try model.generateIndexJSON()
-                    return client.send(HTTPMethod.PUT, to: "/\(model.indexName)", with: body).map { response -> Void in
-                        return
-                    }
-                }
-                indexFutures.append(future)
-                
+                indexFutures.append(model.updateIndexMapping(client: client))
             }
             
             if config.enableKeyedCache {
-                let model = config.keyedCacheIndexModel
-                let future = client.fetchIndex(name: model.indexName).flatMap { index -> Future<Void> in
-                    if index != nil {
-                        client.logger?.record(query: model.indexName + " index exists")
-                        return .done(on: container)
-                    }
-                    
-                    let body = try model.generateIndexJSON()
-                    return client.send(HTTPMethod.PUT, to: "/\(model.indexName)", with: body).map { response -> Void in
-                        return
-                    }
-                }
-                indexFutures.append(future)
+                indexFutures.append(config.keyedCacheIndexModel.updateIndexMapping(client: client))
             }
             
             return indexFutures.flatten(on: group)
