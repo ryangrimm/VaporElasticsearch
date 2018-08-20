@@ -2,7 +2,7 @@
 import Foundation
 import HTTP
 
-extension ElasticsearchModel {
+extension ElasticsearchBaseModel {
     /// Gets a document from Elasticsearch
     ///
     /// - Parameters:
@@ -47,7 +47,7 @@ extension ElasticsearchModel {
         version: Int? = nil,
         forceCreate: Bool? = nil
         ) -> Future<IndexResponse> {
-        let url = ElasticsearchClient.generateURL(path: "/\(type(of: self).indexName)/\(type(of: self).typeName)/\(id ?? "")", routing: routing, version: version, forceCreate: forceCreate)
+        let url = ElasticsearchClient.generateURL(path: "/\(Self.indexName)/\(Self.typeName)/\(id ?? "")", routing: routing, version: version, forceCreate: forceCreate)
         let method = id != nil ? HTTPMethod.PUT : HTTPMethod.POST
         return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
             let body: Data
@@ -78,7 +78,7 @@ extension ElasticsearchModel {
         routing: String? = nil,
         version: Int? = nil
         ) -> Future<IndexResponse>{
-        let url = ElasticsearchClient.generateURL(path: "/\(type(of: self).indexName)/\(type(of: self).typeName)/\(id)", routing: routing, version: version)
+        let url = ElasticsearchClient.generateURL(path: "/\(Self.indexName)/\(Self.typeName)/\(id)", routing: routing, version: version)
         return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
             let body: Data
             do {
@@ -108,7 +108,7 @@ extension ElasticsearchModel {
         routing: String? = nil,
         version: Int? = nil
         ) -> Future<IndexResponse>{
-        let url = ElasticsearchClient.generateURL(path: "/\(type(of: self).indexName)/\(type(of: self).typeName)/\(id)", routing: routing, version: version)
+        let url = ElasticsearchClient.generateURL(path: "/\(Self.indexName)/\(Self.typeName)/\(id)", routing: routing, version: version)
         return conn.databaseConnection(to: .elasticsearch).flatMap { conn in
             return conn.send(HTTPMethod.DELETE, to: url.string!).map(to: IndexResponse.self) {jsonData in
                 if let jsonData = jsonData {

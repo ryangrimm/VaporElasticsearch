@@ -1,90 +1,18 @@
 import HTTP
 import Crypto
 
-public protocol ModelObject: ModelType {
+public typealias ModelObject = ModelBaseObject & Reflectable
+
+public protocol ModelBaseObject: ModelType, ModelReflection {
     static func tuneConfiguration(key: String, config: inout Mappable)
 }
 
-extension ModelObject {
+extension ModelBaseObject {
     public static var backingType: Mappable.Type {
         return MapObject.self
     }
     
     public static func tuneConfiguration(key: String, config: inout Mappable) {
-    }
-    
-    internal func generateProperty() throws -> MapObject {
-        var properties: [String: Mappable]? = [String: Mappable]()
-        
-        let mirror = Mirror(reflecting: self)
-        for case let (keyName?, value) in mirror.children {
-            var esType: Mappable? = nil
-            switch type(of: value) {
-            case is ModelBinary?.Type, is ModelBinary.Type, is [ModelBinary].Type, is [ModelBinary]?.Type:
-                esType = ModelBinary.Mapping()
-            case is ModelBool?.Type, is ModelBool.Type, is [ModelBool].Type, is [ModelBool]?.Type:
-                esType = ModelBool.Mapping()
-            case is ModelByte?.Type, is ModelByte.Type, is [ModelByte].Type, is [ModelByte]?.Type:
-                esType = ModelByte.Mapping()
-            case is ModelCompletionSuggester?.Type, is ModelCompletionSuggester.Type, is [ModelCompletionSuggester].Type, is [ModelCompletionSuggester]?.Type:
-                esType = ModelCompletionSuggester.Mapping()
-            case is ModelDate?.Type, is ModelDate.Type, is [ModelDate].Type, is [ModelDate]?.Type:
-                esType = ModelDate.Mapping()
-            case is ModelDateRange?.Type, is ModelDateRange.Type, is [ModelDateRange].Type, is [ModelDateRange]?.Type:
-                esType = ModelDateRange.Mapping()
-            case is ModelDouble?.Type, is ModelDouble.Type, is [ModelDouble].Type, is [ModelDouble]?.Type:
-                esType = ModelDouble.Mapping()
-            case is ModelDoubleRange?.Type, is ModelDoubleRange.Type, is [ModelDoubleRange].Type, is [ModelDoubleRange]?.Type:
-                esType = ModelDoubleRange.Mapping()
-            case is ModelFloat?.Type, is ModelFloat.Type, is [ModelFloat].Type, is [ModelFloat]?.Type:
-                esType = ModelFloat.Mapping()
-            case is ModelFloatRange?.Type, is ModelFloatRange.Type, is [ModelFloatRange].Type, is [ModelFloatRange]?.Type:
-                esType = ModelFloatRange.Mapping()
-            case is ModelGeoPoint?.Type, is ModelGeoPoint.Type, is [ModelGeoPoint].Type, is [ModelGeoPoint]?.Type:
-                esType = ModelGeoPoint.Mapping()
-            case is ModelGeoShape?.Type, is ModelGeoShape.Type, is [ModelGeoShape].Type, is [ModelGeoShape]?.Type:
-                esType = ModelGeoShape.Mapping()
-            case is ModelIPAddress?.Type, is ModelIPAddress.Type, is [ModelIPAddress].Type, is [ModelIPAddress]?.Type:
-                esType = ModelIPAddress.Mapping()
-            case is ModelInteger?.Type, is ModelInteger.Type, is [ModelInteger].Type, is [ModelInteger]?.Type:
-                esType = ModelInteger.Mapping()
-            case is ModelIntegerRange?.Type, is ModelIntegerRange.Type, is [ModelIntegerRange].Type, is [ModelIntegerRange]?.Type:
-                esType = ModelIntegerRange.Mapping()
-            case is ModelJoin?.Type, is ModelJoin.Type, is [ModelJoin].Type, is [ModelJoin]?.Type:
-                esType = ModelJoin.Mapping()
-            case is ModelKeyword?.Type, is ModelKeyword.Type, is [ModelKeyword].Type, is [ModelKeyword]?.Type:
-                esType = ModelKeyword.Mapping()
-            case is ModelLong?.Type, is ModelLong.Type, is [ModelLong].Type, is [ModelLong]?.Type:
-                esType = ModelLong.Mapping()
-            case is ModelLongRange?.Type, is ModelLongRange.Type, is [ModelLongRange].Type, is [ModelLongRange]?.Type:
-                esType = ModelLongRange.Mapping()
-            case is ModelPercolator?.Type, is ModelPercolator.Type, is [ModelPercolator].Type, is [ModelPercolator]?.Type:
-                esType = ModelPercolator.Mapping()
-            case is ModelShort?.Type, is ModelShort.Type, is [ModelShort].Type, is [ModelShort]?.Type:
-                esType = ModelShort.Mapping()
-            case is ModelText?.Type, is ModelText.Type, is [ModelText].Type, is [ModelText]?.Type:
-                esType = ModelText.Mapping()
-            case is ModelTokenCount?.Type, is ModelTokenCount.Type, is [ModelTokenCount].Type, is [ModelTokenCount]?.Type:
-                esType = ModelTokenCount.Mapping()
-                /*
-            case is ModelObject?.Type, is ModelObject.Type, is [ModelObject.Type], is [ModelObject]?.Type:
-                esType = value as
- */
-            default:
-                break
-            }
-            
-            if var esType = esType {
-                type(of: self).tuneConfiguration(key: keyName, config: &esType)
-                properties![keyName] = esType
-            }
-        }
-        
-        if properties!.count == 0 {
-            properties = nil
-        }
-        
-        return MapObject(properties: properties, dynamic: false, enabled: true)
     }
 }
 

@@ -62,7 +62,7 @@ public final class ElasticsearchProvider: Provider {
     }
 }
 
-struct KeyedCacheMapping: ElasticsearchModel, Reflectable {
+struct KeyedCacheMapping: ElasticsearchModel {
     static var indexName = "vapor_keyed_cache"
     static var allowDynamicKeys = true
     static var enableSearching = false

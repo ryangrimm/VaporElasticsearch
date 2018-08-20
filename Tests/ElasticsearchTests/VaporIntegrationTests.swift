@@ -3,27 +3,24 @@ import Elasticsearch
 import Vapor
 //@testable import Elasticsearch
 
-struct MyIndex: ElasticsearchModel, Reflectable {
-    static let indexName = "test_21"
+struct Comment: ModelObject {
+    public static let allowDynamicKeys = false
+    public static let enableSearching = false
     
-    var fooD: [ModelText] = ["try"]
-    var bar: ModelDouble? = nil
-    
-    /*
-    let user = MapObject() { properties in
-        properties.property(key: "id", type: ModelInteger.Mapping())
-    }
-    let comment = MapNested() { properties in
-        properties.property(key: "rant", type: ModelText.Mapping())
-    }
- */
+    var text: ModelText
+    var postedOn: ModelDate
+
 }
 
-struct User: Reflectable, Decodable {
-    let indexName = "test_20"
-
-    var id: UUID?
-    var name: ModelText
+struct MyIndex: ElasticsearchModel {
+    public static var innerModelTypes: [ModelBaseObject.Type] {
+        return [Comment.self]
+    }
+    
+    static let indexName = "posts"
+    
+    var tags = ["awesome"]
+    var comments: Comment? = nil
 }
 
 final class VaporIntegrationTests: XCTestCase {
