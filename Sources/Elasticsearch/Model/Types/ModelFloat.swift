@@ -7,13 +7,15 @@ extension Float: ModelType {
 
     public struct Mapping: Mappable {
         /// Holds the string that Elasticsearch uses to identify the mapping type
-        public var type = MapType.scaledFloat {
+        public let type: MapType
+        public var overrideType: MapType? {
             didSet {
-                if type != MapType.scaledFloat && type != MapType.halfFloat && type != MapType.float {
-                    type = oldValue
+                if overrideType != MapType.scaledFloat && overrideType != MapType.halfFloat && overrideType != MapType.float {
+                    overrideType = oldValue
                 }
             }
         }
+        
         public var coerce: Bool? = nil
         public var boost: Float? = nil
         public var docValues: Bool? = nil
@@ -36,7 +38,9 @@ extension Float: ModelType {
             case scalingFactor = "scaling_factor"
         }
         
-        public init() { }
+        public init() {
+            self.type = MapType.float
+        }
         
         public init(scalingFactor: Int? = nil,
                     docValues: Bool? = nil,
@@ -55,6 +59,7 @@ extension Float: ModelType {
             self.index = index
             self.nullValue = nullValue
             self.store = store
+            self.type = MapType.float
         }
         
         /// :nodoc:

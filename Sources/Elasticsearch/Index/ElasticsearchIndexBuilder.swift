@@ -93,7 +93,7 @@ public class ElasticsearchIndexBuilder: Encodable {
     
     internal func create(client: ElasticsearchClient) -> Future<Void> {
         do {
-            let propertiesJSON = try JSONEncoder().encode(self.mapping.doc.properties.mapValues { AnyMap($0) })
+            let propertiesJSON = try JSONEncoder().encode(self.mapping.doc.properties.mapValues { AnyMappable($0) })
             let digest = try SHA1.hash(propertiesJSON)
             if let _ = self.mapping.doc.meta {
                 self.mapping.doc.meta!.private.propertiesHash = digest.hexEncodedString()

@@ -25,7 +25,7 @@ public struct DocumentTypeSettings: Codable {
         }
         
         if container.contains(.properties) {
-            self.properties = try container.decode([String: AnyMap].self, forKey: .properties).mapValues { $0.base }
+            self.properties = try container.decode([String: AnyMappable].self, forKey: .properties).mapValues { $0.base }
         }
         self.meta = try container.decodeIfPresent(IndexMeta.self, forKey: .meta)
         
@@ -51,7 +51,7 @@ public struct DocumentTypeSettings: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
                 
-        try container.encode(properties.mapValues { AnyMap($0) }, forKey: .properties)
+        try container.encode(properties.mapValues { AnyMappable($0) }, forKey: .properties)
         try container.encodeIfPresent(dynamic, forKey: .dynamic)
         try container.encodeIfPresent(enabled, forKey: .enabled)
         try container.encodeIfPresent(meta, forKey: .meta)

@@ -4,6 +4,8 @@ import HTTP
 public typealias ElasticsearchModel = ElasticsearchBaseModel & Reflectable
 
 public protocol ElasticsearchBaseModel: Codable, ModelReflection  {
+    static var allowDynamicKeys: Bool { get }
+    static var enableSearching: Bool { get }
     
     static var dateEncodingStratagey: JSONEncoder.DateEncodingStrategy? { get }
     static var dateDecodingStratagey: JSONDecoder.DateDecodingStrategy? { get }
@@ -13,6 +15,14 @@ public protocol ElasticsearchBaseModel: Codable, ModelReflection  {
 }
 
 extension ElasticsearchBaseModel {
+    public static var allowDynamicKeys: Bool {
+        return false
+    }
+    
+    public static var enableSearching: Bool {
+        return true
+    }
+    
     public static var dateEncodingStratagey: JSONEncoder.DateEncodingStrategy? {
         return .millisecondsSince1970
     }
@@ -42,7 +52,7 @@ extension ElasticsearchBaseModel {
                 builder.property(key: key, type: esType)
             }
             
-            let propertiesJSON = try JSONEncoder().encode(builder.mapping.doc.properties.mapValues { AnyMap($0) })
+            let propertiesJSON = try JSONEncoder().encode(builder.mapping.doc.properties.mapValues { AnyMappable($0) })
             let digest = try SHA1.hash(propertiesJSON)
             if let _ = builder.mapping.doc.meta {
                 builder.mapping.doc.meta!.private.propertiesHash = digest.hexEncodedString()

@@ -3,6 +3,14 @@ import Foundation
 
 public typealias ModelText = String
 extension String: ModelType {
+    
+    public enum TermVector: String, Codable {
+        case no = "no"
+        case yes = "yes"
+        case withPositions = "with_positions"
+        case withPositionsOffsets = "with_position_offsets"
+    }
+
     public static let backingType: Mappable.Type = Mapping.self
 
     public struct Mapping: Mappable, DefinesAnalyzers {

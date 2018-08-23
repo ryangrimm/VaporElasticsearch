@@ -17,10 +17,16 @@ struct MyIndex: ElasticsearchModel {
         return [Comment.self]
     }
     
-    static let indexName = "posts"
+    static func tuneConfiguration(key: String, config: inout Mappable) {
+        if key == "comments" {
+            config.overrideType = MapType.nested
+        }
+    }
+
+    static let indexName = "posts7"
     
     var tags = ["awesome"]
-    var comments: Comment? = nil
+    var comments: [Comment]? = nil
 }
 
 final class VaporIntegrationTests: XCTestCase {

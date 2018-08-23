@@ -17,20 +17,37 @@ extension ModelBaseObject {
 }
 
 public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
-    public let type = MapType.object
+    public let type: MapType
+    public var overrideType: MapType? {
+        didSet {
+            if allowTypeOverride == false {
+                overrideType = nil
+                return
+            }
+            if overrideType != MapType.object && overrideType != MapType.nested {
+                overrideType = oldValue
+            }
+        }
+    }
+    
     public var properties: [String: Mappable]?
     public var dynamic: Bool?
     public var enabled: Bool?
+    var allowTypeOverride: Bool = true
     
     enum CodingKeys: String, CodingKey {
+        case type
         case properties
         case dynamic
         case enabled
     }
     
-    public init() { }
+    public init() {
+        self.type = MapType.object
+    }
     
     public init(dynamic: Bool? = false, enabled: Bool? = true, properties: (inout ChainableNestedProperties) -> Void) {
+        self.type = MapType.object
         self.dynamic = dynamic
         self.enabled = enabled
         var chain = ChainableNestedProperties()
@@ -39,6 +56,7 @@ public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
     }
     
     public init(properties: [String: Mappable]?, dynamic: Bool? = false, enabled: Bool? = true) {
+        self.type = MapType.object
         self.properties = properties
         self.dynamic = dynamic
         self.enabled = enabled
@@ -48,19 +66,31 @@ public struct MapObject: Mappable, DefinesNormalizers, DefinesAnalyzers {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
+        if self.type == MapType.nested {
+            try container.encode(self.type, forKey: .type)
+        }
         if let properties = properties {
-            try container.encodeIfPresent(properties.mapValues { AnyMap($0) }, forKey: .properties)
+            try container.encodeIfPresent(properties.mapValues { AnyMappable($0) }, forKey: .properties)
         }
         try container.encodeIfPresent(dynamic, forKey: .dynamic)
-        try container.encodeIfPresent(enabled, forKey: .enabled)
+        if self.type == MapType.object {
+            try container.encodeIfPresent(enabled, forKey: .enabled)
+        }
     }
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
+        if container.contains(.type) {
+            self.type = try container.decode(MapType.self, forKey: .type)
+        }
+        else {
+            self.type = MapType.object
+        }
+        
         if container.contains(.properties) {
-            self.properties = try container.decode([String: AnyMap].self, forKey: CodingKeys.properties).mapValues { $0.base }
+            self.properties = try container.decode([String: AnyMappable].self, forKey: CodingKeys.properties).mapValues { $0.base }
         } else {
             self.properties = nil
         }

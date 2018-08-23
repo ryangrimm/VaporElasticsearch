@@ -2,9 +2,6 @@
 import Foundation
 
 public protocol ModelReflection: AnyReflectable {
-    static var allowDynamicKeys: Bool { get }
-    static var enableSearching: Bool { get }
-    
     static var innerModelTypes: [ModelBaseObject.Type] { get }
     static func tuneConfiguration(key: String, config: inout Mappable)
     
@@ -19,15 +16,6 @@ extension ModelReflection {
     public static func tuneConfiguration(key: String, config: inout Mappable) {
     }
     
-    
-    public static var allowDynamicKeys: Bool {
-        return false
-    }
-    
-    public static var enableSearching: Bool {
-        return true
-    }
-    
     public static func generateIndexJSON() throws -> [String: Mappable] {
         var esTypes = [String: Mappable]()
         
@@ -39,54 +27,65 @@ extension ModelReflection {
                 continue
             }
             
+            var esType: Mappable? = nil
+            
             switch property.type {
             case is ModelBinary?.Type, is ModelBinary.Type, is [ModelBinary].Type, is [ModelBinary]?.Type:
-                esTypes[key] = ModelBinary.Mapping()
+                esType = ModelBinary.Mapping()
             case is ModelBool?.Type, is ModelBool.Type, is [ModelBool].Type, is [ModelBool]?.Type:
-                esTypes[key] = ModelBool.Mapping()
+                esType = ModelBool.Mapping()
             case is ModelByte?.Type, is ModelByte.Type, is [ModelByte].Type, is [ModelByte]?.Type:
-                esTypes[key] = ModelByte.Mapping()
+                esType = ModelByte.Mapping()
             case is ModelCompletionSuggester?.Type, is ModelCompletionSuggester.Type, is [ModelCompletionSuggester].Type, is [ModelCompletionSuggester]?.Type:
-                esTypes[key] = ModelCompletionSuggester.Mapping()
+                esType = ModelCompletionSuggester.Mapping()
             case is ModelDate?.Type, is ModelDate.Type, is [ModelDate].Type, is [ModelDate]?.Type:
-                esTypes[key] = ModelDate.Mapping()
+                esType = ModelDate.Mapping()
             case is ModelDateRange?.Type, is ModelDateRange.Type, is [ModelDateRange].Type, is [ModelDateRange]?.Type:
-                esTypes[key] = ModelDateRange.Mapping()
+                esType = ModelDateRange.Mapping()
             case is ModelDouble?.Type, is ModelDouble.Type, is [ModelDouble].Type, is [ModelDouble]?.Type:
-                esTypes[key] = ModelDouble.Mapping()
+                esType = ModelDouble.Mapping()
             case is ModelDoubleRange?.Type, is ModelDoubleRange.Type, is [ModelDoubleRange].Type, is [ModelDoubleRange]?.Type:
-                esTypes[key] = ModelDoubleRange.Mapping()
+                esType = ModelDoubleRange.Mapping()
             case is ModelFloat?.Type, is ModelFloat.Type, is [ModelFloat].Type, is [ModelFloat]?.Type:
-                esTypes[key] = ModelFloat.Mapping()
+                esType = ModelFloat.Mapping()
             case is ModelFloatRange?.Type, is ModelFloatRange.Type, is [ModelFloatRange].Type, is [ModelFloatRange]?.Type:
-                esTypes[key] = ModelFloatRange.Mapping()
+                esType = ModelFloatRange.Mapping()
             case is ModelGeoPoint?.Type, is ModelGeoPoint.Type, is [ModelGeoPoint].Type, is [ModelGeoPoint]?.Type:
-                esTypes[key] = ModelGeoPoint.Mapping()
+                esType = ModelGeoPoint.Mapping()
             case is ModelGeoShape?.Type, is ModelGeoShape.Type, is [ModelGeoShape].Type, is [ModelGeoShape]?.Type:
-                esTypes[key] = ModelGeoShape.Mapping()
+                esType = ModelGeoShape.Mapping()
             case is ModelIPAddress?.Type, is ModelIPAddress.Type, is [ModelIPAddress].Type, is [ModelIPAddress]?.Type:
-                esTypes[key] = ModelIPAddress.Mapping()
+                esType = ModelIPAddress.Mapping()
             case is ModelInteger?.Type, is ModelInteger.Type, is [ModelInteger].Type, is [ModelInteger]?.Type:
-                esTypes[key] = ModelInteger.Mapping()
+                esType = ModelInteger.Mapping()
             case is ModelIntegerRange?.Type, is ModelIntegerRange.Type, is [ModelIntegerRange].Type, is [ModelIntegerRange]?.Type:
-                esTypes[key] = ModelIntegerRange.Mapping()
+                esType = ModelIntegerRange.Mapping()
             case is ModelJoin?.Type, is ModelJoin.Type, is [ModelJoin].Type, is [ModelJoin]?.Type:
-                esTypes[key] = ModelJoin.Mapping()
+                esType = ModelJoin.Mapping()
             case is ModelKeyword?.Type, is ModelKeyword.Type, is [ModelKeyword].Type, is [ModelKeyword]?.Type:
-                esTypes[key] = ModelKeyword.Mapping()
+                esType = ModelKeyword.Mapping()
             case is ModelLong?.Type, is ModelLong.Type, is [ModelLong].Type, is [ModelLong]?.Type:
-                esTypes[key] = ModelLong.Mapping()
+                esType = ModelLong.Mapping()
             case is ModelLongRange?.Type, is ModelLongRange.Type, is [ModelLongRange].Type, is [ModelLongRange]?.Type:
-                esTypes[key] = ModelLongRange.Mapping()
+                esType = ModelLongRange.Mapping()
             case is ModelPercolator?.Type, is ModelPercolator.Type, is [ModelPercolator].Type, is [ModelPercolator]?.Type:
-                esTypes[key] = ModelPercolator.Mapping()
+                esType = ModelPercolator.Mapping()
             case is ModelShort?.Type, is ModelShort.Type, is [ModelShort].Type, is [ModelShort]?.Type:
-                esTypes[key] = ModelShort.Mapping()
+                esType = ModelShort.Mapping()
             case is ModelText?.Type, is ModelText.Type, is [ModelText].Type, is [ModelText]?.Type:
-                esTypes[key] = ModelText.Mapping()
+                esType = ModelText.Mapping()
             case is ModelTokenCount?.Type, is ModelTokenCount.Type, is [ModelTokenCount].Type, is [ModelTokenCount]?.Type:
-                esTypes[key] = ModelTokenCount.Mapping()
+                esType = ModelTokenCount.Mapping()
             default:
+                break
+            }
+            
+            if var type = esType {
+                self.tuneConfiguration(key: key, config: &type)
+                esTypes[key] = type
+            }
+            // Check to see if it's an inner (object/nested) property
+            else {
                 let propertyTypeString = String(describing: property.type)
                 
                 for inner in Self.innerModelTypes {
@@ -94,23 +93,25 @@ extension ModelReflection {
                     let types = [
                         innerTypeString,
                         "Optional<\(innerTypeString)>",
+                    ]
+                    let arrayTypes = [
                         "Array<\(innerTypeString)>",
                         "Optional<Array<\(innerTypeString)>>"
                     ]
-                    if types.contains(propertyTypeString) {
+                    if types.contains(propertyTypeString) || arrayTypes.contains(propertyTypeString) {
                         let innerTypes = try inner.generateIndexJSON()
-                        esTypes[key] = MapObject(properties: innerTypes, dynamic: inner.allowDynamicKeys, enabled: inner.enableSearching)
+                        var type = MapObject(properties: innerTypes)
+                        type.allowTypeOverride = arrayTypes.contains(propertyTypeString)
+                        esType = type
+                        self.tuneConfiguration(key: key, config: &esType!)
+                        esTypes[key] = esType
+
                         break
                     }
                 }
-                
-                if let arrayType = property.type as? [Any].Type {
-                    print(arrayType.Element.self)
-                }
-                print("Skipping: \(property.path): \(property.type)")
-                break
             }
         }
+
         return esTypes
     }
 }

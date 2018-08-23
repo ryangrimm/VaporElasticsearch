@@ -12,19 +12,12 @@ public enum SimilarityType: String, Codable {
     case boolean = "boolean"
 }
 
-public enum TermVector: String, Codable {
-    case no = "no"
-    case yes = "yes"
-    case withPositions = "with_positions"
-    case withPositionsOffsets = "with_position_offsets"
-}
-
-public enum TextFieldType: String, Codable {
-    case text = "text"
-    case keyword = "keyword"
-}
-
 public struct TextField: Codable, DefinesNormalizers, DefinesAnalyzers {
+    public enum TextFieldType: String, Codable {
+        case text = "text"
+        case keyword = "keyword"
+    }
+    
     var type: TextFieldType
     var analyzer: Analyzer?
     var normalizer: Normalizer?
@@ -91,7 +84,3 @@ public struct TextField: Codable, DefinesNormalizers, DefinesAnalyzers {
     }
 }
 
-public protocol Mappable: Codable {
-    var type: MapType { get }
-    init()
-}
