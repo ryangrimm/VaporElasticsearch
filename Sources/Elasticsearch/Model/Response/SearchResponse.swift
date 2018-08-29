@@ -26,7 +26,7 @@ public struct SearchResponse<T: Decodable>: Decodable {
             public let index: String
             public let type: String
             public let id: String
-            public let score: Decimal
+            public let score: Decimal?
             public let source: T
             
             enum CodingKeys: String, CodingKey {
@@ -42,7 +42,7 @@ public struct SearchResponse<T: Decodable>: Decodable {
                 self.index = try container.decode(String.self, forKey: .index)
                 self.type = try container.decode(String.self, forKey: .type)
                 self.id = try container.decode(String.self, forKey: .id)
-                self.score = try container.decode(Decimal.self, forKey: .score)
+                self.score = try container.decodeIfPresent(Decimal.self, forKey: .score)
                 var source = try container.decode(T.self, forKey: .source)
                 if var settableIDSource = source as? SettableID {
                     settableIDSource.setID(self.id)
