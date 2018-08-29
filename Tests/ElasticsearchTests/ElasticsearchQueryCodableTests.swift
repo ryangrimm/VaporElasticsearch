@@ -520,6 +520,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         ("testGeoPolygon_encodesInQueryCorrectly",  testGeoPolygon_encodesInQueryCorrectly),
 
         ("testSort_encodesInQueryCorrectly",        testSort_encodesInQueryCorrectly),
+        ("testSort_encodesInSearchContainerCorrectly", testSort_encodesInSearchContainerCorrectly),
 
         ("testLinuxTestSuiteIncludesAllTests",      testLinuxTestSuiteIncludesAllTests)
     ]
