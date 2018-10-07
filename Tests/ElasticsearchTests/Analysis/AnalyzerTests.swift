@@ -1,5 +1,5 @@
 import XCTest
-@testable import Elasticsearch
+import Elasticsearch
 
 final class AnalyzerTests: XCTestCase {
     var encoder: JSONEncoder!

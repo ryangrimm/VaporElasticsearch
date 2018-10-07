@@ -8,19 +8,17 @@ public final class ElasticsearchDatabase: Database {
     public let config: ElasticsearchClientConfig
     
     /// Creates a new `ElasticsearchDatabase`.
-    public init(config: ElasticsearchClientConfig) throws { 
+    public init(config: ElasticsearchClientConfig) { 
         self.config = config
     }
     
-    public init(url: URL) throws {
+    public init(url: URL) {
         self.config = ElasticsearchClientConfig(url: url)
     }
     
     /// See `Database`.
     public func newConnection(on worker: Worker) -> Future<ElasticsearchClient> {
-        return ElasticsearchClient.connect(config: config, on: worker) { error in
-            print("[Elasticsearch] \(error)")
-        }
+        return ElasticsearchClient.connect(config: config, on: worker)
     }
 }
 

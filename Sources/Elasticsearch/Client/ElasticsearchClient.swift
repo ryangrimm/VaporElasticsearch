@@ -82,32 +82,36 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
     public func send(
         _ method: HTTPMethod,
         to path: String
-    ) throws -> Future<Data> {
+    ) -> Future<Data?> {
         let httpReq = HTTPRequest(method: method, url: path)
-        return try send(httpReq)
+        return send(httpReq)
     }
     
     public func send(
         _ method: HTTPMethod,
         to path: String,
         with body: Dictionary<String, Any>
-    ) throws -> Future<Data> {
-        let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
-        return try send(method, to: path, with: jsonData)
+    ) -> Future<Data?> {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+            return send(method, to: path, with: jsonData)
+        } catch {
+            return worker.future(error: error)
+        }
     }
     
     public func send(
         _ method: HTTPMethod,
         to path: String,
         with body: Data
-    ) throws -> Future<Data> {
+    ) -> Future<Data?> {
         let httpReq = HTTPRequest(method: method, url: path, body: HTTPBody(data: body))
-        return try send(httpReq)
+        return send(httpReq)
     }
     
     public func send(
         _ request: HTTPRequest
-    ) throws -> Future<Data> {
+    ) -> Future<Data?> {
         var request = request
         if request.headers.contains(name: "Content-Type") == false {
             request.headers.add(name: "Content-Type", value: "application/json")
@@ -121,7 +125,7 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
 
         logger?.record(query: request.description)
         
-        return self.esConnection.send(request).map(to: Data.self) { response in
+        return self.esConnection.send(request).map(to: Data?.self) { response in
             if response.body.data == nil {
                 throw ElasticsearchError(identifier: "empty_response", reason: "Missing response body from Elasticsearch", source: .capture())
             }
@@ -131,8 +135,12 @@ public final class ElasticsearchClient: DatabaseConnection, BasicWorker {
                     throw ElasticsearchError(identifier: "invalid_response", reason: "Cannot parse response body from Elasticsearch", source: .capture())
                 }
                 
-                let error = json["error"] as! Dictionary<String, Any>
-                throw ElasticsearchError(identifier: "elasticsearch_error", reason: error.description, source: .capture(), statusCode: response.status.code)
+                if response.status.code == 404 {
+                    return nil
+                }
+                
+                let error = json["error"] != nil ? (json["error"] as! Dictionary<String, Any>).description : ""
+                throw ElasticsearchError(identifier: "elasticsearch_error", reason: error, source: .capture(), statusCode: response.status.code)
             }
             
             let bodyString = String(data: response.body.data!, encoding: String.Encoding.utf8) as String?

@@ -23,9 +23,12 @@ let package = Package(
 
 		// Grab the HTTP goodies from Vapor
 		.package(url: "https://github.com/vapor/http.git", from: "3.0.0"),
+
+		// Grab Vapor itself for testing
+		.package(url: "https://github.com/vapor/vapor.git", from: "3.0.0"),
     ],
     targets: [
         .target( name: "Elasticsearch", dependencies: ["Crypto", "Async", "Bits", "DatabaseKit", "Debugging", "NIO", "COperatingSystem", "HTTP"]),
-        .testTarget( name: "ElasticsearchTests", dependencies: ["Elasticsearch"])
+        .testTarget( name: "ElasticsearchTests", dependencies: ["Elasticsearch", "Vapor"])
     ]
 )

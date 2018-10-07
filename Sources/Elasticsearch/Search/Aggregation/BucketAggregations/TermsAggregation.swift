@@ -19,7 +19,7 @@ public struct TermsAggregation: Aggregation {
     /// :nodoc:
     public let showTermDocCountError: Bool?
     /// :nodoc:
-    public let order: [String: OrderDirection]?
+    public let order: [String: SortOrder]?
     /// :nodoc:
     public let minDocCount: Int?
     /// :nodoc:
@@ -75,7 +75,7 @@ public struct TermsAggregation: Aggregation {
         field: String,
         size: Int? = nil,
         showTermDocCountError: Bool? = nil,
-        order: [String: OrderDirection]? = nil,
+        order: [String: SortOrder]? = nil,
         minDocCount: Int? = nil,
         script: Script? = nil,
         include: String? = nil,

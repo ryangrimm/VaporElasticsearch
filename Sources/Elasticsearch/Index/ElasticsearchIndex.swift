@@ -72,7 +72,6 @@ public class ElasticsearchIndex: Codable {
         var routing: String?
     }
     
-    public var client: ElasticsearchClient? = nil
     public var indexName: String? = nil
     public var mappings = DefaultType(doc: DocumentTypeSettings())
     public var aliases = [String: Alias]()
@@ -101,35 +100,38 @@ public class ElasticsearchIndex: Codable {
         }
     }
     
-    internal static func fetch(indexName: String, client: ElasticsearchClient) throws -> Future<ElasticsearchIndex> {
-        return try client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex.self) { response in
+    internal static func fetch(indexName: String, client: ElasticsearchClient) -> Future<ElasticsearchIndex?> {
+        return client.send(HTTPMethod.GET, to: "/\(indexName)").map(to: ElasticsearchIndex?.self) { response in
             // This is being done in three passes because the filters, analyzers and tokenizers
             // need to be populated before the properties. This needs to be done so they can
             // fetch their analyzers at the time of decoding. It's a little unfortunate but
-            // but overall not a big deal as it's a very rare function to be called.
+            // but overall not a big deal as it should be a very rare function to be called.
             
-            // First pass gets filters and analyzers
-            let filtersAnalyzers = try JSONDecoder().decode(ExtractFiltersAnalyzers.self, from: response)
-            var analysis = Analysis()
-            analysis.filters = filtersAnalyzers.filters
-            analysis.characterFilters = filtersAnalyzers.characterFilters
-            analysis.analyzers = filtersAnalyzers.analyzers
-            
-            let analysisPass = JSONDecoder()
-            analysisPass.userInfo(analysis: analysis)
-            let fullAnalysis = try analysisPass.decode(FetchWrapper.self, from: response)
+            if let response = response {
+                // First pass gets filters and analyzers
+                let filtersAnalyzers = try JSONDecoder().decode(ExtractFiltersAnalyzers.self, from: response)
+                var analysis = Analysis()
+                analysis.filters = filtersAnalyzers.filters
+                analysis.characterFilters = filtersAnalyzers.characterFilters
+                analysis.analyzers = filtersAnalyzers.analyzers
+                
+                let analysisPass = JSONDecoder()
+                analysisPass.userInfo(analysis: analysis)
+                let fullAnalysis = try analysisPass.decode(FetchWrapper.self, from: response)
 
-            let fullPass = JSONDecoder()
-            fullPass.userInfo(analysis: fullAnalysis.indexMappingValue.settings.analysis)
-            let wrapper = try fullPass.decode(FetchWrapper.self, from: response)
+                let fullPass = JSONDecoder()
+                fullPass.userInfo(analysis: fullAnalysis.indexMappingValue.settings.analysis)
+                let wrapper = try fullPass.decode(FetchWrapper.self, from: response)
+                
+                return wrapper.indexMappingValue
+            }
             
-            return wrapper.indexMappingValue
+            return nil
         }
     }
     
-    internal init(indexName: String, client: ElasticsearchClient, dynamicMapping: Bool = false, enableQuerying: Bool = true) {
+    internal init(indexName: String, dynamicMapping: Bool = false, enableQuerying: Bool = true) {
         self.indexName = indexName
-        self.client = client
         self.mappings.doc.enabled = enableQuerying
         self.mappings.doc.dynamic = dynamicMapping
         self.settings = Settings()
@@ -193,28 +195,28 @@ public class ElasticsearchIndex: Codable {
         return self
     }
     
-    public func create() throws -> Future<Void> {
+    public func create(client: ElasticsearchClient) -> Future<Void> {
         guard let name = indexName else {
-            throw ElasticsearchError(identifier: "missing_indexName", reason: "Missing index name for index creation", source: .capture())
+            return client.worker.future(error: ElasticsearchError(identifier: "missing_indexName", reason: "Missing index name for index creation", source: .capture()))
         }
-        guard let _ = self.client else {
-            throw ElasticsearchError(identifier: "missing_client", reason: "Missing client for index creation", source: .capture())
-        }
-        
-        let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties.mapValues { AnyMap($0) })
-        let digest = try SHA1.hash(propertiesJSON)
-        if let _ = self.mappings.doc.meta {
-            self.mappings.doc.meta!.private.propertiesHash = digest.hexEncodedString()
-        }
-        
-        let body = try JSONEncoder().encode(self)
-        return try self.client!.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
+
+        do {
+            let propertiesJSON = try JSONEncoder().encode(self.mappings.doc.properties.mapValues { AnyMap($0) })
+            let digest = try SHA1.hash(propertiesJSON)
+            if let _ = self.mappings.doc.meta {
+                self.mappings.doc.meta!.private.propertiesHash = digest.hexEncodedString()
+            }
+            
+            let body = try JSONEncoder().encode(self)
+            return client.send(HTTPMethod.PUT, to: "/\(name)", with: body).map(to: Void.self) { response in
+            }
+        } catch {
+            return client.worker.future(error: error)
         }
     }
     
-    // TODO - should add an option to ignore if index isn't present
-    internal static func delete(indexName: String, client: ElasticsearchClient) throws -> Future<Void> {
-        return try client.send(HTTPMethod.DELETE, to: "/\(indexName)").map(to: Void.self) { response in
+    internal static func delete(indexName: String, client: ElasticsearchClient) -> Future<Void> {
+        return client.send(HTTPMethod.DELETE, to: "/\(indexName)").map(to: Void.self) { response in
         }
     }
     

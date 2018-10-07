@@ -24,7 +24,9 @@ struct DocumentTypeSettings: Codable {
             return
         }
         
-        self.properties = try container.decode([String: AnyMap].self, forKey: .properties).mapValues { $0.base }
+        if container.contains(.properties) {
+            self.properties = try container.decode([String: AnyMap].self, forKey: .properties).mapValues { $0.base }
+        }
         self.meta = try container.decodeIfPresent(IndexMeta.self, forKey: .meta)
         
         if container.contains(.enabled) {
