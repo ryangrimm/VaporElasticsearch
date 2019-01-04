@@ -55,6 +55,18 @@ public struct FunctionScore: QueryElement {
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        //  Encode the functions
+        var functionsArrayContainer = container.nestedUnkeyedContainer(forKey: .functions)
+        for function in functions {
+            var queryContainer = functionsArrayContainer.nestedContainer(keyedBy: DynamicKey.self)
+            try queryContainer.encode(AnyScoreFunctionElement(function), forKey: DynamicKey(stringValue: type(of: function).typeKey.rawValue)!)
+        }
+        
+        //  Encode the query
+        var queryContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: .query)
+        try queryContainer.encode(AnyQueryElement(query), forKey: DynamicKey(stringValue: type(of: query).typeKey.rawValue)!)
+        
         try container.encodeIfPresent(boost, forKey: .boost)
         try container.encodeIfPresent(maxBoost, forKey: .maxBoost)
         try container.encodeIfPresent(scoreMode, forKey: .scoreMode)
@@ -62,14 +74,26 @@ public struct FunctionScore: QueryElement {
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
-        //        TODO: get these from the decoder
-        self.query = MatchAll()
-        self.boost = nil
-        self.functions = [RandomScore()]
-        self.maxBoost = nil
-        self.scoreMode = nil
-        self.boostMode = "sum"
-        self.minScore = nil
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.boost = try container.decodeIfPresent(Decimal.self, forKey: .boost)
+        self.maxBoost = try container.decodeIfPresent(Decimal.self, forKey: .maxBoost)
+        self.scoreMode = try container.decodeIfPresent(String.self, forKey: .scoreMode)
+        self.boostMode = try container.decodeIfPresent(String.self, forKey: .boostMode)
+        self.minScore = try container.decodeIfPresent(Decimal.self, forKey: .minScore)
+        
+        // Decode query
+        self.query = try container.decode(AnyQueryElement.self, forKey: .query).base
+        
+        // Decode functions
+        var functions = [ScoreFunctionElement]()
+        var rawFunctions = try container.nestedUnkeyedContainer(forKey: .functions)
+        while(!rawFunctions.isAtEnd){
+            let functionDecoder = try rawFunctions.superDecoder()
+            let function = try AnyScoreFunctionElement(from: functionDecoder)
+            functions.append(function.base)
+        }
+        self.functions = functions
         
     }
 }

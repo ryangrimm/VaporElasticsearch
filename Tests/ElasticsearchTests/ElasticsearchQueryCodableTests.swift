@@ -101,7 +101,33 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
 
         XCTAssertEqual(json, encoded)
     }
+    
+    func testFunctionScoreQuery_withScriptScore_encodesInQueryCorrectly() throws {
+        let json = """
+        {"function_score":{"functions":[{"script_score":{"script":{"lang":"painless","source":"_score * doc['id'].value"}}}],"query":{"match_all":{}},"score_mode":"sum","boost":10,"max_boost":100}}
+        """
+        let script = Script(lang: "painless", source: "_score * doc['id'].value")
+        let functionScore = FunctionScore(
+            query: MatchAll(),
+            boost: 10,
+            functions: [ScriptScore(script: script)],
+            maxBoost: 100,
+            scoreMode: "sum",
+            boostMode: "multiply",
+            minScore: 1)
+        let query = Query(functionScore)
+        let encoded = try encoder.encodeToString(query)
+        
+        XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
 
+        XCTAssertEqual(json, encodedAgain)
+    }
+        
+        
     func testMatchAll_encodesInQueryCorrectly() throws {
         let json = """
         {"match_all":{}}
