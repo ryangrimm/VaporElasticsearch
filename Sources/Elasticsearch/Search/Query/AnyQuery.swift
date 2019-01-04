@@ -4,6 +4,7 @@ public enum QueryElementMap : String, Codable {
     case boolQuery = "bool"
     case exists
     case fuzzy
+    case functionScore = "function_score"
     case ids
     case match
     case matchAll = "match_all"
@@ -36,6 +37,8 @@ public enum QueryElementMap : String, Codable {
             return Exists.self
         case .fuzzy:
             return Fuzzy.self
+        case .functionScore:
+            return FunctionScore.self
         case .ids:
             return IDs.self
         case .match:
