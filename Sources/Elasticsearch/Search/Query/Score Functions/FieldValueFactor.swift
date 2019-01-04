@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FieldValueScore: ScoreFunctionElement {
+public struct FieldValueFactor: ScoreFunctionElement {
     public static var typeKey = ScoreFunctionMap.fieldValueFactor
     
     public let field: String

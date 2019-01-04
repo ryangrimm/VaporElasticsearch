@@ -17,7 +17,7 @@ public enum ScoreFunctionMap : String, Codable {
     case linear
     case exp
     
-    var metatype: ScoreFunction.Type {
+    var metatype: ScoreFunctionElement.Type {
         switch self {
         case .scriptScore:
             return ScriptScore.self
