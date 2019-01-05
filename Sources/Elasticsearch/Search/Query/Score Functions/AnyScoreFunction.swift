@@ -13,7 +13,7 @@ public enum ScoreFunctionMap : String, Codable {
     case weight
     case randomScore = "random_score"
     case fieldValueFactor = "field_value_factor"
-    case guass
+    case gauss
     case linear
     case exp
     
@@ -27,8 +27,8 @@ public enum ScoreFunctionMap : String, Codable {
             return RandomScore.self
         case .fieldValueFactor:
             return FieldValueFactor.self
-        case .guass:
-            return Guass.self
+        case .gauss:
+            return Gauss.self
         case .linear:
             return Linear.self
         case .exp:

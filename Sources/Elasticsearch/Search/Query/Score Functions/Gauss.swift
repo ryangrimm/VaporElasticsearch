@@ -1,5 +1,5 @@
 //
-//  Guass.swift
+//  Gauss.swift
 //  Async
 //
 //  Created by Kelly Bennett on 1/4/19.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-public struct Guass: ScoreFunctionElement {
-    public static var typeKey = ScoreFunctionMap.guass
+public struct Gauss: ScoreFunctionElement {
+    public static var typeKey = ScoreFunctionMap.gauss
     let field: String
     let origin: String
     let offset: String
@@ -57,7 +57,7 @@ public struct Guass: ScoreFunctionElement {
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
-        let inner = Guass.Inner(origin: origin,
+        let inner = Gauss.Inner(origin: origin,
                                 offset: offset,
                                 decay: decay,
                                 scale: scale)
@@ -71,7 +71,7 @@ public struct Guass: ScoreFunctionElement {
         self.field = key!.stringValue
         
         let innerDecoder = try container.superDecoder(forKey: key!)
-        let inner = try Guass.Inner(from: innerDecoder)
+        let inner = try Gauss.Inner(from: innerDecoder)
         self.origin = inner.origin
         self.offset = inner.offset
         self.decay = inner.decay
