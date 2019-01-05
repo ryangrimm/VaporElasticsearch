@@ -102,10 +102,61 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         XCTAssertEqual(json, encoded)
     }
     
+    func testNestedQuery_encodesInQueryCorrectly() throws {
+        let json = """
+        {"nested":{"path":"variants","score_mode":"avg","query":{"bool":{"must":[{"match":{"variants.package_unit":{"query":"g"}}},{"range":{"variants.package_price":{"gt":5}}}]}}}}
+        """
+        let innerQuery = BoolQuery(must: [Match(field: "variants.package_unit", value: "g"),
+                                          Range(field: "variants.package_price",
+                                                greaterThanOrEqualTo: nil,
+                                                greaterThan: 5,
+                                                lesserThanOrEqualTo: nil,
+                                                lesserThan: nil,
+                                                boost: nil)],
+                                   should: nil,
+                                   mustNot: nil,
+                                   filter: nil,
+                                   minimumShouldMatch: nil,
+                                   boost: nil)
+        
+        let nested = Nested(path: "variants",
+                            scoreMode: "avg",
+                            query:  innerQuery)
+        
+        let query = Query(nested)
+        let encoded = try encoder.encodeToString(query)
+        
+         XCTAssertEqual(json, encoded)
+        
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+        
+        XCTAssertEqual(json, encodedAgain)
+        
+    }
+    
+    func testGuassScoreFunction_encodesCorrectly() throws {
+        let json = """
+        {"date":{"scale":"10d","offset":"5d","origin":"2013-09-17","decay":0.5}}
+        """
+        
+        let gauss = Guass(field: "date",
+                          origin: "2013-09-17",
+                          offset: "5d",
+                          decay: 0.5,
+                          scale: "10d")
+        
+        let encoded = try encoder.encodeToString(gauss)
+        XCTAssertEqual(json, encoded)
+    }
+    
     func testFunctionScoreQuery_withScriptScore_encodesInQueryCorrectly() throws {
         let json = """
         {"function_score":{"functions":[{"script_score":{"script":{"lang":"painless","source":"_score * doc['id'].value"}}}],"query":{"match_all":{}},"score_mode":"sum","boost":10,"max_boost":100}}
         """
+        
+        
         let script = Script(lang: "painless", source: "_score * doc['id'].value")
         let functionScore = FunctionScore(
             query: MatchAll(),
@@ -115,6 +166,7 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
             scoreMode: "sum",
             boostMode: "multiply",
             minScore: 1)
+        
         let query = Query(functionScore)
         let encoded = try encoder.encodeToString(query)
         
@@ -509,6 +561,23 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         XCTAssertEqual(linuxCount, darwinCount, "\(darwinCount - linuxCount) tests are missing from allTests")
         #endif
     }
+    
+//    func facetedSearchQueryEncodesCorrectly() throws {
+//        let json = """
+//        {"query":{"function_score":{"query":{"nested":{"path":"search_data","query":{"bool":{"must":[{"multi_match":{"fields":["search_data.full_text_boosted^7","search_data.full_text^2"],"operator":"AND","type":"cross_fields","analyzer":"full_text_search_analyzer","query":"Platinum Blue Deam"}}],"should":[{"multi_match":{"fields":["search_data.full_text_boosted.no-stem^7","search_data.full_text.no-stem^2"],"operator":"OR","type":"cross_fields","analyzer":"full_text_search_analyzer_no_stem","query":"Platinum Blue Deam"}},{"multi_match":{"fields":["search_data.full_text_boosted.no-decompound^7","search_data.full_text.no-decompound^2"],"operator":"OR","type":"cross_fields","analyzer":"full_text_search_analyzer","query":"Platinum Blue Deam"}}]}}}},"score_mode":"sum","functions":[{"gauss":{"location":{"origin":"47.4,-122.22","scale":"10mi"}}},{"field_value_factor":{"field":"scores.stock","missing":0}},{"field_value_factor":{"field":"scores.random","factor":0.1,"missing":0}},{"field_value_factor":{"field":"scores.top_seller","factor":0.3,"missing":0}},{"field_value_factor":{"field":"scores.dfp_impressions","factor":0.1,"missing":0}},{"field_value_factor":{"field":"scores.sale_impressions_rate","factor":0.2,"missing":0}},{"field_value_factor":{"field":"scores.data_quality","factor":0.1,"missing":0}},{"field_value_factor":{"field":"scores.delivery_speed","factor":0.3,"missing":0}}]}},"suggest":{"text":"grease monkey","simple_phrase":{"phrase":{"field":"suggestion_terms.trigram","confidence":1,"size":1,"direct_generator":[{"field":"suggestion_terms.trigram","suggest_mode":"always"},{"field":"suggestion_terms.reverse","suggest_mode":"always","pre_filter":"reverse","post_filter":"reverse"}],"highlight":{"pre_tag":"<em>","post_tag":"</em>"}}}},"aggs":{"search_data_nested_agg":{"nested":{"path":"search_data"},"aggs":{"string_facet_nested_agg":{"nested":{"path":"search_data.string_facet"},"aggs":{"facet_name_terms_agg":{"terms":{"field":"search_data.string_facet.facet-name","size":100},"aggs":{"facet_value_terms_agg":{"terms":{"field":"search_data.string_facet.facet-value","size":10}}}}}},"number_facet_nested_agg":{"nested":{"path":"search_data.number_facet"},"aggs":{"facet_name_terms_agg":{"terms":{"field":"search_data.number_facet.facet-name","size":100},"aggs":{"facet_value_terms_agg":{"stats":{"field":"search_data.number_facet.facet-value"}}}}}}}}}}
+//        """
+//
+//        let functionScoreQuery =
+//            FunctionScore(
+//                query: Nested(path: "search_data", scoreMode: "sum", query: MatchAll()), boost: 1,
+//                functions: [
+//
+//                ],
+//                maxBoost: nil,
+//                scoreMode: "avg",
+//                boostMode: nil,
+//                minScore: nil)
+//    }
 
     static var allTests = [
         ("testAvgAggregation_encodesCorrectly",     testAvgAggregation_encodesCorrectly),

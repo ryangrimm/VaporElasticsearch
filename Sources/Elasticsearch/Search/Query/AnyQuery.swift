@@ -16,6 +16,7 @@ public enum QueryElementMap : String, Codable {
     case regexp
     case term
     case terms
+    case nested
     case wildcard
     case matchPhrasePrefix = "match_phrase_prefix"
     case commonTerms = "common"
@@ -51,6 +52,8 @@ public enum QueryElementMap : String, Codable {
             return MatchPhrase.self
         case .multiMatch:
             return MultiMatch.self
+        case .nested:
+            return Nested.self
         case .prefix:
             return Prefix.self
         case .range:
