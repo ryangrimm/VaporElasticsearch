@@ -226,11 +226,12 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         
         XCTAssertEqual(json, encoded)
         
-//        let toDecode = try encoder.encode(query)
-//        let decoded = try decoder.decode(Query.self, from: toDecode)
-//        let encodedAgain = try encoder.encodeToString(decoded)
-//
-//        XCTAssertEqual(json, encodedAgain)
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+
+        XCTAssertEqual(json, encodedAgain)
+        
     }
         
         

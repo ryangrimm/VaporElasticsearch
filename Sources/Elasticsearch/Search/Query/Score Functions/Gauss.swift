@@ -66,7 +66,7 @@ public struct Gauss: ScoreFunctionElement {
     
     /// :nodoc:
     public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first
         self.field = key!.stringValue
         
