@@ -20,7 +20,7 @@ public struct Nested: QueryElement {
     public let scoreMode: String?
     public let query: QueryElement
     
-    public init(path: String, scoreMode: String, query: QueryElement) {
+    public init(path: String, scoreMode: String?, query: QueryElement) {
         self.path = path
         self.scoreMode = scoreMode
         self.query = query
