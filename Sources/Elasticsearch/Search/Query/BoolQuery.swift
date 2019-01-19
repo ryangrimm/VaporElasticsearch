@@ -155,10 +155,10 @@ public struct BoolQuery: QueryElement {
 public struct BoolQueryElements {
   /// :nodoc:
   
-  public var musts: [QueryElement]?
-  public var shoulds: [QueryElement]?
-  public var mustNots: [QueryElement]?
-  public var filters: [QueryElement]?
+  public var musts: [QueryElement]
+  public var shoulds: [QueryElement]
+  public var mustNots: [QueryElement]
+  public var filters: [QueryElement]
   public var minimumShouldMatch: Int?
   public var boost: Decimal?
   
