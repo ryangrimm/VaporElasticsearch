@@ -105,22 +105,26 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
   
     func testNestingAggregations_encodesCorrectly() throws {
         let json = """
-            {"aggs":{"foo":{"terms":{"field":"brand_id","size":9},"aggs":{"shell":{"top_hits":{"size":10,"from":0}},"taco":{"top_hits":{"size":10,"from":0}}}}},"size":0,"from":0}
+            {"aggs":{"strain_id_aggs":{"terms":{"field":"strain_id","size":10},"aggs":{"dispensary_id_aggs":{"terms":{"field":"dispensary_id","size":4},"aggs":{"top_hits_aggs":{"top_hits":{"size":1}}}}}}},"size":0,"from":0}
             """
-      let searchContainer = SearchContainer(aggs: [TermsAggregation(name: "foo",
-                                                                    field: "brand_id",
-                                                                    size: 9,
-                                                                    aggs: [TopHitsAggregation(name: "taco",
-                                                                                              from: 0,
-                                                                                              size: 10,
-                                                                                              aggs: nil
-                                                                      ),
-                                                                           TopHitsAggregation(name: "shell",
-                                                                                              from: 0,
-                                                                                              size: 10,
-                                                                                              aggs: nil)
+      let searchContainer = SearchContainer(aggs:
+        [
+          TermsAggregation(
+            name: "strain_id_aggs",
+            field: "strain_id",
+            size: 10,
+            aggs: [
+              TermsAggregation(
+                name: "dispensary_id_aggs",
+                field: "dispensary_id",
+                size: 4,
+                aggs: [
+                  TopHitsAggregation(name: "top_hits_aggs",
+                                     from: 0,
+                                     size: 1)
+                ])
+            ])
         ]
-        )]
       )
         let encoded = try encoder.encodeToString(searchContainer)
       
