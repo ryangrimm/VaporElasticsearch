@@ -7,6 +7,7 @@ import Foundation
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html)
 */
 public struct TermsAggregation: Aggregation {
+  
     /// :nodoc:
     public static var typeKey = AggregationResponseMap.terms
     
@@ -38,7 +39,9 @@ public struct TermsAggregation: Aggregation {
     public let executionHint: ExecutionHint?
     /// :nodoc:
     public let missing: Int?
-    
+    /// :nodoc:
+    public var aggs: [Aggregation]?
+  
     enum CodingKeys: String, CodingKey {
         case field
         case size
@@ -51,6 +54,7 @@ public struct TermsAggregation: Aggregation {
         case collectMode = "collect_mode"
         case executionHint = "execution_hint"
         case missing
+        case aggs
     }
     
     /// Creates a [terms](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) aggregation
@@ -84,7 +88,8 @@ public struct TermsAggregation: Aggregation {
         excludeExact: [String]? = nil,
         collectMode: CollectMode? = nil,
         executionHint: ExecutionHint? = nil,
-        missing: Int? = nil
+        missing: Int? = nil,
+        aggs: [Aggregation]? = nil
         ) {
         self.name = name
         self.field = field
@@ -100,6 +105,7 @@ public struct TermsAggregation: Aggregation {
         self.collectMode = collectMode
         self.executionHint = executionHint
         self.missing = missing
+        self.aggs = aggs
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -125,6 +131,12 @@ public struct TermsAggregation: Aggregation {
         try valuesContainer.encodeIfPresent(collectMode, forKey: .collectMode)
         try valuesContainer.encodeIfPresent(executionHint, forKey: .executionHint)
         try valuesContainer.encodeIfPresent(missing, forKey: .missing)
+        if aggs != nil && aggs!.count > 0 {
+          var aggContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "aggs")!)
+          for agg in aggs! {
+            try aggContainer.encode(AnyAggregation(agg), forKey: DynamicKey(stringValue: agg.name)!)
+          }
+        }
     }
     
     public enum CollectMode: String, Encodable {

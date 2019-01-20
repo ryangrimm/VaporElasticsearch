@@ -12,6 +12,8 @@ import Foundation
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html)
  */
 public struct TopHitsAggregation: Aggregation {
+    public var aggs: [Aggregation]?
+  
     /// :nodoc:
     public static var typeKey = AggregationResponseMap.topHits
     
@@ -25,8 +27,10 @@ public struct TopHitsAggregation: Aggregation {
     public let size: Int?
     
     enum CodingKeys: String, CodingKey {
+        case name
         case from
         case size
+        case aggs
     }
     
     /// Creates a [top_hits](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html) aggregation
@@ -35,10 +39,11 @@ public struct TopHitsAggregation: Aggregation {
     ///   - name: The aggregation name
     ///   - from: The offset from the first result you want to fetch
     ///   - size: The maximum number of top matching hits to return per bucket
-    public init(name: String, from: Int? = nil, size: Int? = nil) {
+  public init(name: String, from: Int? = nil, size: Int? = nil, aggs: [Aggregation]? = nil) {
         self.name = name
         self.from = from
         self.size = size
+        self.aggs = aggs
     }
     
     /// :nodoc:
@@ -47,5 +52,15 @@ public struct TopHitsAggregation: Aggregation {
         var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: type(of: self).typeKey.rawValue)!)
         try valuesContainer.encodeIfPresent(from, forKey: .from)
         try valuesContainer.encodeIfPresent(size, forKey: .size)
+        if aggs != nil {
+          if aggs != nil {
+          if aggs != nil && aggs!.count > 0 {
+          var aggContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "aggs")!)
+          for agg in aggs! {
+            try aggContainer.encode(AnyAggregation(agg), forKey: DynamicKey(stringValue: agg.name)!)
+          }
+        }
+      }
+        }
     }
 }

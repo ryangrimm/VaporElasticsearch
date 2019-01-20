@@ -7,6 +7,8 @@ import Foundation
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html)
  */
 public struct HistogramAggregation: Aggregation {
+    public var aggs: [Aggregation]?
+  
     public struct ExtendedBounds: Codable {
         public let min: Int
         public let max: Int
@@ -39,6 +41,7 @@ public struct HistogramAggregation: Aggregation {
         case extendedBounds = "extended_bounds"
         case minDocCount = "min_doc_count"
         case missing
+        case aggs
     }
     
     /// Creates a [terms](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) aggregation
@@ -57,7 +60,8 @@ public struct HistogramAggregation: Aggregation {
         offset: Int? = nil,
         extendedBounds: ExtendedBounds? = nil,
         minDocCount: Int? = nil,
-        missing: String? = nil
+        missing: String? = nil,
+        aggs: [Aggregation]? = nil
         ) {
         self.name = name
         self.field = field
@@ -66,6 +70,7 @@ public struct HistogramAggregation: Aggregation {
         self.extendedBounds = extendedBounds
         self.minDocCount = minDocCount
         self.missing = missing
+        self.aggs = aggs
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -77,5 +82,15 @@ public struct HistogramAggregation: Aggregation {
         try valuesContainer.encodeIfPresent(extendedBounds, forKey: .extendedBounds)
         try valuesContainer.encodeIfPresent(minDocCount, forKey: .minDocCount)
         try valuesContainer.encodeIfPresent(missing, forKey: .missing)
+        if aggs != nil {
+          if aggs != nil {
+          if aggs != nil && aggs!.count > 0 {
+          var aggContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "aggs")!)
+          for agg in aggs! {
+            try aggContainer.encode(AnyAggregation(agg), forKey: DynamicKey(stringValue: agg.name)!)
+          }
+        }
+      }
+        }
     }
 }

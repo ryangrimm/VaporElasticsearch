@@ -12,6 +12,8 @@ import Foundation
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-valuecount-aggregation.html)
  */
 public struct ValueCountAggregation: Aggregation {
+    public var aggs: [Aggregation]?
+  
     /// :nodoc:
     public static var typeKey = AggregationResponseMap.valueCount
     
@@ -27,6 +29,7 @@ public struct ValueCountAggregation: Aggregation {
     enum CodingKeys: String, CodingKey {
         case field
         case script
+        case aggs
     }
     
     /// Creates a [value_count](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-valuecount-aggregation.html) aggregation
@@ -40,11 +43,13 @@ public struct ValueCountAggregation: Aggregation {
         name: String,
         field: String? = nil,
         script: Script? = nil,
-        missing: Int? = nil
+        missing: Int? = nil,
+        aggs: [Aggregation]? = nil
         ) {
         self.name = name
         self.field = field
         self.script = script
+        self.aggs = aggs
     }
     
     /// :nodoc:
@@ -53,5 +58,15 @@ public struct ValueCountAggregation: Aggregation {
         var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: type(of: self).typeKey.rawValue)!)
         try valuesContainer.encodeIfPresent(field, forKey: .field)
         try valuesContainer.encodeIfPresent(script, forKey: .script)
+        if aggs != nil {
+          if aggs != nil {
+          if aggs != nil && aggs!.count > 0 {
+          var aggContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "aggs")!)
+          for agg in aggs! {
+            try aggContainer.encode(AnyAggregation(agg), forKey: DynamicKey(stringValue: agg.name)!)
+          }
+        }
+      }
+        }
     }
 }

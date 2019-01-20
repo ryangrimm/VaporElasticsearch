@@ -9,6 +9,8 @@ import Foundation
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-cardinality-aggregation.html)
  */
 public struct CardinalityAggregation: Aggregation {
+    public var aggs: [Aggregation]?
+  
     /// :nodoc:
     public static var typeKey = AggregationResponseMap.cardinality
     
@@ -32,6 +34,7 @@ public struct CardinalityAggregation: Aggregation {
         case precisionThreshold = "precision_threshold"
         case script
         case missing
+        case aggs
     }
     
     /// Create a [cardinality](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-cardinality-aggregation.html) aggregation
@@ -47,13 +50,15 @@ public struct CardinalityAggregation: Aggregation {
         field: String? = nil,
         precisionThreshold: Int? = nil,
         script: Script? = nil,
-        missing: String? = nil
+        missing: String? = nil,
+        aggs: [Aggregation]? = nil
         ) {
         self.name = name
         self.field = field
         self.precisionThreshold = precisionThreshold
         self.script = script
         self.missing = missing
+        self.aggs = aggs
     }
     
     /// :nodoc:
@@ -64,5 +69,15 @@ public struct CardinalityAggregation: Aggregation {
         try valuesContainer.encodeIfPresent(precisionThreshold, forKey: .precisionThreshold)
         try valuesContainer.encodeIfPresent(script, forKey: .script)
         try valuesContainer.encodeIfPresent(missing, forKey: .missing)
+        if aggs != nil {
+          if aggs != nil {
+          if aggs != nil && aggs!.count > 0 {
+          var aggContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "aggs")!)
+          for agg in aggs! {
+            try aggContainer.encode(AnyAggregation(agg), forKey: DynamicKey(stringValue: agg.name)!)
+          }
+        }
+      }
+        }
     }
 }
