@@ -12,6 +12,18 @@ public struct AggregationBucket: Decodable {
         case docCount = "doc_count"
         case docCountErrorUpperBound = "doc_count_error_upper_bound"
     }
+  
+  public init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    docCount = try container.decode(Int.self, forKey: .docCount)
+    docCountErrorUpperBound = try container.decodeIfPresent(Int.self,
+                                                            forKey: .docCountErrorUpperBound)
+    if let value = try? container.decode(Int.self, forKey: .key) {
+      key = String(value)
+    } else {
+      key = try container.decode(String.self, forKey: .key)
+    }
+  }
 }
 
 public struct AggregationIntBucket: Decodable {
