@@ -105,22 +105,21 @@ final class ElasticsearchAggregationCodableTests: XCTestCase {
   
     func testNestingAggregations_encodesCorrectly() throws {
         let json = """
-            {"aggs":{"strain_id_aggs":{"terms":{"field":"strain_id","size":10},"aggs":{"dispensary_id_aggs":{"terms":{"field":"dispensary_id","size":4},"aggs":{"top_hits_aggs":{"top_hits":{"size":1}}}}}}},"size":0,"from":0}
+            {"aggs":{"terms_1":{"terms":{"field":"field1","size":10},"aggs":{"terms_2":{"terms":{"field":"terms2","size":4},"aggs":{"top_hits_aggs":{"top_hits":{"size":1}}}}}}},"size":0,"from":0}
             """
       let searchContainer = SearchContainer(aggs:
         [
           TermsAggregation(
-            name: "strain_id_aggs",
-            field: "strain_id",
+            name: "terms_1",
+            field: "field1",
             size: 10,
             aggs: [
               TermsAggregation(
-                name: "dispensary_id_aggs",
-                field: "dispensary_id",
+                name: "terms_2",
+                field: "terms2",
                 size: 4,
                 aggs: [
-                  TopHitsAggregation(name: "top_hits_aggs",
-                                     from: 0,
+                  TopHitsAggregation(name: "top_hits_aggs",                                  
                                      size: 1)
                 ])
             ])
