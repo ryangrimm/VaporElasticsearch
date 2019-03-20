@@ -3,14 +3,14 @@ import Foundation
 
 /**
  A multi-bucket value source based aggregation where buckets are dynamically built - one per unique value.
- 
+
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html)
 */
 public struct TermsAggregation: Aggregation {
-  
+
     /// :nodoc:
     public static var typeKey = AggregationResponseMap.terms
-    
+
     /// :nodoc:
     public var name: String
     /// :nodoc:
@@ -41,7 +41,7 @@ public struct TermsAggregation: Aggregation {
     public let missing: Int?
     /// :nodoc:
     public var aggs: [Aggregation]?
-  
+
     enum CodingKeys: String, CodingKey {
         case field
         case size
@@ -56,7 +56,7 @@ public struct TermsAggregation: Aggregation {
         case missing
         case aggs
     }
-    
+
     /// Creates a [terms](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) aggregation
     ///
     /// - Parameters:
@@ -107,13 +107,14 @@ public struct TermsAggregation: Aggregation {
         self.missing = missing
         self.aggs = aggs
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: type(of: self).typeKey.rawValue)!)
         try valuesContainer.encode(field, forKey: .field)
         try valuesContainer.encodeIfPresent(size, forKey: .size)
         try valuesContainer.encodeIfPresent(showTermDocCountError, forKey: .showTermDocCountError)
+        try valuesContainer.encodeIfPresent(order, forKey: .order)
         try valuesContainer.encodeIfPresent(minDocCount, forKey: .minDocCount)
         try valuesContainer.encodeIfPresent(script, forKey: .script)
         if includeExact != nil {
@@ -138,12 +139,12 @@ public struct TermsAggregation: Aggregation {
           }
         }
     }
-    
+
     public enum CollectMode: String, Encodable {
         case breadthFirst = "breadth_first"
         case depthFirst = "depth_first"
     }
-    
+
     public enum ExecutionHint: String, Encodable {
         case map
         case globalOrdinals = "global_ordinals"
