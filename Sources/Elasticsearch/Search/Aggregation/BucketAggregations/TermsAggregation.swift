@@ -21,6 +21,8 @@ public struct TermsAggregation: Aggregation {
     public let showTermDocCountError: Bool?
     /// :nodoc:
     public let order: [String: SortOrder]?
+    // :nodoc:
+    public let multiOrder: [[String: SortOrder]]?
     /// :nodoc:
     public let minDocCount: Int?
     /// :nodoc:
@@ -47,6 +49,7 @@ public struct TermsAggregation: Aggregation {
         case size
         case showTermDocCountError = "show_term_doc_count_error"
         case order
+        case multiOrder
         case minDocCount = "min_doc_count"
         case script
         case include
@@ -80,6 +83,7 @@ public struct TermsAggregation: Aggregation {
         size: Int? = nil,
         showTermDocCountError: Bool? = nil,
         order: [String: SortOrder]? = nil,
+        multiOrder: [[String: SortOrder]]? = nil,
         minDocCount: Int? = nil,
         script: Script? = nil,
         include: String? = nil,
@@ -96,6 +100,7 @@ public struct TermsAggregation: Aggregation {
         self.size = size
         self.showTermDocCountError = showTermDocCountError
         self.order = order
+        self.multiOrder = multiOrder
         self.minDocCount = minDocCount
         self.script = script
         self.include = include
@@ -114,7 +119,14 @@ public struct TermsAggregation: Aggregation {
         try valuesContainer.encode(field, forKey: .field)
         try valuesContainer.encodeIfPresent(size, forKey: .size)
         try valuesContainer.encodeIfPresent(showTermDocCountError, forKey: .showTermDocCountError)
-        try valuesContainer.encodeIfPresent(order, forKey: .order)
+
+        if multiOrder != nil {
+            try valuesContainer.encodeIfPresent(multiOrder, forKey: .order)
+        }
+        else {
+            try valuesContainer.encodeIfPresent(order, forKey: .order)
+        }
+
         try valuesContainer.encodeIfPresent(minDocCount, forKey: .minDocCount)
         try valuesContainer.encodeIfPresent(script, forKey: .script)
         if includeExact != nil {
