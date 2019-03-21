@@ -3,7 +3,7 @@ import Foundation
 
 /// :nodoc:
 public enum AggregationResponseMap : String, Encodable {
-    
+
     case avg
     case cardinality
     case extendedStats = "extended_stats"
@@ -18,8 +18,8 @@ public enum AggregationResponseMap : String, Encodable {
     case terms
     case dateHistogram
     case histogram
-    
-    var metatype: AggregationResponse.Type? {
+
+    func metatype<T: Decodable>(docType: T.Type) -> AggregationResponse.Type? {
         switch self {
         case .avg:
             return AggregationSingleValueResponse.self
@@ -44,7 +44,7 @@ public enum AggregationResponseMap : String, Encodable {
         case .valueCount:
             return AggregationSingleValueResponse.self
         case .terms:
-            return AggregationTermsResponse.self
+            return AggregationTermsResponse<T>.self
         case .dateHistogram:
             return AggregationDateHistogramResponse.self
         case .histogram:
@@ -55,16 +55,16 @@ public enum AggregationResponseMap : String, Encodable {
 
 internal struct AnyAggregation : Encodable {
     public var base: Aggregation
-    
+
     init(_ base: Aggregation) {
         self.base = base
     }
-    
+
     private enum CodingKeys : CodingKey {
         case type
         case base
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         try base.encode(to: encoder)
     }
