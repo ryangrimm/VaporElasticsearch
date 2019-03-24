@@ -61,13 +61,21 @@ public struct Terms: QueryElement {
         let container = try decoder.container(keyedBy: DynamicKey.self)
         let key = container.allKeys.first
         self.field = key!.stringValue
-        self.values = try container.decode([String].self, forKey: key!)
 
-        let innerDecoder = try container.superDecoder(forKey: key!)
-        let inner = try Terms.Inner(from: innerDecoder)
-        self.index = inner.index
-        self.type = inner.type
-        self.id = inner.id
-        self.path = inner.path
+        do {
+            self.values = try container.decode([String].self, forKey: key!)
+            self.index = nil
+            self.type = nil
+            self.id = nil
+            self.path = nil
+        } catch {
+            self.values = nil
+            let innerDecoder = try container.superDecoder(forKey: key!)
+            let inner = try Terms.Inner(from: innerDecoder)
+            self.index = inner.index
+            self.type = inner.type
+            self.id = inner.id
+            self.path = inner.path
+        }
     }
 }
