@@ -161,6 +161,7 @@ final class ElasticsearchTests: XCTestCase {
         bulk.defaultHeader.index = "test"
         try bulk.index(doc: doc1)
         try bulk.index(doc: doc2)
+        try bulk.update(doc: doc0, id: doc0.id!)
         try bulk.delete(id: doc0.id!)
         let bulkResponse = try bulk.send().wait()
 
