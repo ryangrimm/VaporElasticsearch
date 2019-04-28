@@ -34,7 +34,7 @@ extension ElasticsearchClient {
             return nil
         }
     }
-    
+
     /// Index (save) a document
     ///
     /// - Parameters:
@@ -71,7 +71,13 @@ extension ElasticsearchClient {
         }
     }
 
-    /// Updates the document stored at the given id with the given document
+    /// Update a document stored at the given id without sending the
+    /// whole document in the request ("partial update").
+    ///
+    /// Send either a partial document (`doc` ) which will be deeply merged into an existing document,
+    /// or a `script`, which will update the document content
+    ///
+    /// Script will take priority over a doc if both are set.
     ///
     /// - Parameters:
     ///   - doc: The document to update
@@ -81,6 +87,7 @@ extension ElasticsearchClient {
     ///   - routing: Routing information
     ///   - version: Version information
     /// - Returns: A Future IndexResponse
+    ///
     public func update<T: Encodable>(
         doc: T,
         index: String,
@@ -89,14 +96,50 @@ extension ElasticsearchClient {
         routing: String? = nil,
         version: Int? = nil
     ) -> Future<IndexResponse>{
-        let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)", routing: routing, version: version)
+        let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)/_update", routing: routing, version: version)
         let body: Data
         do {
-            body = try self.encoder.encode(doc)
+            let wrappedDoc: [String: T] = [ "doc" : doc ]
+            body = try self.encoder.encode(wrappedDoc)
         } catch {
             return worker.future(error: error)
         }
-        return send(HTTPMethod.PUT, to: url.string!, with:body).map(to: IndexResponse.self) {jsonData in
+        return update(url: url, body: body)
+    }
+
+    /// - Parameters:
+    ///   - script: The Script to execute
+    ///   - index: The document index
+    ///   - id: The document id
+    ///   - type: The document type
+    ///   - routing: Routing information
+    ///   - version: Version information
+    /// - Returns: A Future IndexResponse
+    ///
+    public func update(
+        script: Script,
+        index: String,
+        id: String,
+        type: String = "_doc",
+        routing: String? = nil,
+        version: Int? = nil
+    ) -> Future<IndexResponse>{
+        let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)/_update", routing: routing, version: version)
+        let body: Data
+        do {
+            let wrappedScript: [String: Script] = [ "script" : script ]
+            body = try self.encoder.encode(wrappedScript)
+        } catch {
+            return worker.future(error: error)
+        }
+        return update(url: url, body: body)
+    }
+
+    fileprivate func update(
+        url: URLComponents,
+        body: Data
+    ) -> Future<IndexResponse>{
+        return send(HTTPMethod.POST, to: url.string!, with:body).map(to: IndexResponse.self) {jsonData in
             if let jsonData = jsonData {
                 return try self.decoder.decode(IndexResponse.self, from: jsonData)
             }

@@ -90,41 +90,55 @@ final class ElasticsearchTests: XCTestCase {
 
             sleep(2)
 
-            if let fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: fetchedDoc.id).wait() {
+            if var fetchedDoc2 = try es.get(decodeTo: TestModel.self, index: "test", id: fetchedDoc.id).wait() {
                 XCTAssertEqual(fetchedDoc.source.name, "baz", "Updated name does not match")
+
+                fetchedDoc2.source.name = "jaz"
+                response = try es.update(doc: fetchedDoc2.source, index: "test", id: fetchedDoc2.id).wait()
 
                 sleep(2)
 
-                let aggregation = TermsAggregation(
-                    name: "group",
-                    field: "group",
-                    size: 1,
-                    aggs:  [
-                        TopHitsAggregation(
-                            name: "by_top_hit",
-                            size: 1
-                        )
-                    ]
-                )
+                let script = Script(source: "ctx._source.name = 'maz'")
 
-                let query = SearchContainer(
-                    Query(
-                        MatchAll()
-                    ),
-                     aggs: [aggregation]
-                )
+                response = try es.update(script: script, index: "test", id: fetchedDoc2.id).wait()
 
 
-                let searchResults = try es.search(decodeTo: TestModel.self, index: "test", query: query).wait()
-                XCTAssertEqual(searchResults.hits!.total, 1, "Should have found one result")
-                XCTAssertEqual(searchResults.hits!.hits.first?.source.name, fetchedDoc.source.name, "Did not fetch correct document")
+                if let fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: fetchedDoc2.id).wait() {
+                    XCTAssertEqual(fetchedDoc.source.name, "maz", "Updated name does not match")
 
-                let searchResultsAggregation = searchResults.aggregations!
-                let groupedResults = searchResultsAggregation["group"] as! AggregationTermsResponse<TestModel>
-                let aggResults = groupedResults.buckets.map{ $0.hitsMap["by_top_hit"]!.hits[0].source }
-                XCTAssertEqual(aggResults.count, 1, "Should have found one result")
+                    sleep(2)
 
-                let _ = es.delete(index: "test", id: fetchedDoc.id)
+                    let aggregation = TermsAggregation(
+                        name: "group",
+                        field: "group",
+                        size: 1,
+                        aggs:  [
+                            TopHitsAggregation(
+                                name: "by_top_hit",
+                                size: 1
+                            )
+                        ]
+                    )
+
+                    let query = SearchContainer(
+                        Query(
+                            MatchAll()
+                        ),
+                         aggs: [aggregation]
+                    )
+
+
+                    let searchResults = try es.search(decodeTo: TestModel.self, index: "test", query: query).wait()
+                    XCTAssertEqual(searchResults.hits!.total, 1, "Should have found one result")
+                    XCTAssertEqual(searchResults.hits!.hits.first?.source.name, fetchedDoc.source.name, "Did not fetch correct document")
+
+                    let searchResultsAggregation = searchResults.aggregations!
+                    let groupedResults = searchResultsAggregation["group"] as! AggregationTermsResponse<TestModel>
+                    let aggResults = groupedResults.buckets.map{ $0.hitsMap["by_top_hit"]!.hits[0].source }
+                    XCTAssertEqual(aggResults.count, 1, "Should have found one result")
+
+                    let _ = es.delete(index: "test", id: fetchedDoc.id)
+                }
             }
             else {
                 XCTFail("Could not fetch document")
@@ -155,7 +169,11 @@ final class ElasticsearchTests: XCTestCase {
         let doc2: TestModel = TestModel(name: "baz", group: "red", number: 28)
 
         let response = try es.index(doc: doc0, index: "test").wait()
+
+        sleep(2)
+
         doc0.id = response.id
+        doc0.name = "foo_2"
 
         let bulk = es.bulkOperation()
         bulk.defaultHeader.index = "test"
@@ -165,7 +183,13 @@ final class ElasticsearchTests: XCTestCase {
         try bulk.delete(id: doc0.id!)
         let bulkResponse = try bulk.send().wait()
 
+        if let fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: doc0.id!).wait() {
+            XCTAssertEqual(fetchedDoc.source.name, "foo_2", "Updated name does not match")
+        }
+
         XCTAssert(bulkResponse.errors == false, "There were errors in the bulk request")
+
+        try? ElasticsearchIndex.delete(indexName: "test", client: es).wait()
     }
 
     func testLinuxTestSuiteIncludesAllTests() {
