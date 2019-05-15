@@ -1,4 +1,4 @@
-    
+
 public enum OperationType: String, Codable {
     case index
     case create
@@ -15,16 +15,16 @@ public struct BulkItemResponse: Decodable {
     public let version: Int
     public let result: ResultType
     public let status: Int
-    public let seqNo: Int
-    public let primaryTerm: Int
-    
+    public let seqNo: Int? = nil
+    public let primaryTerm: Int? = nil
+
     public struct Shards: Codable {
         public let total: Int
         public let successful: Int
         public let failed: Int
         public let skipped: Int?
     }
-    
+
     public enum ResultType: String, Codable {
         case created = "created"
         case updated = "updated"
@@ -32,7 +32,7 @@ public struct BulkItemResponse: Decodable {
         case notFound = "not_found"
         case noop = "noop"
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case shards = "_shards"
         case index = "_index"
@@ -50,19 +50,19 @@ public struct BulkResponse: Decodable {
     public let took: Int
     public let errors: Bool
     public let items: [BulkItemResponse]
-    
+
     enum CodingKeys: String, CodingKey {
         case took
         case errors
         case items
     }
-    
+
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.took = try container.decode(Int.self, forKey: .took)
         self.errors = try container.decode(Bool.self, forKey: .errors)
-        
+
         var items = [BulkItemResponse]()
         var rawItems = try container.nestedUnkeyedContainer(forKey: .items)
         while (!rawItems.isAtEnd) {
@@ -75,7 +75,7 @@ public struct BulkResponse: Decodable {
         }
         self.items = items
     }
-    
-    
-    
+
+
+
 }
