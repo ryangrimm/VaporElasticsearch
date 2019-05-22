@@ -94,13 +94,14 @@ extension ElasticsearchClient {
         id: String,
         type: String = "_doc",
         routing: String? = nil,
-        version: Int? = nil
+        version: Int? = nil,
+        docAsUpsert: Bool = false
     ) -> Future<IndexResponse>{
         let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)/_update", routing: routing, version: version)
         let body: Data
         do {
-            let wrappedDoc: [String: T] = [ "doc" : doc ]
-            body = try self.encoder.encode(wrappedDoc)
+            let updateDoc = UpdateDoc(doc: doc, docAsUpsert: docAsUpsert)
+            body = try self.encoder.encode(updateDoc)
         } catch {
             return worker.future(error: error)
         }
@@ -127,8 +128,8 @@ extension ElasticsearchClient {
         let url = ElasticsearchClient.generateURL(path: "/\(index)/\(type)/\(id)/_update", routing: routing, version: version)
         let body: Data
         do {
-            let wrappedScript: [String: Script] = [ "script" : script ]
-            body = try self.encoder.encode(wrappedScript)
+            let updateScript = UpdateScript(script: script)
+            body = try self.encoder.encode(updateScript)
         } catch {
             return worker.future(error: error)
         }
