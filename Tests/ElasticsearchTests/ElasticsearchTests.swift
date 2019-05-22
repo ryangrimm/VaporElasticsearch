@@ -80,7 +80,6 @@ final class ElasticsearchTests: XCTestCase {
         var response = try es.index(doc: indexDoc, index: "test").wait()
         indexDoc.id = response.id
 
-
         if var fetchedDoc = try es.get(decodeTo: TestModel.self, index: "test", id: indexDoc.id!).wait() {
             XCTAssertEqual(indexDoc.name, fetchedDoc.source.name, "Saved and fetched names do not match")
             XCTAssertEqual(indexDoc.number, fetchedDoc.source.number, "Saved and fetched numbers do not match")
@@ -139,12 +138,39 @@ final class ElasticsearchTests: XCTestCase {
 
                     let _ = es.delete(index: "test", id: fetchedDoc.id)
                 }
+                else {
+                    XCTFail("Could not fetch document")
+                }
             }
             else {
                 XCTFail("Could not fetch document")
             }
         }
         else {
+            XCTFail("Could not fetch document")
+        }
+
+        // Test Upsert
+        //
+        var indexDoc2: TestModel = TestModel(name: "ortiz", group: "sox", number: 30)
+        let response2 = try es.update(doc: indexDoc2, index: "test", id: "david", docAsUpsert: true).wait()
+        indexDoc2.id = response2.id
+
+        if var fetchedDoc2 = try es.get(decodeTo: TestModel.self, index: "test", id: indexDoc2.id!).wait() {
+            XCTAssertEqual(indexDoc2.name, fetchedDoc2.source.name, "Saved and fetched names do not match")
+            XCTAssertEqual(indexDoc2.number, fetchedDoc2.source.number, "Saved and fetched numbers do not match")
+
+            fetchedDoc2.source.name = "jbj"
+            response = try es.update(doc: fetchedDoc2.source, index: "test", id: fetchedDoc2.id, docAsUpsert: true).wait()
+
+            sleep(2)
+
+            if let fetchedDoc2 = try es.get(decodeTo: TestModel.self, index: "test", id: fetchedDoc2.id).wait() {
+                XCTAssertEqual(fetchedDoc2.source.name, "jbj", "Updated name does not match")
+            } else {
+                XCTFail("Could not fetch document")
+            }
+        } else {
             XCTFail("Could not fetch document")
         }
 
