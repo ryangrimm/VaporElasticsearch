@@ -12,17 +12,20 @@ public struct MultiMatch: QueryElement {
     public let value: String
     public let fields: [String]
     public let type: Kind?
+    public let fuzziness: Int?
     public let tieBreaker: Decimal?
 
     public init(
         value: String,
         fields: [String],
         type: Kind? = nil,
+        fuzziness: Int? = nil,
         tieBreaker: Decimal? = nil
     ) {
         self.value = value
         self.fields = fields
         self.type = type
+        self.fuzziness = fuzziness
         self.tieBreaker = tieBreaker
     }
 
@@ -38,6 +41,7 @@ public struct MultiMatch: QueryElement {
         case value = "query"
         case fields
         case type
+        case fuzziness
         case tieBreaker = "tie_breaker"
     }
 }
