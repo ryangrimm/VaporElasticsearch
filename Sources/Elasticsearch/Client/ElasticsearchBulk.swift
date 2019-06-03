@@ -129,6 +129,7 @@ public class ElasticsearchBulk {
     ///   - type: The document type
     ///   - routing: Routing information
     ///   - version: Version information
+    ///   - docAsUpsert: index doc if it does not exist
     /// - Throws: Can throw errors if there are issues encoding the doc.
     public func update<T: Codable>(
         doc :T,
