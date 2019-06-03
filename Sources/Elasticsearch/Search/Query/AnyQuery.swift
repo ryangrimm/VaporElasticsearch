@@ -4,6 +4,7 @@ public enum QueryElementMap : String, Codable {
     case boolQuery = "bool"
     case exists
     case fuzzy
+    case functionScore = "function_score"
     case ids
     case match
     case matchAll = "match_all"
@@ -15,6 +16,7 @@ public enum QueryElementMap : String, Codable {
     case regexp
     case term
     case terms
+    case nested
     case wildcard
     case matchPhrasePrefix = "match_phrase_prefix"
     case commonTerms = "common"
@@ -36,6 +38,8 @@ public enum QueryElementMap : String, Codable {
             return Exists.self
         case .fuzzy:
             return Fuzzy.self
+        case .functionScore:
+            return FunctionScore.self
         case .ids:
             return IDs.self
         case .match:
@@ -48,6 +52,8 @@ public enum QueryElementMap : String, Codable {
             return MatchPhrase.self
         case .multiMatch:
             return MultiMatch.self
+        case .nested:
+            return Nested.self
         case .prefix:
             return Prefix.self
         case .range:

@@ -33,6 +33,15 @@ public struct BoolQuery: QueryElement {
         self.minimumShouldMatch = minimumShouldMatch
         self.boost = boost
     }
+  
+  public init(fromBoolQueryElements elements: BoolQueryElements) {
+    self.must = elements.musts
+    self.should = elements.shoulds
+    self.mustNot = elements.mustNots
+    self.filter = elements.filters
+    self.minimumShouldMatch = elements.minimumShouldMatch
+    self.boost = elements.boost
+  }
 
     enum CodingKeys: String, CodingKey {
         case must
@@ -140,3 +149,34 @@ public struct BoolQuery: QueryElement {
         self.filter = filter
     }
 }
+
+// [More Information](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html)
+// Useful for creating bool queries in query-builder-functions
+public struct BoolQueryElements {
+  /// :nodoc:
+  
+  public var musts: [QueryElement]
+  public var shoulds: [QueryElement]
+  public var mustNots: [QueryElement]
+  public var filters: [QueryElement]
+  public var minimumShouldMatch: Int?
+  public var boost: Decimal?
+  
+  public init(
+    must: [QueryElement]? = nil,
+    should: [QueryElement]? = nil,
+    mustNot: [QueryElement]? = nil,
+    filter: [QueryElement]? = nil,
+    minimumShouldMatch: Int? = nil,
+    boost: Decimal? = nil
+    ) {
+    self.musts = must ?? [QueryElement]()
+    self.shoulds = should ?? [QueryElement]()
+    self.mustNots = mustNot ?? [QueryElement]()
+    self.filters = filter ?? [QueryElement]()
+    self.minimumShouldMatch = minimumShouldMatch
+    self.boost = boost
+  }
+  
+}
+

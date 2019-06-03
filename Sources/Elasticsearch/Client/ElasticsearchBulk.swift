@@ -29,7 +29,7 @@ public struct BulkHeader: Encodable {
     public var version: Int?
     /// Number of retry attempts (only used in `update` commands)
     public var retryOnConflict: Int?
-    
+
     enum CodingKeys: String, CodingKey {
         case index = "_index"
         case id = "_id"
@@ -47,13 +47,13 @@ public class ElasticsearchBulk {
     var requestBody:Data
     let encoder = JSONEncoder()
     let client: ElasticsearchClient
-    
+
     /// Allows default values to be applied to all bulk operations.
     ///
     /// This is useful in cases where all (or the majority) of the opeations you perform should be performed on the same index, type, etc.
     /// If values are provided in the operation calls (`index`, `create`, `update`, `delete`) those values override the values provided here.
     public var defaultHeader: BulkHeader = BulkHeader(index: nil, id: nil, type: "_doc", routing: nil, version: nil, retryOnConflict: nil)
-    
+
     /// Creates a new bulk operation object.
     ///
     /// - Parameters:
@@ -63,7 +63,7 @@ public class ElasticsearchBulk {
         self.client = client
         requestBody = Data(capacity: capacity)
     }
-    
+
     /// Add a document to be indexed to the bulk operation
     ///
     /// - Parameters:
@@ -86,12 +86,12 @@ public class ElasticsearchBulk {
         // Add the header to the request body followed by a newline character (newline -> 10)
         requestBody.append(try encoder.encode(header))
         requestBody.append(10)
-        
+
         // Add the document to the request body followed by a newline character (newline -> 10)
         requestBody.append(try encoder.encode(doc))
         requestBody.append(10)
     }
-    
+
     /// Add a document to be created to the bulk operation
     ///
     /// - Parameters:
@@ -114,12 +114,12 @@ public class ElasticsearchBulk {
         // Add the header to the request body followed by a newline character (newline -> 10)
         requestBody.append(try encoder.encode(header))
         requestBody.append(10)
-        
+
         // Add the document to the request body followed by a newline character (newline -> 10)
         requestBody.append(try encoder.encode(doc))
         requestBody.append(10)
     }
-    
+
     /// Add a document to be updated to the bulk operation
     ///
     /// - Parameters:
@@ -143,12 +143,13 @@ public class ElasticsearchBulk {
         // Add the header to the request body followed by a newline character (newline -> 10)
         requestBody.append(try encoder.encode(header))
         requestBody.append(10)
-        
+
         // Add the document to the request body followed by a newline character (newline -> 10)
-        requestBody.append(try encoder.encode(doc))
+        let wrappedDoc: [String: T] = [ "doc" : doc ]
+        requestBody.append(try encoder.encode(wrappedDoc))
         requestBody.append(10)
     }
-    
+
     /// Add a document to be deleted by the bulk operation
     ///
     /// - Parameters:
@@ -170,7 +171,7 @@ public class ElasticsearchBulk {
         requestBody.append(try encoder.encode(header))
         requestBody.append(10)
     }
-    
+
     /// Executes the bulk operation
     ///
     /// - Returns: Returns the response from the bulk operation
@@ -186,11 +187,11 @@ public class ElasticsearchBulk {
             if let jsonData = jsonData {
                 return try JSONDecoder().decode(BulkResponse.self, from: jsonData)
             }
-            
+
             throw ElasticsearchError(identifier: "bulk_failed", reason: "Unexpected failure", source: .capture(), statusCode: 404)
         }
     }
-    
+
     private func mergeHeaders(_ base: BulkHeader, _ override: BulkHeader) -> BulkHeader {
         return BulkHeader(index: override.index ?? base.index,
                           id: override.id ?? base.id,

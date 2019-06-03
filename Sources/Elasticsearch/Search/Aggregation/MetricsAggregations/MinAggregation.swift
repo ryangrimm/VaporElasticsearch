@@ -10,6 +10,8 @@ import Foundation
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-min-aggregation.html)
  */
 public struct MinAggregation: Aggregation {
+    public var aggs: [Aggregation]?
+  
     /// :nodoc:
     public static var typeKey = AggregationResponseMap.min
     
@@ -29,6 +31,7 @@ public struct MinAggregation: Aggregation {
         case field
         case script
         case missing
+        case aggs
     }
     
     /// Creates a [min](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-min-aggregation.html) aggregation
@@ -42,12 +45,14 @@ public struct MinAggregation: Aggregation {
         name: String,
         field: String? = nil,
         script: Script? = nil,
-        missing: Int? = nil
+        missing: Int? = nil,
+        aggs: [Aggregation]? = nil
         ) {
         self.name = name
         self.field = field
         self.script = script
         self.missing = missing
+        self.aggs = aggs
     }
     
     /// :nodoc:
@@ -57,5 +62,15 @@ public struct MinAggregation: Aggregation {
         try valuesContainer.encodeIfPresent(field, forKey: .field)
         try valuesContainer.encodeIfPresent(script, forKey: .script)
         try valuesContainer.encodeIfPresent(missing, forKey: .missing)
+        if aggs != nil {
+          if aggs != nil {
+          if aggs != nil && aggs!.count > 0 {
+          var aggContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "aggs")!)
+          for agg in aggs! {
+            try aggContainer.encode(AnyAggregation(agg), forKey: DynamicKey(stringValue: agg.name)!)
+          }
+        }
+      }
+        }
     }
 }

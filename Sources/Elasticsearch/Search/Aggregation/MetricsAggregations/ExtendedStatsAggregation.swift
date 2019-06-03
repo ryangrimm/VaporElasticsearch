@@ -14,6 +14,8 @@ import Foundation
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-extendedstats-aggregation.html)
  */
 public struct ExtendedStatsAggregation: Aggregation {
+    public var aggs: [Aggregation]?
+  
     /// :nodoc:
     public static var typeKey = AggregationResponseMap.extendedStats
     
@@ -37,6 +39,7 @@ public struct ExtendedStatsAggregation: Aggregation {
         case sigma
         case script
         case missing
+        case aggs
     }
     
     /// Create an [extended_stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-extendedstats-aggregation.html) aggregation
@@ -52,13 +55,15 @@ public struct ExtendedStatsAggregation: Aggregation {
         field: String? = nil,
         sigma: Int? = nil,
         script: Script? = nil,
-        missing: Int? = nil
+        missing: Int? = nil,
+        aggs: [Aggregation]? = nil
         ) {
         self.name = name
         self.field = field
         self.sigma = sigma
         self.script = script
         self.missing = missing
+        self.aggs = aggs
     }
     
     /// :nodoc:
@@ -69,5 +74,15 @@ public struct ExtendedStatsAggregation: Aggregation {
         try valuesContainer.encodeIfPresent(sigma, forKey: .sigma)
         try valuesContainer.encodeIfPresent(script, forKey: .script)
         try valuesContainer.encodeIfPresent(missing, forKey: .missing)
+        if aggs != nil {
+          if aggs != nil {
+          if aggs != nil && aggs!.count > 0 {
+          var aggContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "aggs")!)
+          for agg in aggs! {
+            try aggContainer.encode(AnyAggregation(agg), forKey: DynamicKey(stringValue: agg.name)!)
+          }
+        }
+      }
+        }
     }
 }

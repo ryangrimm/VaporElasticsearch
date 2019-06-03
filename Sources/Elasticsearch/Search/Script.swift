@@ -9,14 +9,14 @@ public struct Script: Codable {
     public let source: String?
     public let id: String?
     public let params: [String: Any]?
-    
+
     enum CodingKeys: String, CodingKey {
         case lang
         case source
         case id
         case params
     }
-    
+
     /// Configure a script for execution
     ///
     /// - Parameters:
@@ -35,15 +35,15 @@ public struct Script: Codable {
         self.id = id
         self.params = params
     }
-    
+
     /// :nodoc:
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        
+
         try container.encodeIfPresent(lang, forKey: .lang)
         try container.encodeIfPresent(source, forKey: .source)
         try container.encodeIfPresent(id, forKey: .id)
-        
+
         if params != nil && params!.count > 0 {
             var keyedContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: .params)
             for (name, value) in params! {
@@ -66,17 +66,19 @@ public struct Script: Codable {
                     try keyedContainer.encode(value as! Bool, forKey: DynamicKey(stringValue: name)!)
                 case is String:
                     try keyedContainer.encode(value as! String, forKey: DynamicKey(stringValue: name)!)
+                case is [String]:
+                    try keyedContainer.encode(value as! [String], forKey: DynamicKey(stringValue: name)!)
                 default:
                     continue
                 }
             }
         }
     }
-    
+
     /// :nodoc:
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
+
         self.lang = try container.decodeIfPresent(String.self, forKey: .lang)
         self.source = try container.decodeIfPresent(String.self, forKey: .source)
         self.id = try container.decodeIfPresent(String.self, forKey: .id)

@@ -102,6 +102,139 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         XCTAssertEqual(json, encoded)
     }
 
+    func testNestedQuery_encodesInQueryCorrectly() throws {
+        let json = """
+        {"nested":{"path":"variants","score_mode":"avg","query":{"bool":{"must":[{"match":{"variants.package_unit":{"query":"g"}}},{"range":{"variants.package_price":{"gt":5}}}]}}}}
+        """
+        let innerQuery = BoolQuery(must: [Match(field: "variants.package_unit", value: "g"),
+                                          Range(field: "variants.package_price",
+                                                greaterThanOrEqualTo: nil,
+                                                greaterThan: 5,
+                                                lesserThanOrEqualTo: nil,
+                                                lesserThan: nil,
+                                                boost: nil)],
+                                   should: nil,
+                                   mustNot: nil,
+                                   filter: nil,
+                                   minimumShouldMatch: nil,
+                                   boost: nil)
+
+        let nested = Nested(path: "variants",
+                            scoreMode: "avg",
+                            query:  innerQuery)
+
+        let query = Query(nested)
+        let encoded = try encoder.encodeToString(query)
+
+         XCTAssertEqual(json, encoded)
+
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+
+        XCTAssertEqual(json, encodedAgain)
+
+    }
+
+    func testFieldValueFactor_encodesCorrectly() throws {
+        let json = """
+        {"missing":1,"factor":1.2,"field":"sort_order","modifier":"none"}
+        """
+        let fieldValueFactor = FieldValueFactor(field: "sort_order",
+                                                factor: 1.2,
+                                                modifier: "none",
+                                                missing:1)
+        let encoded = try encoder.encodeToString(fieldValueFactor)
+
+         XCTAssertEqual(json, encoded)
+    }
+
+    func testGaussScoreFunction_encodesCorrectly() throws {
+        let json = """
+        {"date":{"scale":"10d","offset":"5d","origin":"2013-09-17","decay":0.5}}
+        """
+
+        let gauss = Gauss(field: "date",
+                          origin: "2013-09-17",
+                          offset: "5d",
+                          decay: 0.5,
+                          scale: "10d")
+
+        let encoded = try encoder.encodeToString(gauss)
+        XCTAssertEqual(json, encoded)
+    }
+
+    func testFunctionScoreQuery_withScriptScore_encodesInQueryCorrectly() throws {
+        let json = """
+        {"function_score":{"functions":[{"script_score":{"script":{"lang":"painless","source":"_score * doc['id'].value"}}}],"query":{"match_all":{}},"score_mode":"sum","boost":10,"max_boost":100}}
+        """
+
+
+        let script = Script(lang: "painless", source: "_score * doc['id'].value")
+        let functionScore = FunctionScore(
+            query: MatchAll(),
+            boost: 10,
+            functions: [ScriptScore(script: script)],
+            maxBoost: 100,
+            scoreMode: "sum",
+            boostMode: "multiply",
+            minScore: 1)
+
+        let query = Query(functionScore)
+        let encoded = try encoder.encodeToString(query)
+
+        XCTAssertEqual(json, encoded)
+
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+
+        XCTAssertEqual(json, encodedAgain)
+    }
+
+    func testFacetedSearchQuery_encodesCorrectly() throws {
+        let json = """
+        {"function_score":{"functions":[{"gauss":{"location":{"scale":"10mi","offset":"1mi","origin":"47.4,-122.22","decay":0.5}}},{"field_value_factor":{"field":"scores.stock","missing":0}},{"field_value_factor":{"field":"scores.random","factor":0.1,"missing":0}}],"query":{"match_all":{}},"score_mode":"avg","boost":1}}
+        """
+
+        let functionScoreQuery =
+            FunctionScore(
+                query: MatchAll(),
+                boost: 1,
+                functions: [
+                    Gauss(field: "location",
+                          origin: "47.4,-122.22",
+                          offset: "1mi",
+                          decay: 0.5,
+                          scale: "10mi"),
+                    FieldValueFactor(field: "scores.stock",
+                                     factor: nil,
+                                     modifier: nil,
+                                     missing: 0),
+                    FieldValueFactor(field: "scores.random",
+                                     factor: 0.1,
+                                     modifier: nil,
+                                     missing: 0)
+                ],
+                maxBoost: nil,
+                scoreMode: "avg",
+                boostMode: nil,
+                minScore: nil)
+
+        let query = Query(functionScoreQuery)
+        let encoded = try encoder.encodeToString(query)
+
+        XCTAssertEqual(json, encoded)
+
+        let toDecode = try encoder.encode(query)
+        let decoded = try decoder.decode(Query.self, from: toDecode)
+        let encodedAgain = try encoder.encodeToString(decoded)
+
+        XCTAssertEqual(json, encodedAgain)
+
+    }
+
+
     func testMatchAll_encodesInQueryCorrectly() throws {
         let json = """
         {"match_all":{}}
@@ -212,6 +345,20 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         let decoded = try decoder.decode(Query.self, from: toDecode)
         let encodedAgain = try encoder.encodeToString(decoded)
         XCTAssertEqual(json, encodedAgain)
+
+        let jsonLookup = """
+        {"terms":{"document_id":{"path":"document_id","id":"ABCD-1234","type":"_doc","index":"documents"}}}
+        """
+        let termsLookup = Terms(field: "document_id", index: "documents", type: "_doc", id: "ABCD-1234", path: "document_id")
+        let queryLookup = Query(termsLookup)
+        let encodedLookup = try encoder.encodeToString(queryLookup)
+
+        XCTAssertEqual(jsonLookup, encodedLookup)
+
+        let toDecodeLookup = try encoder.encode(queryLookup)
+        let decodedLookup = try decoder.decode(Query.self, from: toDecodeLookup)
+        let encodedLookupAgain = try encoder.encodeToString(decodedLookup)
+        XCTAssertEqual(jsonLookup, encodedLookupAgain)
     }
 
     func testRange_encodesInQueryCorrectly() throws {
@@ -494,6 +641,12 @@ final class ElasticsearchQueryCodableTests: XCTestCase {
         ("testMinAggregation_encodesCorrectly",     testMinAggregation_encodesCorrectly),
         ("testTermsAggregation_encodesCorrectly",   testTermsAggregation_encodesCorrectly),
         ("testQueryContainer_encodesCorrectly",     testQueryContainer_encodesCorrectly),
+
+        ("testNestedQuery_encodesInQueryCorrectly", testNestedQuery_encodesInQueryCorrectly),
+        ("testFieldValueFactor_encodesCorrectly", testFieldValueFactor_encodesCorrectly),
+        ("testGaussScoreFunction_encodesCorrectly", testGaussScoreFunction_encodesCorrectly),
+        ("testFunctionScoreQuery_withScriptScore_encodesInQueryCorrectly", testFunctionScoreQuery_withScriptScore_encodesInQueryCorrectly),
+        ("testFacetedSearchQuery_encodesCorrectly", testFacetedSearchQuery_encodesCorrectly),
 
         ("testMatchAll_encodesInQueryCorrectly",    testMatchAll_encodesInQueryCorrectly),
         ("testMatchNone_encodesInQueryCorrectly",   testMatchNone_encodesInQueryCorrectly),

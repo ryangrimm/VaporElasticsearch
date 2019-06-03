@@ -3,13 +3,14 @@ import Foundation
 
 /**
  A multi-bucket value source based aggregation where buckets are dynamically built - one per unique value.
- 
+
  [More information](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html)
 */
 public struct TermsAggregation: Aggregation {
+
     /// :nodoc:
     public static var typeKey = AggregationResponseMap.terms
-    
+
     /// :nodoc:
     public var name: String
     /// :nodoc:
@@ -20,6 +21,8 @@ public struct TermsAggregation: Aggregation {
     public let showTermDocCountError: Bool?
     /// :nodoc:
     public let order: [String: SortOrder]?
+    // :nodoc:
+    public let multiOrder: [[String: SortOrder]]?
     /// :nodoc:
     public let minDocCount: Int?
     /// :nodoc:
@@ -38,12 +41,15 @@ public struct TermsAggregation: Aggregation {
     public let executionHint: ExecutionHint?
     /// :nodoc:
     public let missing: Int?
-    
+    /// :nodoc:
+    public var aggs: [Aggregation]?
+
     enum CodingKeys: String, CodingKey {
         case field
         case size
         case showTermDocCountError = "show_term_doc_count_error"
         case order
+        case multiOrder
         case minDocCount = "min_doc_count"
         case script
         case include
@@ -51,8 +57,9 @@ public struct TermsAggregation: Aggregation {
         case collectMode = "collect_mode"
         case executionHint = "execution_hint"
         case missing
+        case aggs
     }
-    
+
     /// Creates a [terms](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) aggregation
     ///
     /// - Parameters:
@@ -76,6 +83,7 @@ public struct TermsAggregation: Aggregation {
         size: Int? = nil,
         showTermDocCountError: Bool? = nil,
         order: [String: SortOrder]? = nil,
+        multiOrder: [[String: SortOrder]]? = nil,
         minDocCount: Int? = nil,
         script: Script? = nil,
         include: String? = nil,
@@ -84,13 +92,15 @@ public struct TermsAggregation: Aggregation {
         excludeExact: [String]? = nil,
         collectMode: CollectMode? = nil,
         executionHint: ExecutionHint? = nil,
-        missing: Int? = nil
+        missing: Int? = nil,
+        aggs: [Aggregation]? = nil
         ) {
         self.name = name
         self.field = field
         self.size = size
         self.showTermDocCountError = showTermDocCountError
         self.order = order
+        self.multiOrder = multiOrder
         self.minDocCount = minDocCount
         self.script = script
         self.include = include
@@ -100,14 +110,23 @@ public struct TermsAggregation: Aggregation {
         self.collectMode = collectMode
         self.executionHint = executionHint
         self.missing = missing
+        self.aggs = aggs
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DynamicKey.self)
         var valuesContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: DynamicKey(stringValue: type(of: self).typeKey.rawValue)!)
         try valuesContainer.encode(field, forKey: .field)
         try valuesContainer.encodeIfPresent(size, forKey: .size)
         try valuesContainer.encodeIfPresent(showTermDocCountError, forKey: .showTermDocCountError)
+
+        if multiOrder != nil {
+            try valuesContainer.encodeIfPresent(multiOrder, forKey: .order)
+        }
+        else {
+            try valuesContainer.encodeIfPresent(order, forKey: .order)
+        }
+
         try valuesContainer.encodeIfPresent(minDocCount, forKey: .minDocCount)
         try valuesContainer.encodeIfPresent(script, forKey: .script)
         if includeExact != nil {
@@ -125,13 +144,19 @@ public struct TermsAggregation: Aggregation {
         try valuesContainer.encodeIfPresent(collectMode, forKey: .collectMode)
         try valuesContainer.encodeIfPresent(executionHint, forKey: .executionHint)
         try valuesContainer.encodeIfPresent(missing, forKey: .missing)
+        if aggs != nil && aggs!.count > 0 {
+          var aggContainer = container.nestedContainer(keyedBy: DynamicKey.self, forKey: DynamicKey(stringValue: "aggs")!)
+          for agg in aggs! {
+            try aggContainer.encode(AnyAggregation(agg), forKey: DynamicKey(stringValue: agg.name)!)
+          }
+        }
     }
-    
+
     public enum CollectMode: String, Encodable {
         case breadthFirst = "breadth_first"
         case depthFirst = "depth_first"
     }
-    
+
     public enum ExecutionHint: String, Encodable {
         case map
         case globalOrdinals = "global_ordinals"
