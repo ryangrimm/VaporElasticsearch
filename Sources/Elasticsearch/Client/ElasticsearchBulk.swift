@@ -129,6 +129,7 @@ public class ElasticsearchBulk {
     ///   - type: The document type
     ///   - routing: Routing information
     ///   - version: Version information
+    ///   - docAsUpsert: index doc if it does not exist
     /// - Throws: Can throw errors if there are issues encoding the doc.
     public func update<T: Codable>(
         doc :T,
@@ -137,7 +138,8 @@ public class ElasticsearchBulk {
         type: String? = nil,
         routing: String? = nil,
         version: Int? = nil,
-        retryOnConflict: Int? = nil
+        retryOnConflict: Int? = nil,
+        docAsUpsert: Bool = false
         ) throws {
         let header = ["update": mergeHeaders(defaultHeader, BulkHeader(index: index, id: id, type: type, routing: routing, version: version, retryOnConflict: retryOnConflict))]
         // Add the header to the request body followed by a newline character (newline -> 10)
@@ -145,8 +147,8 @@ public class ElasticsearchBulk {
         requestBody.append(10)
 
         // Add the document to the request body followed by a newline character (newline -> 10)
-        let wrappedDoc: [String: T] = [ "doc" : doc ]
-        requestBody.append(try encoder.encode(wrappedDoc))
+        let updateDoc = UpdateDoc(doc: doc, docAsUpsert: docAsUpsert)
+        requestBody.append(try encoder.encode(updateDoc))
         requestBody.append(10)
     }
 
